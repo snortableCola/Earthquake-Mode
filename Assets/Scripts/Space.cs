@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(NextSpaceProvider))]
 public class Space : MonoBehaviour
 {
     public bool IsOnFire;
@@ -7,7 +8,6 @@ public class Space : MonoBehaviour
     public SpaceType Type;
 
     public Space[] AdjacentSpaces;
-    public Space NextSpace;
 
     public enum BoardRegion
     {

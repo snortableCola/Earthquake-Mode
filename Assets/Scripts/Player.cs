@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
 
 	public IEnumerator MovementCorutine()
 	{
-		Space current = transform.GetComponentInParent<Space>();
+		NextSpaceProvider current = transform.GetComponentInParent<NextSpaceProvider>();
 		int distance = Random.Range(1, 7);
 		Debug.Log($"Moving {distance}");
 
@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
 		{
 			yield return new WaitForSeconds(MovementTime);
 
-			current = current.NextSpace;
+			current = current.NextSpace.GetComponent<NextSpaceProvider>();
 			transform.SetParent(current.transform, false);
 		}
 	}

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static Space.BoardRegion;
+using static Space.BoardBiome;
 
 public class DisasterManager : MonoBehaviour
 {
@@ -13,9 +13,9 @@ public class DisasterManager : MonoBehaviour
 		Space[] allSpaces = _board.GetComponentsInChildren<Space>(_board);
 		foreach (Space space in allSpaces)
 		{
-			if (space.Type == Space.SpaceType.Negative && space.Region != Plains) _tornadoLandingSpaces.Add(space);
+			if (space.Type == Space.SpaceType.Negative && space.Biome != Plains) _tornadoLandingSpaces.Add(space);
 
-			if (space.Region is Plains or Mountains) _flammableSpaces.Add(space);
+			if (space.Biome is Plains or Mountains) _flammableSpaces.Add(space);
 		}
 	}
 
@@ -85,7 +85,7 @@ public class DisasterManager : MonoBehaviour
 			foreach (Space space in spaceToSpread.AdjacentSpaces)
 			{
 				// Only spread fire to flammable spaces that aren't already on fire
-				if (!space.IsOnFire && space.Region is Mountains or Plains) SetSpaceOnFire(space);
+				if (!space.IsOnFire && space.Biome is Mountains or Plains) SetSpaceOnFire(space);
 			}
 		}
 	}

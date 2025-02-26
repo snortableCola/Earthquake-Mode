@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 	public bool IsFrozen;
 	public float MovementTime;
 
-	public Space.BoardRegion CurrentRegion => transform.GetComponentInParent<Space>().Region;
+	public Space.BoardBiome CurrentRegion => transform.GetComponentInParent<Space>().Biome;
 
 	[ContextMenu("Pass Turn")]
 	public void PassTurn()
@@ -23,10 +23,7 @@ public class Player : MonoBehaviour
 	}
 
 	[ContextMenu("Move")]
-	public void Move()
-	{
-		StartCoroutine(MovementCorutine());
-	}
+	public void Move() => StartCoroutine(MovementCorutine());
 
 	public IEnumerator MovementCorutine()
 	{

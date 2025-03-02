@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOnFire: 0
-  Region: 2
+  Biome: 1
   Type: 0
   AdjacentSpaces:
   - {fileID: 1363859705}
@@ -387,7 +387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOnFire: 0
-  Region: 2
+  Biome: 1
   Type: 0
   AdjacentSpaces:
   - {fileID: 358009836}
@@ -530,7 +530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOnFire: 0
-  Region: 2
+  Biome: 0
   Type: 0
   AdjacentSpaces:
   - {fileID: 1211110172}
@@ -673,7 +673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOnFire: 0
-  Region: 2
+  Biome: 1
   Type: 0
   AdjacentSpaces:
   - {fileID: 1498580946}
@@ -816,7 +816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOnFire: 0
-  Region: 2
+  Biome: 0
   Type: 0
   AdjacentSpaces:
   - {fileID: 655647194}
@@ -959,7 +959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOnFire: 0
-  Region: 2
+  Biome: 1
   Type: 0
   AdjacentSpaces:
   - {fileID: 1454465173}
@@ -1039,7 +1039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOnFire: 0
-  Region: 2
+  Biome: 1
   Type: 0
   AdjacentSpaces:
   - {fileID: 54655560}
@@ -1294,7 +1294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOnFire: 0
-  Region: 2
+  Biome: 0
   Type: 0
   AdjacentSpaces:
   - {fileID: 1878288293}
@@ -1421,8 +1421,7 @@ Transform:
   m_LocalPosition: {x: -3.67, y: 0.1, z: 3.31}
   m_LocalScale: {x: 0.5, y: 0.1, z: 0.5}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1773246362}
+  m_Children: []
   m_Father: {fileID: 878257977}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &657488954
@@ -1438,7 +1437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOnFire: 0
-  Region: 2
+  Biome: 0
   Type: 0
   AdjacentSpaces:
   - {fileID: 1506815889}
@@ -1707,7 +1706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOnFire: 0
-  Region: 2
+  Biome: 0
   Type: 0
   AdjacentSpaces:
   - {fileID: 462483832}
@@ -1850,7 +1849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOnFire: 0
-  Region: 2
+  Biome: 0
   Type: 0
   AdjacentSpaces:
   - {fileID: 657488954}
@@ -1993,7 +1992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOnFire: 0
-  Region: 2
+  Biome: 0
   Type: 0
   AdjacentSpaces:
   - {fileID: 326482587}
@@ -2045,7 +2044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOnFire: 0
-  Region: 2
+  Biome: 0
   Type: 0
   AdjacentSpaces:
   - {fileID: 1878288293}
@@ -2263,7 +2262,8 @@ Transform:
   m_LocalPosition: {x: -2.57, y: 0.1, z: 0.37}
   m_LocalScale: {x: 0.5, y: 0.1, z: 0.5}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1773246362}
   m_Father: {fileID: 878257977}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1454465173
@@ -2279,7 +2279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOnFire: 0
-  Region: 2
+  Biome: 1
   Type: 0
   AdjacentSpaces:
   - {fileID: 298324575}
@@ -2423,7 +2423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOnFire: 0
-  Region: 2
+  Biome: 0
   Type: 0
   AdjacentSpaces:
   - {fileID: 428594871}
@@ -2566,7 +2566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOnFire: 0
-  Region: 2
+  Biome: 0
   Type: 0
   AdjacentSpaces:
   - {fileID: 943329315}
@@ -2754,7 +2754,7 @@ Transform:
   m_LocalScale: {x: 0.6, y: 3, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 657488953}
+  m_Father: {fileID: 1454465172}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1773246363
 CapsuleCollider:
@@ -2971,7 +2971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOnFire: 0
-  Region: 2
+  Biome: 0
   Type: 0
   AdjacentSpaces:
   - {fileID: 1266774797}

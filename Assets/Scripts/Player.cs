@@ -36,7 +36,12 @@ public class Player : MonoBehaviour
 			yield return new WaitForSeconds(MovementTime);
 
 			current = current.NextSpace.GetComponent<NextSpaceProvider>();
-			transform.SetParent(current.transform, false);
+			MoveTo(current.transform);
 		}
+	}
+
+	public void MoveTo(Transform space)
+	{
+		transform.SetParent(space, false);
 	}
 }

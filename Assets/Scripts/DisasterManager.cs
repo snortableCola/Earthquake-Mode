@@ -163,7 +163,8 @@ public class DisasterManager : MonoBehaviour
 		{
 			switch (player.CurrentRegion)
 			{
-				case Plains:
+				case Coast:
+					TsunamiPush(player);
 					break;
 
 				case Mountains:
@@ -171,6 +172,39 @@ public class DisasterManager : MonoBehaviour
 					break;
 			}
 		}
+	}
+
+	private void TsunamiPush(Player player)
+	{
+		Space startingSpace = player.GetComponentInParent<Space>();
+
+		HashSet<Space> coastSpaces = new() { startingSpace };
+		Queue<Space> spacesToCheck = new(startingSpace.AdjacentSpaces);
+
+		List<Space> potentialDestinations = new();
+		while (potentialDestinations.Count == 0)
+		{
+			int checks = spacesToCheck.Count;
+			for (int i = 0; i < checks; i++)
+			{
+				Space space = spacesToCheck.Dequeue();
+
+				if (space.Biome is not Coast)
+				{
+					potentialDestinations.Add(space);
+					continue;
+				}
+
+				coastSpaces.Add(space);
+				foreach (Space adjacency in space.AdjacentSpaces)
+				{
+					if (!coastSpaces.Contains(adjacency)) spacesToCheck.Enqueue(adjacency);
+				}
+			}
+		}
+
+		Space destination = potentialDestinations[Random.Range(0, potentialDestinations.Count)];
+		player.MoveTo(destination.transform);
 	}
 	#endregion
 }

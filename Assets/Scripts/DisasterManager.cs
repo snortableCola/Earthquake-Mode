@@ -150,7 +150,7 @@ public class DisasterManager : MonoBehaviour
 			Space landingSpace = _tornadoLandingSpaces[chosenLandingIndex];
 
 			// Move the player to the selected space
-			player.transform.SetParent(landingSpace.transform, false);
+			player.MoveTo(landingSpace.transform);
 		}
 	}
 	#endregion

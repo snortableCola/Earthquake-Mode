@@ -5,8 +5,14 @@ public class Player : MonoBehaviour
 {
 	public bool IsFrozen;
 	public float MovementTime;
+	public int totalPoints = 100; // Player's total points
 
-	public Space.BoardBiome CurrentRegion => transform.GetComponentInParent<Space>().Biome;
+    // Method to adjust points
+    public void AdjustPoints(int amount)
+    {
+        totalPoints += amount;
+    }
+    public Space.BoardBiome CurrentRegion => transform.GetComponentInParent<Space>().Biome;
 
 	[ContextMenu("Pass Turn")]
 	public void PassTurn()

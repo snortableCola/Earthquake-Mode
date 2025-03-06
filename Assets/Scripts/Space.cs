@@ -22,11 +22,6 @@ public class Space : MonoBehaviour
     public SpaceType Type;
 
     /// <summary>
-    /// An array of spaces that are considered directly adjacent to this space.
-    /// </summary>
-    public Space[] AdjacentSpaces;
-
-    /// <summary>
     /// An enum containing all potential biomes a space could occupy.
     /// </summary>
     public enum BoardBiome

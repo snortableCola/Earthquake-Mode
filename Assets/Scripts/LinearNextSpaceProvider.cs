@@ -11,4 +11,6 @@ public class LinearNextSpaceProvider : NextSpaceProvider
 	[SerializeField] private Space _nextSpace;
 
 	public override Space NextSpace => _nextSpace;
+
+	public override Space[] NextSpaces => new Space[] { _nextSpace };
 }

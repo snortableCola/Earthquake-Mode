@@ -8,11 +8,24 @@ public class DisasterManager : MonoBehaviour
 	[SerializeField] private Player[] _players;
 	[SerializeField] private Transform _board;
 
+	private Dictionary<Space, List<Space>> _adjacencies;
+
 	private void Awake()
 	{
 		Space[] allSpaces = _board.GetComponentsInChildren<Space>(_board);
+
+		_adjacencies = allSpaces.ToDictionary(space => space, _ => new List<Space>());
+
 		foreach (Space space in allSpaces)
 		{
+			Space[] nextSpaces = space.GetComponent<NextSpaceProvider>().NextSpaces;
+
+			foreach (Space nextSpace in nextSpaces)
+			{
+				_adjacencies[nextSpace].Add(space);
+				_adjacencies[space].Add(nextSpace);
+			}
+
 			if (space.Type == Space.SpaceType.Negative && space.Biome != Plains) _tornadoLandingSpaces.Add(space);
 
 			if (space.Biome is Plains or Mountains) _flammableSpaces.Add(space);
@@ -82,7 +95,7 @@ public class DisasterManager : MonoBehaviour
 		{
 			Space spaceToSpread = _spacesSetOnFire.Dequeue();
 
-			foreach (Space space in spaceToSpread.AdjacentSpaces)
+			foreach (Space space in _adjacencies[spaceToSpread])
 			{
 				// Only spread fire to flammable spaces that aren't already on fire
 				if (!space.IsOnFire && space.Biome is Mountains or Plains) SetSpaceOnFire(space);
@@ -179,7 +192,7 @@ public class DisasterManager : MonoBehaviour
 		Space startingSpace = player.GetComponentInParent<Space>();
 
 		HashSet<Space> coastSpaces = new() { startingSpace };
-		Queue<Space> spacesToCheck = new(startingSpace.AdjacentSpaces);
+		Queue<Space> spacesToCheck = new(_adjacencies[startingSpace]);
 
 		List<Space> potentialDestinations = new();
 		while (potentialDestinations.Count == 0)
@@ -196,7 +209,7 @@ public class DisasterManager : MonoBehaviour
 				}
 
 				coastSpaces.Add(space);
-				foreach (Space adjacency in space.AdjacentSpaces)
+				foreach (Space adjacency in _adjacencies[space])
 				{
 					if (!coastSpaces.Contains(adjacency)) spacesToCheck.Enqueue(adjacency);
 				}

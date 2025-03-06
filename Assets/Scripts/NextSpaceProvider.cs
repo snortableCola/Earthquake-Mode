@@ -9,4 +9,9 @@ public abstract class NextSpaceProvider : MonoBehaviour
 	/// Provides the next space during a player's movement.
 	/// </summary>
 	public abstract Space NextSpace { get; }
+
+	/// <summary>
+	/// Provides all spaces this space could possibly lead into during a player's movement.
+	/// </summary>
+	public abstract Space[] NextSpaces { get; }
 }

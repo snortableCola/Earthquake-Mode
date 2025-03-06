@@ -13,4 +13,6 @@ public class BranchingNextSpaceProvider : NextSpaceProvider
 	// Currently, in these branching situations, a random space is selected for the player.
 	// We'll have to implement player choice later.
 	public override Space NextSpace => _nextSpaces[Random.Range(0, _nextSpaces.Length)];
+
+	public override Space[] NextSpaces => _nextSpaces;
 }

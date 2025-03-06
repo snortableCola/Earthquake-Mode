@@ -169,6 +169,8 @@ public class DisasterManager : MonoBehaviour
 	#endregion
 
 	#region Tsunami Logic
+	[SerializeField] private Space _tsunamiFailsafe;
+
 	[ContextMenu("Do Tsunami")]
 	public void DoTsunamiDisaster()
 	{
@@ -195,7 +197,7 @@ public class DisasterManager : MonoBehaviour
 		Queue<Space> spacesToCheck = new(_adjacencies[startingSpace]);
 
 		List<Space> potentialDestinations = new();
-		while (potentialDestinations.Count == 0)
+		while (potentialDestinations.Count == 0 && spacesToCheck.Count != 0)
 		{
 			int checks = spacesToCheck.Count;
 			for (int i = 0; i < checks; i++)
@@ -216,7 +218,9 @@ public class DisasterManager : MonoBehaviour
 			}
 		}
 
-		Space destination = potentialDestinations[Random.Range(0, potentialDestinations.Count)];
+		Space destination = _tsunamiFailsafe;
+		if (potentialDestinations.Count > 0) destination = potentialDestinations[Random.Range(0, potentialDestinations.Count)];
+
 		player.MoveTo(destination.transform);
 	}
 	#endregion

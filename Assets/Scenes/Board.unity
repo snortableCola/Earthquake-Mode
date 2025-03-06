@@ -2950,6 +2950,7 @@ MonoBehaviour:
   _board: {fileID: 2050754883}
   _initialFireSize: 3
   _fireDuration: 3
+  _tsunamiFailsafe: {fileID: 641799735}
 --- !u!4 &406815568
 Transform:
   m_ObjectHideFlags: 0

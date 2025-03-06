@@ -182,7 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &6946069
 CapsuleCollider:
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 5
   AdjacentSpaces: []
 --- !u!136 &29684813
 CapsuleCollider:
@@ -464,7 +464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 5
   AdjacentSpaces: []
 --- !u!136 &32357518
 CapsuleCollider:
@@ -605,7 +605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 6
   AdjacentSpaces: []
 --- !u!136 &38471088
 CapsuleCollider:
@@ -746,7 +746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 1
   AdjacentSpaces: []
 --- !u!136 &52265045
 CapsuleCollider:
@@ -887,7 +887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 5
   AdjacentSpaces: []
 --- !u!136 &91489591
 CapsuleCollider:
@@ -1028,7 +1028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &92307029
 CapsuleCollider:
@@ -1169,7 +1169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 6
   AdjacentSpaces: []
 --- !u!136 &126969244
 CapsuleCollider:
@@ -1310,7 +1310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &144390768
 CapsuleCollider:
@@ -1451,7 +1451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 6
   AdjacentSpaces: []
 --- !u!136 &147168344
 CapsuleCollider:
@@ -1592,7 +1592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &157208392
 CapsuleCollider:
@@ -1733,7 +1733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 6
   AdjacentSpaces: []
 --- !u!136 &178544235
 CapsuleCollider:
@@ -1874,7 +1874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 5
   AdjacentSpaces: []
 --- !u!136 &202553422
 CapsuleCollider:
@@ -2015,7 +2015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &213919391
 CapsuleCollider:
@@ -2156,7 +2156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &286045682
 CapsuleCollider:
@@ -2297,7 +2297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 7
   AdjacentSpaces: []
 --- !u!136 &291937547
 CapsuleCollider:
@@ -2575,7 +2575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 1
   AdjacentSpaces: []
 --- !u!136 &365368971
 CapsuleCollider:
@@ -2716,7 +2716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 1
   AdjacentSpaces: []
 --- !u!136 &395015074
 CapsuleCollider:
@@ -2857,7 +2857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 4
   AdjacentSpaces: []
 --- !u!136 &402137964
 CapsuleCollider:
@@ -3119,7 +3119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &451775721
 CapsuleCollider:
@@ -3260,7 +3260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 3
   AdjacentSpaces: []
 --- !u!136 &463758893
 CapsuleCollider:
@@ -3453,7 +3453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &497012315
 CapsuleCollider:
@@ -3594,7 +3594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &595680758
 CapsuleCollider:
@@ -3735,7 +3735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 6
   AdjacentSpaces: []
 --- !u!136 &607920228
 CapsuleCollider:
@@ -3876,7 +3876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &641799736
 CapsuleCollider:
@@ -4017,7 +4017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 3
   AdjacentSpaces: []
 --- !u!136 &675022007
 CapsuleCollider:
@@ -4158,7 +4158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 7
   AdjacentSpaces: []
 --- !u!136 &677142305
 CapsuleCollider:
@@ -4299,7 +4299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 7
   AdjacentSpaces: []
 --- !u!136 &695883562
 CapsuleCollider:
@@ -4440,7 +4440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 4
   AdjacentSpaces: []
 --- !u!136 &702420552
 CapsuleCollider:
@@ -4581,7 +4581,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &745889225
 CapsuleCollider:
@@ -4722,7 +4722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 4
   AdjacentSpaces: []
 --- !u!136 &816793934
 CapsuleCollider:
@@ -4896,7 +4896,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &859499874
 CapsuleCollider:
@@ -5089,7 +5089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 4
   AdjacentSpaces: []
 --- !u!136 &919976207
 CapsuleCollider:
@@ -5230,7 +5230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 3
   AdjacentSpaces: []
 --- !u!136 &942990922
 CapsuleCollider:
@@ -5371,7 +5371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 7
   AdjacentSpaces: []
 --- !u!136 &949133396
 CapsuleCollider:
@@ -5512,7 +5512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 3
   AdjacentSpaces: []
 --- !u!136 &970150681
 CapsuleCollider:
@@ -5653,7 +5653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 7
   AdjacentSpaces: []
 --- !u!136 &1072323156
 CapsuleCollider:
@@ -5794,7 +5794,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 1
   AdjacentSpaces: []
 --- !u!136 &1123361180
 CapsuleCollider:
@@ -5935,7 +5935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 5
   AdjacentSpaces: []
 --- !u!136 &1128511688
 CapsuleCollider:
@@ -6076,7 +6076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 5
   AdjacentSpaces: []
 --- !u!136 &1133937593
 CapsuleCollider:
@@ -6217,7 +6217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &1139649994
 CapsuleCollider:
@@ -6358,7 +6358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 3
   AdjacentSpaces: []
 --- !u!136 &1161143184
 CapsuleCollider:
@@ -6499,7 +6499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 3
   AdjacentSpaces: []
 --- !u!136 &1198439772
 CapsuleCollider:
@@ -6640,7 +6640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &1236240415
 CapsuleCollider:
@@ -6781,7 +6781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 4
   AdjacentSpaces: []
 --- !u!136 &1256484705
 CapsuleCollider:
@@ -6922,7 +6922,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 7
   AdjacentSpaces: []
 --- !u!136 &1359193343
 CapsuleCollider:
@@ -7063,7 +7063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 1
   AdjacentSpaces: []
 --- !u!136 &1473112589
 CapsuleCollider:
@@ -7204,7 +7204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &1489343759
 CapsuleCollider:
@@ -7345,7 +7345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 3
   AdjacentSpaces: []
 --- !u!136 &1543397275
 CapsuleCollider:
@@ -7486,7 +7486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &1544233659
 CapsuleCollider:
@@ -7627,7 +7627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &1571993460
 CapsuleCollider:
@@ -7755,7 +7755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 5
   AdjacentSpaces: []
 --- !u!136 &1629434916
 CapsuleCollider:
@@ -7909,7 +7909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 3
   AdjacentSpaces: []
 --- !u!136 &1639339854
 CapsuleCollider:
@@ -8050,7 +8050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 3
   AdjacentSpaces: []
 --- !u!136 &1684428425
 CapsuleCollider:
@@ -8191,7 +8191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 1
   AdjacentSpaces: []
 --- !u!136 &1706445820
 CapsuleCollider:
@@ -8495,7 +8495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &1723720921
 CapsuleCollider:
@@ -8636,7 +8636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &1768307839
 CapsuleCollider:
@@ -8777,7 +8777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &1821119978
 CapsuleCollider:
@@ -8918,7 +8918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 4
   AdjacentSpaces: []
 --- !u!136 &1903011167
 CapsuleCollider:
@@ -9059,7 +9059,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 6
   AdjacentSpaces: []
 --- !u!136 &1904360752
 CapsuleCollider:
@@ -9200,7 +9200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 5
   AdjacentSpaces: []
 --- !u!136 &1919819714
 CapsuleCollider:
@@ -9341,7 +9341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &2022192850
 CapsuleCollider:
@@ -9516,7 +9516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 3
   AdjacentSpaces: []
 --- !u!136 &2070812605
 CapsuleCollider:
@@ -9657,7 +9657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 2
   AdjacentSpaces: []
 --- !u!136 &2102328836
 CapsuleCollider:
@@ -9798,7 +9798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 0
   Biome: 2
-  Type: 0
+  Type: 5
   AdjacentSpaces: []
 --- !u!136 &2120866337
 CapsuleCollider:

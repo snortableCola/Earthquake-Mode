@@ -43,7 +43,12 @@ public class Space : MonoBehaviour
     public enum SpaceType
     {
         None,
-        Negative
-        // Obviously, there will be more in the final product, this is simply all that was needed for disaster functionality
+        Oil,
+		Resource,
+		Negative,
+        Transport,
+        Bonus,
+        Shop,
+        Sabotage
     }
 }

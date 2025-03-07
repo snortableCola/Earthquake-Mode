@@ -33,21 +33,31 @@ public class Player : MonoBehaviour
 
 	public IEnumerator MovementCorutine()
 	{
-		NextSpaceProvider current = transform.GetComponentInParent<NextSpaceProvider>();
 		int distance = Random.Range(1, 7);
 		Debug.Log($"Moving {distance}");
 
-		for (int i = 0; i < distance; i++)
+		NextSpaceProvider nextSpaceProvider = transform.GetComponentInParent<NextSpaceProvider>();
+		for (int step = 1; step <= distance; step++)
 		{
 			yield return new WaitForSeconds(MovementTime);
 
-			current = current.NextSpace.GetComponent<NextSpaceProvider>();
-			MoveTo(current.transform);
+			Space nextSpace = nextSpaceProvider.NextSpace;
+			nextSpaceProvider = nextSpace.GetComponent<NextSpaceProvider>();
+
+			MoveTo(nextSpace, step == distance);
 		}
 	}
 
-	public void MoveTo(Transform space)
+	public void MoveTo(Space space, bool triggerLandingBehavior)
 	{
-		transform.SetParent(space, false);
+		transform.SetParent(space.transform, false);
+
+		if (!triggerLandingBehavior) return;
+
+		SpaceLandedBehavior behavior = space.GetComponent<SpaceLandedBehavior>();
+		if (behavior != null)
+		{
+			behavior.ReactToPlayerLanding(this);
+		}
 	}
 }

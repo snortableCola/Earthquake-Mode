@@ -2952,7 +2952,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785a70ba6bf792844b24a16007082f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _players: []
+  _players:
+  - {fileID: 749627511}
+  - {fileID: 1088405394}
+  - {fileID: 1196372717}
   _board: {fileID: 2050754883}
   _initialFireSize: 3
   _fireDuration: 3

@@ -163,7 +163,7 @@ public class DisasterManager : MonoBehaviour
 			Space landingSpace = _tornadoLandingSpaces[chosenLandingIndex];
 
 			// Move the player to the selected space
-			player.MoveTo(landingSpace.transform);
+			player.MoveTo(landingSpace, true);
 		}
 	}
 	#endregion
@@ -221,7 +221,7 @@ public class DisasterManager : MonoBehaviour
 		Space destination = _tsunamiFailsafe;
 		if (potentialDestinations.Count > 0) destination = potentialDestinations[Random.Range(0, potentialDestinations.Count)];
 
-		player.MoveTo(destination.transform);
+		player.MoveTo(destination, false);
 	}
 	#endregion
 }

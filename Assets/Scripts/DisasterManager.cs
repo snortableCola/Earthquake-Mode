@@ -7,6 +7,7 @@ public class DisasterManager : MonoBehaviour
 {
 	[SerializeField] private Player[] _players;
 	[SerializeField] private Transform _board;
+	[SerializeField] private int _disasterThreshold;
 
 	private Dictionary<Space, List<Space>> _adjacencies;
 
@@ -56,7 +57,7 @@ public class DisasterManager : MonoBehaviour
 
 		int disasterLevel = ++_disasterTracker[disaster];
 		Debug.Log($"{disaster} at level {disasterLevel}");
-		if (disasterLevel == 3)
+		if (disasterLevel == _disasterThreshold)
 		{
 			Debug.Log($"Start a {disaster}. {disaster} level reverted to 0.");
 			_disasterTracker[disaster] = 0;

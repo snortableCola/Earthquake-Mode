@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 2
 --- !u!136 &6946069
@@ -229,7 +229,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 5
 --- !u!136 &29684813
@@ -371,7 +371,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 4f214e372d3e7d042836f5bd500f582b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -462,7 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 5
 --- !u!136 &32357518
@@ -511,7 +511,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 4f214e372d3e7d042836f5bd500f582b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -602,7 +602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 6
 --- !u!136 &38471088
@@ -651,7 +651,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: a962df20908fd6e47aa12cd950d9645e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -742,7 +742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 1
 --- !u!136 &52265045
@@ -791,7 +791,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: c7800d1137efba448911eb8a0ab6c4df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -882,7 +882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 5
 --- !u!136 &91489591
@@ -931,7 +931,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 4f214e372d3e7d042836f5bd500f582b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1022,7 +1022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 2
 --- !u!136 &92307029
@@ -1071,7 +1071,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1162,7 +1162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 6
 --- !u!136 &126969244
@@ -1211,7 +1211,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: a962df20908fd6e47aa12cd950d9645e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1304,7 +1304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 2
 --- !u!136 &144390768
@@ -1353,7 +1353,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1444,7 +1444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 6
 --- !u!136 &147168344
@@ -1493,7 +1493,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: a962df20908fd6e47aa12cd950d9645e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1584,7 +1584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 2
 --- !u!136 &157208392
@@ -1633,7 +1633,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1724,7 +1724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 6
 --- !u!136 &178544235
@@ -1773,7 +1773,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: a962df20908fd6e47aa12cd950d9645e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1866,7 +1866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 5
 --- !u!136 &202553422
@@ -1915,7 +1915,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 4f214e372d3e7d042836f5bd500f582b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2007,7 +2007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 2
 --- !u!136 &213919391
@@ -2056,7 +2056,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2147,7 +2147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 2
 --- !u!136 &286045682
@@ -2196,7 +2196,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2287,7 +2287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 7
 --- !u!136 &291937547
@@ -2336,7 +2336,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 93036d87b9fdc4246bfd5ba5bd4a6da1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2453,7 +2453,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.6021356, y: -0, z: -0, w: 0.7983938}
-  m_LocalPosition: {x: 0, y: 7.72, z: -2.75}
+  m_LocalPosition: {x: 0, y: 9.52, z: -3.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2564,7 +2564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 1
 --- !u!136 &365368971
@@ -2613,7 +2613,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: c7800d1137efba448911eb8a0ab6c4df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2704,7 +2704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 1
 --- !u!136 &395015074
@@ -2753,7 +2753,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: c7800d1137efba448911eb8a0ab6c4df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2844,7 +2844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 4
 --- !u!136 &402137964
@@ -2893,7 +2893,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 571db482ae119be4699b1d841e7e4926, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3154,7 +3154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 2
 --- !u!136 &451775721
@@ -3203,7 +3203,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3294,7 +3294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 3
 --- !u!136 &463758893
@@ -3343,7 +3343,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 9af17f85cbb2120479852dbe6c38e0ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3486,7 +3486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 2
 --- !u!136 &497012315
@@ -3535,7 +3535,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3626,7 +3626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 2
 --- !u!136 &595680758
@@ -3675,7 +3675,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3766,7 +3766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 6
 --- !u!136 &607920228
@@ -3815,7 +3815,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: a962df20908fd6e47aa12cd950d9645e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3906,7 +3906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 2
 --- !u!136 &641799736
@@ -3955,7 +3955,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4046,7 +4046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 3
 --- !u!136 &675022007
@@ -4095,7 +4095,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 9af17f85cbb2120479852dbe6c38e0ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4186,7 +4186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 7
 --- !u!136 &677142305
@@ -4235,7 +4235,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 93036d87b9fdc4246bfd5ba5bd4a6da1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4326,7 +4326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 7
 --- !u!136 &695883562
@@ -4375,7 +4375,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 93036d87b9fdc4246bfd5ba5bd4a6da1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4466,7 +4466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 4
 --- !u!136 &702420552
@@ -4515,7 +4515,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 571db482ae119be4699b1d841e7e4926, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4606,7 +4606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 2
 --- !u!136 &745889225
@@ -4655,7 +4655,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4873,7 +4873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 4
 --- !u!136 &816793934
@@ -4922,7 +4922,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 571db482ae119be4699b1d841e7e4926, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5046,7 +5046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 2
 --- !u!136 &859499874
@@ -5095,7 +5095,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5238,7 +5238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 4
 --- !u!136 &919976207
@@ -5287,7 +5287,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 571db482ae119be4699b1d841e7e4926, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5378,7 +5378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 3
 --- !u!136 &942990922
@@ -5427,7 +5427,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 9af17f85cbb2120479852dbe6c38e0ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5518,7 +5518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 7
 --- !u!136 &949133396
@@ -5567,7 +5567,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 93036d87b9fdc4246bfd5ba5bd4a6da1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5658,7 +5658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 3
 --- !u!136 &970150681
@@ -5707,7 +5707,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 9af17f85cbb2120479852dbe6c38e0ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5798,7 +5798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 7
 --- !u!136 &1072323156
@@ -5847,7 +5847,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 93036d87b9fdc4246bfd5ba5bd4a6da1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6064,7 +6064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 1
 --- !u!136 &1123361180
@@ -6113,7 +6113,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: c7800d1137efba448911eb8a0ab6c4df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6204,7 +6204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 5
 --- !u!136 &1128511688
@@ -6253,7 +6253,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 4f214e372d3e7d042836f5bd500f582b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6344,7 +6344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 5
 --- !u!136 &1133937593
@@ -6393,7 +6393,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 4f214e372d3e7d042836f5bd500f582b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6484,7 +6484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 2
 --- !u!136 &1139649994
@@ -6533,7 +6533,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6624,7 +6624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 3
 --- !u!136 &1161143184
@@ -6673,7 +6673,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 9af17f85cbb2120479852dbe6c38e0ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6890,7 +6890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 3
 --- !u!136 &1198439772
@@ -6939,7 +6939,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 9af17f85cbb2120479852dbe6c38e0ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7030,7 +7030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 2
 --- !u!136 &1236240415
@@ -7079,7 +7079,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7171,7 +7171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 4
 --- !u!136 &1256484705
@@ -7220,7 +7220,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 571db482ae119be4699b1d841e7e4926, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7311,7 +7311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 7
 --- !u!136 &1359193343
@@ -7360,7 +7360,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 93036d87b9fdc4246bfd5ba5bd4a6da1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7451,7 +7451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 1
 --- !u!136 &1473112589
@@ -7500,7 +7500,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: c7800d1137efba448911eb8a0ab6c4df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7591,7 +7591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 2
 --- !u!136 &1489343759
@@ -7640,7 +7640,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7731,7 +7731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 3
 --- !u!136 &1543397275
@@ -7780,7 +7780,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 9af17f85cbb2120479852dbe6c38e0ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7871,7 +7871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 2
 --- !u!136 &1544233659
@@ -7920,7 +7920,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8011,7 +8011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 2
 --- !u!136 &1571993460
@@ -8060,7 +8060,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8138,7 +8138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 5
 --- !u!136 &1629434916
@@ -8187,7 +8187,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 4f214e372d3e7d042836f5bd500f582b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8293,7 +8293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 3
 --- !u!136 &1639339854
@@ -8342,7 +8342,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 9af17f85cbb2120479852dbe6c38e0ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8433,7 +8433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 3
 --- !u!136 &1684428425
@@ -8482,7 +8482,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 9af17f85cbb2120479852dbe6c38e0ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8573,7 +8573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 1
 --- !u!136 &1706445820
@@ -8622,7 +8622,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: c7800d1137efba448911eb8a0ab6c4df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8876,7 +8876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 2
 --- !u!136 &1723720921
@@ -8925,7 +8925,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9016,7 +9016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 2
 --- !u!136 &1768307839
@@ -9065,7 +9065,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9156,7 +9156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 2
 --- !u!136 &1821119978
@@ -9205,7 +9205,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9296,7 +9296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 4
 --- !u!136 &1903011167
@@ -9345,7 +9345,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 571db482ae119be4699b1d841e7e4926, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9436,7 +9436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 6
 --- !u!136 &1904360752
@@ -9485,7 +9485,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: a962df20908fd6e47aa12cd950d9645e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9576,7 +9576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 2
   Type: 5
 --- !u!136 &1919819714
@@ -9625,7 +9625,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 4f214e372d3e7d042836f5bd500f582b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9718,7 +9718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 2
 --- !u!136 &2022192850
@@ -9767,7 +9767,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9892,7 +9892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 3
 --- !u!136 &2070812605
@@ -9941,7 +9941,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 9af17f85cbb2120479852dbe6c38e0ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10032,7 +10032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 1
   Type: 2
 --- !u!136 &2102328836
@@ -10081,7 +10081,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1446f211b2cd5654a840aa178614a379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10172,7 +10172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnFire: 0
+  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
   Biome: 3
   Type: 5
 --- !u!136 &2120866337
@@ -10221,7 +10221,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 4f214e372d3e7d042836f5bd500f582b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

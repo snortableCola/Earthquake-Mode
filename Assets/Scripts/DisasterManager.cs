@@ -32,6 +32,38 @@ public class DisasterManager : MonoBehaviour
 		}
 	}
 
+	#region Disaster-Triggering Logic
+
+	private Dictionary<DisasterType, int> _disasterTracker = new()
+	{
+		{DisasterType.Earthquake, 0},
+		{DisasterType.Wildfire, 0},
+		{DisasterType.Tsunami, 0},
+		{DisasterType.Tornado, 0}
+	};
+
+	public void IncrementBiomeDisaster(Space.BoardBiome biome)
+	{
+		if (biome is None) return;
+
+		DisasterType disaster = biome switch
+		{
+			Coast => DisasterType.Tsunami,
+			Plains => DisasterType.Tornado,
+			Mountains => DisasterType.Wildfire,
+			_ => throw new UnityException("Unexpected biome.")
+		};
+
+		int disasterLevel = ++_disasterTracker[disaster];
+		Debug.Log($"{disaster} at level {disasterLevel}");
+		if (disasterLevel == 3)
+		{
+			Debug.Log($"Start a {disaster}. {disaster} level reverted to 0.");
+			_disasterTracker[disaster] = 0;
+		}
+	}
+	#endregion
+
 	#region Fire Logic
 	[SerializeField] private int _initialFireSize = 3;
 	[SerializeField] private int _fireDuration = 3;
@@ -224,4 +256,12 @@ public class DisasterManager : MonoBehaviour
 		player.MoveTo(destination, false);
 	}
 	#endregion
+
+	public enum DisasterType
+	{
+		Wildfire,
+		Tornado,
+		Tsunami,
+		Earthquake
+	}
 }

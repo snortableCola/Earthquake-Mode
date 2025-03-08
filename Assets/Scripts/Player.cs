@@ -36,15 +36,22 @@ public class Player : MonoBehaviour
 		int distance = Random.Range(1, 7);
 		Debug.Log($"Moving {distance}");
 
-		NextSpaceProvider nextSpaceProvider = transform.GetComponentInParent<NextSpaceProvider>();
-		for (int step = 1; step <= distance; step++)
+		Space space = transform.GetComponentInParent<Space>();
+		
+		while (distance > 0)
 		{
 			yield return new WaitForSeconds(MovementTime);
 
-			Space nextSpace = nextSpaceProvider.NextSpace;
-			nextSpaceProvider = nextSpace.GetComponent<NextSpaceProvider>();
+			space = space.GetComponent<NextSpaceProvider>().NextSpace;
 
-			MoveTo(nextSpace, step == distance);
+			if (space.TryGetComponent<SpacePassedBehavior>(out var behavior))
+			{
+				MoveTo(space, false);
+				behavior.ReactToPlayerPassing(this);
+				continue;
+			}
+
+			MoveTo(space, --distance == 0);
 		}
 	}
 
@@ -54,8 +61,7 @@ public class Player : MonoBehaviour
 
 		if (!triggerLandingBehavior) return;
 
-		SpaceLandedBehavior behavior = space.GetComponent<SpaceLandedBehavior>();
-		if (behavior != null)
+		if (space.TryGetComponent<SpaceLandedBehavior>(out var behavior))
 		{
 			behavior.ReactToPlayerLanding(this);
 		}

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,10 +13,13 @@ public class GameManager : MonoBehaviour
 	public UnityEvent RoundPassed = new();
 
 	[ContextMenu("Move Next Player")]
-	private void MoveNextPlayer()
+	private void MoveNextPlayer() => StartCoroutine(NextPlayerTurnCoroutine());
+
+	private IEnumerator NextPlayerTurnCoroutine()
 	{
 		Player player = _players[_currentPlayerIndex];
-		player.Move();
+		
+		yield return player.MovementCorutine();
 
 		_currentPlayerIndex++;
 

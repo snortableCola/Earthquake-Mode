@@ -130,7 +130,7 @@ public class DisasterManager : MonoBehaviour
 		if (_isFireOngoing) return;
 		_isFireOngoing = true;
 
-		_roundsOfFireRemaining = _fireDuration - 1;
+		_roundsOfFireRemaining = _fireDuration;
 
 		// Randomly select the spaces at which the fire will start
 		var fireStartingSpaces = _flammableSpaces.OrderBy(_ => Random.value).Take(_initialFireSize);
@@ -148,18 +148,11 @@ public class DisasterManager : MonoBehaviour
 	[ContextMenu("Pass Round")]
 	public void PassFireRound()
 	{
-		// If there is no fire, do nothing.
-		if (!_isFireOngoing) return;
+		// If there's no ongoing fire, do nothing.
+		if (!_isFireOngoing || _roundsOfFireRemaining-- == _fireDuration) return;
 
-		if (_roundsOfFireRemaining > 0)
-		{
-			_roundsOfFireRemaining--;
-			SpreadFire();
-		}
-		else
-		{
-			EndFireDisaster();
-		}
+		if (_roundsOfFireRemaining < 0) EndFireDisaster();
+		else SpreadFire();
 	}
 
 	/// <summary>

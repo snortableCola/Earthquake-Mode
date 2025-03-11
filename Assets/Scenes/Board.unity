@@ -8881,7 +8881,6 @@ MonoBehaviour:
   - {fileID: 749627511}
   - {fileID: 1088405394}
   - {fileID: 1196372717}
-  _maxRounds: 0
   TurnPassed:
     m_PersistentCalls:
       m_Calls:
@@ -8909,7 +8908,7 @@ Transform:
   m_GameObject: {fileID: 1675152220}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.27119198, y: -3.0821826, z: 0.16333096}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -15,20 +15,17 @@ public class Player : MonoBehaviour
     public Space.BoardBiome CurrentBiome => transform.GetComponentInParent<Space>().Biome;
 
 	[ContextMenu("Move")]
-	public void Move()
+	public void Move() => StartCoroutine(MovementCorutine());
+
+	public IEnumerator MovementCorutine()
 	{
 		if (IsFrozen)
 		{
 			Debug.Log($"{this} could not move, was frozen!");
 			IsFrozen = false;
-			return;
+			yield break;
 		}
 
-		StartCoroutine(MovementCorutine());
-	}
-
-	public IEnumerator MovementCorutine()
-	{
 		int distance = Random.Range(1, 7);
 		Debug.Log($"Moving {distance}");
 

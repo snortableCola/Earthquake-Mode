@@ -149,10 +149,11 @@ public class DisasterManager : MonoBehaviour
 	public void PassFireRound()
 	{
 		// If there's no ongoing fire, do nothing.
+		// We don't spread the fire immediately after it starts.
 		if (!_isFireOngoing || _roundsOfFireRemaining-- == _fireDuration) return;
 
-		if (_roundsOfFireRemaining < 0) EndFireDisaster();
-		else SpreadFire();
+		if (_roundsOfFireRemaining >= 0) SpreadFire();
+		else EndFireDisaster();
 	}
 
 	/// <summary>

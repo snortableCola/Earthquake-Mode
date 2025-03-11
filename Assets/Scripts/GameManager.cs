@@ -4,9 +4,9 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
 	[SerializeField] private Player[] _players;
-	[SerializeField] private int _maxRounds;
 
 	private int _currentPlayerIndex;
+	private int _roundNumber = 1;
 
 	public UnityEvent<Player> TurnPassed = new();
 	public UnityEvent RoundPassed = new();
@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
 		if (_currentPlayerIndex == _players.Length)
 		{
 			_currentPlayerIndex = 0;
+
+			Debug.Log($"Completed round {_roundNumber}");
+			_roundNumber++;
 			RoundPassed.Invoke();
 		}
 	}

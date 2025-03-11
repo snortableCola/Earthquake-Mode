@@ -14,22 +14,18 @@ public class Player : MonoBehaviour
     }
     public Space.BoardBiome CurrentRegion => transform.GetComponentInParent<Space>().Biome;
 
-	[ContextMenu("Pass Turn")]
-	public void PassTurn()
+	[ContextMenu("Move")]
+	public void Move()
 	{
 		if (IsFrozen)
 		{
-			Debug.Log("Was frozen!");
+			Debug.Log($"{this} could not move, was frozen!");
 			IsFrozen = false;
+			return;
 		}
-		else
-		{
-			Debug.Log("Took turn!");
-		}
-	}
 
-	[ContextMenu("Move")]
-	public void Move() => StartCoroutine(MovementCorutine());
+		StartCoroutine(MovementCorutine());
+	}
 
 	public IEnumerator MovementCorutine()
 	{

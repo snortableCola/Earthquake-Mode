@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     {
         totalPoints += amount;
     }
-    public Space.BoardBiome CurrentRegion => transform.GetComponentInParent<Space>().Biome;
+    public Space.BoardBiome CurrentBiome => transform.GetComponentInParent<Space>().Biome;
 
 	[ContextMenu("Move")]
 	public void Move()

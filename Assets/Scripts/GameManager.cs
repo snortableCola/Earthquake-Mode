@@ -1,24 +1,25 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
 	[SerializeField] private Player[] _players;
 	[SerializeField] private int _maxRounds;
 
 	private int _currentPlayerIndex;
 
-	public UnityEvent TurnPassed = new();
+	public UnityEvent<Player> TurnPassed = new();
 	public UnityEvent RoundPassed = new();
 
 	[ContextMenu("Move Next Player")]
 	private void MoveNextPlayer()
 	{
-		_players[_currentPlayerIndex].Move();
+		Player player = _players[_currentPlayerIndex];
+		player.Move();
 
 		_currentPlayerIndex++;
 
-		TurnPassed.Invoke();
+		TurnPassed.Invoke(player);
 
 		if (_currentPlayerIndex == _players.Length)
 		{

@@ -35,7 +35,7 @@ public class DisasterManager : MonoBehaviour
 
 	#region Disaster-Triggering Logic
 
-	private Dictionary<DisasterType, int> _disasterTracker = new()
+	private readonly Dictionary<DisasterType, int> _disasterTracker = new()
 	{
 		{DisasterType.Earthquake, 0},
 		{DisasterType.Wildfire, 0},
@@ -43,44 +43,88 @@ public class DisasterManager : MonoBehaviour
 		{DisasterType.Tornado, 0}
 	};
 
-	public void IncrementBiomeDisaster(Space.BoardBiome biome)
+	public void IncrementBiomeDisaster(Player player)
 	{
-		if (biome is None) return;
+		DisasterType disaster;
 
-		DisasterType disaster = biome switch
+		switch (player.CurrentBiome)
 		{
-			Coast => DisasterType.Tsunami,
-			Plains => DisasterType.Tornado,
-			Mountains => DisasterType.Wildfire,
-			_ => throw new UnityException("Unexpected biome.")
-		};
-
-		int disasterLevel = ++_disasterTracker[disaster];
-		Debug.Log($"{disaster} at level {disasterLevel}");
-		if (disasterLevel == _disasterThreshold)
-		{
-			Debug.Log($"Start a {disaster}. {disaster} level reverted to 0.");
-			_disasterTracker[disaster] = 0;
+			case Coast:
+				disaster = DisasterType.Tsunami;
+				break;
+			case Plains:
+				disaster = DisasterType.Tornado;
+				break;
+			case Mountains:
+				if (_isFireOngoing) goto default;
+				disaster = DisasterType.Wildfire;
+				break;
+			default:
+				Debug.Log("Disaster level not incremented.");
+				return;
 		}
+
+		IncrementDisaster(disaster, player);
+	}
+
+	public void IncrementDisaster(DisasterType disaster, Player incitingPlayer)
+	{
+		int disasterLevel = ++_disasterTracker[disaster];
+
+		Debug.Log($"{disaster} at level {disasterLevel}");
+		if (disasterLevel != _disasterThreshold) return;
+
+		Debug.Log($"{disaster} starting.");
+
+		switch (disaster)
+		{
+			case DisasterType.Tsunami:
+				DoTsunamiDisaster();
+				break;
+			case DisasterType.Tornado:
+				DoTornadoDisaster();
+				break;
+			case DisasterType.Wildfire:
+				DoFireDisaster(incitingPlayer);
+				break;
+		}
+
+		_disasterTracker[disaster] = 0;
 	}
 	#endregion
 
 	#region Fire Logic
 	[SerializeField] private int _initialFireSize = 3;
 	[SerializeField] private int _fireDuration = 3;
+	[SerializeField] private GameManager _gameManager;
 
 	private bool _isFireOngoing;
 	private int _roundsOfFireRemaining;
+	private Player _fireStarter;
 
 	private readonly List<Space> _flammableSpaces = new();
 	private readonly Queue<Space> _spacesToExtinguish = new();
 	private readonly Queue<Space> _spacesSetOnFire = new();
 
+	public void DoFireDisaster(Player fireStarter)
+	{
+		_fireStarter = fireStarter;
+		StartFireDisaster();
+	}
+
+	public void ProcessFireTurn(Player player)
+	{
+		if (player == _fireStarter)
+		{
+			PassFireRound();
+		}
+	}
+
 	/// <summary>
 	/// Starts the fire disaster by starting fires at randomly-selected field and mountain tiles.
 	/// </summary>
 	[ContextMenu("Do Fire")]
-	public void DoFireDisaster()
+	public void StartFireDisaster()
 	{
 		// Only one fire can be active at a time
 		if (_isFireOngoing) return;
@@ -189,7 +233,7 @@ public class DisasterManager : MonoBehaviour
 		foreach (Player player in _players)
 		{
 			// Only blow them away if they're in the plains
-			if (player.CurrentRegion != Plains) continue;
+			if (player.CurrentBiome != Plains) continue;
 
 			// Select a random negative, non-plains space to plow the player
 			int chosenLandingIndex = Random.Range(0, potentialLandingsCount);
@@ -209,7 +253,7 @@ public class DisasterManager : MonoBehaviour
 	{
 		foreach (Player player in _players)
 		{
-			switch (player.CurrentRegion)
+			switch (player.CurrentBiome)
 			{
 				case Coast:
 					TsunamiPush(player);

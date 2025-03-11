@@ -15,6 +15,6 @@ public class BonusSpace : SpaceLandedBehavior
 		Space.BoardBiome biome = _space.Biome;
 		Debug.Log($"Will give {player} 3 free {biome} resources.");
 
-		_disasterManager.IncrementBiomeDisaster(biome);
+		_disasterManager.IncrementBiomeDisaster(player);
 	}
 }

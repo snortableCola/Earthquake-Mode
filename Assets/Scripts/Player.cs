@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
 			float t = timeMoving / MovementTime;
 
 			Vector3 currentPosition = Vector3.Lerp(start, destination, t);
-			currentPosition.y += JumpHeight * Mathf.Sin(Mathf.PI * t);
+			currentPosition.y += JumpHeight * t * (1 - t);
 
 			transform.position = currentPosition;
 

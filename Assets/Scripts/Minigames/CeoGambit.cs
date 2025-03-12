@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro; 
+using TMPro;
 using UnityEngine.UI;
 
 public class CeoGambit : Minigame
@@ -10,29 +10,31 @@ public class CeoGambit : Minigame
     public Button headsButton;
     public Button tailsButton;
     public Button flipButton;
-    public Button doneButton; // Reference to the Done button
-    public Button selectButton; // Reference to the Select button
-    public Button ExitButton; 
+    public Button doneButton;
+    public Button selectButton;
+    public Button ExitButton;
     public Player player;
-    public PanelManager panelManager; // Reference to the PanelManager script
+    public PanelManager panelManager;
 
     private int points;
     private bool betOnHeads;
-    void Start()
-    {
-        StartGame();
-    }
+
+    // Comment out the Start method to prevent auto-start
+    // void Start()
+    // {
+    //     StartGame();
+    // }
+
     public override void StartGame()
     {
         Debug.Log("start game method called");
         UpdatePointsDisplay();
         headsButton.onClick.AddListener(() => SelectHeads(true));
         tailsButton.onClick.AddListener(() => SelectHeads(false));
-        selectButton.onClick.AddListener(SelectBet); // Set up the Select button
+        selectButton.onClick.AddListener(SelectBet);
         flipButton.onClick.AddListener(FlipCoin);
-        doneButton.onClick.AddListener(PlaceBet); // Set up the Done button
+        doneButton.onClick.AddListener(PlaceBet);
 
-        // Limit the input field to only accept numbers
         pointsInput.contentType = TMP_InputField.ContentType.IntegerNumber;
         pointsInput.onValueChanged.AddListener(ValidateBet);
     }
@@ -62,27 +64,26 @@ public class CeoGambit : Minigame
         if (int.TryParse(pointsInput.text, out points) && points > 0 && points <= player.totalPoints)
         {
             Debug.Log("Placing Bet with points: " + points);
-            panelManager.ShowSelectionPanel(); // Move to the selection panel
-           
+            panelManager.ShowPanel("CeoGambit", 2); // Show the selection panel for CeoGambit
         }
         else
         {
-            pointsDisplay.text = "Please enter a valid number of points within your available points." + "Points:" + player.totalPoints;
+            pointsDisplay.text = "Please enter a valid number of points within your available points. Points: " + player.totalPoints;
         }
     }
 
     void SelectHeads(bool isHeads)
     {
         betOnHeads = isHeads;
-        headsButton.image.color = isHeads ? Color.green : Color.white; // Highlight the selected button
-        tailsButton.image.color = isHeads ? Color.white : Color.green; // Reset the other button
+        headsButton.image.color = isHeads ? Color.green : Color.white;
+        tailsButton.image.color = isHeads ? Color.white : Color.green;
     }
 
     void SelectBet()
     {
         if (headsButton.image.color == Color.green || tailsButton.image.color == Color.green)
         {
-            panelManager.ShowFlipPanel(); // Move to the flip panel
+            panelManager.ShowPanel("CeoGambit", 3); // Show the flip panel for CeoGambit
         }
         else
         {
@@ -108,27 +109,26 @@ public class CeoGambit : Minigame
             }
 
             UpdatePointsDisplay();
-            UpdatePointsDisplay();
-            // Disable flip button and show exit button
+
             flipButton.gameObject.SetActive(false);
             ExitButton.gameObject.SetActive(true);
         }
         else
         {
             resultText.text = "Please enter a valid number of points within your available points.";
-            panelManager.ShowBettingPanel(); // Return to the betting panel if input is invalid
+            panelManager.ShowPanel("CeoGambit", 1); // Show the betting panel for CeoGambit
         }
     }
-   public void ExitMinigame()
+
+    public void ExitMinigame()
     {
-        // Logic to exit the minigame (e.g., return to main menu)
         Debug.Log("Exiting minigame");
-        panelManager.EndCG();
+        panelManager.EndMinigame("CeoGambit");
     }
 
     void UpdatePointsDisplay()
     {
         pointsDisplay.text = "Points: " + player.totalPoints.ToString();
-        Debug.Log("Updating points: " + player.totalPoints); 
+        Debug.Log("Updating points: " + player.totalPoints);
     }
 }

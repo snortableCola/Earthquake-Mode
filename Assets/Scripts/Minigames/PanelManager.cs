@@ -1,38 +1,107 @@
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class PanelManager : MonoBehaviour
 {
-    public GameObject bettingPanel;
-    public GameObject selectionPanel; // Reference to the Selection panel
-    public GameObject flipPanel;
+    private Dictionary<string, string> minigameInstructions = new Dictionary<string, string>();
+    private Dictionary<string, GameObject[]> minigamePanels = new Dictionary<string, GameObject[]>();
+    private string currentMinigameName;
+
+    public GameObject instructionPanel;
+    public TMP_Text instructionText;
+    public TMP_Text gameName; // Reference to the TMP_Text component for the minigame's name
+    public Button startMinigameButton;
+    public GameObject[] ceoGambitPanels;
+    public GameObject[] DONDPanels;
 
     void Start()
     {
-        ShowBettingPanel(); // Start with the betting panel
+        InitializeMinigameInstructions();
+        InitializeMinigamePanels();
+        startMinigameButton.onClick.AddListener(OnStartMinigameButtonClicked); // Add listener
     }
 
-    public void ShowBettingPanel()
+    private void InitializeMinigameInstructions()
     {
-        bettingPanel.SetActive(true);
-        selectionPanel.SetActive(false);
-        flipPanel.SetActive(false);
+        minigameInstructions.Add("Ceo Gambit", "How confident are you in your coin-flipping skills? Bet on your hard-earned resources, call heads or tails, and flip the coin. Get it right to double your bet—get it wrong, and, well… hope you didn’t bet too much.");
+        minigameInstructions.Add("Deal Or No Deal", "Four suitcases lie before you. One will give you +4 points, two are empty, and one will give you -4 points. The suitcases will be shuffled and you must choose wisely...");
+
+        // Add more minigame instructions here
+        Debug.Log("Instructions initialized");
     }
 
-    public void ShowSelectionPanel()
+    private void InitializeMinigamePanels()
     {
-        bettingPanel.SetActive(false);
-        selectionPanel.SetActive(true);
-        flipPanel.SetActive(false);
+        // Add panels for each minigame to the dictionary
+        minigamePanels.Add("Ceo Gambit", ceoGambitPanels);
+        minigamePanels.Add("Deal Or No Deal", DONDPanels);
+        foreach (var key in minigameInstructions.Keys)
+        {
+            Debug.Log("Minigame instruction key: " + key);
+        }
+        // Add more minigames and their corresponding panels here
+        Debug.Log("panels initialized");
     }
 
-    public void ShowFlipPanel()
+    public void ShowInstructionPanel(string minigameName)
     {
-        bettingPanel.SetActive(false);
-        selectionPanel.SetActive(false);
-        flipPanel.SetActive(true);
+        HideAllPanels();
+        currentMinigameName = minigameName; // Save the current minigame name
+        Debug.Log("Attempting to show instructions for: " + minigameName);
+        if (minigameInstructions.ContainsKey(minigameName))
+        {
+            Debug.Log("Setting instruction text and game name for: " + minigameName);
+            instructionText.text = minigameInstructions[minigameName];
+            gameName.text = minigameName; // Set the minigame name in the TMP_Text component
+            instructionPanel.SetActive(true);
+        }
+        else
+        {
+                Debug.LogWarning("Minigame instructions not found for: " + minigameName);
+            
+        }
     }
-    public void EndCG()
-    { 
-    flipPanel.SetActive(false);
+
+    public void OnStartMinigameButtonClicked()
+    {
+        instructionPanel.SetActive(false); // Hide the instruction panel
+        if (currentMinigameName != null)
+        {
+            Debug.Log("Starting minigame: " + currentMinigameName);
+            MinigameManager.Instance.StartMinigame(currentMinigameName); // Start the minigame
+
+        }
+        else
+        {
+            Debug.LogWarning("No minigame name set to start.");
+        }
+    }
+
+    public void ShowPanel(string minigameName, int panelIndex)
+    {
+        HideAllPanels();
+        if (minigamePanels.ContainsKey(minigameName) && panelIndex < minigamePanels[minigameName].Length)
+        {
+            minigamePanels[minigameName][panelIndex].SetActive(true);
+        }
+    }
+
+    public void HideAllPanels()
+    {
+        foreach (var minigame in minigamePanels)
+        {
+            foreach (var panel in minigame.Value)
+            {
+                panel.SetActive(false);
+            }
+        }
+    }
+
+    public void EndMinigame(string minigameName)
+    {
+        HideAllPanels();
+        // Add any additional logic for ending the minigame if needed
     }
 }

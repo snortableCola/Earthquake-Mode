@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 	{
 		Player player = _players[_currentPlayerIndex];
 		
-		yield return player.MovementCorutine();
+		yield return player.MovementCoroutine();
 
 		_currentPlayerIndex++;
 

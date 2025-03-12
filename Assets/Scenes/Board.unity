@@ -5084,6 +5084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsFrozen: 0
   MovementTime: 0.3
+  JumpHeight: 1
   totalPoints: 100
 --- !u!136 &749627512
 CapsuleCollider:
@@ -6317,6 +6318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsFrozen: 0
   MovementTime: 0.3
+  JumpHeight: 1
   totalPoints: 100
 --- !u!136 &1088405395
 CapsuleCollider:
@@ -7199,6 +7201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsFrozen: 0
   MovementTime: 0.3
+  JumpHeight: 1
   totalPoints: 100
 --- !u!136 &1196372718
 CapsuleCollider:

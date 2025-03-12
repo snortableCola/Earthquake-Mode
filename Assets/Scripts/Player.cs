@@ -4,7 +4,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 	public bool IsFrozen;
+	
 	public float MovementTime;
+	public float JumpHeight;
+
 	public int totalPoints = 100; // Player's total points
 
     // Method to adjust points
@@ -15,9 +18,9 @@ public class Player : MonoBehaviour
     public Space.BoardBiome CurrentBiome => transform.GetComponentInParent<Space>().Biome;
 
 	[ContextMenu("Move")]
-	public void Move() => StartCoroutine(MovementCorutine());
+	public void Move() => StartCoroutine(MovementCoroutine());
 
-	public IEnumerator MovementCorutine()
+	public IEnumerator MovementCoroutine()
 	{
 		if (IsFrozen)
 		{
@@ -57,7 +60,13 @@ public class Player : MonoBehaviour
 		while (timeMoving < MovementTime)
 		{
 			timeMoving += Time.deltaTime;
-			transform.position = Vector3.Lerp(start, destination, timeMoving / MovementTime);
+			float t = timeMoving / MovementTime;
+
+			Vector3 currentPosition = Vector3.Lerp(start, destination, t);
+			currentPosition.y += JumpHeight * Mathf.Sin(Mathf.PI * t);
+
+			transform.position = currentPosition;
+
 			yield return null;
 		}
 

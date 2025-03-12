@@ -13,8 +13,8 @@ public class BonusSpace : SpaceLandedBehavior
 	public override void ReactToPlayerLanding(Player player)
 	{
 		Space.BoardBiome biome = _space.Biome;
-		Debug.Log($"Will give {player} 3 free {biome} resources.");
+		Debug.Log($"{player} landed on a {biome} bonus space.");
 
-		_disasterManager.IncrementBiomeDisaster(player);
+		_disasterManager.IncrementBiomeDisaster(biome, player);
 	}
 }

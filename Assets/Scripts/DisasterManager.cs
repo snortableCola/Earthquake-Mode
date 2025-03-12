@@ -43,11 +43,11 @@ public class DisasterManager : MonoBehaviour
 		{DisasterType.Tornado, 0}
 	};
 
-	public void IncrementBiomeDisaster(Player player)
+	public void IncrementBiomeDisaster(Space.BoardBiome biome, Player player)
 	{
 		DisasterType disaster;
 
-		switch (player.CurrentBiome)
+		switch (biome)
 		{
 			case Coast:
 				disaster = DisasterType.Tsunami;

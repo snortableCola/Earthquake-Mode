@@ -5,8 +5,9 @@ public class Player : MonoBehaviour
 {
 	public bool IsFrozen;
 	
-	public float MovementTime;
-	public float JumpHeight;
+	[SerializeField] private float _movementTime;
+	[SerializeField] private float _jumpHeight;
+	[SerializeField] private float _movementDelay;
 
 	public int totalPoints = 100; // Player's total points
 
@@ -24,17 +25,17 @@ public class Player : MonoBehaviour
 	{
 		if (IsFrozen)
 		{
-			Debug.Log($"{this} could not move, was frozen!");
+			Debug.Log($"{this} was frozen and passed its turn.");
 			IsFrozen = false;
 			yield break;
 		}
 
 		int distance = Random.Range(1, 7);
-		Debug.Log($"Moving {distance}");
+		Debug.Log($"{this} moves {distance} spaces.");
 
 		Space space = transform.GetComponentInParent<Space>();
 
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(_movementDelay);
 
 		while (distance > 0)
 		{
@@ -57,13 +58,13 @@ public class Player : MonoBehaviour
 		Vector3 destination = space.transform.TransformPoint(transform.localPosition);
 
 		float timeMoving = 0;
-		while (timeMoving < MovementTime)
+		while (timeMoving < _movementTime)
 		{
 			timeMoving += Time.deltaTime;
-			float t = timeMoving / MovementTime;
+			float t = timeMoving / _movementTime;
 
 			Vector3 currentPosition = Vector3.Lerp(start, destination, t);
-			currentPosition.y += JumpHeight * t * (1 - t);
+			currentPosition.y += _jumpHeight * t * (1 - t);
 
 			transform.position = currentPosition;
 

@@ -13,8 +13,8 @@ public class ResourceSpace : SpaceLandedBehavior
 	public override void ReactToPlayerLanding(Player player)
 	{
 		Space.BoardBiome biome = _space.Biome;
-		Debug.Log($"Will make {player} play minigame for 1-2 {biome} resources.");
+		Debug.Log($"{player} landed on a {biome} resource space.");
 
-		_disasterManager.IncrementBiomeDisaster(player);
+		_disasterManager.IncrementBiomeDisaster(biome, player);
 	}
 }

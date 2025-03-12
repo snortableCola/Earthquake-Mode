@@ -96,7 +96,6 @@ public class DisasterManager : MonoBehaviour
 	#region Fire Logic
 	[SerializeField] private int _initialFireSize = 3;
 	[SerializeField] private int _fireDuration = 3;
-	[SerializeField] private GameManager _gameManager;
 
 	private bool _isFireOngoing;
 	private int _roundsOfFireRemaining;
@@ -200,8 +199,6 @@ public class DisasterManager : MonoBehaviour
 	/// <param name="space">The space to set on fire.</param>
 	private void SetSpaceOnFire(Space space)
 	{
-		Debug.Log($"{space.name} set on fire!");
-
 		space.IsOnFire = true;
 
 		_spacesSetOnFire.Enqueue(space);
@@ -234,7 +231,7 @@ public class DisasterManager : MonoBehaviour
 			Space landingSpace = _tornadoLandingSpaces[chosenLandingIndex];
 
 			// Move the player to the selected space
-			player.MoveTo(landingSpace, true);
+			StartCoroutine(player.MoveTo(landingSpace, true));
 		}
 	}
 	#endregion
@@ -292,7 +289,7 @@ public class DisasterManager : MonoBehaviour
 		Space destination = _tsunamiFailsafe;
 		if (potentialDestinations.Count > 0) destination = potentialDestinations[Random.Range(0, potentialDestinations.Count)];
 
-		player.MoveTo(destination, false);
+		StartCoroutine(player.MoveTo(destination, false));
 	}
 	#endregion
 

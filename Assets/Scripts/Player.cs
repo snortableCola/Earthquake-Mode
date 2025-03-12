@@ -30,29 +30,41 @@ public class Player : MonoBehaviour
 		Debug.Log($"Moving {distance}");
 
 		Space space = transform.GetComponentInParent<Space>();
-		
+
+		yield return new WaitForSeconds(0.5f);
+
 		while (distance > 0)
 		{
-			yield return new WaitForSeconds(MovementTime);
-
 			space = space.GetComponent<NextSpaceProvider>().NextSpace;
 
 			if (space.TryGetComponent<SpacePassedBehavior>(out var behavior))
 			{
-				MoveTo(space, false);
+				yield return MoveTo(space, false);
 				behavior.ReactToPlayerPassing(this);
 				continue;
 			}
 
-			MoveTo(space, --distance == 0);
+			yield return MoveTo(space, --distance == 0);
 		}
 	}
 
-	public void MoveTo(Space space, bool triggerLandingBehavior)
+	public IEnumerator MoveTo(Space space, bool triggerLandingBehavior)
 	{
-		transform.SetParent(space.transform, false);
+		Vector3 start = transform.position;
+		Vector3 destination = space.transform.TransformPoint(transform.localPosition);
 
-		if (!triggerLandingBehavior) return;
+		float timeMoving = 0;
+		while (timeMoving < MovementTime)
+		{
+			timeMoving += Time.deltaTime;
+			transform.position = Vector3.Lerp(start, destination, timeMoving / MovementTime);
+			yield return null;
+		}
+
+		transform.position = destination;
+		transform.SetParent(space.transform);
+
+		if (!triggerLandingBehavior) yield break;
 
 		if (space.TryGetComponent<SpaceLandedBehavior>(out var behavior))
 		{

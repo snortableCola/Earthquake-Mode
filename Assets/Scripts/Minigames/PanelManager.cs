@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class PanelManager : MonoBehaviour
 {
+    public static PanelManager Instance; // Singleton instance
     private Dictionary<string, string> minigameInstructions = new Dictionary<string, string>();
     private Dictionary<string, GameObject[]> minigamePanels = new Dictionary<string, GameObject[]>();
     private string currentMinigameName;
@@ -14,10 +15,20 @@ public class PanelManager : MonoBehaviour
     public TMP_Text gameName; // Reference to the TMP_Text component for the minigame's name
     public Button startMinigameButton;
     public GameObject[] ceoGambitPanels;
-    public GameObject[] DONDPanels;
+    public GameObject[] dealOrNoDealPanels;
+    //public TMP_Text rewardText; // Reference to the TMP_Text component for displaying the reward
 
-    void Start()
+    void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         InitializeMinigameInstructions();
         InitializeMinigamePanels();
         startMinigameButton.onClick.AddListener(OnStartMinigameButtonClicked); // Add listener
@@ -36,13 +47,13 @@ public class PanelManager : MonoBehaviour
     {
         // Add panels for each minigame to the dictionary
         minigamePanels.Add("Ceo Gambit", ceoGambitPanels);
-        minigamePanels.Add("Deal Or No Deal", DONDPanels);
+        minigamePanels.Add("Deal Or No Deal", dealOrNoDealPanels);
         foreach (var key in minigameInstructions.Keys)
         {
             Debug.Log("Minigame instruction key: " + key);
         }
         // Add more minigames and their corresponding panels here
-        Debug.Log("panels initialized");
+        Debug.Log("Panels initialized");
     }
 
     public void ShowInstructionPanel(string minigameName)
@@ -59,8 +70,7 @@ public class PanelManager : MonoBehaviour
         }
         else
         {
-                Debug.LogWarning("Minigame instructions not found for: " + minigameName);
-            
+            Debug.LogWarning("Minigame instructions not found for: " + minigameName);
         }
     }
 
@@ -71,7 +81,6 @@ public class PanelManager : MonoBehaviour
         {
             Debug.Log("Starting minigame: " + currentMinigameName);
             MinigameManager.Instance.StartMinigame(currentMinigameName); // Start the minigame
-
         }
         else
         {
@@ -104,4 +113,10 @@ public class PanelManager : MonoBehaviour
         HideAllPanels();
         // Add any additional logic for ending the minigame if needed
     }
+
+    //public void DisplayReward(string message)
+    //{
+    //    rewardText.text = message;
+    //    // Show the reward panel or update the UI as needed
+    //}
 }

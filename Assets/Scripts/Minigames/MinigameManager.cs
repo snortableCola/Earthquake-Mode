@@ -74,7 +74,12 @@ public class MinigameManager : MonoBehaviour
             Debug.LogError("Current minigame is null when trying to start: " + minigameName);
         }
     }
-
+    public void MinigameCompleted(int reward)
+    {
+        Debug.Log("Minigame Completed. Reward: " + reward);
+        // Handle the reward (e.g., update player's points)
+        // Switch to the next minigame or show the result panel
+    }
     void Start()
     {
         LoadRandomMinigame();

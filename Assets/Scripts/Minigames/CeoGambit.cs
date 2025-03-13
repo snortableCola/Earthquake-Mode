@@ -12,18 +12,12 @@ public class CeoGambit : Minigame
     public Button flipButton;
     public Button doneButton;
     public Button selectButton;
-    public Button ExitButton;
+    public Button exitButton; // Reference to the Exit button
     public Player player;
     public PanelManager panelManager;
 
     private int points;
     private bool betOnHeads;
-
-    // Comment out the Start method to prevent auto-start
-    // void Start()
-    // {
-    //     StartGame();
-    // }
 
     public override void StartGame()
     {
@@ -34,9 +28,16 @@ public class CeoGambit : Minigame
         selectButton.onClick.AddListener(SelectBet);
         flipButton.onClick.AddListener(FlipCoin);
         doneButton.onClick.AddListener(PlaceBet);
+        exitButton.onClick.AddListener(ExitMinigame); // Add listener to the exit button
 
         pointsInput.contentType = TMP_InputField.ContentType.IntegerNumber;
         pointsInput.onValueChanged.AddListener(ValidateBet);
+
+        // Initially, make the exit button inactive
+        exitButton.gameObject.SetActive(false);
+
+        // Show the initial panel for CEO Gambit
+        panelManager.ShowPanel("Ceo Gambit", 0);
     }
 
     void ValidateBet(string input)
@@ -64,7 +65,7 @@ public class CeoGambit : Minigame
         if (int.TryParse(pointsInput.text, out points) && points > 0 && points <= player.totalPoints)
         {
             Debug.Log("Placing Bet with points: " + points);
-            panelManager.ShowPanel("CeoGambit", 2); // Show the selection panel for CeoGambit
+            panelManager.ShowPanel("Ceo Gambit", 2); // Show the selection panel for CeoGambit
         }
         else
         {
@@ -83,7 +84,7 @@ public class CeoGambit : Minigame
     {
         if (headsButton.image.color == Color.green || tailsButton.image.color == Color.green)
         {
-            panelManager.ShowPanel("CeoGambit", 3); // Show the flip panel for CeoGambit
+            panelManager.ShowPanel("Ceo Gambit", 3); // Show the flip panel for CeoGambit
         }
         else
         {
@@ -110,20 +111,25 @@ public class CeoGambit : Minigame
 
             UpdatePointsDisplay();
 
+            // Make the flip button inactive and the exit button active
             flipButton.gameObject.SetActive(false);
-            ExitButton.gameObject.SetActive(true);
+            exitButton.gameObject.SetActive(true);
         }
         else
         {
             resultText.text = "Please enter a valid number of points within your available points.";
-            panelManager.ShowPanel("CeoGambit", 1); // Show the betting panel for CeoGambit
+            panelManager.ShowPanel("Ceo Gambit", 1); // Show the betting panel for CeoGambit
         }
     }
 
     public void ExitMinigame()
     {
         Debug.Log("Exiting minigame");
-        panelManager.EndMinigame("CeoGambit");
+
+        // Notify the manager that the minigame is complete
+        MinigameManager.Instance.MinigameCompleted(0);
+
+        panelManager.EndMinigame("Ceo Gambit");
     }
 
     void UpdatePointsDisplay()

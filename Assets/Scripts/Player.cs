@@ -1,10 +1,40 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
+[RequireComponent(typeof(MeshRenderer))]
 public class Player : MonoBehaviour
 {
-	public bool IsFrozen;
-	
+	private bool _isFrozen;
+
+	public bool IsFrozen
+	{
+		get => _isFrozen;
+		set
+		{
+			_isFrozen = value;
+			if (_isFrozen)
+			{
+				_renderer.materials = new Material[] { _baseMaterial, _frozenMaterial };
+			}
+			else
+			{
+				_renderer.materials = new Material[] { _baseMaterial };
+			}
+		}
+	}
+
+	private Renderer _renderer;
+	private Material _baseMaterial;
+	[SerializeField] private Material _frozenMaterial;
+
+	public void Awake()
+	{
+		_renderer = GetComponent<MeshRenderer>();
+		_baseMaterial = _renderer.material;
+	}
+
+
 	[SerializeField] private float _movementTime;
 	[SerializeField] private float _jumpHeight;
 	[SerializeField] private float _movementDelay;
@@ -76,7 +106,11 @@ public class Player : MonoBehaviour
 
 		if (!triggerLandingBehavior) yield break;
 
-		if (space.TryGetComponent<SpaceLandedBehavior>(out var behavior))
+		if (space.IsOnFire)
+		{
+			Debug.Log($"{this} landed on a space which is on fire.");
+		}
+		else if (space.TryGetComponent<SpaceLandedBehavior>(out var behavior))
 		{
 			behavior.ReactToPlayerLanding(this);
 		}

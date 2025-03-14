@@ -5,7 +5,7 @@ using static Space.BoardBiome;
 
 public class DisasterManager : MonoBehaviour
 {
-	[SerializeField] private Player[] _players;
+	private Player[] _players;
 	[SerializeField] private Transform _board;
 	[SerializeField] private int _disasterThreshold;
 
@@ -13,7 +13,8 @@ public class DisasterManager : MonoBehaviour
 
 	private void Awake()
 	{
-		Space[] allSpaces = _board.GetComponentsInChildren<Space>(_board);
+		Space[] allSpaces = _board.GetComponentsInChildren<Space>();
+		_players = _board.GetComponentsInChildren<Player>();
 
 		_adjacencies = allSpaces.ToDictionary(space => space, _ => new List<Space>());
 
@@ -43,6 +44,11 @@ public class DisasterManager : MonoBehaviour
 		{DisasterType.Tornado, 0}
 	};
 
+	/// <summary>
+	/// Increments the disaster level of whatever is associated with the specified biome.
+	/// </summary>
+	/// <param name="biome">The biome whose corresponding disaster should be incremented.</param>
+	/// <param name="player">The player responsible for the disaster level's incrementation.</param>
 	public void IncrementBiomeDisaster(Space.BoardBiome biome, Player player)
 	{
 		DisasterType disaster;
@@ -56,7 +62,7 @@ public class DisasterManager : MonoBehaviour
 				disaster = DisasterType.Tornado;
 				break;
 			case Mountains:
-				if (_isFireOngoing) goto default;
+				if (_isFireOngoing) goto default; // Fire level cannot be incremented if there's already an ongoing fire.
 				disaster = DisasterType.Wildfire;
 				break;
 			default:
@@ -67,6 +73,11 @@ public class DisasterManager : MonoBehaviour
 		IncrementDisaster(disaster, player);
 	}
 
+	/// <summary>
+	/// Increments the disaster level for a specified disaster, triggering it if it reaches the disaster threshold.
+	/// </summary>
+	/// <param name="disaster">The disaster to increment the disaster level of, and to potentially trigger.</param>
+	/// <param name="incitingPlayer"></param>
 	public void IncrementDisaster(DisasterType disaster, Player incitingPlayer)
 	{
 		int disasterLevel = ++_disasterTracker[disaster];
@@ -85,11 +96,11 @@ public class DisasterManager : MonoBehaviour
 				DoTornadoDisaster();
 				break;
 			case DisasterType.Wildfire:
-				DoFireDisaster(incitingPlayer);
+				StartFireDisaster(incitingPlayer);
 				break;
 		}
 
-		_disasterTracker[disaster] = 0;
+		_disasterTracker[disaster] = 0; // Reset the disaster level once startign the disaster
 	}
 	#endregion
 
@@ -105,29 +116,13 @@ public class DisasterManager : MonoBehaviour
 	private readonly Queue<Space> _spacesToExtinguish = new();
 	private readonly Queue<Space> _spacesSetOnFire = new();
 
-	public void DoFireDisaster(Player fireStarter)
-	{
-		_fireStarter = fireStarter;
-		StartFireDisaster();
-	}
-
-	public void ProcessFireTurn(Player player)
-	{
-		if (player == _fireStarter)
-		{
-			PassFireRound();
-		}
-	}
-
 	/// <summary>
 	/// Starts the fire disaster by starting fires at randomly-selected field and mountain tiles.
 	/// </summary>
-	[ContextMenu("Do Fire")]
-	public void StartFireDisaster()
+	public void StartFireDisaster(Player fireStarter)
 	{
-		// Only one fire can be active at a time
-		if (_isFireOngoing) return;
 		_isFireOngoing = true;
+		_fireStarter = fireStarter;
 
 		_roundsOfFireRemaining = _fireDuration;
 
@@ -142,14 +137,12 @@ public class DisasterManager : MonoBehaviour
 	}
 
 	/// <summary>
-	/// Passes a round of fire, either spreading it or extinguishing it depending on the rounds remaining.
+	/// Tries to progress a round of fire, either spreading it or extinguishing it depending on the rounds remaining.
 	/// </summary>
-	[ContextMenu("Pass Round")]
-	public void PassFireRound()
+	public void TryFireProgress(Player player)
 	{
-		// If there's no ongoing fire, do nothing.
-		// We don't spread the fire immediately after it starts.
-		if (!_isFireOngoing || _roundsOfFireRemaining-- == _fireDuration) return;
+		// Fire can only progress if there is a fire, it's the fire starter's turn, and the fire hasn't just started.
+		if (!_isFireOngoing || player != _fireStarter || _roundsOfFireRemaining-- == _fireDuration) return;
 
 		if (_roundsOfFireRemaining >= 0) SpreadFire();
 		else EndFireDisaster();
@@ -215,7 +208,6 @@ public class DisasterManager : MonoBehaviour
 	/// <summary>
 	/// Blows all players occupying plains spaces onto random negative, non-plains spaces.
 	/// </summary>
-	[ContextMenu("Do Tornado")]
 	public void DoTornadoDisaster()
 	{
 		int potentialLandingsCount = _tornadoLandingSpaces.Count;
@@ -230,7 +222,7 @@ public class DisasterManager : MonoBehaviour
 			int chosenLandingIndex = Random.Range(0, potentialLandingsCount);
 			Space landingSpace = _tornadoLandingSpaces[chosenLandingIndex];
 
-			// Move the player to the selected space
+			// Move the player to the selected space, triggering the negative behavior
 			StartCoroutine(player.JumpToSpaceCoroutine(landingSpace, true));
 		}
 	}
@@ -239,7 +231,9 @@ public class DisasterManager : MonoBehaviour
 	#region Tsunami Logic
 	[SerializeField] private Space _tsunamiFailsafe;
 
-	[ContextMenu("Do Tsunami")]
+	/// <summary>
+	/// Blows all players occupying coast spaces onto a predetermined space, and freezes all players occupying mountains spaces.
+	/// </summary>
 	public void DoTsunamiDisaster()
 	{
 		foreach (Player player in _players)
@@ -249,7 +243,6 @@ public class DisasterManager : MonoBehaviour
 				case Coast:
 					TsunamiPush(player);
 					break;
-
 				case Mountains:
 					player.IsFrozen = true;
 					break;
@@ -257,10 +250,15 @@ public class DisasterManager : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Pushes the specified player to their closest non-shore space, or a failsafe space if one could not be found.
+	/// </summary>
+	/// <param name="player">The player to push.</param>
 	private void TsunamiPush(Player player)
 	{
 		Space startingSpace = player.GetComponentInParent<Space>();
 
+		// All of this is just breadth-first search
 		HashSet<Space> coastSpaces = new() { startingSpace };
 		Queue<Space> spacesToCheck = new(_adjacencies[startingSpace]);
 
@@ -286,6 +284,7 @@ public class DisasterManager : MonoBehaviour
 			}
 		}
 
+		// Randomly selects from all possible spaces found, or uses the failsafe space if none could be found.
 		Space destination = _tsunamiFailsafe;
 		if (potentialDestinations.Count > 0) destination = potentialDestinations[Random.Range(0, potentialDestinations.Count)];
 

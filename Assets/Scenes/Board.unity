@@ -3214,12 +3214,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785a70ba6bf792844b24a16007082f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _players:
-  - {fileID: 749627511}
-  - {fileID: 1088405394}
-  - {fileID: 1196372717}
   _board: {fileID: 2050754883}
-  _disasterThreshold: 3
+  _disasterThreshold: 2
   _initialFireSize: 3
   _fireDuration: 3
   _tsunamiFailsafe: {fileID: 641799735}
@@ -5147,11 +5143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3c7788f9c50614daad34f553d2b65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsFrozen: 0
+  _frozenMaterial: {fileID: 2100000, guid: 0a48cedfc7361ac499d8e745af31f3a0, type: 2}
+  totalPoints: 100
   _movementTime: 0.3
   _jumpHeight: 4
   _movementDelay: 0.5
-  totalPoints: 100
 --- !u!136 &749627512
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6434,11 +6430,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3c7788f9c50614daad34f553d2b65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsFrozen: 0
+  _frozenMaterial: {fileID: 2100000, guid: 0a48cedfc7361ac499d8e745af31f3a0, type: 2}
+  totalPoints: 100
   _movementTime: 0.3
   _jumpHeight: 4
   _movementDelay: 0.5
-  totalPoints: 100
 --- !u!136 &1088405395
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7331,11 +7327,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3c7788f9c50614daad34f553d2b65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsFrozen: 0
+  _frozenMaterial: {fileID: 2100000, guid: 0a48cedfc7361ac499d8e745af31f3a0, type: 2}
+  totalPoints: 100
   _movementTime: 0.3
   _jumpHeight: 4
   _movementDelay: 0.5
-  totalPoints: 100
 --- !u!136 &1196372718
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9121,16 +9117,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5655b7441ece3c4f9f0cb561247ebea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _players:
-  - {fileID: 749627511}
-  - {fileID: 1088405394}
-  - {fileID: 1196372717}
+  _board: {fileID: 2050754883}
   TurnPassed:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 406815567}
         m_TargetAssemblyTypeName: DisasterManager, Assembly-CSharp
-        m_MethodName: ProcessFireTurn
+        m_MethodName: TryFireProgress
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

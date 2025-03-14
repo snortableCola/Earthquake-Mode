@@ -5,8 +5,18 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(MeshRenderer))]
 public class Player : MonoBehaviour
 {
+	private Renderer _renderer;
+	private Material _baseMaterial;
+	[SerializeField] private Material _frozenMaterial;
+
+	/// <summary>
+	/// Internally tracks whether the player is frozen, true if frozen.
+	/// </summary>
 	private bool _isFrozen;
 
+	/// <summary>
+	/// If true, the player is frozen and misses their next turn of movement. There is also a visual indication through a secondary material.
+	/// </summary>
 	public bool IsFrozen
 	{
 		get => _isFrozen;
@@ -24,16 +34,10 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	private Renderer _renderer;
-	private Material _baseMaterial;
-	[SerializeField] private Material _frozenMaterial;
-
-	public void Awake()
-	{
-		_renderer = GetComponent<MeshRenderer>();
-		_baseMaterial = _renderer.material;
-	}
-
+	/// <summary>
+	/// The biome of the space which the player is currently occupying.
+	/// </summary>
+	public Space.BoardBiome CurrentBiome => transform.GetComponentInParent<Space>().Biome;
 
 	[SerializeField] private float _movementTime;
 	[SerializeField] private float _jumpHeight;
@@ -46,71 +50,84 @@ public class Player : MonoBehaviour
     {
         totalPoints += amount;
     }
-    public Space.BoardBiome CurrentBiome => transform.GetComponentInParent<Space>().Biome;
 
-	[ContextMenu("Move")]
-	public void Move() => StartCoroutine(MovementCoroutine());
-
-	public IEnumerator MovementCoroutine()
+	public void Awake()
 	{
+		_renderer = GetComponent<MeshRenderer>();
+		_baseMaterial = _renderer.material;
+	}
+
+	/// <summary>
+	/// Coroutine that makes the player move a random number of spaces along the board (if possible), triggering the destination's landing behavior.
+	/// </summary>
+	/// <returns>Coroutine for handling the player's movement.</returns>
+	public IEnumerator RandomMovementCoroutine()
+	{
+		// Player cannot move if frozen
 		if (IsFrozen)
 		{
 			Debug.Log($"{this} was frozen and passed its turn.");
-			IsFrozen = false;
+			IsFrozen = false; // Player is unfrozen when movement attempted
 			yield break;
 		}
 
-		int distance = Random.Range(1, 7);
+		int distance = Random.Range(1, 7); // Moves random distance 1-6 to emulate dice roll
 		Debug.Log($"{this} moves {distance} spaces.");
 
+		yield return new WaitForSeconds(_movementDelay); // Initial delay for movement just so the first jump doesn't feel unusually fast
+
 		Space space = transform.GetComponentInParent<Space>();
-
-		yield return new WaitForSeconds(_movementDelay);
-
 		while (distance > 0)
 		{
 			space = space.GetComponent<NextSpaceProvider>().NextSpace;
 
+			// If the next space can be passed, it doesn't decrement player movement
 			if (space.TryGetComponent<SpacePassedBehavior>(out var behavior))
 			{
-				yield return MoveTo(space, false);
-				behavior.ReactToPlayerPassing(this);
+				yield return JumpToSpaceCoroutine(space, false);
+				behavior.ReactToPlayerPassing(this); // Trigger the space's passing behavior
 				continue;
 			}
 
-			yield return MoveTo(space, --distance == 0);
+			yield return JumpToSpaceCoroutine(space, --distance == 0); // Only trigger the space's landing behavior if it's the final space
 		}
 	}
 
-	public IEnumerator MoveTo(Space space, bool triggerLandingBehavior)
+	/// <summary>
+	/// Coroutine that makes the player jump from their current space to a specified destination space.
+	/// </summary>
+	/// <param name="targetSpace">The target space for the player to jump to.</param>
+	/// <param name="triggerLandingBehavior">If true, triggers the corresponding behavior of the target space upon the player's landing.</param>
+	/// <returns>Coroutine for handling the player's jump.</returns>
+	public IEnumerator JumpToSpaceCoroutine(Space targetSpace, bool triggerLandingBehavior)
 	{
-		Vector3 start = transform.position;
-		Vector3 destination = space.transform.TransformPoint(transform.localPosition);
+		Vector3 startPosition = transform.position;
+		Vector3 endPosition = targetSpace.transform.TransformPoint(transform.localPosition); // Ensures the player's located identically relative to its space after landing
 
-		float timeMoving = 0;
-		while (timeMoving < _movementTime)
+		float timeElapsed = 0f;
+		while (timeElapsed < _movementTime)
 		{
-			timeMoving += Time.deltaTime;
-			float t = timeMoving / _movementTime;
-
-			Vector3 currentPosition = Vector3.Lerp(start, destination, t);
-			currentPosition.y += _jumpHeight * t * (1 - t);
+			timeElapsed += Time.deltaTime; // Movement is frame-independent
+			
+			float movementProgress = timeElapsed / _movementTime;
+			Vector3 currentPosition = Vector3.Lerp(startPosition, endPosition, movementProgress);
+			currentPosition.y += _jumpHeight * movementProgress * (1 - movementProgress); // Player follows quadratic trajectory
 
 			transform.position = currentPosition;
 
-			yield return null;
+			yield return null; // Movement iterates frame-by-frame
 		}
 
-		transform.position = destination;
-		transform.SetParent(space.transform);
+		transform.position = endPosition;
+		transform.SetParent(targetSpace.transform);
 
 		if (!triggerLandingBehavior) yield break;
 
-		if (space.IsOnFire)
+		if (targetSpace.IsOnFire) // Fire takes precendent over default space behavior
 		{
 			Debug.Log($"{this} landed on a space which is on fire.");
 		}
-		else if (space.TryGetComponent<SpaceLandedBehavior>(out var behavior))
+		else if (targetSpace.TryGetComponent<SpaceLandedBehavior>(out var behavior))
 		{
 			behavior.ReactToPlayerLanding(this);
 		}

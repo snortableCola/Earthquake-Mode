@@ -161,7 +161,7 @@ public class DisasterManager : MonoBehaviour
 			foreach (Space space in _adjacencies[spaceToSpread])
 			{
 				// Only spread fire to flammable spaces that aren't already on fire
-				if (!space.IsOnFire && space.Biome is Mountains or Plains) SetSpaceOnFire(space);
+				if (!space.BurningTag.State && space.Biome is Mountains or Plains) SetSpaceOnFire(space);
 			}
 		}
 	}
@@ -178,7 +178,7 @@ public class DisasterManager : MonoBehaviour
 		while (_spacesToExtinguish.Count > 0)
 		{
 			Space spaceToExtinguish = _spacesToExtinguish.Dequeue();
-			spaceToExtinguish.IsOnFire = false;
+			spaceToExtinguish.BurningTag.State = false;
 		}
 
 		_spacesSetOnFire.Clear();
@@ -192,7 +192,7 @@ public class DisasterManager : MonoBehaviour
 	/// <param name="space">The space to set on fire.</param>
 	private void SetSpaceOnFire(Space space)
 	{
-		space.IsOnFire = true;
+		space.BurningTag.State = true;
 
 		_spacesSetOnFire.Enqueue(space);
 		_spacesToExtinguish.Enqueue(space);
@@ -244,7 +244,7 @@ public class DisasterManager : MonoBehaviour
 					TsunamiPush(player);
 					break;
 				case Mountains:
-					player.IsFrozen = true;
+					player.FrozenTag.State = true;
 					break;
 			}
 		}

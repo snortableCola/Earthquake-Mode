@@ -1,42 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(MeshRenderer))]
+[RequireComponent(typeof(VisibleTag))]
 public class Player : MonoBehaviour
 {
-	private Renderer _renderer;
-	private Material _baseMaterial;
-	[SerializeField] private Material _frozenMaterial;
-
-	/// <summary>
-	/// Internally tracks whether the player is frozen, true if frozen.
-	/// </summary>
-	private bool _isFrozen;
-
-	/// <summary>
-	/// If true, the player is frozen and misses their next turn of movement. There is also a visual indication through a secondary material.
-	/// </summary>
-	public bool IsFrozen
-	{
-		get => _isFrozen;
-		set
-		{
-			_isFrozen = value;
-			if (_isFrozen)
-			{
-				_renderer.materials = new Material[] { _baseMaterial, _frozenMaterial };
-			}
-			else
-			{
-				_renderer.materials = new Material[] { _baseMaterial };
-			}
-		}
-	}
+	[HideInInspector] public VisibleTag FrozenTag;
 
 	public void Awake()
 	{
-		_renderer = GetComponent<MeshRenderer>();
-		_baseMaterial = _renderer.material;
+		FrozenTag = GetComponent<VisibleTag>();
 	}
 
 	/// <summary>
@@ -66,10 +38,10 @@ public class Player : MonoBehaviour
 	public IEnumerator RandomMovementCoroutine()
 	{
 		// Player cannot move if frozen
-		if (IsFrozen)
+		if (FrozenTag.State)
 		{
 			Debug.Log($"{this} was frozen and passed its turn.");
-			IsFrozen = false; // Player is unfrozen when movement attempted
+			FrozenTag.State = false; // Player is unfrozen when movement attempted
 			yield break;
 		}
 
@@ -125,7 +97,7 @@ public class Player : MonoBehaviour
 
 		if (!triggerLandingBehavior) yield break;
 
-		if (targetSpace.IsOnFire) // Fire takes precendent over default space behavior
+		if (targetSpace.BurningTag.State) // Fire takes precendent over default space behavior
 		{
 			Debug.Log($"{this} landed on a space which is on fire.");
 		}

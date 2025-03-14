@@ -4,40 +4,15 @@ using UnityEngine;
 /// <summary>
 /// Holds some general information of a space.
 /// </summary>
-[RequireComponent(typeof(NextSpaceProvider), typeof(MeshRenderer))]
+[RequireComponent(typeof(NextSpaceProvider), typeof(VisibleTag))]
 public class Space : MonoBehaviour
 {
-    /// <summary>
-    /// Represents whether or not the space is on fire.
-    /// </summary>
-    private bool _isOnFire;
-
-    private Renderer _renderer;
-    private Material _baseMaterial;
-    [SerializeField] private Material _fireMaterial;
+    [HideInInspector] public VisibleTag BurningTag;
 
 	public void Awake()
 	{
-		_renderer = GetComponent<MeshRenderer>();
-        _baseMaterial = _renderer.material;
+		BurningTag = GetComponent<VisibleTag>();
 	}
-
-    public bool IsOnFire
-    {
-        get => _isOnFire;
-        set
-        {
-            _isOnFire = value;
-            if (_isOnFire)
-			{
-                _renderer.materials = new Material[] { _baseMaterial, _fireMaterial };
-            }
-            else
-			{
-				_renderer.materials = new Material[] { _baseMaterial };
-			}
-        }
-    }
 
     /// <summary>
     /// Represents the space's biome.

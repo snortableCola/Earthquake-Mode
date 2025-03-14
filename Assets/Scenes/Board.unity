@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 6946068}
   - component: {fileID: 6946067}
   - component: {fileID: 6946072}
+  - component: {fileID: 6946073}
   m_Layer: 0
   m_Name: S17
   m_TagString: Untagged
@@ -181,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 2
 --- !u!136 &6946069
@@ -273,6 +274,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &6946073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6946065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &29684809
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,6 +302,7 @@ GameObject:
   - component: {fileID: 29684812}
   - component: {fileID: 29684811}
   - component: {fileID: 29684816}
+  - component: {fileID: 29684817}
   m_Layer: 0
   m_Name: S6
   m_TagString: Untagged
@@ -337,7 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 5
 --- !u!136 &29684813
@@ -429,6 +444,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &29684817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29684809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &32357514
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,6 +472,7 @@ GameObject:
   - component: {fileID: 32357517}
   - component: {fileID: 32357516}
   - component: {fileID: 32357521}
+  - component: {fileID: 32357522}
   m_Layer: 0
   m_Name: S21
   m_TagString: Untagged
@@ -491,7 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 5
 --- !u!136 &32357518
@@ -583,6 +612,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &32357522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32357514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &38471084
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,6 +640,7 @@ GameObject:
   - component: {fileID: 38471087}
   - component: {fileID: 38471086}
   - component: {fileID: 38471091}
+  - component: {fileID: 38471092}
   m_Layer: 0
   m_Name: P3
   m_TagString: Untagged
@@ -645,7 +688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 6
 --- !u!136 &38471088
@@ -736,6 +779,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e83a588b445784fa96b38be9e454c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &38471092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38471084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &52265041
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,6 +807,7 @@ GameObject:
   - component: {fileID: 52265044}
   - component: {fileID: 52265043}
   - component: {fileID: 52265048}
+  - component: {fileID: 52265049}
   m_Layer: 0
   m_Name: M15
   m_TagString: Untagged
@@ -798,7 +855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 1
 --- !u!136 &52265045
@@ -890,6 +947,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &52265049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52265041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &91489587
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,6 +975,7 @@ GameObject:
   - component: {fileID: 91489590}
   - component: {fileID: 91489589}
   - component: {fileID: 91489594}
+  - component: {fileID: 91489595}
   m_Layer: 0
   m_Name: S10
   m_TagString: Untagged
@@ -952,7 +1023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 5
 --- !u!136 &91489591
@@ -1044,6 +1115,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &91489595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91489587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &92307025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,6 +1143,7 @@ GameObject:
   - component: {fileID: 92307028}
   - component: {fileID: 92307027}
   - component: {fileID: 92307032}
+  - component: {fileID: 92307033}
   m_Layer: 0
   m_Name: M16
   m_TagString: Untagged
@@ -1107,7 +1192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 2
 --- !u!136 &92307029
@@ -1199,6 +1284,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &92307033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92307025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &126969240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1214,6 +1312,7 @@ GameObject:
   - component: {fileID: 126969243}
   - component: {fileID: 126969242}
   - component: {fileID: 126969247}
+  - component: {fileID: 126969248}
   m_Layer: 0
   m_Name: P13
   m_TagString: Untagged
@@ -1261,7 +1360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 6
 --- !u!136 &126969244
@@ -1352,6 +1451,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e83a588b445784fa96b38be9e454c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &126969248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126969240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &144390764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,6 +1479,7 @@ GameObject:
   - component: {fileID: 144390767}
   - component: {fileID: 144390766}
   - component: {fileID: 144390771}
+  - component: {fileID: 144390772}
   m_Layer: 0
   m_Name: M5
   m_TagString: Untagged
@@ -1416,7 +1529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 2
 --- !u!136 &144390768
@@ -1508,6 +1621,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &144390772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144390764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &147168340
 GameObject:
   m_ObjectHideFlags: 0
@@ -1523,6 +1649,7 @@ GameObject:
   - component: {fileID: 147168343}
   - component: {fileID: 147168342}
   - component: {fileID: 147168347}
+  - component: {fileID: 147168348}
   m_Layer: 0
   m_Name: M14
   m_TagString: Untagged
@@ -1570,7 +1697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 6
 --- !u!136 &147168344
@@ -1661,6 +1788,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e83a588b445784fa96b38be9e454c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &147168348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147168340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &157208388
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,6 +1816,7 @@ GameObject:
   - component: {fileID: 157208391}
   - component: {fileID: 157208390}
   - component: {fileID: 157208395}
+  - component: {fileID: 157208396}
   m_Layer: 0
   m_Name: P8
   m_TagString: Untagged
@@ -1723,7 +1864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 2
 --- !u!136 &157208392
@@ -1815,6 +1956,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &157208396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157208388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &178544231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1830,6 +1984,7 @@ GameObject:
   - component: {fileID: 178544234}
   - component: {fileID: 178544233}
   - component: {fileID: 178544238}
+  - component: {fileID: 178544239}
   m_Layer: 0
   m_Name: M3
   m_TagString: Untagged
@@ -1877,7 +2032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 6
 --- !u!136 &178544235
@@ -1968,6 +2123,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e83a588b445784fa96b38be9e454c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &178544239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178544231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &202553418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1983,6 +2151,7 @@ GameObject:
   - component: {fileID: 202553421}
   - component: {fileID: 202553420}
   - component: {fileID: 202553425}
+  - component: {fileID: 202553426}
   m_Layer: 0
   m_Name: M17
   m_TagString: Untagged
@@ -2032,7 +2201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 5
 --- !u!136 &202553422
@@ -2124,6 +2293,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &202553426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202553418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &213919387
 GameObject:
   m_ObjectHideFlags: 0
@@ -2139,6 +2321,7 @@ GameObject:
   - component: {fileID: 213919390}
   - component: {fileID: 213919389}
   - component: {fileID: 213919394}
+  - component: {fileID: 213919395}
   m_Layer: 0
   m_Name: P1
   m_TagString: Untagged
@@ -2187,7 +2370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 2
 --- !u!136 &213919391
@@ -2279,6 +2462,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &213919395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213919387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &286045678
 GameObject:
   m_ObjectHideFlags: 0
@@ -2294,6 +2490,7 @@ GameObject:
   - component: {fileID: 286045681}
   - component: {fileID: 286045680}
   - component: {fileID: 286045685}
+  - component: {fileID: 286045686}
   m_Layer: 0
   m_Name: M13
   m_TagString: Untagged
@@ -2341,7 +2538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 2
 --- !u!136 &286045682
@@ -2433,6 +2630,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &286045686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286045678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &291937543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2448,6 +2658,7 @@ GameObject:
   - component: {fileID: 291937546}
   - component: {fileID: 291937545}
   - component: {fileID: 291937550}
+  - component: {fileID: 291937551}
   m_Layer: 0
   m_Name: S8
   m_TagString: Untagged
@@ -2495,7 +2706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 7
 --- !u!136 &291937547
@@ -2586,6 +2797,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4362e5e3d939e4dbe2d2cefca06345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &291937551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291937543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2738,6 +2962,7 @@ GameObject:
   - component: {fileID: 365368970}
   - component: {fileID: 365368969}
   - component: {fileID: 365368974}
+  - component: {fileID: 365368975}
   m_Layer: 0
   m_Name: P20
   m_TagString: Untagged
@@ -2785,7 +3010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 1
 --- !u!136 &365368971
@@ -2877,6 +3102,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &365368975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365368967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &395015070
 GameObject:
   m_ObjectHideFlags: 0
@@ -2892,6 +3130,7 @@ GameObject:
   - component: {fileID: 395015073}
   - component: {fileID: 395015072}
   - component: {fileID: 395015077}
+  - component: {fileID: 395015078}
   m_Layer: 0
   m_Name: S14
   m_TagString: Untagged
@@ -2939,7 +3178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 1
 --- !u!136 &395015074
@@ -3031,6 +3270,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &395015078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395015070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &402137960
 GameObject:
   m_ObjectHideFlags: 0
@@ -3046,6 +3298,7 @@ GameObject:
   - component: {fileID: 402137963}
   - component: {fileID: 402137962}
   - component: {fileID: 402137967}
+  - component: {fileID: 402137968}
   m_Layer: 0
   m_Name: M12
   m_TagString: Untagged
@@ -3093,7 +3346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 4
 --- !u!136 &402137964
@@ -3185,6 +3438,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destination: {fileID: 702420555}
+--- !u!114 &402137968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402137960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &406815566
 GameObject:
   m_ObjectHideFlags: 0
@@ -3370,6 +3636,7 @@ GameObject:
   - component: {fileID: 451775720}
   - component: {fileID: 451775719}
   - component: {fileID: 451775724}
+  - component: {fileID: 451775725}
   m_Layer: 0
   m_Name: P4
   m_TagString: Untagged
@@ -3417,7 +3684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 2
 --- !u!136 &451775721
@@ -3509,6 +3776,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &451775725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451775717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &463758889
 GameObject:
   m_ObjectHideFlags: 0
@@ -3524,6 +3804,7 @@ GameObject:
   - component: {fileID: 463758892}
   - component: {fileID: 463758891}
   - component: {fileID: 463758896}
+  - component: {fileID: 463758897}
   m_Layer: 0
   m_Name: S15
   m_TagString: Untagged
@@ -3571,7 +3852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 3
 --- !u!136 &463758893
@@ -3662,6 +3943,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e043d541816154ab6c9cc96d1c02e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &463758897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463758889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &496172847
 GameObject:
   m_ObjectHideFlags: 0
@@ -3729,6 +4023,7 @@ GameObject:
   - component: {fileID: 497012314}
   - component: {fileID: 497012313}
   - component: {fileID: 497012318}
+  - component: {fileID: 497012319}
   m_Layer: 0
   m_Name: S5
   m_TagString: Untagged
@@ -3776,7 +4071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 2
 --- !u!136 &497012315
@@ -3868,6 +4163,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &497012319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497012311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &595680754
 GameObject:
   m_ObjectHideFlags: 0
@@ -3883,6 +4191,7 @@ GameObject:
   - component: {fileID: 595680757}
   - component: {fileID: 595680756}
   - component: {fileID: 595680761}
+  - component: {fileID: 595680762}
   m_Layer: 0
   m_Name: S16
   m_TagString: Untagged
@@ -3930,7 +4239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 2
 --- !u!136 &595680758
@@ -4022,6 +4331,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &595680762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595680754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &607920224
 GameObject:
   m_ObjectHideFlags: 0
@@ -4037,6 +4359,7 @@ GameObject:
   - component: {fileID: 607920227}
   - component: {fileID: 607920226}
   - component: {fileID: 607920231}
+  - component: {fileID: 607920232}
   m_Layer: 0
   m_Name: S7
   m_TagString: Untagged
@@ -4084,7 +4407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 6
 --- !u!136 &607920228
@@ -4175,6 +4498,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e83a588b445784fa96b38be9e454c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &607920232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607920224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &641799732
 GameObject:
   m_ObjectHideFlags: 0
@@ -4190,6 +4526,7 @@ GameObject:
   - component: {fileID: 641799735}
   - component: {fileID: 641799734}
   - component: {fileID: 641799739}
+  - component: {fileID: 641799740}
   m_Layer: 0
   m_Name: P21
   m_TagString: Untagged
@@ -4237,7 +4574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 2
 --- !u!136 &641799736
@@ -4329,6 +4666,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &641799740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641799732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &675022003
 GameObject:
   m_ObjectHideFlags: 0
@@ -4344,6 +4694,7 @@ GameObject:
   - component: {fileID: 675022006}
   - component: {fileID: 675022005}
   - component: {fileID: 675022010}
+  - component: {fileID: 675022011}
   m_Layer: 0
   m_Name: P15
   m_TagString: Untagged
@@ -4391,7 +4742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 3
 --- !u!136 &675022007
@@ -4482,6 +4833,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e043d541816154ab6c9cc96d1c02e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &675022011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675022003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &677142301
 GameObject:
   m_ObjectHideFlags: 0
@@ -4497,6 +4861,7 @@ GameObject:
   - component: {fileID: 677142304}
   - component: {fileID: 677142303}
   - component: {fileID: 677142308}
+  - component: {fileID: 677142309}
   m_Layer: 0
   m_Name: M9
   m_TagString: Untagged
@@ -4544,7 +4909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 7
 --- !u!136 &677142305
@@ -4635,6 +5000,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4362e5e3d939e4dbe2d2cefca06345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &677142309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677142301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &695883558
 GameObject:
   m_ObjectHideFlags: 0
@@ -4650,6 +5028,7 @@ GameObject:
   - component: {fileID: 695883561}
   - component: {fileID: 695883560}
   - component: {fileID: 695883565}
+  - component: {fileID: 695883566}
   m_Layer: 0
   m_Name: S2
   m_TagString: Untagged
@@ -4697,7 +5076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 7
 --- !u!136 &695883562
@@ -4788,6 +5167,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4362e5e3d939e4dbe2d2cefca06345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &695883566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695883558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &702420548
 GameObject:
   m_ObjectHideFlags: 0
@@ -4803,6 +5195,7 @@ GameObject:
   - component: {fileID: 702420551}
   - component: {fileID: 702420550}
   - component: {fileID: 702420555}
+  - component: {fileID: 702420556}
   m_Layer: 0
   m_Name: P6
   m_TagString: Untagged
@@ -4850,7 +5243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 4
 --- !u!136 &702420552
@@ -4942,6 +5335,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destination: {fileID: 402137967}
+--- !u!114 &702420556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702420548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &745889221
 GameObject:
   m_ObjectHideFlags: 0
@@ -4957,6 +5363,7 @@ GameObject:
   - component: {fileID: 745889224}
   - component: {fileID: 745889223}
   - component: {fileID: 745889228}
+  - component: {fileID: 745889229}
   m_Layer: 0
   m_Name: M19
   m_TagString: Untagged
@@ -5004,7 +5411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 2
 --- !u!136 &745889225
@@ -5096,6 +5503,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &745889229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745889221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &749627509
 GameObject:
   m_ObjectHideFlags: 0
@@ -5109,6 +5529,7 @@ GameObject:
   - component: {fileID: 749627513}
   - component: {fileID: 749627512}
   - component: {fileID: 749627511}
+  - component: {fileID: 749627515}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -5143,7 +5564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3c7788f9c50614daad34f553d2b65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _frozenMaterial: {fileID: 2100000, guid: 0a48cedfc7361ac499d8e745af31f3a0, type: 2}
+  FrozenTag: {fileID: 0}
   totalPoints: 100
   _movementTime: 0.3
   _jumpHeight: 4
@@ -5224,6 +5645,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749627509}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &749627515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749627509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: 0a48cedfc7361ac499d8e745af31f3a0, type: 2}
 --- !u!1 &816793930
 GameObject:
   m_ObjectHideFlags: 0
@@ -5239,6 +5673,7 @@ GameObject:
   - component: {fileID: 816793933}
   - component: {fileID: 816793932}
   - component: {fileID: 816793937}
+  - component: {fileID: 816793938}
   m_Layer: 0
   m_Name: M1
   m_TagString: Untagged
@@ -5286,7 +5721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 4
 --- !u!136 &816793934
@@ -5378,6 +5813,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destination: {fileID: 1903011170}
+--- !u!114 &816793938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816793930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &851794761
 GameObject:
   m_ObjectHideFlags: 0
@@ -5426,6 +5874,7 @@ GameObject:
   - component: {fileID: 859499873}
   - component: {fileID: 859499872}
   - component: {fileID: 859499877}
+  - component: {fileID: 859499878}
   m_Layer: 0
   m_Name: P14
   m_TagString: Untagged
@@ -5473,7 +5922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 2
 --- !u!136 &859499874
@@ -5565,6 +6014,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &859499878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859499870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &896392604
 GameObject:
   m_ObjectHideFlags: 0
@@ -5632,6 +6094,7 @@ GameObject:
   - component: {fileID: 919976206}
   - component: {fileID: 919976205}
   - component: {fileID: 919976210}
+  - component: {fileID: 919976211}
   m_Layer: 0
   m_Name: P18
   m_TagString: Untagged
@@ -5679,7 +6142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 4
 --- !u!136 &919976207
@@ -5771,6 +6234,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destination: {fileID: 1256484708}
+--- !u!114 &919976211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919976203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &942990918
 GameObject:
   m_ObjectHideFlags: 0
@@ -5786,6 +6262,7 @@ GameObject:
   - component: {fileID: 942990921}
   - component: {fileID: 942990920}
   - component: {fileID: 942990925}
+  - component: {fileID: 942990926}
   m_Layer: 0
   m_Name: S4
   m_TagString: Untagged
@@ -5833,7 +6310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 3
 --- !u!136 &942990922
@@ -5924,6 +6401,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e043d541816154ab6c9cc96d1c02e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &942990926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942990918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &949133392
 GameObject:
   m_ObjectHideFlags: 0
@@ -5939,6 +6429,7 @@ GameObject:
   - component: {fileID: 949133395}
   - component: {fileID: 949133394}
   - component: {fileID: 949133399}
+  - component: {fileID: 949133400}
   m_Layer: 0
   m_Name: M4
   m_TagString: Untagged
@@ -5986,7 +6477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 7
 --- !u!136 &949133396
@@ -6077,6 +6568,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4362e5e3d939e4dbe2d2cefca06345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &949133400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949133392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &970150677
 GameObject:
   m_ObjectHideFlags: 0
@@ -6092,6 +6596,7 @@ GameObject:
   - component: {fileID: 970150680}
   - component: {fileID: 970150679}
   - component: {fileID: 970150684}
+  - component: {fileID: 970150685}
   m_Layer: 0
   m_Name: S20
   m_TagString: Untagged
@@ -6139,7 +6644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 3
 --- !u!136 &970150681
@@ -6230,6 +6735,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e043d541816154ab6c9cc96d1c02e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &970150685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970150677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1072323152
 GameObject:
   m_ObjectHideFlags: 0
@@ -6245,6 +6763,7 @@ GameObject:
   - component: {fileID: 1072323155}
   - component: {fileID: 1072323154}
   - component: {fileID: 1072323159}
+  - component: {fileID: 1072323160}
   m_Layer: 0
   m_Name: P16
   m_TagString: Untagged
@@ -6292,7 +6811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 7
 --- !u!136 &1072323156
@@ -6383,6 +6902,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4362e5e3d939e4dbe2d2cefca06345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1072323160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072323152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1088405392
 GameObject:
   m_ObjectHideFlags: 0
@@ -6396,6 +6928,7 @@ GameObject:
   - component: {fileID: 1088405396}
   - component: {fileID: 1088405395}
   - component: {fileID: 1088405394}
+  - component: {fileID: 1088405398}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Untagged
@@ -6430,7 +6963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3c7788f9c50614daad34f553d2b65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _frozenMaterial: {fileID: 2100000, guid: 0a48cedfc7361ac499d8e745af31f3a0, type: 2}
+  FrozenTag: {fileID: 0}
   totalPoints: 100
   _movementTime: 0.3
   _jumpHeight: 4
@@ -6511,6 +7044,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1088405392}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1088405398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088405392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: 0a48cedfc7361ac499d8e745af31f3a0, type: 2}
 --- !u!1 &1123361176
 GameObject:
   m_ObjectHideFlags: 0
@@ -6526,6 +7072,7 @@ GameObject:
   - component: {fileID: 1123361179}
   - component: {fileID: 1123361178}
   - component: {fileID: 1123361183}
+  - component: {fileID: 1123361184}
   m_Layer: 0
   m_Name: M6
   m_TagString: Untagged
@@ -6573,7 +7120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 1
 --- !u!136 &1123361180
@@ -6665,6 +7212,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &1123361184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123361176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1128511684
 GameObject:
   m_ObjectHideFlags: 0
@@ -6680,6 +7240,7 @@ GameObject:
   - component: {fileID: 1128511687}
   - component: {fileID: 1128511686}
   - component: {fileID: 1128511691}
+  - component: {fileID: 1128511692}
   m_Layer: 0
   m_Name: P19
   m_TagString: Untagged
@@ -6727,7 +7288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 5
 --- !u!136 &1128511688
@@ -6819,6 +7380,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &1128511692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128511684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1133937589
 GameObject:
   m_ObjectHideFlags: 0
@@ -6834,6 +7408,7 @@ GameObject:
   - component: {fileID: 1133937592}
   - component: {fileID: 1133937591}
   - component: {fileID: 1133937596}
+  - component: {fileID: 1133937597}
   m_Layer: 0
   m_Name: M21
   m_TagString: Untagged
@@ -6881,7 +7456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 5
 --- !u!136 &1133937593
@@ -6973,6 +7548,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &1133937597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133937589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1139649990
 GameObject:
   m_ObjectHideFlags: 0
@@ -6988,6 +7576,7 @@ GameObject:
   - component: {fileID: 1139649993}
   - component: {fileID: 1139649992}
   - component: {fileID: 1139649997}
+  - component: {fileID: 1139649998}
   m_Layer: 0
   m_Name: P22
   m_TagString: Untagged
@@ -7035,7 +7624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 2
 --- !u!136 &1139649994
@@ -7127,6 +7716,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &1139649998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139649990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1161143180
 GameObject:
   m_ObjectHideFlags: 0
@@ -7142,6 +7744,7 @@ GameObject:
   - component: {fileID: 1161143183}
   - component: {fileID: 1161143182}
   - component: {fileID: 1161143187}
+  - component: {fileID: 1161143188}
   m_Layer: 0
   m_Name: P11
   m_TagString: Untagged
@@ -7189,7 +7792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 3
 --- !u!136 &1161143184
@@ -7280,6 +7883,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e043d541816154ab6c9cc96d1c02e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1161143188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161143180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1196372715
 GameObject:
   m_ObjectHideFlags: 0
@@ -7293,6 +7909,7 @@ GameObject:
   - component: {fileID: 1196372719}
   - component: {fileID: 1196372718}
   - component: {fileID: 1196372717}
+  - component: {fileID: 1196372721}
   m_Layer: 0
   m_Name: Player 3
   m_TagString: Untagged
@@ -7327,7 +7944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3c7788f9c50614daad34f553d2b65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _frozenMaterial: {fileID: 2100000, guid: 0a48cedfc7361ac499d8e745af31f3a0, type: 2}
+  FrozenTag: {fileID: 0}
   totalPoints: 100
   _movementTime: 0.3
   _jumpHeight: 4
@@ -7408,6 +8025,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1196372715}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1196372721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196372715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: 0a48cedfc7361ac499d8e745af31f3a0, type: 2}
 --- !u!1 &1198439768
 GameObject:
   m_ObjectHideFlags: 0
@@ -7423,6 +8053,7 @@ GameObject:
   - component: {fileID: 1198439771}
   - component: {fileID: 1198439770}
   - component: {fileID: 1198439775}
+  - component: {fileID: 1198439776}
   m_Layer: 0
   m_Name: M7
   m_TagString: Untagged
@@ -7470,7 +8101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 3
 --- !u!136 &1198439772
@@ -7561,6 +8192,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e043d541816154ab6c9cc96d1c02e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1198439776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198439768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1236240411
 GameObject:
   m_ObjectHideFlags: 0
@@ -7576,6 +8220,7 @@ GameObject:
   - component: {fileID: 1236240414}
   - component: {fileID: 1236240413}
   - component: {fileID: 1236240418}
+  - component: {fileID: 1236240419}
   m_Layer: 0
   m_Name: S11
   m_TagString: Untagged
@@ -7624,7 +8269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 2
 --- !u!136 &1236240415
@@ -7716,6 +8361,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &1236240419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236240411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1256484701
 GameObject:
   m_ObjectHideFlags: 0
@@ -7731,6 +8389,7 @@ GameObject:
   - component: {fileID: 1256484704}
   - component: {fileID: 1256484703}
   - component: {fileID: 1256484708}
+  - component: {fileID: 1256484709}
   m_Layer: 0
   m_Name: S1
   m_TagString: Untagged
@@ -7778,7 +8437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 4
 --- !u!136 &1256484705
@@ -7870,6 +8529,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destination: {fileID: 919976210}
+--- !u!114 &1256484709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256484701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1359193339
 GameObject:
   m_ObjectHideFlags: 0
@@ -7885,6 +8557,7 @@ GameObject:
   - component: {fileID: 1359193342}
   - component: {fileID: 1359193341}
   - component: {fileID: 1359193346}
+  - component: {fileID: 1359193347}
   m_Layer: 0
   m_Name: P9
   m_TagString: Untagged
@@ -7932,7 +8605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 7
 --- !u!136 &1359193343
@@ -8023,6 +8696,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4362e5e3d939e4dbe2d2cefca06345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1359193347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359193339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1473112585
 GameObject:
   m_ObjectHideFlags: 0
@@ -8038,6 +8724,7 @@ GameObject:
   - component: {fileID: 1473112588}
   - component: {fileID: 1473112587}
   - component: {fileID: 1473112592}
+  - component: {fileID: 1473112593}
   m_Layer: 0
   m_Name: S19
   m_TagString: Untagged
@@ -8085,7 +8772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 1
 --- !u!136 &1473112589
@@ -8177,6 +8864,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &1473112593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473112585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1489343755
 GameObject:
   m_ObjectHideFlags: 0
@@ -8192,6 +8892,7 @@ GameObject:
   - component: {fileID: 1489343758}
   - component: {fileID: 1489343757}
   - component: {fileID: 1489343762}
+  - component: {fileID: 1489343763}
   m_Layer: 0
   m_Name: S13
   m_TagString: Untagged
@@ -8239,7 +8940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 2
 --- !u!136 &1489343759
@@ -8331,6 +9032,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &1489343763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489343755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1543397271
 GameObject:
   m_ObjectHideFlags: 0
@@ -8346,6 +9060,7 @@ GameObject:
   - component: {fileID: 1543397274}
   - component: {fileID: 1543397273}
   - component: {fileID: 1543397278}
+  - component: {fileID: 1543397279}
   m_Layer: 0
   m_Name: P2
   m_TagString: Untagged
@@ -8393,7 +9108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 3
 --- !u!136 &1543397275
@@ -8484,6 +9199,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e043d541816154ab6c9cc96d1c02e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1543397279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543397271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1544233655
 GameObject:
   m_ObjectHideFlags: 0
@@ -8499,6 +9227,7 @@ GameObject:
   - component: {fileID: 1544233658}
   - component: {fileID: 1544233657}
   - component: {fileID: 1544233662}
+  - component: {fileID: 1544233663}
   m_Layer: 0
   m_Name: M10
   m_TagString: Untagged
@@ -8546,7 +9275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 2
 --- !u!136 &1544233659
@@ -8638,6 +9367,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &1544233663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544233655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1571993456
 GameObject:
   m_ObjectHideFlags: 0
@@ -8653,6 +9395,7 @@ GameObject:
   - component: {fileID: 1571993459}
   - component: {fileID: 1571993458}
   - component: {fileID: 1571993463}
+  - component: {fileID: 1571993464}
   m_Layer: 0
   m_Name: P10
   m_TagString: Untagged
@@ -8700,7 +9443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 2
 --- !u!136 &1571993460
@@ -8792,6 +9535,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &1571993464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571993456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1629434912
 GameObject:
   m_ObjectHideFlags: 0
@@ -8807,6 +9563,7 @@ GameObject:
   - component: {fileID: 1629434915}
   - component: {fileID: 1629434919}
   - component: {fileID: 1629434920}
+  - component: {fileID: 1629434921}
   m_Layer: 0
   m_Name: P7
   m_TagString: Untagged
@@ -8841,7 +9598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 5
 --- !u!136 &1629434916
@@ -8948,6 +9705,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &1629434921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629434912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1639339850
 GameObject:
   m_ObjectHideFlags: 0
@@ -8962,6 +9732,7 @@ GameObject:
   - component: {fileID: 1639339854}
   - component: {fileID: 1639339853}
   - component: {fileID: 1639339852}
+  - component: {fileID: 1639339857}
   m_Layer: 0
   m_Name: M2
   m_TagString: Untagged
@@ -9009,7 +9780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 3
 --- !u!136 &1639339854
@@ -9088,6 +9859,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639339850}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1639339857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639339850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1675152220
 GameObject:
   m_ObjectHideFlags: 0
@@ -9166,6 +9950,7 @@ GameObject:
   - component: {fileID: 1684428424}
   - component: {fileID: 1684428423}
   - component: {fileID: 1684428428}
+  - component: {fileID: 1684428429}
   m_Layer: 0
   m_Name: P23
   m_TagString: Untagged
@@ -9213,7 +9998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 3
 --- !u!136 &1684428425
@@ -9304,6 +10089,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e043d541816154ab6c9cc96d1c02e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1684428429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684428421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1706445816
 GameObject:
   m_ObjectHideFlags: 0
@@ -9319,6 +10117,7 @@ GameObject:
   - component: {fileID: 1706445819}
   - component: {fileID: 1706445818}
   - component: {fileID: 1706445823}
+  - component: {fileID: 1706445824}
   m_Layer: 0
   m_Name: P5
   m_TagString: Untagged
@@ -9366,7 +10165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 1
 --- !u!136 &1706445820
@@ -9458,6 +10257,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &1706445824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706445816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1720702912
 GameObject:
   m_ObjectHideFlags: 0
@@ -9636,6 +10448,7 @@ GameObject:
   - component: {fileID: 1723720920}
   - component: {fileID: 1723720919}
   - component: {fileID: 1723720924}
+  - component: {fileID: 1723720925}
   m_Layer: 0
   m_Name: M20
   m_TagString: Untagged
@@ -9683,7 +10496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 2
 --- !u!136 &1723720921
@@ -9775,6 +10588,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &1723720925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723720917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1768307835
 GameObject:
   m_ObjectHideFlags: 0
@@ -9790,6 +10616,7 @@ GameObject:
   - component: {fileID: 1768307838}
   - component: {fileID: 1768307837}
   - component: {fileID: 1768307842}
+  - component: {fileID: 1768307843}
   m_Layer: 0
   m_Name: P12
   m_TagString: Untagged
@@ -9837,7 +10664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 2
 --- !u!136 &1768307839
@@ -9929,6 +10756,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &1768307843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768307835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1821119974
 GameObject:
   m_ObjectHideFlags: 0
@@ -9944,6 +10784,7 @@ GameObject:
   - component: {fileID: 1821119977}
   - component: {fileID: 1821119976}
   - component: {fileID: 1821119981}
+  - component: {fileID: 1821119982}
   m_Layer: 0
   m_Name: S18
   m_TagString: Untagged
@@ -9991,7 +10832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 2
 --- !u!136 &1821119978
@@ -10083,6 +10924,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &1821119982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821119974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1903011163
 GameObject:
   m_ObjectHideFlags: 0
@@ -10098,6 +10952,7 @@ GameObject:
   - component: {fileID: 1903011166}
   - component: {fileID: 1903011165}
   - component: {fileID: 1903011170}
+  - component: {fileID: 1903011171}
   m_Layer: 0
   m_Name: S9
   m_TagString: Untagged
@@ -10145,7 +11000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 4
 --- !u!136 &1903011167
@@ -10237,6 +11092,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destination: {fileID: 816793937}
+--- !u!114 &1903011171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903011163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1904360748
 GameObject:
   m_ObjectHideFlags: 0
@@ -10252,6 +11120,7 @@ GameObject:
   - component: {fileID: 1904360751}
   - component: {fileID: 1904360750}
   - component: {fileID: 1904360755}
+  - component: {fileID: 1904360756}
   m_Layer: 0
   m_Name: S12
   m_TagString: Untagged
@@ -10299,7 +11168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 6
 --- !u!136 &1904360752
@@ -10390,6 +11259,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e83a588b445784fa96b38be9e454c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1904360756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904360748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &1919819710
 GameObject:
   m_ObjectHideFlags: 0
@@ -10405,6 +11287,7 @@ GameObject:
   - component: {fileID: 1919819713}
   - component: {fileID: 1919819712}
   - component: {fileID: 1919819717}
+  - component: {fileID: 1919819718}
   m_Layer: 0
   m_Name: P17
   m_TagString: Untagged
@@ -10452,7 +11335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 2
   Type: 5
 --- !u!136 &1919819714
@@ -10544,6 +11427,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &1919819718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919819710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &2022192846
 GameObject:
   m_ObjectHideFlags: 0
@@ -10559,6 +11455,7 @@ GameObject:
   - component: {fileID: 2022192849}
   - component: {fileID: 2022192848}
   - component: {fileID: 2022192853}
+  - component: {fileID: 2022192854}
   m_Layer: 0
   m_Name: M11
   m_TagString: Untagged
@@ -10608,7 +11505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 2
 --- !u!136 &2022192850
@@ -10700,6 +11597,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &2022192854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022192846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &2050754882
 GameObject:
   m_ObjectHideFlags: 0
@@ -10749,6 +11659,7 @@ GameObject:
   - component: {fileID: 2070812604}
   - component: {fileID: 2070812603}
   - component: {fileID: 2070812608}
+  - component: {fileID: 2070812609}
   m_Layer: 0
   m_Name: M18
   m_TagString: Untagged
@@ -10796,7 +11707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 3
 --- !u!136 &2070812605
@@ -10887,6 +11798,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e043d541816154ab6c9cc96d1c02e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2070812609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070812601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &2102328832
 GameObject:
   m_ObjectHideFlags: 0
@@ -10902,6 +11826,7 @@ GameObject:
   - component: {fileID: 2102328835}
   - component: {fileID: 2102328834}
   - component: {fileID: 2102328839}
+  - component: {fileID: 2102328840}
   m_Layer: 0
   m_Name: S3
   m_TagString: Untagged
@@ -10949,7 +11874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 1
   Type: 2
 --- !u!136 &2102328836
@@ -11041,6 +11966,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &2102328840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102328832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1 &2120866333
 GameObject:
   m_ObjectHideFlags: 0
@@ -11056,6 +11994,7 @@ GameObject:
   - component: {fileID: 2120866336}
   - component: {fileID: 2120866335}
   - component: {fileID: 2120866340}
+  - component: {fileID: 2120866341}
   m_Layer: 0
   m_Name: M8
   m_TagString: Untagged
@@ -11103,7 +12042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMaterial: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+  BurningTag: {fileID: 0}
   Biome: 3
   Type: 5
 --- !u!136 &2120866337
@@ -11195,6 +12134,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterManager: {fileID: 406815567}
+--- !u!114 &2120866341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120866333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64babd2acbb17e34cb64fffb82bf62c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

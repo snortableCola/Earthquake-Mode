@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 [RequireComponent(typeof(MeshRenderer))]
 public class Player : MonoBehaviour
@@ -34,28 +33,31 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	/// <summary>
-	/// The biome of the space which the player is currently occupying.
-	/// </summary>
-	public Space.BoardBiome CurrentBiome => transform.GetComponentInParent<Space>().Biome;
-
-	[SerializeField] private float _movementTime;
-	[SerializeField] private float _jumpHeight;
-	[SerializeField] private float _movementDelay;
-
-	public int totalPoints = 100; // Player's total points
-
-    // Method to adjust points
-    public void AdjustPoints(int amount)
-    {
-        totalPoints += amount;
-    }
-
 	public void Awake()
 	{
 		_renderer = GetComponent<MeshRenderer>();
 		_baseMaterial = _renderer.material;
 	}
+
+	/// <summary>
+	/// The biome of the space which the player is currently occupying.
+	/// </summary>
+	public Space.BoardBiome CurrentBiome => transform.GetComponentInParent<Space>().Biome;
+
+	#region Points Logic
+	public int totalPoints = 100; // Player's total points
+
+	// Method to adjust points
+	public void AdjustPoints(int amount)
+    {
+        totalPoints += amount;
+    }
+	#endregion
+
+	#region Movement Logic
+	[SerializeField] private float _movementTime;
+	[SerializeField] private float _jumpHeight;
+	[SerializeField] private float _movementDelay;
 
 	/// <summary>
 	/// Coroutine that makes the player move a random number of spaces along the board (if possible), triggering the destination's landing behavior.
@@ -132,4 +134,5 @@ public class Player : MonoBehaviour
 			behavior.ReactToPlayerLanding(this);
 		}
 	}
+	#endregion
 }

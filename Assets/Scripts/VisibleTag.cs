@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Renderer))]
 public class VisibleTag : MonoBehaviour
 {
-	private bool state;
+	private bool _state;
 	private Renderer _renderer;
 	private Material _baseMaterial;
 
@@ -11,11 +11,11 @@ public class VisibleTag : MonoBehaviour
 
 	public bool State
 	{
-		get => state;
+		get => _state;
 		set
 		{
-			state = value;
-			if (state)
+			_state = value;
+			if (_state)
 			{
 				_renderer.materials = new Material[] { _baseMaterial, _material };
 			}

@@ -1,14 +1,16 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(VisibleTag))]
+[RequireComponent(typeof(VisibleTag), typeof(PlayerMovement))]
 public class Player : MonoBehaviour
 {
 	[HideInInspector] public VisibleTag FrozenTag;
+	[HideInInspector] public PlayerMovement Movement;
 
 	public void Awake()
 	{
 		FrozenTag = GetComponent<VisibleTag>();
+		Movement = GetComponent<PlayerMovement>();
 	}
 
 	/// <summary>
@@ -37,14 +39,6 @@ public class Player : MonoBehaviour
 	/// <returns>Coroutine for handling the player's movement.</returns>
 	public IEnumerator RandomMovementCoroutine()
 	{
-		// Player cannot move if frozen
-		if (FrozenTag.State)
-		{
-			Debug.Log($"{this} was frozen and passed its turn.");
-			FrozenTag.State = false; // Player is unfrozen when movement attempted
-			yield break;
-		}
-
 		int distance = Random.Range(1, 7); // Moves random distance 1-6 to emulate dice roll
 		Debug.Log($"{this} moves {distance} spaces.");
 

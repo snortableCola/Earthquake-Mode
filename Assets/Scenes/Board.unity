@@ -3527,6 +3527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _board: {fileID: 2050754883}
   _disasterThreshold: 2
+  _adjacencyManager: {fileID: 53498623}
   _initialFireSize: 3
   _fireDuration: 3
   _tsunamiFailsafe: {fileID: 641799735}
@@ -5611,6 +5612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FrozenTag: {fileID: 0}
+  Movement: {fileID: 0}
   totalPoints: 100
   _movementTime: 0.3
   _jumpHeight: 4
@@ -6988,6 +6990,7 @@ GameObject:
   - component: {fileID: 1088405395}
   - component: {fileID: 1088405394}
   - component: {fileID: 1088405398}
+  - component: {fileID: 1088405399}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Untagged
@@ -7023,6 +7026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FrozenTag: {fileID: 0}
+  Movement: {fileID: 0}
   totalPoints: 100
   _movementTime: 0.3
   _jumpHeight: 4
@@ -7116,6 +7120,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _material: {fileID: 2100000, guid: 0a48cedfc7361ac499d8e745af31f3a0, type: 2}
+--- !u!114 &1088405399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088405392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b4ef0353c4a044c921729b03b11b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adjacencyManager: {fileID: 53498623}
 --- !u!1 &1123361176
 GameObject:
   m_ObjectHideFlags: 0
@@ -7969,6 +7986,7 @@ GameObject:
   - component: {fileID: 1196372718}
   - component: {fileID: 1196372717}
   - component: {fileID: 1196372721}
+  - component: {fileID: 1196372722}
   m_Layer: 0
   m_Name: Player 3
   m_TagString: Untagged
@@ -8004,6 +8022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FrozenTag: {fileID: 0}
+  Movement: {fileID: 0}
   totalPoints: 100
   _movementTime: 0.3
   _jumpHeight: 4
@@ -8097,6 +8116,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _material: {fileID: 2100000, guid: 0a48cedfc7361ac499d8e745af31f3a0, type: 2}
+--- !u!114 &1196372722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196372715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b4ef0353c4a044c921729b03b11b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adjacencyManager: {fileID: 53498623}
 --- !u!1 &1198439768
 GameObject:
   m_ObjectHideFlags: 0
@@ -12213,6 +12245,6 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 851794762}
-  - {fileID: 406815568}
   - {fileID: 1675152222}
+  - {fileID: 406815568}
   - {fileID: 53498624}

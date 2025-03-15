@@ -4,7 +4,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Player))]
 public class PlayerMovement : MonoBehaviour
 {
 	[SerializeField] private AdjacencyManager _adjacencyManager;

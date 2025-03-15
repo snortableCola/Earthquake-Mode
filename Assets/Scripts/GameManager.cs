@@ -35,8 +35,18 @@ public class GameManager : MonoBehaviour
 	private IEnumerator NextPlayerTurnCoroutine()
 	{
 		Player player = _players[_currentPlayerIndex];
-		
-		yield return player.RandomMovementCoroutine();
+
+		if (player.FrozenTag.State)
+		{
+			Debug.Log($"{this} was frozen and passed its turn.");
+			player.FrozenTag.State = false; // Player is unfrozen after their turn would've been skipped
+			yield break;
+		}
+
+		int distance = Random.Range(1, 11);
+		Debug.Log($"{player.name} moves for {distance} spaces.");
+
+		yield return player.Movement.MovementCoroutine(distance);
 
 		_currentPlayerIndex++;
 

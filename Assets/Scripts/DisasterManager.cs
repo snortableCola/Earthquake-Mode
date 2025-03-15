@@ -8,26 +8,15 @@ public class DisasterManager : MonoBehaviour
 	private Player[] _players;
 	[SerializeField] private Transform _board;
 	[SerializeField] private int _disasterThreshold;
-
-	private Dictionary<Space, List<Space>> _adjacencies;
+	[SerializeField] private AdjacencyManager _adjacencyManager;
 
 	private void Awake()
 	{
 		Space[] allSpaces = _board.GetComponentsInChildren<Space>();
 		_players = _board.GetComponentsInChildren<Player>();
 
-		_adjacencies = allSpaces.ToDictionary(space => space, _ => new List<Space>());
-
 		foreach (Space space in allSpaces)
 		{
-			Space[] nextSpaces = space.GetComponent<NextSpaceProvider>().NextSpaces;
-
-			foreach (Space nextSpace in nextSpaces)
-			{
-				_adjacencies[nextSpace].Add(space);
-				_adjacencies[space].Add(nextSpace);
-			}
-
 			if (space.Type == Space.SpaceType.Negative && space.Biome != Plains) _tornadoLandingSpaces.Add(space);
 
 			if (space.Biome is Plains or Mountains) _flammableSpaces.Add(space);
@@ -158,10 +147,10 @@ public class DisasterManager : MonoBehaviour
 		{
 			Space spaceToSpread = _spacesSetOnFire.Dequeue();
 
-			foreach (Space space in _adjacencies[spaceToSpread])
+			foreach (Adjacency adjacency in _adjacencyManager.Adjacencies[spaceToSpread])
 			{
 				// Only spread fire to flammable spaces that aren't already on fire
-				if (!space.BurningTag.State && space.Biome is Mountains or Plains) SetSpaceOnFire(space);
+				if (!adjacency.Space.BurningTag.State && adjacency.Space.Biome is Mountains or Plains) SetSpaceOnFire(adjacency.Space);
 			}
 		}
 	}
@@ -260,7 +249,7 @@ public class DisasterManager : MonoBehaviour
 
 		// All of this is just breadth-first search
 		HashSet<Space> coastSpaces = new() { startingSpace };
-		Queue<Space> spacesToCheck = new(_adjacencies[startingSpace]);
+		Queue<Adjacency> spacesToCheck = new(_adjacencyManager.Adjacencies[startingSpace]);
 
 		List<Space> potentialDestinations = new();
 		while (potentialDestinations.Count == 0 && spacesToCheck.Count != 0)
@@ -268,7 +257,7 @@ public class DisasterManager : MonoBehaviour
 			int checks = spacesToCheck.Count;
 			for (int i = 0; i < checks; i++)
 			{
-				Space space = spacesToCheck.Dequeue();
+				Space space = spacesToCheck.Dequeue().Space;
 
 				if (space.Biome is not Coast)
 				{
@@ -277,9 +266,9 @@ public class DisasterManager : MonoBehaviour
 				}
 
 				coastSpaces.Add(space);
-				foreach (Space adjacency in _adjacencies[space])
+				foreach (Adjacency adjacency in _adjacencyManager.Adjacencies[space])
 				{
-					if (!coastSpaces.Contains(adjacency)) spacesToCheck.Enqueue(adjacency);
+					if (!coastSpaces.Contains(adjacency.Space)) spacesToCheck.Enqueue(adjacency);
 				}
 			}
 		}

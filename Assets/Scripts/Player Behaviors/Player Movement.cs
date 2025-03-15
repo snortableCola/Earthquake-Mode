@@ -54,8 +54,8 @@ public class PlayerMovement : MonoBehaviour
 			}
 
 			space = targetSpace;
-			yield return _player.JumpToSpaceCoroutine(targetSpace, false);
-			Debug.Log($"{string.Join(", ", path.Select(space => space.name))}, remaining distance {distance}");
+			yield return _player.JumpToSpaceCoroutine(space, false);
+			Debug.Log($"Remaining distance {distance}");
 		}
 
 		if (space.BurningTag.State)

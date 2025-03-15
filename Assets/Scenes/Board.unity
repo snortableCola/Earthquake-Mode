@@ -960,6 +960,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+--- !u!1 &53498622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 53498624}
+  - component: {fileID: 53498623}
+  m_Layer: 0
+  m_Name: Adjacency Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &53498623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53498622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06f565e90ac46644fb7978143fc4863e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _board: {fileID: 2050754883}
+--- !u!4 &53498624
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53498622}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5914762, y: -3.2577567, z: 2.8567977}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &91489587
 GameObject:
   m_ObjectHideFlags: 0
@@ -5530,6 +5575,7 @@ GameObject:
   - component: {fileID: 749627512}
   - component: {fileID: 749627511}
   - component: {fileID: 749627515}
+  - component: {fileID: 749627516}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -5658,6 +5704,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _material: {fileID: 2100000, guid: 0a48cedfc7361ac499d8e745af31f3a0, type: 2}
+--- !u!114 &749627516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749627509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b4ef0353c4a044c921729b03b11b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adjacencyManager: {fileID: 53498623}
 --- !u!1 &816793930
 GameObject:
   m_ObjectHideFlags: 0
@@ -12156,3 +12215,4 @@ SceneRoots:
   - {fileID: 851794762}
   - {fileID: 406815568}
   - {fileID: 1675152222}
+  - {fileID: 53498624}

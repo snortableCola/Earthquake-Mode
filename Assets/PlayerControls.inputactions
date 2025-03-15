@@ -6,24 +6,33 @@
             "id": "862cc788-9733-46a3-a53c-a30b1e34091e",
             "actions": [
                 {
-                    "name": "2D Movement",
+                    "name": "2D Motion",
                     "type": "Value",
                     "id": "f1cb0027-1253-4589-ba02-a559b148ba84",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "StickDeadzone,NormalizeVector2",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Space Interaction",
+                    "type": "Button",
+                    "id": "df185387-80cb-4bfd-854f-45f7fd80cb1c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "dcc40dea-4560-41f2-bb92-503c2b8cd24f",
-                    "path": "<Gamepad>/leftStick",
+                    "id": "33811800-c83c-4b62-85ae-1bd830797f6a",
+                    "path": "*/{Primary2DMotion}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "2D Movement",
+                    "action": "2D Motion",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -34,7 +43,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "2D Movement",
+                    "action": "2D Motion",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -45,7 +54,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "2D Movement",
+                    "action": "2D Motion",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -56,7 +65,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "2D Movement",
+                    "action": "2D Motion",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -67,7 +76,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "2D Movement",
+                    "action": "2D Motion",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -78,9 +87,31 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "2D Movement",
+                    "action": "2D Motion",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "7a668904-382d-4bf2-ad2e-fd4b4702b753",
+                    "path": "*/{PrimaryAction}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Space Interaction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "93cfd044-15ce-4bb6-876b-798c60a43aee",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Space Interaction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

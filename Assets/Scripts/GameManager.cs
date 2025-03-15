@@ -38,15 +38,16 @@ public class GameManager : MonoBehaviour
 
 		if (player.FrozenTag.State)
 		{
-			Debug.Log($"{this} was frozen and passed its turn.");
+			Debug.Log($"{player.name} was frozen and passed its turn.");
 			player.FrozenTag.State = false; // Player is unfrozen after their turn would've been skipped
-			yield break;
 		}
+		else
+		{
+			int distance = Random.Range(1, 11);
+			Debug.Log($"{player.name} moves for {distance} spaces.");
 
-		int distance = Random.Range(1, 11);
-		Debug.Log($"{player.name} moves for {distance} spaces.");
-
-		yield return player.Movement.MovementCoroutine(distance);
+			yield return player.Movement.MovementCoroutine(distance);
+		}
 
 		_currentPlayerIndex++;
 

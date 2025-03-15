@@ -68,16 +68,14 @@ public class PlayerMovement : MonoBehaviour
 		{
 			behavior.ReactToPlayerLanding(_player);
 		}
-
-		yield break;
 	}
 
 	private Space GetDecidedSpace(Space origin, Vector2 inputDirection, out bool forwards, out float confidence)
 	{
 		List<Adjacency> adjacentSpaces = _adjacencyManager.Adjacencies[origin];
 
-		Adjacency mostLikelyChoice = adjacentSpaces[0];
-		confidence = Vector2.Dot(inputDirection, mostLikelyChoice.Direction);
+		Adjacency chosenAdjacency = adjacentSpaces[0];
+		confidence = Vector2.Dot(inputDirection, chosenAdjacency.Direction);
 
 		foreach (Adjacency adjacency in adjacentSpaces.Skip(1))
 		{
@@ -86,12 +84,11 @@ public class PlayerMovement : MonoBehaviour
 			if (accuracy > confidence)
 			{
 				confidence = accuracy;
-
-				mostLikelyChoice = adjacency;
+				chosenAdjacency = adjacency;
 			}
 		}
 
-		forwards = mostLikelyChoice.IsForwards;
-		return mostLikelyChoice.Space;
+		forwards = chosenAdjacency.IsForwards;
+		return chosenAdjacency.Space;
 	}
 }

@@ -17,7 +17,7 @@ public class DisasterManager : MonoBehaviour
 
 		foreach (Space space in allSpaces)
 		{
-			if (space.Type == Space.SpaceType.Negative && space.Biome != Plains) _tornadoLandingSpaces.Add(space);
+			if (space.TryGetComponent<NegativeSpace>(out _) && space.Biome != Plains) _tornadoLandingSpaces.Add(space);
 
 			if (space.Biome is Plains or Mountains) _flammableSpaces.Add(space);
 		}

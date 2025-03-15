@@ -30,25 +30,28 @@ public class PlayerMovement : MonoBehaviour
 
 		while (!(_spaceInteraction.triggered && distance == 0))
 		{
-			yield return null;
-
-			if (!_motion2D.IsPressed()) continue;
+			if (!_motion2D.IsPressed())
+			{
+				yield return null;
+				continue;
+			}
 
 			Vector2 inputDirection = _motion2D.ReadValue<Vector2>();
+			Space targetSpace = GetDecidedSpace(space, inputDirection, out bool movingForward, out float inputConfidence);
 
-			Space targetSpace = GetDecidedSpace(space, inputDirection, out bool movingForward, out float confidence);
-
-			if (confidence < 0.5) continue;
+			if (inputConfidence < 0.5 || (movingForward ? distance == 0 : (path.Count < 2 || targetSpace != path[^2])))
+			{
+				yield return null;
+				continue;
+			}
 
 			if (movingForward)
 			{
-				if (distance == 0) continue;
 				distance--;
 				path.Add(targetSpace);
 			}
 			else
 			{
-				if (path.Count == 1 || targetSpace != path[^2]) continue;
 				distance++;
 				path.RemoveAt(path.Count - 1);
 			}

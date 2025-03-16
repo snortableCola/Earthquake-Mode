@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class TransportSpace : SpaceBehavior
@@ -6,8 +7,10 @@ public class TransportSpace : SpaceBehavior
 
 	public override bool EndsTurn { get; } = false;
 
-	public override void RespondToPlayer(Player player)
+	public override IEnumerator RespondToPlayer(Player player)
 	{
 		Debug.Log($"{player} passed a transport space.");
+
+		yield break;
 	}
 }

@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
 			if (!behavior.EndsTurn)
 			{
 				yield return JumpToSpaceCoroutine(space, false);
-				behavior.RespondToPlayer(this); // Trigger the space's passing behavior
+				yield return behavior.RespondToPlayer(this); // Trigger the space's passing behavior
 				continue;
 			}
 
@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
 		}
 		else
 		{
-			targetSpace.Behavior.RespondToPlayer(this);
+			yield return targetSpace.Behavior.RespondToPlayer(this);
 		}
 	}
 	#endregion

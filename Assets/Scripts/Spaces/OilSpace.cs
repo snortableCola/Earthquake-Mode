@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class OilSpace : SpaceBehavior
@@ -6,10 +7,12 @@ public class OilSpace : SpaceBehavior
 
 	public override bool EndsTurn { get; } = true;
 
-	public override void RespondToPlayer(Player player)
+	public override IEnumerator RespondToPlayer(Player player)
 	{
 		Debug.Log($"{player} landed on an oil space.");
 
 		_disasterManager.IncrementDisaster(DisasterManager.DisasterType.Earthquake, player);
+
+		yield break;
 	}
 }

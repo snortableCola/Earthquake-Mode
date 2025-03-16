@@ -6,14 +6,13 @@ using static Space.BoardBiome;
 public class DisasterManager : MonoBehaviour
 {
 	private Player[] _players;
-	[SerializeField] private Transform _board;
 	[SerializeField] private int _disasterThreshold;
 	[SerializeField] private AdjacencyManager _adjacencyManager;
 
 	private void Awake()
 	{
-		Space[] allSpaces = _board.GetComponentsInChildren<Space>();
-		_players = _board.GetComponentsInChildren<Player>();
+		Space[] allSpaces = FindObjectsByType<Space>(FindObjectsSortMode.None);
+		_players = FindObjectsByType<Player>(FindObjectsSortMode.None);
 
 		foreach (Space space in allSpaces)
 		{

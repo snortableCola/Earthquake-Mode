@@ -6,8 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(NextSpaceProvider), typeof(VisibleTag), typeof(SpaceBehavior))]
 public class Space : MonoBehaviour
 {
-	[HideInInspector] public VisibleTag BurningTag;
-	[HideInInspector] public SpaceBehavior Behavior;
+	public VisibleTag BurningTag { get; private set; }
+	public SpaceBehavior Behavior { get; private set; }
 
 	public void Awake()
 	{
@@ -19,11 +19,6 @@ public class Space : MonoBehaviour
 	/// Represents the space's biome.
 	/// </summary>
 	public BoardBiome Biome;
-
-	/// <summary>
-	/// Represents the space's typical behavior when landed on by a player.
-	/// </summary>
-	//public SpaceType Type;
 
 	/// <summary>
 	/// An enum containing all potential biomes a space could occupy.

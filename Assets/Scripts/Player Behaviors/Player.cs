@@ -1,11 +1,10 @@
-using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(VisibleTag), typeof(PlayerMovement))]
 public class Player : MonoBehaviour
 {
-	[HideInInspector] public VisibleTag FrozenTag;
-	[HideInInspector] public PlayerMovement Movement;
+	public VisibleTag FrozenTag { get; private set; }
+	public PlayerMovement Movement { get; private set; }
 
 	public void Awake()
 	{

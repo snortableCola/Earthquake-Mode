@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class AdjacencyManager : MonoBehaviour
 {
-	[SerializeField] private Transform _board;
-
 	public Dictionary<Space, List<Adjacency>> Adjacencies;
 
 	private void Awake()
 	{
-		Space[] allSpaces = _board.GetComponentsInChildren<Space>();
+		Space[] allSpaces = FindObjectsByType<Space>(FindObjectsSortMode.None);
 		Adjacencies = allSpaces.ToDictionary(_ => _, _ => new List<Adjacency>());
 
 		foreach (Space origin in allSpaces)

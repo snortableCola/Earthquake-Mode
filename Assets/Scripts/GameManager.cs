@@ -4,13 +4,7 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
-	private Player[] _players;
-	[SerializeField] private Transform _board;
-
-	private void Awake()
-	{
-		_players = _board.GetComponentsInChildren<Player>();
-	}
+	[SerializeField] private Player[] _players;
 
 	private int _currentPlayerIndex;
 	private int _roundNumber = 1;

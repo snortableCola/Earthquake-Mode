@@ -11,7 +11,7 @@ public class OilSpace : SpaceBehavior
 	{
 		Debug.Log($"{player} landed on an oil space.");
 
-		DisasterManager.Instance.IncrementDisaster(DisasterManager.DisasterType.Earthquake, player);
+		//DisasterManager.Instance.IncrementDisaster(null, player);
 
 		yield break;
 	}

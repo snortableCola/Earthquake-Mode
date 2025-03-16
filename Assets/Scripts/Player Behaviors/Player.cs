@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 	/// <summary>
 	/// The biome of the space which the player is currently occupying.
 	/// </summary>
-	public Space.BoardBiome CurrentBiome => transform.GetComponentInParent<Space>().Biome;
+	public Biome CurrentBiome => transform.GetComponentInParent<Space>().Biome;
 
 	#region Points Logic
 	public int totalPoints = 100; // Player's total points

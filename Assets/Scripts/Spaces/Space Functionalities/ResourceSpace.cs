@@ -15,7 +15,7 @@ public class ResourceSpace : SpaceBehavior
 
 	public override IEnumerator RespondToPlayer(Player player)
 	{
-		Space.BoardBiome biome = _space.Biome;
+		Biome biome = _space.Biome;
 		Debug.Log($"{player} landed on a {biome} resource space.");
 
 		DisasterManager.Instance.IncrementBiomeDisaster(biome, player);

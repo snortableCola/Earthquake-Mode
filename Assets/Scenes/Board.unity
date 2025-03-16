@@ -182,9 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &6946069
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -273,7 +271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &6946073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,9 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &29684813
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -443,7 +438,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1d11bdc7add7a449b7e4df04f2c0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &29684817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,9 +514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &32357518
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -611,7 +603,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1d11bdc7add7a449b7e4df04f2c0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &32357522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -688,9 +679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &38471088
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -855,9 +844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &52265045
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1067,9 +1054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &91489591
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1158,7 +1143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1d11bdc7add7a449b7e4df04f2c0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &91489595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1236,9 +1220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &92307029
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1327,7 +1309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &92307033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1404,9 +1385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &126969244
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1573,9 +1552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &144390768
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1664,7 +1641,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &144390772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1741,9 +1717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &147168344
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1845,6 +1819,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+--- !u!1 &153437639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 153437641}
+  - component: {fileID: 153437640}
+  m_Layer: 0
+  m_Name: Tornado
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &153437640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153437639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bd3142f1ce0e749b9f157029a74a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &153437641
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153437639}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 406815568}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &157208388
 GameObject:
   m_ObjectHideFlags: 0
@@ -1908,9 +1926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &157208392
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1999,7 +2015,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &157208396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2076,9 +2091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &178544235
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2245,9 +2258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &202553422
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2336,7 +2347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1d11bdc7add7a449b7e4df04f2c0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &202553426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2414,9 +2424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &213919391
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2505,7 +2513,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &213919395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2582,9 +2589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &286045682
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2673,7 +2678,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &286045686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2750,9 +2754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &291937547
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3054,9 +3056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &365368971
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3222,9 +3222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &395015074
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3327,6 +3325,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+--- !u!1 &397372106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 397372108}
+  - component: {fileID: 397372107}
+  m_Layer: 0
+  m_Name: Tsunami
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &397372107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397372106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac6d04a4028b89d4889b9b74edfb134e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tsunamiFailsafe: {fileID: 641799735}
+--- !u!4 &397372108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397372106}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 406815568}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &402137960
 GameObject:
   m_ObjectHideFlags: 0
@@ -3390,9 +3433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &402137964
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3525,10 +3566,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disasterThreshold: 2
-  _adjacencyManager: {fileID: 53498623}
-  _initialFireSize: 3
-  _fireDuration: 3
-  _tsunamiFailsafe: {fileID: 641799735}
+  _tsunami: {fileID: 397372107}
+  _tornado: {fileID: 153437640}
+  _wildfire: {fileID: 1757144620}
 --- !u!4 &406815568
 Transform:
   m_ObjectHideFlags: 0
@@ -3541,7 +3581,10 @@ Transform:
   m_LocalPosition: {x: -2.8238304, y: -3.8606443, z: 1.6236182}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 397372108}
+  - {fileID: 153437641}
+  - {fileID: 1757144622}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &410087039
@@ -3728,9 +3771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &451775721
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3819,7 +3860,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &451775725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3896,9 +3936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &463758893
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4115,9 +4153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &497012315
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4206,7 +4242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &497012319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4283,9 +4318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &595680758
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4374,7 +4407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &595680762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4451,9 +4483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &607920228
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4618,9 +4648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &641799736
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4709,7 +4737,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &641799740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4786,9 +4813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &675022007
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4953,9 +4978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &677142305
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5120,9 +5143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &695883562
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5287,9 +5308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &702420552
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5455,9 +5474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &745889225
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5546,7 +5563,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &745889229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5777,9 +5793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &816793934
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5978,9 +5992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &859499874
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6069,7 +6081,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &859499878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6198,9 +6209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &919976207
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6366,9 +6375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &942990922
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6533,9 +6540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &949133396
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6700,9 +6705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &970150681
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6867,9 +6870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &1072323156
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7188,9 +7189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &1123361180
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7356,9 +7355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &1128511688
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7447,7 +7444,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1d11bdc7add7a449b7e4df04f2c0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &1128511692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7524,9 +7520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &1133937593
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7615,7 +7609,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1d11bdc7add7a449b7e4df04f2c0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &1133937597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7692,9 +7685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &1139649994
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7783,7 +7774,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &1139649998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7860,9 +7850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &1161143184
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8181,9 +8169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &1198439772
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8349,9 +8335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &1236240415
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8440,7 +8424,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &1236240419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8517,9 +8500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &1256484705
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8685,9 +8666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &1359193343
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8852,9 +8831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &1473112589
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9020,9 +8997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &1489343759
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9111,7 +9086,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &1489343763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9188,9 +9162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &1543397275
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9355,9 +9327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &1544233659
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9446,7 +9416,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &1544233663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9523,9 +9492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &1571993460
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9614,7 +9581,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &1571993464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9678,9 +9644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &1629434916
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9784,7 +9748,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1d11bdc7add7a449b7e4df04f2c0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &1629434921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9861,9 +9824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &1639339854
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10001,8 +9962,8 @@ MonoBehaviour:
   TurnPassed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 406815567}
-        m_TargetAssemblyTypeName: DisasterManager, Assembly-CSharp
+      - m_Target: {fileID: 1757144620}
+        m_TargetAssemblyTypeName: Wildfire, Assembly-CSharp
         m_MethodName: TryFireProgress
         m_Mode: 0
         m_Arguments:
@@ -10094,9 +10055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &1684428425
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10261,9 +10220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &1706445820
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10592,9 +10549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &1723720921
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10683,7 +10638,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &1723720925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10697,6 +10651,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _material: {fileID: 2100000, guid: d49edc207b57cf24e98dfd50ee7ee752, type: 2}
+--- !u!1 &1757144619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1757144622}
+  - component: {fileID: 1757144620}
+  m_Layer: 0
+  m_Name: Wildfire
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1757144620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757144619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1db8dc7eea447ff4db13d5192756274f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initialFireSize: 3
+  _fireDuration: 3
+--- !u!4 &1757144622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757144619}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 406815568}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1768307835
 GameObject:
   m_ObjectHideFlags: 0
@@ -10760,9 +10760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &1768307839
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10851,7 +10849,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &1768307843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10928,9 +10925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &1821119978
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11019,7 +11014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &1821119982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11096,9 +11090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &1903011167
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11264,9 +11256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &1904360752
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11431,9 +11421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 2
+  Biome: 1
 --- !u!136 &1919819714
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11522,7 +11510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1d11bdc7add7a449b7e4df04f2c0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &1919819718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11601,9 +11588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &2022192850
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11692,7 +11677,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &2022192854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11803,9 +11787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &2070812605
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11970,9 +11952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 1
+  Biome: 0
 --- !u!136 &2102328836
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12061,7 +12041,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &2102328840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12138,9 +12117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed860a50c32a55c409caafd4bb1a7be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningTag: {fileID: 0}
-  Behavior: {fileID: 0}
-  Biome: 3
+  Biome: 2
 --- !u!136 &2120866337
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12229,7 +12206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1d11bdc7add7a449b7e4df04f2c0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disasterManager: {fileID: 406815567}
 --- !u!114 &2120866341
 MonoBehaviour:
   m_ObjectHideFlags: 0

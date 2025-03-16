@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 	private Player _player;
 
 	private Space _space;
-	private List<Space> _path = new();
+	private readonly List<Space> _path = new();
 
 	private void Awake()
 	{

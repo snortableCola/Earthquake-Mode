@@ -7,10 +7,12 @@ using UnityEngine;
 public class Space : MonoBehaviour
 {
 	[HideInInspector] public VisibleTag BurningTag;
+	[HideInInspector] public SpaceBehavior Behavior;
 
 	public void Awake()
 	{
 		BurningTag = GetComponent<VisibleTag>();
+		Behavior = GetComponent<SpaceBehavior>();
 	}
 
 	/// <summary>

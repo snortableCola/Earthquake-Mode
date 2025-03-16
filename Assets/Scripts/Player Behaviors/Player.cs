@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
 		{
 			space = space.GetComponent<NextSpaceProvider>().NextSpace;
 
-			SpaceBehavior behavior = space.GetComponent<SpaceBehavior>();
+			SpaceBehavior behavior = space.Behavior;
 
 			// If the next space can be passed, it doesn't decrement player movement
 			if (!behavior.EndsTurn)
@@ -99,8 +99,7 @@ public class Player : MonoBehaviour
 		}
 		else
 		{
-			SpaceBehavior behavior = targetSpace.GetComponent<SpaceBehavior>();
-			behavior.RespondToPlayer(this);
+			targetSpace.Behavior.RespondToPlayer(this);
 		}
 	}
 	#endregion

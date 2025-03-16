@@ -24,11 +24,22 @@ public class PlayerMovement : MonoBehaviour
 
 	public IEnumerator MovementCoroutine(int distance)
 	{
-		Space space = _player.GetComponentInParent<Space>();
+		Space space = GetComponentInParent<Space>();
 		List<Space> path = new() { space };
 
-		while (!(_spaceInteraction.triggered && distance == 0))
+		while (true)
 		{
+			if (_spaceInteraction.triggered)
+			{
+				if (distance == 0) break;
+
+				if (!space.Behavior.EndsTurn && path.Count > 1)
+				{
+					path.RemoveRange(0, path.Count - 1);
+					space.Behavior.RespondToPlayer(_player);
+				}
+			}
+
 			if (!_motion2D.IsPressed())
 			{
 				yield return null;
@@ -46,12 +57,12 @@ public class PlayerMovement : MonoBehaviour
 
 			if (movingForward)
 			{
-				distance--;
+				if (targetSpace.Behavior.EndsTurn) distance--;
 				path.Add(targetSpace);
 			}
 			else
 			{
-				distance++;
+				if (space.Behavior.EndsTurn) distance++;
 				path.RemoveAt(path.Count - 1);
 			}
 
@@ -66,8 +77,7 @@ public class PlayerMovement : MonoBehaviour
 		}
 		else
 		{
-			SpaceBehavior behavior = space.GetComponent<SpaceBehavior>();
-			behavior.RespondToPlayer(_player);
+			space.Behavior.RespondToPlayer(_player);
 		}
 	}
 

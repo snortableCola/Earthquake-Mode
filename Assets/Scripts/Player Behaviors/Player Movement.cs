@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
 			{
 				if (distance == 0) break;
 
-				if (!_space.Behavior.EndsTurn && _path.Count > 1)
+				if (!_space.Behavior.EndsTurn && !_space.BurningTag.State && _path.Count > 1)
 				{
 					_path.RemoveRange(0, _path.Count - 1);
 					yield return _space.Behavior.RespondToPlayer(_player);

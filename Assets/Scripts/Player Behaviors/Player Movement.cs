@@ -7,13 +7,15 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Player))]
 public class PlayerMovement : MonoBehaviour
 {
+	[SerializeField] private float _movementTime;
+	[SerializeField] private float _jumpHeight;
 	[SerializeField] private AdjacencyManager _adjacencyManager;
 
 	private InputAction _motion2D, _spaceInteraction;
 	private Player _player;
 
-	[HideInInspector] public Space Space;
-	[HideInInspector] public List<Space> Path;
+	private Space _space;
+	private List<Space> _path = new();
 
 	private void Awake()
 	{
@@ -23,13 +25,16 @@ public class PlayerMovement : MonoBehaviour
 		_player = GetComponent<Player>();
 	}
 
-	[ContextMenu("Test With 5")]
-	public void TestWith5() => StartCoroutine(MovementCoroutine(5));
+	public void ResetMovementPath(Space space)
+	{
+		_space = space;
+		_path.Clear();
+		_path.Add(space);
+	}
 
 	public IEnumerator MovementCoroutine(int distance)
 	{
-		Space = GetComponentInParent<Space>();
-		Path = new() { Space };
+		ResetMovementPath(GetComponentInParent<Space>());
 
 		while (true)
 		{
@@ -37,10 +42,11 @@ public class PlayerMovement : MonoBehaviour
 			{
 				if (distance == 0) break;
 
-				if (!Space.Behavior.EndsTurn && Path.Count > 1)
+				if (!_space.Behavior.EndsTurn && _path.Count > 1)
 				{
-					Path.RemoveRange(0, Path.Count - 1);
-					yield return Space.Behavior.RespondToPlayer(_player);
+					_path.RemoveRange(0, _path.Count - 1);
+					yield return _space.Behavior.RespondToPlayer(_player);
+					continue;
 				}
 			}
 
@@ -51,9 +57,9 @@ public class PlayerMovement : MonoBehaviour
 			}
 
 			Vector2 inputDirection = _motion2D.ReadValue<Vector2>();
-			Space targetSpace = GetDecidedSpace(Space, inputDirection, out bool movingForward, out float inputConfidence);
+			Space targetSpace = GetDecidedSpace(_space, inputDirection, out bool movingForward, out float inputConfidence);
 
-			if (inputConfidence < 0.5 || (movingForward ? distance == 0 : (Path.Count < 2 || targetSpace != Path[^2])))
+			if (inputConfidence < 0.5 || (movingForward ? distance == 0 : (_path.Count < 2 || targetSpace != _path[^2])))
 			{
 				yield return null;
 				continue;
@@ -62,26 +68,26 @@ public class PlayerMovement : MonoBehaviour
 			if (movingForward)
 			{
 				if (targetSpace.Behavior.EndsTurn) distance--;
-				Path.Add(targetSpace);
+				_path.Add(targetSpace);
 			}
 			else
 			{
-				if (Space.Behavior.EndsTurn) distance++;
-				Path.RemoveAt(Path.Count - 1);
+				if (_space.Behavior.EndsTurn) distance++;
+				_path.RemoveAt(_path.Count - 1);
 			}
 
-			yield return _player.JumpToSpaceCoroutine(targetSpace, false);
-			Space = targetSpace;
+			yield return JumpToSpaceCoroutine(targetSpace, false);
+			_space = targetSpace;
 			Debug.Log($"Remaining distance {distance}");
 		}
 
-		if (Space.BurningTag.State)
+		if (_space.BurningTag.State)
 		{
 			Debug.Log($"{_player} landed on a space which is on fire.");
 		}
 		else
 		{
-			yield return Space.Behavior.RespondToPlayer(_player);
+			yield return _space.Behavior.RespondToPlayer(_player);
 		}
 	}
 
@@ -89,8 +95,8 @@ public class PlayerMovement : MonoBehaviour
 	{
 		List<Adjacency> adjacentSpaces = _adjacencyManager.Adjacencies[origin];
 
-		Adjacency chosenAdjacency = adjacentSpaces[0];
-		confidence = Vector2.Dot(inputDirection, chosenAdjacency.Direction);
+		Adjacency selection = adjacentSpaces[0];
+		confidence = Vector2.Dot(inputDirection, selection.Direction);
 
 		foreach (Adjacency adjacency in adjacentSpaces.Skip(1))
 		{
@@ -99,11 +105,45 @@ public class PlayerMovement : MonoBehaviour
 			if (accuracy > confidence)
 			{
 				confidence = accuracy;
-				chosenAdjacency = adjacency;
+				selection = adjacency;
 			}
 		}
 
-		forwards = chosenAdjacency.IsForwards;
-		return chosenAdjacency.Space;
+		forwards = selection.IsForwards;
+		return selection.Space;
+	}
+
+	public IEnumerator JumpToSpaceCoroutine(Space targetSpace, bool triggerLandingBehavior)
+	{
+		Vector3 startPosition = transform.position;
+		Vector3 endPosition = targetSpace.transform.TransformPoint(transform.localPosition); // Ensures the player's located identically relative to its space after landing
+
+		float timeElapsed = 0f;
+		while (timeElapsed < _movementTime)
+		{
+			timeElapsed += Time.deltaTime; // Movement is frame-independent
+
+			float movementProgress = timeElapsed / _movementTime;
+			Vector3 currentPosition = Vector3.Lerp(startPosition, endPosition, movementProgress);
+			currentPosition.y += _jumpHeight * movementProgress * (1 - movementProgress); // Player follows quadratic trajectory
+
+			transform.position = currentPosition;
+
+			yield return null; // Movement iterates frame-by-frame
+		}
+
+		transform.position = endPosition;
+		transform.SetParent(targetSpace.transform);
+
+		if (!triggerLandingBehavior) yield break;
+
+		if (targetSpace.BurningTag.State) // Fire takes precendent over default space behavior
+		{
+			Debug.Log($"{_player.name} landed on a burning space.");
+		}
+		else
+		{
+			yield return targetSpace.Behavior.RespondToPlayer(_player);
+		}
 	}
 }

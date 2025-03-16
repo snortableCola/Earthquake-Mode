@@ -11,9 +11,8 @@ public class TransportSpace : SpaceBehavior
 	{
 		Debug.Log($"{player} used a transport space.");
 
-		yield return player.JumpToSpaceCoroutine(_destination, false);
-
-		player.Movement.Space = _destination;
-		player.Movement.Path = new() { _destination };
+		PlayerMovement movement = player.Movement;
+		yield return movement.JumpToSpaceCoroutine(_destination, false);
+		movement.ResetMovementPath(_destination);
 	}
 }

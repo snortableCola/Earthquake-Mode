@@ -212,7 +212,7 @@ public class DisasterManager : MonoBehaviour
 			Space landingSpace = _tornadoLandingSpaces[chosenLandingIndex];
 
 			// Move the player to the selected space, triggering the negative behavior
-			StartCoroutine(player.JumpToSpaceCoroutine(landingSpace, true));
+			StartCoroutine(player.Movement.JumpToSpaceCoroutine(landingSpace, true));
 		}
 	}
 	#endregion
@@ -277,7 +277,7 @@ public class DisasterManager : MonoBehaviour
 		Space destination = _tsunamiFailsafe;
 		if (potentialDestinations.Count > 0) destination = potentialDestinations[Random.Range(0, potentialDestinations.Count)];
 
-		StartCoroutine(player.JumpToSpaceCoroutine(destination, false));
+		StartCoroutine(player.Movement.JumpToSpaceCoroutine(destination, false));
 	}
 	#endregion
 

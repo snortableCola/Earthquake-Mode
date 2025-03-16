@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class AdjacencyManager : MonoBehaviour
 {
+	public static AdjacencyManager Instance { get; private set; }
+
 	public Dictionary<Space, List<Adjacency>> Adjacencies;
 
 	private void Awake()
 	{
-		Space[] allSpaces = FindObjectsByType<Space>(FindObjectsSortMode.None);
+		Instance = this;
+	}
+
+	private void Start()
+	{
+		Space[] allSpaces = GameManager.Instance.Spaces;
 		Adjacencies = allSpaces.ToDictionary(_ => _, _ => new List<Adjacency>());
 
 		foreach (Space origin in allSpaces)

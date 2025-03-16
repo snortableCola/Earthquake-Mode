@@ -7,7 +7,6 @@ public class BonusSpace : SpaceBehavior
 	public override bool EndsTurn { get; } = true;
 
 	private Space _space;
-	[SerializeField] private DisasterManager _disasterManager;
 
 	public void Awake()
 	{
@@ -18,7 +17,7 @@ public class BonusSpace : SpaceBehavior
 		Space.BoardBiome biome = _space.Biome;
 		Debug.Log($"{player} landed on a {biome} bonus space.");
 
-		_disasterManager.IncrementBiomeDisaster(biome, player);
+		DisasterManager.Instance.IncrementBiomeDisaster(biome, player);
 
 		yield break;
 	}

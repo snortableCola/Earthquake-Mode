@@ -4,10 +4,21 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+	public static GameManager Instance { get; private set; }
+	public Player[] Players => _players;
+	public Space[] Spaces { get; private set; }
+
 	[SerializeField] private Player[] _players;
+
 
 	private int _currentPlayerIndex;
 	private int _roundNumber = 1;
+
+	private void Awake()
+	{
+		Instance = this;
+		Spaces = FindObjectsByType<Space>(FindObjectsSortMode.None);
+	}
 
 	/// <summary>
 	/// Event that triggers whenever a turn is completed, providing the player whose turn passed.

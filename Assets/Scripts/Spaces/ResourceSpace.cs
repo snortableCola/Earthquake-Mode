@@ -7,18 +7,18 @@ public class ResourceSpace : SpaceBehavior
 	public override bool EndsTurn { get; } = true;
 
 	private Space _space;
-	[SerializeField] private DisasterManager _disasterManager;
 
 	public void Awake()
 	{
 		_space = GetComponent<Space>();
 	}
+
 	public override IEnumerator RespondToPlayer(Player player)
 	{
 		Space.BoardBiome biome = _space.Biome;
 		Debug.Log($"{player} landed on a {biome} resource space.");
 
-		_disasterManager.IncrementBiomeDisaster(biome, player);
+		DisasterManager.Instance.IncrementBiomeDisaster(biome, player);
 
 		yield break;
 	}

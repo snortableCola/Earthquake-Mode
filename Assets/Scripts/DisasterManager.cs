@@ -5,18 +5,20 @@ using static Space.BoardBiome;
 
 public class DisasterManager : MonoBehaviour
 {
-	private Player[] _players;
+	public static DisasterManager Instance { get; private set; }
+
 	[SerializeField] private int _disasterThreshold;
-	[SerializeField] private AdjacencyManager _adjacencyManager;
 
 	private void Awake()
 	{
-		Space[] allSpaces = FindObjectsByType<Space>(FindObjectsSortMode.None);
-		_players = FindObjectsByType<Player>(FindObjectsSortMode.None);
+		Instance = this;
+	}
 
-		foreach (Space space in allSpaces)
+	private void Start()
+	{
+		foreach (Space space in GameManager.Instance.Spaces)
 		{
-			if (space.TryGetComponent<NegativeSpace>(out _) && space.Biome != Plains) _tornadoLandingSpaces.Add(space);
+			if (space.GetComponent<NegativeSpace>() && space.Biome != Plains) _tornadoLandingSpaces.Add(space);
 
 			if (space.Biome is Plains or Mountains) _flammableSpaces.Add(space);
 		}
@@ -146,7 +148,7 @@ public class DisasterManager : MonoBehaviour
 		{
 			Space spaceToSpread = _spacesSetOnFire.Dequeue();
 
-			foreach (Adjacency adjacency in _adjacencyManager.Adjacencies[spaceToSpread])
+			foreach (Adjacency adjacency in AdjacencyManager.Instance.Adjacencies[spaceToSpread])
 			{
 				// Only spread fire to flammable spaces that aren't already on fire
 				if (!adjacency.Space.BurningTag.State && adjacency.Space.Biome is Mountains or Plains) SetSpaceOnFire(adjacency.Space);
@@ -201,7 +203,7 @@ public class DisasterManager : MonoBehaviour
 		int potentialLandingsCount = _tornadoLandingSpaces.Count;
 
 		// Iterate through all players
-		foreach (Player player in _players)
+		foreach (Player player in GameManager.Instance.Players)
 		{
 			// Only blow them away if they're in the plains
 			if (player.CurrentBiome != Plains) continue;
@@ -224,7 +226,7 @@ public class DisasterManager : MonoBehaviour
 	/// </summary>
 	public void DoTsunamiDisaster()
 	{
-		foreach (Player player in _players)
+		foreach (Player player in GameManager.Instance.Players)
 		{
 			switch (player.CurrentBiome)
 			{
@@ -248,7 +250,7 @@ public class DisasterManager : MonoBehaviour
 
 		// All of this is just breadth-first search
 		HashSet<Space> coastSpaces = new() { startingSpace };
-		Queue<Adjacency> spacesToCheck = new(_adjacencyManager.Adjacencies[startingSpace]);
+		Queue<Adjacency> spacesToCheck = new(AdjacencyManager.Instance.Adjacencies[startingSpace]);
 
 		List<Space> potentialDestinations = new();
 		while (potentialDestinations.Count == 0 && spacesToCheck.Count != 0)
@@ -265,7 +267,7 @@ public class DisasterManager : MonoBehaviour
 				}
 
 				coastSpaces.Add(space);
-				foreach (Adjacency adjacency in _adjacencyManager.Adjacencies[space])
+				foreach (Adjacency adjacency in AdjacencyManager.Instance.Adjacencies[space])
 				{
 					if (!coastSpaces.Contains(adjacency.Space)) spacesToCheck.Enqueue(adjacency);
 				}

@@ -3,14 +3,17 @@ using UnityEngine;
 
 public class TransportSpace : SpaceBehavior
 {
-	[SerializeField] private TransportSpace _destination;
+	[SerializeField] private Space _destination;
 
 	public override bool EndsTurn { get; } = false;
 
 	public override IEnumerator RespondToPlayer(Player player)
 	{
-		Debug.Log($"{player} passed a transport space.");
+		Debug.Log($"{player} used a transport space.");
 
-		yield break;
+		yield return player.JumpToSpaceCoroutine(_destination, false);
+
+		player.Movement.Space = _destination;
+		player.Movement.Path = new() { _destination };
 	}
 }

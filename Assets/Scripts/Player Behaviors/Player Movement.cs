@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
 	private InputAction _motion2D, _spaceInteraction;
 	private Player _player;
 
+	[HideInInspector] public Space Space;
+	[HideInInspector] public List<Space> Path;
+
 	private void Awake()
 	{
 		_motion2D = InputSystem.actions.FindAction("2D Motion");
@@ -25,8 +28,8 @@ public class PlayerMovement : MonoBehaviour
 
 	public IEnumerator MovementCoroutine(int distance)
 	{
-		Space space = GetComponentInParent<Space>();
-		List<Space> path = new() { space };
+		Space = GetComponentInParent<Space>();
+		Path = new() { Space };
 
 		while (true)
 		{
@@ -34,10 +37,10 @@ public class PlayerMovement : MonoBehaviour
 			{
 				if (distance == 0) break;
 
-				if (!space.Behavior.EndsTurn && path.Count > 1)
+				if (!Space.Behavior.EndsTurn && Path.Count > 1)
 				{
-					path.RemoveRange(0, path.Count - 1);
-					yield return space.Behavior.RespondToPlayer(_player);
+					Path.RemoveRange(0, Path.Count - 1);
+					yield return Space.Behavior.RespondToPlayer(_player);
 				}
 			}
 
@@ -48,9 +51,9 @@ public class PlayerMovement : MonoBehaviour
 			}
 
 			Vector2 inputDirection = _motion2D.ReadValue<Vector2>();
-			Space targetSpace = GetDecidedSpace(space, inputDirection, out bool movingForward, out float inputConfidence);
+			Space targetSpace = GetDecidedSpace(Space, inputDirection, out bool movingForward, out float inputConfidence);
 
-			if (inputConfidence < 0.5 || (movingForward ? distance == 0 : (path.Count < 2 || targetSpace != path[^2])))
+			if (inputConfidence < 0.5 || (movingForward ? distance == 0 : (Path.Count < 2 || targetSpace != Path[^2])))
 			{
 				yield return null;
 				continue;
@@ -59,26 +62,26 @@ public class PlayerMovement : MonoBehaviour
 			if (movingForward)
 			{
 				if (targetSpace.Behavior.EndsTurn) distance--;
-				path.Add(targetSpace);
+				Path.Add(targetSpace);
 			}
 			else
 			{
-				if (space.Behavior.EndsTurn) distance++;
-				path.RemoveAt(path.Count - 1);
+				if (Space.Behavior.EndsTurn) distance++;
+				Path.RemoveAt(Path.Count - 1);
 			}
 
-			space = targetSpace;
-			yield return _player.JumpToSpaceCoroutine(space, false);
+			yield return _player.JumpToSpaceCoroutine(targetSpace, false);
+			Space = targetSpace;
 			Debug.Log($"Remaining distance {distance}");
 		}
 
-		if (space.BurningTag.State)
+		if (Space.BurningTag.State)
 		{
 			Debug.Log($"{_player} landed on a space which is on fire.");
 		}
 		else
 		{
-			yield return space.Behavior.RespondToPlayer(_player);
+			yield return Space.Behavior.RespondToPlayer(_player);
 		}
 	}
 

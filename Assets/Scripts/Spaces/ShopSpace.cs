@@ -7,7 +7,7 @@ public class ShopSpace : SpaceBehavior
 
 	public override IEnumerator RespondToPlayer(Player player)
 	{
-		Debug.Log($"{player} passed a shop space.");
+		Debug.Log($"{player} used a shop space.");
 
 		yield break;
 	}

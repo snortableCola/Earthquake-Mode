@@ -49,11 +49,13 @@ public class Player : MonoBehaviour
 		{
 			space = space.GetComponent<NextSpaceProvider>().NextSpace;
 
+			SpaceBehavior behavior = space.GetComponent<SpaceBehavior>();
+
 			// If the next space can be passed, it doesn't decrement player movement
-			if (space.TryGetComponent<SpacePassedBehavior>(out var behavior))
+			if (!behavior.EndsTurn)
 			{
 				yield return JumpToSpaceCoroutine(space, false);
-				behavior.ReactToPlayerPassing(this); // Trigger the space's passing behavior
+				behavior.RespondToPlayer(this); // Trigger the space's passing behavior
 				continue;
 			}
 
@@ -95,9 +97,10 @@ public class Player : MonoBehaviour
 		{
 			Debug.Log($"{this} landed on a space which is on fire.");
 		}
-		else if (targetSpace.TryGetComponent<SpaceLandedBehavior>(out var behavior))
+		else
 		{
-			behavior.ReactToPlayerLanding(this);
+			SpaceBehavior behavior = targetSpace.GetComponent<SpaceBehavior>();
+			behavior.RespondToPlayer(this);
 		}
 	}
 	#endregion

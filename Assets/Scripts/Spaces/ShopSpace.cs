@@ -1,8 +1,10 @@
 using UnityEngine;
 
-public class ShopSpace : SpacePassedBehavior
+public class ShopSpace : SpaceBehavior
 {
-	public override void ReactToPlayerPassing(Player player)
+	public override bool EndsTurn { get; } = false;
+
+	public override void RespondToPlayer(Player player)
 	{
 		Debug.Log($"{player} passed a shop space.");
 	}

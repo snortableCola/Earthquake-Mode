@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Holds some general information of a space.
 /// </summary>
-[RequireComponent(typeof(NextSpaceProvider), typeof(VisibleTag))]
+[RequireComponent(typeof(NextSpaceProvider), typeof(VisibleTag), typeof(SpaceBehavior))]
 public class Space : MonoBehaviour
 {
 	[HideInInspector] public VisibleTag BurningTag;

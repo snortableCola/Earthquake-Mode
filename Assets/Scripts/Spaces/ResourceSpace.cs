@@ -1,8 +1,10 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Space))]
-public class ResourceSpace : SpaceLandedBehavior
+public class ResourceSpace : SpaceBehavior
 {
+	public override bool EndsTurn { get; } = true;
+
 	private Space _space;
 	[SerializeField] private DisasterManager _disasterManager;
 
@@ -10,7 +12,7 @@ public class ResourceSpace : SpaceLandedBehavior
 	{
 		_space = GetComponent<Space>();
 	}
-	public override void ReactToPlayerLanding(Player player)
+	public override void RespondToPlayer(Player player)
 	{
 		Space.BoardBiome biome = _space.Biome;
 		Debug.Log($"{player} landed on a {biome} resource space.");

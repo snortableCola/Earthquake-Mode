@@ -1,8 +1,10 @@
 using UnityEngine;
 
-public class NegativeSpace : SpaceLandedBehavior
+public class NegativeSpace : SpaceBehavior
 {
-	public override void ReactToPlayerLanding(Player player)
+	public override bool EndsTurn { get; } = true;
+
+	public override void RespondToPlayer(Player player)
 	{
 		Debug.Log($"{player} landed on a negative space.");
 	}

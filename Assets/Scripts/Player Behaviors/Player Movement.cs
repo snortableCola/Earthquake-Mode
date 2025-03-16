@@ -64,9 +64,10 @@ public class PlayerMovement : MonoBehaviour
 		{
 			Debug.Log($"{_player} landed on a space which is on fire.");
 		}
-		else if (space.TryGetComponent<SpaceLandedBehavior>(out var behavior))
+		else
 		{
-			behavior.ReactToPlayerLanding(_player);
+			SpaceBehavior behavior = space.GetComponent<SpaceBehavior>();
+			behavior.RespondToPlayer(_player);
 		}
 	}
 

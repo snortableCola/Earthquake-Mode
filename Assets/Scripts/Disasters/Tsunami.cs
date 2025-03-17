@@ -7,6 +7,8 @@ public class Tsunami : Disaster
 
 	public override bool IsPossible { get; } = true;
 
+	public override void Refresh() { }
+
 	public override void StartDisaster(Player _)
 	{
 		foreach (Player player in GameManager.Instance.Players)

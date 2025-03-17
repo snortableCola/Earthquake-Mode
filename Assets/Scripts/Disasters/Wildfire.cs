@@ -17,19 +17,13 @@ public class Wildfire : Disaster
 	private readonly Queue<Space> _spacesToExtinguish = new();
 	private readonly Queue<Space> _spacesSetOnFire = new();
 
-	private void Start()
-	{
-		RefreshSpaces();
-	}
-
-	public void RefreshSpaces()
+	public override void Refresh()
 	{
 		_flammableSpaces.Clear();
-		foreach (Space space in GameManager.Instance.Spaces)
-		{
-			if (space.Biome is Biome.Plains or Biome.Mountains) _flammableSpaces.Add(space);
-		}
+		_flammableSpaces.AddRange(GameManager.Instance.Spaces.Where(IsFlammableSpace));
 	}
+
+	private static bool IsFlammableSpace(Space space) => space.Biome is Biome.Plains or Biome.Mountains;
 
 	public override void StartDisaster(Player incitingPlayer)
 	{

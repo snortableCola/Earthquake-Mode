@@ -8,12 +8,7 @@ public class Tornado : Disaster
 
 	public override bool IsPossible { get; } = true;
 
-	private void Start()
-	{
-		RefreshSpaces();
-	}
-
-	public void RefreshSpaces()
+	public override void Refresh()
 	{
 		_potentialDestinations.Clear();
 		_potentialDestinations.AddRange(GameManager.Instance.Spaces.Where(IsValidTornadoDestination));

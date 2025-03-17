@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public struct Adjacency
+public class Adjacency
 {
 	public Vector2 Direction;
 	public Space Space;

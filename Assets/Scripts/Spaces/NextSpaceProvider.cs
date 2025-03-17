@@ -7,5 +7,9 @@ public class NextSpaceProvider : MonoBehaviour
 	/// <summary>
 	/// Provides all spaces this space could possibly lead into during a player's movement.
 	/// </summary>
-	public Space[] NextSpaces => _nextSpaces;
+	public Space[] NextSpaces
+	{
+		get => _nextSpaces;
+		set => _nextSpaces = value;
+	}
 }

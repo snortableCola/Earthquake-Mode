@@ -59,13 +59,15 @@ public class DisasterManager : MonoBehaviour
 	/// <param name="incitingPlayer"></param>
 	public void IncrementDisaster(Disaster disaster, Player incitingPlayer)
 	{
+		if (!disaster.IsPossible) return;
+
 		int disasterLevel = ++_disasterTracker[disaster];
 		Debug.Log($"{disaster} at level {disasterLevel}");
 
-		if (disasterLevel != _disasterThreshold || !disaster.IsPossible) return;
+		if (disasterLevel != _disasterThreshold) return;
 
 		disaster.StartDisaster(incitingPlayer);
 
-		_disasterTracker[disaster] = 0; // Reset the disaster level once startign the disaster
+		_disasterTracker[disaster] = 0; // Reset the disaster level once starting the disaster
 	}
 }

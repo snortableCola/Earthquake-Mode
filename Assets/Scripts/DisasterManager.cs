@@ -35,7 +35,7 @@ public class DisasterManager : MonoBehaviour
 
 		switch (biome)
 		{
-			case Biome.Coast:
+			case Biome.Shore:
 				disaster = _tsunami;
 				break;
 			case Biome.Plains:

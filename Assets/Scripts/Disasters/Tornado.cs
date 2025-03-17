@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Tornado : Disaster
 {
-	private readonly List<Space> potentialDestinations = new();
+	private readonly List<Space> _potentialDestinations = new();
 
 	public override bool IsPossible { get; } = true;
 
@@ -14,29 +15,22 @@ public class Tornado : Disaster
 
 	public void RefreshSpaces()
 	{
-		potentialDestinations.Clear();
-		foreach (Space space in GameManager.Instance.Spaces)
-		{
-			if (space.GetComponent<NegativeSpace>() && space.Biome != Biome.Plains) potentialDestinations.Add(space);
-		}
+		_potentialDestinations.Clear();
+		_potentialDestinations.AddRange(GameManager.Instance.Spaces.Where(IsValidTornadoDestination));
 	}
+
+	private static bool IsValidTornadoDestination(Space space) => space.Biome != Biome.Plains && space.GetComponent<NegativeSpace>();
 
 	public override void StartDisaster(Player _)
 	{
-		int potentialLandingsCount = potentialDestinations.Count;
+		var victims = GameManager.Instance.Players.Where(IsValidTornadoVictim).GetEnumerator();
+		var destinations = _potentialDestinations.OrderBy(_ => Random.value).GetEnumerator();
 
-		// Iterate through all players
-		foreach (Player player in GameManager.Instance.Players)
+		while (victims.MoveNext() && destinations.MoveNext())
 		{
-			// Only blow them away if they're in the plains
-			if (player.CurrentBiome != Biome.Plains) continue;
-
-			// Select a random negative, non-plains space to plow the player
-			int chosenLandingIndex = Random.Range(0, potentialLandingsCount);
-			Space landingSpace = potentialDestinations[chosenLandingIndex];
-
-			// Move the player to the selected space, triggering the negative behavior
-			StartCoroutine(player.Movement.JumpToSpaceCoroutine(landingSpace, true));
-		}
+			StartCoroutine(victims.Current.Movement.JumpToSpaceCoroutine(destinations.Current, true));
+		};
 	}
+
+	private static bool IsValidTornadoVictim(Player player) => player.CurrentBiome == Biome.Plains;
 }

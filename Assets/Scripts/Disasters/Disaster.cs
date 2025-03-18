@@ -2,11 +2,11 @@ using UnityEngine;
 
 public abstract class Disaster : MonoBehaviour
 {
-    public abstract bool IsPossible { get; }
+	public virtual bool IsPossible { get; } = true;
 
     public abstract void StartDisaster(Player incitingPlayer);
 
-    public abstract void Refresh();
+    public virtual void Refresh() { }
 
 	private void Start()
 	{

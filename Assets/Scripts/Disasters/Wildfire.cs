@@ -20,10 +20,10 @@ public class Wildfire : Disaster
 	public override void Refresh()
 	{
 		_flammableSpaces.Clear();
-		_flammableSpaces.AddRange(GameManager.Instance.Spaces.Where(IsFlammableSpace));
+		_flammableSpaces.AddRange(GameManager.Instance.Spaces.Where(IsFlammable));
 	}
 
-	private static bool IsFlammableSpace(Space space) => space.Biome is Biome.Plains or Biome.Mountains;
+	private static bool IsFlammable(Space space) => space.Biome is Biome.Plains or Biome.Mountains;
 
 	public override void StartDisaster(Player incitingPlayer)
 	{

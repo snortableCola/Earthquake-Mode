@@ -6,10 +6,11 @@ public class DisasterManager : MonoBehaviour
 	public static DisasterManager Instance { get; private set; }
 
 	[SerializeField] private int _disasterThreshold;
+
 	[SerializeField] private Tsunami _tsunami;
 	[SerializeField] private Tornado _tornado;
 	[SerializeField] private Wildfire _wildfire;
-
+	[SerializeField] private Earthquake _earthquake;
 
 	private void Awake()
 	{
@@ -18,7 +19,8 @@ public class DisasterManager : MonoBehaviour
 		{
 			{_wildfire, 0},
 			{_tsunami, 0},
-			{_tornado, 0}
+			{_tornado, 0},
+			{_earthquake, 0}
 		};
 	}
 
@@ -47,17 +49,17 @@ public class DisasterManager : MonoBehaviour
 			default: return;
 		}
 
-		Debug.Log($"We have to increase {disaster}!");
-
 		IncrementDisaster(disaster, player);
 	}
+
+	public void IncrementEarthquake() => IncrementDisaster(_earthquake, null);
 
 	/// <summary>
 	/// Increments the disaster level for a specified disaster, triggering it if it reaches the disaster threshold.
 	/// </summary>
 	/// <param name="disaster">The disaster to increment the disaster level of, and to potentially trigger.</param>
 	/// <param name="incitingPlayer"></param>
-	public void IncrementDisaster(Disaster disaster, Player incitingPlayer)
+	private void IncrementDisaster(Disaster disaster, Player incitingPlayer)
 	{
 		if (!disaster.IsPossible) return;
 
@@ -69,5 +71,13 @@ public class DisasterManager : MonoBehaviour
 		disaster.StartDisaster(incitingPlayer);
 
 		_disasterTracker[disaster] = 0; // Reset the disaster level once starting the disaster
+	}
+
+	public void RefreshDisasters()
+	{
+		foreach(Disaster disaster in _disasterTracker.Keys)
+		{
+			disaster.Refresh();
+		}
 	}
 }

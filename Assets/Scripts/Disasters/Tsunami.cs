@@ -4,10 +4,6 @@ public class Tsunami : Disaster
 {
 	[SerializeField] private Space _tsunamiFailsafe;
 
-	public override bool IsPossible { get; } = true;
-
-	public override void Refresh() { }
-
 	public override void StartDisaster(Player _)
 	{
 		foreach (Player player in GameManager.Instance.Players)

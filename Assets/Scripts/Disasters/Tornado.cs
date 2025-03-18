@@ -6,8 +6,6 @@ public class Tornado : Disaster
 {
 	private readonly List<Space> _potentialDestinations = new();
 
-	public override bool IsPossible { get; } = true;
-
 	public override void Refresh()
 	{
 		_potentialDestinations.Clear();

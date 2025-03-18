@@ -15,7 +15,7 @@ public class BonusSpace : SpaceBehavior
 	public override IEnumerator RespondToPlayer(Player player)
 	{
 		Biome biome = _space.Biome;
-		Debug.Log($"{player} landed on a {biome} bonus space.");
+		Debug.Log($"{player.name} landed on a {biome} bonus space.");
 
 		DisasterManager.Instance.IncrementBiomeDisaster(biome, player);
 

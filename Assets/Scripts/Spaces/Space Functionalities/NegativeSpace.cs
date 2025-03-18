@@ -7,7 +7,7 @@ public class NegativeSpace : SpaceBehavior
 
 	public override IEnumerator RespondToPlayer(Player player)
 	{
-		Debug.Log($"{player} landed on a negative space.");
+		Debug.Log($"{player.name} landed on a negative space.");
 
 		yield break;
 	}

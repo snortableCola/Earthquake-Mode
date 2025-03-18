@@ -64,7 +64,7 @@ public class DisasterManager : MonoBehaviour
 		if (!disaster.IsPossible) return;
 
 		int disasterLevel = ++_disasterTracker[disaster];
-		Debug.Log($"{disaster} at level {disasterLevel}");
+		Debug.Log($"{disaster.name} at level {disasterLevel}");
 
 		if (disasterLevel != _disasterThreshold) return;
 

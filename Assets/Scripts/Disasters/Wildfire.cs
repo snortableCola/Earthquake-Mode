@@ -14,13 +14,33 @@ public class Wildfire : Disaster
 	private Player _fireStarter;
 
 	private readonly List<Space> _flammableSpaces = new();
-	private readonly Queue<Space> _spacesToExtinguish = new();
-	private readonly Queue<Space> _spacesSetOnFire = new();
+	private readonly Queue<Space> _allBurningSpaces = new();
+	private readonly Queue<Space> _spacesLastEngulfed = new();
 
 	public override void Refresh()
 	{
 		_flammableSpaces.Clear();
 		_flammableSpaces.AddRange(GameManager.Instance.Spaces.Where(IsFlammable));
+
+		if (!_isFireOngoing) return;
+
+		_spacesLastEngulfed.Clear();
+		
+		int spacesToRefresh = _allBurningSpaces.Count;
+		for (int i = 0; i < spacesToRefresh; i++)
+		{
+			Space space = _allBurningSpaces.Dequeue();
+
+			if (IsFlammable(space))
+			{
+				_spacesLastEngulfed.Enqueue(space);
+				_allBurningSpaces.Enqueue(space);
+			}
+			else
+			{
+				space.BurningTag.State = false;
+			}
+		}
 	}
 
 	private static bool IsFlammable(Space space) => space.Biome is Biome.Plains or Biome.Mountains;
@@ -55,15 +75,17 @@ public class Wildfire : Disaster
 	/// </summary>
 	private void SpreadFire()
 	{
-		int spacesToSpread = _spacesSetOnFire.Count;
+		int spacesToSpread = _spacesLastEngulfed.Count;
 		for (int i = 0; i < spacesToSpread; i++)
 		{
-			Space spaceToSpread = _spacesSetOnFire.Dequeue();
+			Space spaceToSpread = _spacesLastEngulfed.Dequeue();
 
 			foreach (Adjacency adjacency in AdjacencyManager.Instance.Adjacencies[spaceToSpread])
 			{
+				Space space = adjacency.Space;
+
 				// Only spread fire to flammable spaces that aren't already on fire
-				if (!adjacency.Space.BurningTag.State && adjacency.Space.Biome is Biome.Mountains or Biome.Plains) SetSpaceOnFire(adjacency.Space);
+				if (!space.BurningTag.State && IsFlammable(space)) SetSpaceOnFire(space);
 			}
 		}
 	}
@@ -77,13 +99,13 @@ public class Wildfire : Disaster
 		_isFireOngoing = false;
 
 		// Set all the fire spaces to not on fire
-		while (_spacesToExtinguish.Count > 0)
+		while (_allBurningSpaces.Count > 0)
 		{
-			Space spaceToExtinguish = _spacesToExtinguish.Dequeue();
+			Space spaceToExtinguish = _allBurningSpaces.Dequeue();
 			spaceToExtinguish.BurningTag.State = false;
 		}
 
-		_spacesSetOnFire.Clear();
+		_spacesLastEngulfed.Clear();
 
 		Debug.Log("Fire extinguished.");
 	}
@@ -96,7 +118,7 @@ public class Wildfire : Disaster
 	{
 		space.BurningTag.State = true;
 
-		_spacesSetOnFire.Enqueue(space);
-		_spacesToExtinguish.Enqueue(space);
+		_spacesLastEngulfed.Enqueue(space);
+		_allBurningSpaces.Enqueue(space);
 	}
 }

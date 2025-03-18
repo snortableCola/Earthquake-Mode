@@ -9,7 +9,7 @@ public class TransportSpace : SpaceBehavior
 
 	public override IEnumerator RespondToPlayer(Player player)
 	{
-		Debug.Log($"{player} used a transport space.");
+		Debug.Log($"{player.name} used a transport space.");
 
 		PlayerMovement movement = player.Movement;
 		yield return movement.JumpToSpaceCoroutine(_destination, false);

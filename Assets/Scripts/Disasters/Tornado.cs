@@ -22,7 +22,7 @@ public class Tornado : Disaster
 
 		while (victims.MoveNext() && destinations.MoveNext())
 		{
-			yield return victims.Current.Movement.JumpToSpaceCoroutine(destinations.Current);
+			yield return victims.Current.Movement.MoveToSpaceCoroutine(destinations.Current);
 			yield return destinations.Current.Behavior.RespondToPlayer(victims.Current);
 		};
 	}

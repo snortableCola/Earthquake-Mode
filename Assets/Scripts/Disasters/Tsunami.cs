@@ -12,7 +12,7 @@ public class Tsunami : Disaster
 			switch (player.CurrentBiome)
 			{
 				case Biome.Shore:
-					yield return player.Movement.JumpToSpaceCoroutine(_tsunamiFailsafe);
+					yield return player.Movement.MoveToSpaceCoroutine(_tsunamiFailsafe);
 					break;
 				case Biome.Mountains:
 					player.FrozenTag.State = true;

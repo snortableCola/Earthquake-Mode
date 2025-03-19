@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
 		int distance = Random.Range(1, 11);
 		Debug.Log($"{player.name} moves for {distance} spaces.");
 
-		yield return player.Movement.MovementCoroutine(distance);
+		yield return player.Movement.MovementPhaseCoroutine(distance);
 
 		Space endingSpace = player.GetComponentInParent<Space>();
 		if (endingSpace.BurningTag.State)

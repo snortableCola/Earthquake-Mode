@@ -12,16 +12,16 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private float _movementTime = 0.3f;
 	[SerializeField] private float _jumpHeight = 4f;
 
-	private InputAction _motion2D, _spaceInteraction;
+	private InputAction _motionInput, _interactionInput;
 	private Player _player;
 
-	private Space _space;
-	private readonly List<Space> _path = new();
+	private Space _currentSpace;
+	private readonly List<Space> _movementPath = new();
 
 	private void Awake()
 	{
-		_motion2D = InputSystem.actions.FindAction("2D Motion");
-		_spaceInteraction = InputSystem.actions.FindAction("Space Interaction");
+		_motionInput = InputSystem.actions.FindAction("2D Motion");
+		_interactionInput = InputSystem.actions.FindAction("Space Interaction");
 
 		_player = GetComponent<Player>();
 	}
@@ -31,9 +31,9 @@ public class PlayerMovement : MonoBehaviour
 	/// </summary>
 	public void ResetMovementPath()
 	{
-		_space = GetComponentInParent<Space>();
-		_path.Clear();
-		_path.Add(_space);
+		_currentSpace = GetComponentInParent<Space>();
+		_movementPath.Clear();
+		_movementPath.Add(_currentSpace);
 	}
 
 	/// <summary>
@@ -49,23 +49,23 @@ public class PlayerMovement : MonoBehaviour
 		while (true)
 		{
 			// Process interaction attempts BEFORE movement attempts
-			if (_spaceInteraction.triggered)
+			if (_interactionInput.triggered)
 			{
 				// If the player has travelled the full distance, they may end their movement
 				if (distance == 0) yield break;
 
 				// The player may interact with non-turn-ending (shop & transport) spaces at any point
 				// This cannot be done at the start of the player's path (meaning, just after they've used the space)
-				if (!_space.Behavior.EndsTurn && !_space.BurningTag.State && _path.Count > 1)
+				if (!_currentSpace.Behavior.EndsTurn && !_currentSpace.BurningTag.State && _movementPath.Count > 1)
 				{
-					yield return _space.Behavior.RespondToPlayer(_player);
+					yield return _currentSpace.Behavior.RespondToPlayer(_player);
 
-					_path.RemoveRange(0, _path.Count - 1); // Prevents player from moving backwards from the space they just used
+					_movementPath.RemoveRange(0, _movementPath.Count - 1); // Prevents player from moving backwards from the space they just used
 				}
 			}
 
 			// If no motion input detected, wait until the next frame
-			if (!_motion2D.IsPressed())
+			if (!_motionInput.IsPressed())
 			{
 				yield return null;
 				continue;
@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
 			// - the player's input isn't pointing directly enough towards a space
 			// - the player is trying to move forward, but they've already expended their movement distance
 			// - the player is trying to move backward to a space that wasn't their previous space
-			if (inputConfidence < _inputConfidenceThreshold || (movingForward ? distance == 0 : (_path.Count < 2 || targetSpace != _path[^2])))
+			if (inputConfidence < _inputConfidenceThreshold || (movingForward ? distance == 0 : (_movementPath.Count < 2 || targetSpace != _movementPath[^2])))
 			{
 				yield return null;
 				continue;
@@ -89,17 +89,17 @@ public class PlayerMovement : MonoBehaviour
 			if (movingForward)
 			{
 				if (targetSpace.Behavior.EndsTurn) distance--;
-				_path.Add(targetSpace);
+				_movementPath.Add(targetSpace);
 			}
 			else
 			{
-				if (_space.Behavior.EndsTurn) distance++;
-				_path.RemoveAt(_path.Count - 1);
+				if (_currentSpace.Behavior.EndsTurn) distance++;
+				_movementPath.RemoveAt(_movementPath.Count - 1);
 			}
 
 			// Moves the player to the decided space
 			yield return MoveToSpaceCoroutine(targetSpace);
-			_space = targetSpace;
+			_currentSpace = targetSpace;
 			Debug.Log($"Remaining distance {distance}");
 		}
 	}
@@ -112,8 +112,8 @@ public class PlayerMovement : MonoBehaviour
 	/// <returns>The space that the player is most likely trying to move to.</returns>
 	private Space GetSelectedAdjacentSpace(out bool forwards, out float confidence)
 	{
-		Vector2 inputDirection = _motion2D.ReadValue<Vector2>();
-		List<Adjacency> adjacentSpaces = AdjacencyManager.Instance.Adjacencies[_space];
+		Vector2 inputDirection = _motionInput.ReadValue<Vector2>();
+		List<Adjacency> adjacentSpaces = AdjacencyManager.Instance.Adjacencies[_currentSpace];
 
 		// Determines whichever adjacent space has the maximum similarity with the player's input, using the dot product
 		Adjacency selection = adjacentSpaces[0];

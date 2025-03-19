@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -45,7 +46,7 @@ public class Wildfire : Disaster
 
 	private static bool IsFlammable(Space space) => space.Biome is Biome.Plains or Biome.Mountains;
 
-	public override void StartDisaster(Player incitingPlayer)
+	public override IEnumerator StartDisaster(Player incitingPlayer)
 	{
 		_isFireOngoing = true;
 		_fireStarter = incitingPlayer;
@@ -59,6 +60,8 @@ public class Wildfire : Disaster
 		{
 			SetSpaceOnFire(space);
 		}
+
+		yield break;
 	}
 
 	public void TryFireProgress(Player player)

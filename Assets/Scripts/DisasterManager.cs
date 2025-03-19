@@ -67,9 +67,7 @@ public class DisasterManager : MonoBehaviour
 		Debug.Log($"{disaster.name} at level {disasterLevel}");
 
 		if (disasterLevel != _disasterThreshold) return;
-
-		disaster.StartDisaster(incitingPlayer);
-
+		StartCoroutine(disaster.StartDisaster(incitingPlayer));
 		_disasterTracker[disaster] = 0; // Reset the disaster level once starting the disaster
 	}
 

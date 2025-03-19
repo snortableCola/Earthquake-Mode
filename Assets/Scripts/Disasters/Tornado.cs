@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -14,14 +15,15 @@ public class Tornado : Disaster
 
 	private static bool IsValidTornadoDestination(Space space) => space.Biome != Biome.Plains && space.GetComponent<NegativeSpace>();
 
-	public override void StartDisaster(Player _)
+	public override IEnumerator StartDisaster(Player _)
 	{
 		var victims = GameManager.Instance.Players.Where(IsValidTornadoVictim).GetEnumerator();
 		var destinations = _potentialDestinations.OrderBy(_ => Random.value).GetEnumerator();
 
 		while (victims.MoveNext() && destinations.MoveNext())
 		{
-			StartCoroutine(victims.Current.Movement.JumpToSpaceCoroutine(destinations.Current, true));
+			yield return victims.Current.Movement.JumpToSpaceCoroutine(destinations.Current);
+			yield return destinations.Current.Behavior.RespondToPlayer(victims.Current);
 		};
 	}
 

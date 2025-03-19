@@ -31,13 +31,13 @@ public class GameManager : MonoBehaviour
 	public UnityEvent RoundPassed = new();
 
 	[ContextMenu("Move Next Player")]
-	private void MoveNextPlayer() => StartCoroutine(NextPlayerTurnCoroutine());
+	private void DoPlayerTurn() => StartCoroutine(PlayerTurnCoroutine());
 
 	/// <summary>
 	/// Coroutine representing the next player taking their turn.
 	/// </summary>
 	/// <returns>Coroutine for handling the next player's turn.</returns>
-	private IEnumerator NextPlayerTurnCoroutine()
+	private IEnumerator PlayerTurnCoroutine()
 	{
 		Player player = _players[_currentPlayerIndex];
 
@@ -45,18 +45,34 @@ public class GameManager : MonoBehaviour
 		{
 			Debug.Log($"{player.name} was frozen and passed its turn.");
 			player.FrozenTag.State = false; // Player is unfrozen after their turn would've been skipped
+
+			MoveToNextPlayer();
+			yield break;
+		}
+
+		int distance = Random.Range(1, 11);
+		Debug.Log($"{player.name} moves for {distance} spaces.");
+
+		yield return player.Movement.MovementCoroutine(distance);
+
+		Space endingSpace = player.GetComponentInParent<Space>();
+		if (endingSpace.BurningTag.State)
+		{
+			Debug.Log($"{player} landed on a space which is on fire.");
 		}
 		else
 		{
-			int distance = Random.Range(1, 11);
-			Debug.Log($"{player.name} moves for {distance} spaces.");
-
-			yield return player.Movement.MovementCoroutine(distance);
+			yield return endingSpace.Behavior.RespondToPlayer(player);
 		}
 
-		_currentPlayerIndex++;
+		MoveToNextPlayer();
+	}
 
-		TurnPassed.Invoke(player);
+	private void MoveToNextPlayer()
+	{
+		TurnPassed.Invoke(_players[_currentPlayerIndex]);
+
+		_currentPlayerIndex++;
 
 		if (_currentPlayerIndex == _players.Length)
 		{

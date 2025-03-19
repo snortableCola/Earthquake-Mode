@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			if (_spaceInteraction.triggered)
 			{
-				if (distance == 0) break;
+				if (distance == 0) yield break;
 
 				if (!_space.Behavior.EndsTurn && !_space.BurningTag.State && _path.Count > 1)
 				{
@@ -76,18 +76,9 @@ public class PlayerMovement : MonoBehaviour
 				_path.RemoveAt(_path.Count - 1);
 			}
 
-			yield return JumpToSpaceCoroutine(targetSpace, false);
+			yield return JumpToSpaceCoroutine(targetSpace);
 			_space = targetSpace;
 			Debug.Log($"Remaining distance {distance}");
-		}
-
-		if (_space.BurningTag.State)
-		{
-			Debug.Log($"{_player} landed on a space which is on fire.");
-		}
-		else
-		{
-			yield return _space.Behavior.RespondToPlayer(_player);
 		}
 	}
 
@@ -113,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
 		return selection.Space;
 	}
 
-	public IEnumerator JumpToSpaceCoroutine(Space targetSpace, bool triggerLandingBehavior)
+	public IEnumerator JumpToSpaceCoroutine(Space targetSpace)
 	{
 		Vector3 startPosition = transform.position;
 		Vector3 endPosition = targetSpace.transform.TransformPoint(transform.localPosition); // Ensures the player's located identically relative to its space after landing
@@ -134,16 +125,5 @@ public class PlayerMovement : MonoBehaviour
 
 		transform.position = endPosition;
 		transform.SetParent(targetSpace.transform);
-
-		if (!triggerLandingBehavior) yield break;
-
-		if (targetSpace.BurningTag.State) // Fire takes precendent over default space behavior
-		{
-			Debug.Log($"{_player.name} landed on a burning space.");
-		}
-		else
-		{
-			yield return targetSpace.Behavior.RespondToPlayer(_player);
-		}
 	}
 }

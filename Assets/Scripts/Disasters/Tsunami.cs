@@ -1,17 +1,18 @@
+using System.Collections;
 using UnityEngine;
 
 public class Tsunami : Disaster
 {
 	[SerializeField] private Space _tsunamiFailsafe;
 
-	public override void StartDisaster(Player _)
+	public override IEnumerator StartDisaster(Player _)
 	{
 		foreach (Player player in GameManager.Instance.Players)
 		{
 			switch (player.CurrentBiome)
 			{
 				case Biome.Shore:
-					StartCoroutine(player.Movement.JumpToSpaceCoroutine(_tsunamiFailsafe, false));
+					yield return player.Movement.JumpToSpaceCoroutine(_tsunamiFailsafe);
 					break;
 				case Biome.Mountains:
 					player.FrozenTag.State = true;

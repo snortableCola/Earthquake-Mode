@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Earthquake : Disaster
@@ -9,12 +10,13 @@ public class Earthquake : Disaster
 		_spacesToSwap = FindObjectsByType<SpaceSwapping>(FindObjectsSortMode.None);
 	}
 
-	public override void StartDisaster(Player incitingPlayer)
+	public override IEnumerator StartDisaster(Player incitingPlayer)
 	{
 		foreach (var space in _spacesToSwap)
 		{
 			space.PerformSwap();
 		}
 		DisasterManager.Instance.RefreshDisasters();
+		yield break;
 	}
 }

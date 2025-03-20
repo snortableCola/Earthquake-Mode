@@ -4,11 +4,11 @@ using TMPro;
 
 public class DealOrNoDeal : Minigame
 {
-    public Button[] suitcases; // Assign your suitcase buttons in the inspector
-    public Button selectButton; // Assign your select/confirm button in the inspector
-    public Button exitButton; // Assign your exit button in the inspector
-    public TMP_Text rewardText; // Assign a TextMeshPro text element to display the reward
-    public Color highlightColor; // Assign a color for highlighting the selected suitcase
+    public Button[] suitcases; 
+    public Button selectButton; 
+    public Button exitButton; 
+    public TMP_Text rewardText;
+    public Color highlightColor; 
     public GameObject initialTextObject; // Reference to the GameObject containing the initial text
     public Player player; // Reference to the Player class
 
@@ -31,7 +31,7 @@ public class DealOrNoDeal : Minigame
         exitButton.onClick.AddListener(OnEndMinigameButtonClicked);
 
         // Call the StartGame method to playtest on start
-        StartGame();
+        //StartGame();
     }
 
     public override void StartGame()
@@ -123,7 +123,7 @@ public class DealOrNoDeal : Minigame
         }
 
         // Notify the manager that the minigame is complete
-        MinigameManager.Instance.MinigameCompleted(selectedReward);
+        MinigameManager.Instance.MinigameCompleted(1);
 
         // Hide game panels after selection
         PanelManager.Instance.HideAllPanels();

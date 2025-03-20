@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class CeoGambit : Minigame
 {
@@ -19,8 +20,16 @@ public class CeoGambit : Minigame
     private int points;
     private bool betOnHeads;
 
+    public Image coinDisplay; // Reference to the UI Image for displaying results
+    public Sprite tailsImage; // The single image for tails
+    public List<Sprite> headsImages;
+    public AudioSource audioSource;
+    public AudioClip CoinSound;
+
     public override void StartGame()
     {
+        // Show the initial panel for CEO Gambit
+        panelManager.ShowPanel("Ceo Gambit", 0);
         Debug.Log("start game method called");
         UpdatePointsDisplay();
         headsButton.onClick.AddListener(() => SelectHeads(true));
@@ -36,8 +45,7 @@ public class CeoGambit : Minigame
         // Initially, make the exit button inactive
         exitButton.gameObject.SetActive(false);
 
-        // Show the initial panel for CEO Gambit
-        panelManager.ShowPanel("Ceo Gambit", 0);
+      
     }
 
     void ValidateBet(string input)
@@ -65,7 +73,7 @@ public class CeoGambit : Minigame
         if (int.TryParse(pointsInput.text, out points) && points > 0 && points <= player.totalPoints)
         {
             Debug.Log("Placing Bet with points: " + points);
-            panelManager.ShowPanel("Ceo Gambit", 2); // Show the selection panel for CeoGambit
+            panelManager.ShowPanel("Ceo Gambit", 1); // Show the selection panel for CeoGambit
         }
         else
         {
@@ -84,7 +92,7 @@ public class CeoGambit : Minigame
     {
         if (headsButton.image.color == Color.green || tailsButton.image.color == Color.green)
         {
-            panelManager.ShowPanel("Ceo Gambit", 3); // Show the flip panel for CeoGambit
+            panelManager.ShowPanel("Ceo Gambit", 2); // Show the flip panel for CeoGambit
         }
         else
         {
@@ -94,31 +102,71 @@ public class CeoGambit : Minigame
 
     void FlipCoin()
     {
+        Debug.Log("FlipCoin method called.");
         if (points > 0 && points <= player.totalPoints)
         {
-            bool coinLandedHeads = Random.value > 0.5f;
-
-            if (coinLandedHeads == betOnHeads)
+            bool coinLandedHeads = Random.value > 0.5f; // Determine heads or tails
+            if (CoinSound != null)
             {
-                player.AdjustPoints(points);
-                resultText.text = "You won! Coin landed on " + (coinLandedHeads ? "Heads" : "Tails") + ". Points: " + player.totalPoints;
+                audioSource.PlayOneShot(CoinSound);
+            }
+
+            // Set the correct image and debug log for heads or tails
+            if (coinLandedHeads)
+            {
+                if (headsImages.Count > 0)
+                {
+                    int randomIndex = Random.Range(0, headsImages.Count);
+                    coinDisplay.sprite = headsImages[randomIndex];
+                    Debug.Log($"Coin landed on Heads. Sprite: {headsImages[randomIndex].name}");
+                }
+                else
+                {
+                    Debug.LogError("HeadsImages list is empty! Please assign sprites in the Inspector.");
+                }
+
+                // Player bet correctly (landed on heads and bet on heads)
+                if (betOnHeads)
+                {
+                    player.AdjustPoints(points);
+                    resultText.text = $"You won! Coin landed on Heads. Points: {player.totalPoints}";
+                }
+                else
+                {
+                    // Player bet incorrectly (landed on heads but bet on tails)
+                    player.AdjustPoints(-points);
+                    resultText.text = $"You lost. Coin landed on Heads. Points: {player.totalPoints}";
+                }
             }
             else
             {
-                player.AdjustPoints(-points);
-                resultText.text = "You lost. Coin landed on " + (coinLandedHeads ? "Heads" : "Tails") + ". Points: " + player.totalPoints;
+                // Landed on Tails
+                coinDisplay.sprite = tailsImage;
+                Debug.Log($"Coin landed on Tails. Sprite: {tailsImage.name}");
+
+                // Player bet correctly (landed on tails and bet on tails)
+                if (!betOnHeads)
+                {
+                    player.AdjustPoints(points);
+                    resultText.text = $"You won! Coin landed on Tails. Points: {player.totalPoints}";
+                }
+                else
+                {
+                    // Player bet incorrectly (landed on tails but bet on heads)
+                    player.AdjustPoints(-points);
+                    resultText.text = $"You lost. Coin landed on Tails. Points: {player.totalPoints}";
+                }
             }
 
+            // Update UI and game state
             UpdatePointsDisplay();
-
-            // Make the flip button inactive and the exit button active
             flipButton.gameObject.SetActive(false);
             exitButton.gameObject.SetActive(true);
         }
         else
         {
             resultText.text = "Please enter a valid number of points within your available points.";
-            panelManager.ShowPanel("Ceo Gambit", 1); // Show the betting panel for CeoGambit
+            panelManager.ShowPanel("Ceo Gambit", 1);
         }
     }
 

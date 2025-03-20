@@ -16,6 +16,7 @@ public class PanelManager : MonoBehaviour
     public Button startMinigameButton;
     public GameObject[] ceoGambitPanels;
     public GameObject[] dealOrNoDealPanels;
+    public GameObject[] CRPanels; 
     //public TMP_Text rewardText; // Reference to the TMP_Text component for displaying the reward
 
     void Awake()
@@ -38,7 +39,7 @@ public class PanelManager : MonoBehaviour
     {
         minigameInstructions.Add("Ceo Gambit", "How confident are you in your coin-flipping skills? Bet on your hard-earned resources, call heads or tails, and flip the coin. Get it right to double your bet—get it wrong, and, well… hope you didn’t bet too much.");
         minigameInstructions.Add("Deal Or No Deal", "Four suitcases lie before you. One will give you +4 points, two are empty, and one will give you -4 points. The suitcases will be shuffled and you must choose wisely...");
-
+        minigameInstructions.Add("Corporate Roulette", "Spin the chamber and take your shot. Some bullets earn you points (+6,+4), others hit you where it hurts (-3, -4 points), and a couple just click harmlessly. Will luck be on your side?");
         // Add more minigame instructions here
         Debug.Log("Instructions initialized");
     }
@@ -48,6 +49,7 @@ public class PanelManager : MonoBehaviour
         // Add panels for each minigame to the dictionary
         minigamePanels.Add("Ceo Gambit", ceoGambitPanels);
         minigamePanels.Add("Deal Or No Deal", dealOrNoDealPanels);
+        minigamePanels.Add("Corporate Roulette",CRPanels);
         foreach (var key in minigameInstructions.Keys)
         {
             Debug.Log("Minigame instruction key: " + key);

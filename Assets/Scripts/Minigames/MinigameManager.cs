@@ -74,6 +74,29 @@ public class MinigameManager : MonoBehaviour
             Debug.LogError("Current minigame is null when trying to start: " + minigameName);
         }
     }
+    //loads specific minigame for playtesting purposes 
+    public void LoadSpecificMinigame(int index, bool isMultiplayer)
+    {
+        if (currentMinigame != null)
+        {
+            Destroy(currentMinigame);
+            panelManager.HideAllPanels();
+        }
+
+        GameObject[] minigames = isMultiplayer ? multiplayerMinigames : singlePlayerMinigames;
+
+        if (index >= 0 && index < minigames.Length)
+        {
+            currentMinigame = Instantiate(minigames[index]);
+            Debug.Log($"Loaded specific minigame: {minigames[index].name}");
+            panelManager.ShowInstructionPanel(minigames[index].name);
+        }
+        else
+        {
+            Debug.LogError($"Invalid index: {index}. Minigame not found.");
+        }
+    }
+
     public void MinigameCompleted(int reward)
     {
         Debug.Log("Minigame Completed. Reward: " + reward);
@@ -82,6 +105,8 @@ public class MinigameManager : MonoBehaviour
     }
     void Start()
     {
+        // Example: Load the first single-player minigame
+        /*LoadSpecificMinigame(0, false)*/;
         LoadRandomMinigame();
     }
 }

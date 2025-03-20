@@ -138,8 +138,7 @@ public class MinigameManager : MonoBehaviour
                 Debug.LogError($"Minigame component not found in {minigameName}");
             }
 
-            // Show instruction panel for the minigame
-            panelManager.ShowInstructionPanel(minigameName);
+            StartCoroutine(ShowHudMessageThenInstructions(minigameName));
         }
         else
         {

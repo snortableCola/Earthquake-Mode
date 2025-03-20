@@ -73,10 +73,20 @@ public class DealOrNoDeal : Minigame
         }
 
         // Store the original color of the clicked suitcase
-        originalColor = clickedButton.image.color;
+        if (clickedButton.image != null)
+        {
+            originalColor = clickedButton.image.color;
+        }
 
         // Highlight the selected suitcase
-        clickedButton.image.color = highlightColor;
+        if (clickedButton.image != null)
+        {
+            clickedButton.image.color = highlightColor;
+        }
+        else
+        {
+            Debug.LogWarning("Clicked button does not have an Image component!");
+        }
 
         selectedSuitcase = clickedButton;
         selectedReward = rewards[index];

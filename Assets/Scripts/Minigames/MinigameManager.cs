@@ -1,15 +1,21 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class MinigameManager : MonoBehaviour
 {
     public static MinigameManager Instance;
+
     public GameObject[] singlePlayerMinigames;
     public GameObject[] multiplayerMinigames;
     public bool isMultiplayer;
     public PanelManager panelManager;
-
+    public bool isTesting; // Enable this for playtesting 
     private GameObject currentMinigame;
     private Minigame minigameComponent;
+    private Player currentPlayer; // Track the current player playing the minigame
+    public Image hudMessage; // Reference to the HUD message image
+    public float hudMessageDuration = 3f; // Duration for HUD message to display
 
     void Awake()
     {
@@ -23,7 +29,34 @@ public class MinigameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    void Start()
+    {
+        if (isTesting)
+        {
+            // Automatically load a random minigame for playtesting
+            LoadRandomMinigame();
+        }
+    }
+    private IEnumerator ShowHudMessageThenInstructions(string minigameName)
+    {
+        // Display the HUD message
+        if (hudMessage != null)
+        {
+            hudMessage.gameObject.SetActive(true); // Show the HUD message
+        }
 
+        // Wait for the HUD message duration
+        yield return new WaitForSeconds(hudMessageDuration);
+
+        // Hide the HUD message
+        if (hudMessage != null)
+        {
+            hudMessage.gameObject.SetActive(false);
+        }
+
+        // Show the instruction panel using the PanelManager
+        panelManager.ShowInstructionPanel(minigameName);
+    }
     public void LoadRandomMinigame()
     {
         if (currentMinigame != null)
@@ -74,39 +107,65 @@ public class MinigameManager : MonoBehaviour
             Debug.LogError("Current minigame is null when trying to start: " + minigameName);
         }
     }
-    //loads specific minigame for playtesting purposes 
-    public void LoadSpecificMinigame(int index, bool isMultiplayer)
+
+    public void StartMinigameForPlayer(Player player)
     {
-        if (currentMinigame != null)
+        if (singlePlayerMinigames.Length > 0 && !isMultiplayer)
         {
-            Destroy(currentMinigame);
-            panelManager.HideAllPanels();
-        }
+            if (currentMinigame != null)
+            {
+                Destroy(currentMinigame); // Destroy previous minigame
+                panelManager.HideAllPanels(); // Ensure a clean slate
+            }
 
-        GameObject[] minigames = isMultiplayer ? multiplayerMinigames : singlePlayerMinigames;
+            currentPlayer = player; // Store the current player
 
-        if (index >= 0 && index < minigames.Length)
-        {
-            currentMinigame = Instantiate(minigames[index]);
-            Debug.Log($"Loaded specific minigame: {minigames[index].name}");
-            panelManager.ShowInstructionPanel(minigames[index].name);
+            // Load a random singleplayer minigame
+            int randomIndex = Random.Range(0, singlePlayerMinigames.Length);
+            currentMinigame = Instantiate(singlePlayerMinigames[randomIndex]);
+            string minigameName = singlePlayerMinigames[randomIndex].name;
+
+            Debug.Log($"{player.name} is starting the minigame: {minigameName}");
+
+            // Pass the player object to the minigame
+            minigameComponent = currentMinigame.GetComponent<Minigame>();
+            if (minigameComponent != null)
+            {
+                minigameComponent.SetPlayer(player);
+            }
+            else
+            {
+                Debug.LogError($"Minigame component not found in {minigameName}");
+            }
+
+            // Show instruction panel for the minigame
+            panelManager.ShowInstructionPanel(minigameName);
         }
         else
         {
-            Debug.LogError($"Invalid index: {index}. Minigame not found.");
+            Debug.LogError("Cannot start singleplayer minigame in multiplayer mode or no singleplayer minigames defined.");
         }
+    }
+
+    public Player GetCurrentPlayer()
+    {
+        return currentPlayer;
     }
 
     public void MinigameCompleted(int reward)
     {
         Debug.Log("Minigame Completed. Reward: " + reward);
-        // Handle the reward (e.g., update player's points)
-        // Switch to the next minigame or show the result panel
-    }
-    void Start()
-    {
-        // Example: Load the first single-player minigame
-        /*LoadSpecificMinigame(0, false)*/;
-        LoadRandomMinigame();
+        if (currentPlayer != null)
+        {
+            currentPlayer.AdjustPoints(reward); // Update player's points
+            Debug.Log($"{currentPlayer.name} now has {currentPlayer.totalPoints} points.");
+        }
+
+        // Clean up for the next minigame
+        if (currentMinigame != null)
+        {
+            Destroy(currentMinigame);
+        }
+        panelManager.HideAllPanels();
     }
 }

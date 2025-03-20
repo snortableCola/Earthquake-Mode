@@ -4,13 +4,13 @@ using TMPro;
 
 public class DealOrNoDeal : Minigame
 {
-    public Button[] suitcases; 
-    public Button selectButton; 
-    public Button exitButton; 
+    public Button[] suitcases;
+    public Button selectButton;
+    public Button exitButton;
     public TMP_Text rewardText;
-    public Color highlightColor; 
+    public Color highlightColor;
     public GameObject initialTextObject; // Reference to the GameObject containing the initial text
-    public Player player; // Reference to the Player class
+    public PanelManager panelManager;
 
     private int[] rewards = { 0, 0, 4, -4 };
     private int selectedReward;
@@ -29,15 +29,12 @@ public class DealOrNoDeal : Minigame
         // Add listeners to the buttons
         selectButton.onClick.AddListener(OnSelectButtonClicked);
         exitButton.onClick.AddListener(OnEndMinigameButtonClicked);
-
-        // Call the StartGame method to playtest on start
-        //StartGame();
     }
 
     public override void StartGame()
     {
         // Show game panels
-        PanelManager.Instance.ShowPanel("Deal Or No Deal", 0); // Show the first panel
+        panelManager.ShowPanel("Deal Or No Deal", 0); // Show the first panel
 
         // Shuffle the suitcases
         ShuffleSuitcases();
@@ -91,16 +88,17 @@ public class DealOrNoDeal : Minigame
     void OnSelectButtonClicked()
     {
         // Check references before proceeding
-        if (player == null) Debug.LogError("Player reference is null!");
-        if (rewardText == null) Debug.LogError("RewardText reference is null!");
-        if (selectButton == null) Debug.LogError("SelectButton reference is null!");
-        if (initialTextObject == null) Debug.LogError("InitialTextObject reference is null!");
+        if (player == null)
+        {
+            Debug.LogError("Player reference is null!");
+            return;
+        }
 
         // Adjust the player's points based on the selected reward
         player.AdjustPoints(selectedReward);
 
         // Display the reward text
-        rewardText.text = "You got: " + selectedReward + " points! Total Points: " + player.totalPoints;
+        rewardText.text = $"You got: {selectedReward} points! Total Points: {player.totalPoints}";
         Debug.Log("Selected Reward: " + selectedReward);
 
         // Hide the initial text
@@ -123,9 +121,9 @@ public class DealOrNoDeal : Minigame
         }
 
         // Notify the manager that the minigame is complete
-        MinigameManager.Instance.MinigameCompleted(1);
+        MinigameManager.Instance.MinigameCompleted(selectedReward);
 
         // Hide game panels after selection
-        PanelManager.Instance.HideAllPanels();
+        panelManager.HideAllPanels();
     }
 }

@@ -14,7 +14,6 @@ public class CeoGambit : Minigame
     public Button doneButton;
     public Button selectButton;
     public Button exitButton; // Reference to the Exit button
-    public Player player;
     public PanelManager panelManager;
 
     private int points;
@@ -30,7 +29,7 @@ public class CeoGambit : Minigame
     {
         // Show the initial panel for CEO Gambit
         panelManager.ShowPanel("Ceo Gambit", 0);
-        Debug.Log("start game method called");
+        Debug.Log("StartGame method called.");
         UpdatePointsDisplay();
         headsButton.onClick.AddListener(() => SelectHeads(true));
         tailsButton.onClick.AddListener(() => SelectHeads(false));
@@ -44,8 +43,6 @@ public class CeoGambit : Minigame
 
         // Initially, make the exit button inactive
         exitButton.gameObject.SetActive(false);
-
-      
     }
 
     void ValidateBet(string input)
@@ -69,10 +66,10 @@ public class CeoGambit : Minigame
 
     public void PlaceBet()
     {
-        Debug.Log("PlaceBet method called");
+        Debug.Log("PlaceBet method called.");
         if (int.TryParse(pointsInput.text, out points) && points > 0 && points <= player.totalPoints)
         {
-            Debug.Log("Placing Bet with points: " + points);
+            Debug.Log("Placing bet with points: " + points);
             panelManager.ShowPanel("Ceo Gambit", 1); // Show the selection panel for CeoGambit
         }
         else
@@ -172,7 +169,7 @@ public class CeoGambit : Minigame
 
     public void ExitMinigame()
     {
-        Debug.Log("Exiting minigame");
+        Debug.Log("Exiting minigame.");
 
         // Notify the manager that the minigame is complete
         MinigameManager.Instance.MinigameCompleted(0);
@@ -186,3 +183,4 @@ public class CeoGambit : Minigame
         Debug.Log("Updating points: " + player.totalPoints);
     }
 }
+

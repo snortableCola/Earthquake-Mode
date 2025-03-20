@@ -4,8 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(Space))]
 public class BonusSpace : SpaceBehavior
 {
-	public override bool EndsTurn { get; } = true;
-
 	private Space _space;
 
 	public void Awake()

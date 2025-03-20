@@ -4,8 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(Space))]
 public class ResourceSpace : SpaceBehavior
 {
-	public override bool EndsTurn { get; } = true;
-
 	private Space _space;
 
 	public void Awake()
@@ -17,6 +15,8 @@ public class ResourceSpace : SpaceBehavior
 	{
 		Biome biome = _space.Biome;
 		Debug.Log($"{player.name} landed on a {biome} resource space.");
+
+		// This is when a random singleplayer minigame should happen.
 
 		DisasterManager.Instance.IncrementBiomeDisaster(biome, player);
 

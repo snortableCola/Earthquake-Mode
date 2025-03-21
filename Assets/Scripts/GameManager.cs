@@ -1,6 +1,8 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +10,8 @@ public class GameManager : MonoBehaviour
 	public Player[] Players => _players;
 	public Space[] Spaces { get; private set; }
 
+	[SerializeField] private Button _diceRollButton;
+	[SerializeField] private TMP_Text _distanceText;   
 	[SerializeField] private Player[] _players;
 
 
@@ -18,6 +22,7 @@ public class GameManager : MonoBehaviour
 	{
 		Instance = this;
 		Spaces = FindObjectsByType<Space>(FindObjectsSortMode.None);
+		_diceRollButton.onClick.AddListener(DoPlayerTurn);
 	}
 
 	/// <summary>
@@ -31,7 +36,7 @@ public class GameManager : MonoBehaviour
 	public UnityEvent RoundPassed = new();
 
 	[ContextMenu("Move Next Player")]
-	private void DoPlayerTurn() => StartCoroutine(PlayerTurnCoroutine());
+	public void DoPlayerTurn() => StartCoroutine(PlayerTurnCoroutine());
 
 	/// <summary>
 	/// Coroutine representing the next player taking their turn.
@@ -39,6 +44,8 @@ public class GameManager : MonoBehaviour
 	/// <returns>Coroutine for handling the next player's turn.</returns>
 	private IEnumerator PlayerTurnCoroutine()
 	{
+		_diceRollButton.gameObject.SetActive(false);
+
 		Player player = _players[_currentPlayerIndex];
 
 		if (player.FrozenTag.State)
@@ -52,8 +59,11 @@ public class GameManager : MonoBehaviour
 
 		int distance = Random.Range(1, 11);
 		Debug.Log($"{player.name} moves for {distance} spaces.");
-
-		yield return player.Movement.MovementPhaseCoroutine(distance);
+		_distanceText.gameObject.SetActive(true);
+		_distanceText.text = $"Move {distance} spaces!";
+		
+		yield return player.Movement.MovementPhaseCoroutine(distance, _distanceText);
+		_distanceText.gameObject.SetActive(false);
 
 		Space endingSpace = player.GetComponentInParent<Space>();
 		if (endingSpace.BurningTag.State)
@@ -82,5 +92,7 @@ public class GameManager : MonoBehaviour
 			_roundNumber++;
 			RoundPassed.Invoke();
 		}
+
+		_diceRollButton.gameObject.SetActive(true);
 	}
 }

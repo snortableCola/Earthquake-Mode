@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -41,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
 	/// </summary>
 	/// <param name="distance">The distance the player must move on their turn.</param>
 	/// <returns>An IEnumerator Coroutine encompassing the player's movement phase.</returns>
-	public IEnumerator MovementPhaseCoroutine(int distance)
+	public IEnumerator MovementPhaseCoroutine(int distance, TMP_Text distanceText)
 	{
 		ResetMovementPath();
 
@@ -101,6 +102,7 @@ public class PlayerMovement : MonoBehaviour
 			yield return MoveToSpaceCoroutine(targetSpace);
 			_currentSpace = targetSpace;
 			Debug.Log($"Remaining distance {distance}");
+			distanceText.text = $"{distance} spaces left.";
 		}
 	}
 

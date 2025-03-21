@@ -7,7 +7,7 @@ public abstract class Minigame : MonoBehaviour
     public virtual void SetPlayer(Player player)
     {
         this.player = player;
-        Debug.Log($"Minigame received player: {player.name}");
+        Debug.Log($"Minigame {name} {GetInstanceID()} received player: {player.name}");
     }
 
     public virtual void CompleteMinigame(int reward)

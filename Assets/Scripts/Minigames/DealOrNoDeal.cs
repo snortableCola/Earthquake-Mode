@@ -33,8 +33,18 @@ public class DealOrNoDeal : Minigame
 
     public override void StartGame()
     {
-        // Show game panels
-        panelManager.ShowPanel("Deal Or No Deal", 0); // Show the first panel
+		for (int i = 0; i < suitcases.Length; i++)
+		{
+			int index = i; // Prevent closure issue in listener
+			suitcases[index].onClick.AddListener(() => OnSuitcaseClicked(suitcases[index], index));
+		}
+
+		// Add listeners to the buttons
+		selectButton.onClick.AddListener(OnSelectButtonClicked);
+		exitButton.onClick.AddListener(OnEndMinigameButtonClicked);
+
+		// Show game panels
+		panelManager.ShowPanel("Deal Or No Deal", 0); // Show the first panel
 
         // Shuffle the suitcases
         ShuffleSuitcases();
@@ -97,6 +107,8 @@ public class DealOrNoDeal : Minigame
 
     void OnSelectButtonClicked()
     {
+        Debug.Log($"{name}, {GetInstanceID()}");
+
         // Check references before proceeding
         if (player == null)
         {

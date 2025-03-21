@@ -26,8 +26,12 @@ public class CorporateRoulette : Minigame
 
     public override void StartGame()
     {
-        // Show the initial panel for Corporate Roulette
-        panelManager.ShowPanel("Corporate Roulette", 0);
+		SpinButton.onClick.AddListener(SpinChamber);
+		FireButton.onClick.AddListener(FireChamber);
+		ExitButton.onClick.AddListener(OnEndMinigameButtonClicked);
+
+		// Show the initial panel for Corporate Roulette
+		panelManager.ShowPanel("Corporate Roulette", 0);
         ExitButton.gameObject.SetActive(false);
         FireButton.gameObject.SetActive(false);
         Debug.Log($"Starting Corporate Roulette for player: {player.name} with {player.totalPoints} points.");
@@ -53,53 +57,44 @@ public class CorporateRoulette : Minigame
 
     void FireChamber()
     {
-        if (currentChamber >= 0)
-        {
-            // Play firing sound if available
-            if (FiringSound != null)
-            {
-                audioSource.PlayOneShot(FiringSound);
-            }
+        Debug.Log($"{name}, {GetInstanceID()}");
 
-            int reward = rewards[currentChamber]; // Get the reward/penalty for the current chamber
-            string message;
+		if (currentChamber < 0)
+		{
+			GeneralText.text = "Please spin the chamber first!";
+            return;
+		}
 
-            // Customize messages based on the reward value
-            if (reward == 0)
-            {
-                message = "The chamber was empty. You're safe.";
-            }
-            else if (reward > 0)
-            {
-                message = $"You gained {reward} points!";
-            }
-            else
-            {
-                message = $"You lost {-reward} points.";
-            }
+		// Play firing sound if available
+		if (FiringSound != null)
+		{
+			audioSource.PlayOneShot(FiringSound);
+		}
 
-            // Update player's points
-            if (player != null)
-            {
-                player.AdjustPoints(reward);
-                Debug.Log($"Player {player.name} now has {player.totalPoints} points after the result.");
-            }
-            else
-            {
-                Debug.LogError("Player reference is null! Cannot update points.");
-            }
+		int reward = rewards[currentChamber]; // Get the reward/penalty for the current chamber
+		string message = reward switch
+		{
+			0 => "The chamber was empty. You're safe.",
+			> 0 => $"You gained {reward} points!",
+			_ => $"You lost {-reward} points.",
+		};
 
-            // Display the message to the user
-            GeneralText.text = message;
+		// Update player's points
+		if (player == null)
+		{
+			Debug.LogError("Player reference is null! Cannot update points.");
+            return;
+		}
 
-            FireButton.gameObject.SetActive(false);
-            ExitButton.gameObject.SetActive(true);
-        }
-        else
-        {
-            GeneralText.text = "Please spin the chamber first!";
-        }
-    }
+		player.AdjustPoints(reward);
+		Debug.Log($"Player {player.name} now has {player.totalPoints} points after the result.");
+
+		// Display the message to the user
+		GeneralText.text = message;
+
+		FireButton.gameObject.SetActive(false);
+		ExitButton.gameObject.SetActive(true);
+	}
 
     void OnEndMinigameButtonClicked()
     {

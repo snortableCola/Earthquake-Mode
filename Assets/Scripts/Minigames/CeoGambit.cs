@@ -43,9 +43,11 @@ public class CeoGambit : Minigame
 
         // Initially, make the exit button inactive
         exitButton.gameObject.SetActive(false);
-    }
 
-    void ValidateBet(string input)
+		Debug.Log(player.name);
+	}
+
+	void ValidateBet(string input)
     {
         if (int.TryParse(input, out points))
         {
@@ -66,7 +68,8 @@ public class CeoGambit : Minigame
 
     public void PlaceBet()
     {
-        Debug.Log("PlaceBet method called.");
+        Debug.Log($"{name}, {GetInstanceID()}");
+		Debug.Log("PlaceBet method called.");
         if (int.TryParse(pointsInput.text, out points) && points > 0 && points <= player.totalPoints)
         {
             Debug.Log("Placing bet with points: " + points);
@@ -183,4 +186,3 @@ public class CeoGambit : Minigame
         Debug.Log("Updating points: " + player.totalPoints);
     }
 }
-

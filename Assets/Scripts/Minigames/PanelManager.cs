@@ -63,32 +63,31 @@ public class PanelManager : MonoBehaviour
         HideAllPanels();
         currentMinigameName = minigameName; // Save the current minigame name
         Debug.Log("Attempting to show instructions for: " + minigameName);
-        if (minigameInstructions.ContainsKey(minigameName))
-        {
-            Debug.Log("Setting instruction text and game name for: " + minigameName);
-            instructionText.text = minigameInstructions[minigameName];
-            gameName.text = minigameName; // Set the minigame name in the TMP_Text component
-            instructionPanel.SetActive(true);
-        }
-        else
-        {
-            Debug.LogWarning("Minigame instructions not found for: " + minigameName);
-        }
-    }
+
+		if (!minigameInstructions.ContainsKey(minigameName))
+		{
+			Debug.LogWarning("Minigame instructions not found for: " + minigameName);
+            return;
+		}
+
+		Debug.Log("Setting instruction text and game name for: " + minigameName);
+		instructionText.text = minigameInstructions[minigameName];
+		gameName.text = minigameName; // Set the minigame name in the TMP_Text component
+		instructionPanel.SetActive(true);
+	}
 
     public void OnStartMinigameButtonClicked()
     {
         instructionPanel.SetActive(false); // Hide the instruction panel
-        if (currentMinigameName != null)
-        {
-            Debug.Log("Starting minigame: " + currentMinigameName);
-            MinigameManager.Instance.StartMinigame(currentMinigameName); // Start the minigame
-        }
-        else
-        {
-            Debug.LogWarning("No minigame name set to start.");
-        }
-    }
+		if (currentMinigameName == null)
+		{
+			Debug.LogWarning("No minigame name set to start.");
+            return;
+		}
+
+		Debug.Log("Starting minigame: " + currentMinigameName);
+		MinigameManager.Instance.StartMinigame(currentMinigameName); // Start the minigame
+	}
 
     public void ShowPanel(string minigameName, int panelIndex)
     {

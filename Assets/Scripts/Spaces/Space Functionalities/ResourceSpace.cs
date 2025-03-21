@@ -17,16 +17,23 @@ public class ResourceSpace : SpaceBehavior
 		Debug.Log($"{player.name} landed on a {biome} resource space.");
 
         // This is when a random singleplayer minigame should happen.
+        if (player == null)
+        {
+            Debug.LogError("Player is null in RespondToPlayer!");
+            yield break;
+        }
+
+        Debug.Log($"{player.name} landed on a resource space.");
+
         if (MinigameManager.Instance != null)
         {
             MinigameManager.Instance.StartMinigameForPlayer(player);
         }
         else
         {
-            Debug.LogError("MinigameManager instance not found in the scene.");
+            Debug.LogError("MinigameManager instance not found.");
         }
-        DisasterManager.Instance.IncrementBiomeDisaster(biome, player);
 
-		yield break;
-	}
+        yield break;
+    }
 }

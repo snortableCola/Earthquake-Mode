@@ -14,6 +14,33 @@ public class MinigameManager : MonoBehaviour
     private Player currentPlayer; // Track the current player playing the minigame
     public Image hudMessage; // Reference to the HUD message image
     public float hudMessageDuration = 3f; // Duration for HUD message to display
+    public Player fakeplayer; 
+
+    public bool testMode = false;
+
+    protected Player player;
+
+    public virtual void SetPlayer(Player player)
+    {
+        if (testMode && player == null)
+        {
+            Debug.Log("Test Mode: Creating a temporary player instance.");
+            this.player = fakeplayer;
+        }
+        else
+        {
+            this.player = player; // Assign the real player
+        }
+
+        if (this.player != null)
+        {
+            Debug.Log($"Player {this.player.name} assigned with {this.player.totalPoints} points.");
+        }
+        else
+        {
+            Debug.Log("No player assigned.");
+        }
+    }
 
     void Awake()
     {
@@ -25,6 +52,16 @@ public class MinigameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+    void Start()
+    {
+        // Automatically load a random minigame if testMode is enabled
+        if (testMode)
+        {
+            SetPlayer(fakeplayer);
+            Debug.Log("Test mode enabled: Loading a random minigame.");
+            LoadRandomMinigame();
         }
     }
 
@@ -44,29 +81,86 @@ public class MinigameManager : MonoBehaviour
         {
             hudMessage.gameObject.SetActive(false);
         }
+        if (panelManager != null)
+        {
+            panelManager.ShowInstructionPanel(minigameName);
+        }
+        else
+        {
+            Debug.LogWarning("PanelManager is not assigned. Skipping instruction panel display.");
+        }
 
         // Show the instruction panel using the PanelManager
         panelManager.ShowInstructionPanel(minigameName);
     }
-  //  public void LoadRandomMinigame()
-  //  {
-  //      if (currentMinigame != null)
-  //      {
-  //          Destroy(currentMinigame);
-  //          panelManager.HideAllPanels();
-  //      }
+   public void LoadRandomMinigame()
+    {
+        // Ensure the minigame array is valid
+        if (singlePlayerMinigames == null || singlePlayerMinigames.Length == 0)
+        {
+            Debug.LogError("No singleplayer minigames are defined or the array is empty.");
+            return;
+        }
 
-		//GameObject[] minigames = isMultiplayer ? multiplayerMinigames : singlePlayerMinigames;
+        // Clean up the current minigame instance
+        if (currentMinigame != null)
+        {
+            Destroy(currentMinigame.gameObject);
+            currentMinigame = null;
+        }
 
-		//int randomIndex = Random.Range(0, minigames.Length);
-		//Minigame selectedMinigame = Instantiate(minigames[randomIndex]).GetComponent<Minigame>();
-		//string minigameName = selectedMinigame.name;
+        // Randomly select and instantiate a minigame
+        int randomIndex = Random.Range(0, singlePlayerMinigames.Length);
+        currentMinigame = Instantiate(singlePlayerMinigames[randomIndex]).GetComponent<Minigame>();
 
-		//currentMinigame = selectedMinigame;
-  //      Debug.Log("Loaded minigame: " + minigameName);
-  //      panelManager.ShowInstructionPanel(minigameName); // Show instruction panel based on minigame name
-  //  }
+        if (currentMinigame == null)
+        {
+            Debug.LogError("Failed to instantiate the minigame.");
+            return;
+        }
 
+        // Start the process of showing HUD message, instructions, and the minigame
+        string minigameName = singlePlayerMinigames[randomIndex].name;
+        Debug.Log($"Loaded Minigame: {minigameName}");
+
+        StartCoroutine(ShowHudThenInstructionsAndStart(minigameName));
+    }
+    private IEnumerator ShowHudThenInstructionsAndStart(string minigameName)
+    {
+        // Step 1: Display the HUD message
+        if (hudMessage != null)
+        {
+            hudMessage.gameObject.SetActive(true);
+            Debug.Log($"Displaying HUD message for: {minigameName}");
+        }
+
+        // Wait for HUD message duration
+        yield return new WaitForSeconds(hudMessageDuration);
+
+        // Hide HUD message
+        if (hudMessage != null)
+        {
+            hudMessage.gameObject.SetActive(false);
+        }
+
+        // Step 2: Show the instruction panel
+        if (panelManager != null)
+        {
+            Debug.Log($"Showing instructions panel for: {minigameName}");
+            panelManager.ShowInstructionPanel(minigameName);
+        }
+        else
+        {
+            Debug.LogWarning("PanelManager not assigned. Skipping instructions.");
+        }
+
+        // Wait briefly before starting the minigame (optional)
+        yield return new WaitForSeconds(1f);
+
+        // Step 3: Start the minigame
+        Debug.Log($"Starting minigame: {minigameName}");
+        currentMinigame.StartGame();
+    }
     public void StartMinigame(string minigameName)
     {
 		if (currentMinigame == null)
@@ -81,32 +175,55 @@ public class MinigameManager : MonoBehaviour
 
     public void StartMinigameForPlayer(Player player)
     {
-		if (singlePlayerMinigames.Length == 0 || isMultiplayer)
-		{
-			Debug.LogError("Cannot start singleplayer minigame in multiplayer mode or no singleplayer minigames defined.");
+        if (testMode)
+        {
+            Debug.LogError("StartMinigameForPlayer should not be called in test mode.");
             return;
-		}
+        }
+        if (player == null)
+        {
+            Debug.LogError("Player passed to StartMinigameForPlayer is null! Cannot proceed.");
+            return;
+        }
 
-		if (currentMinigame != null)
-		{
-			Destroy(currentMinigame); // Destroy previous minigame
-			panelManager.HideAllPanels(); // Ensure a clean slate
-		}
+        if (singlePlayerMinigames == null || singlePlayerMinigames.Length == 0 || isMultiplayer)
+        {
+            Debug.LogError("Cannot start singleplayer minigame in multiplayer mode or no singleplayer minigames defined.");
+            return;
+        }
 
-		currentPlayer = player; // Store the current player
+        // Clean up previous minigame
+        if (currentMinigame != null)
+        {
+            currentMinigame.Cleanup();
+            Destroy(currentMinigame.gameObject);
+            currentMinigame = null;
+        }
+        else
+        {
+            Debug.LogWarning("No current minigame to clean up.");
+        }
 
-		// Load a random singleplayer minigame
-		int randomIndex = Random.Range(0, singlePlayerMinigames.Length);
-		currentMinigame = Instantiate(singlePlayerMinigames[randomIndex]).GetComponent<Minigame>();
-		string minigameName = singlePlayerMinigames[randomIndex].name;
+        // Instantiate a new singleplayer minigame
+        int randomIndex = Random.Range(0, singlePlayerMinigames.Length);
+        currentMinigame = Instantiate(singlePlayerMinigames[randomIndex]).GetComponent<Minigame>();
 
-		Debug.Log($"{player.name} is starting the minigame: {minigameName}");
+        if (currentMinigame == null)
+        {
+            Debug.LogError("Failed to instantiate the minigame. Aborting start.");
+            return;
+        }
 
-		// Pass the player object to the minigame
+        // Assign the player to the minigame
+        currentMinigame.SetPlayer(player);
 
-		currentMinigame.SetPlayer(player);
-		StartCoroutine(ShowHudMessageThenInstructions(minigameName));
-	}
+        // Confirm the player is assigned
+        Debug.Log($"Player {player.name} assigned to Minigame: {currentMinigame.name}");
+
+        // Show HUD message and instructions
+        string minigameName = singlePlayerMinigames[randomIndex].name;
+        StartCoroutine(ShowHudMessageThenInstructions(minigameName));
+    }
 
     public Player GetCurrentPlayer()
     {
@@ -121,10 +238,16 @@ public class MinigameManager : MonoBehaviour
             currentPlayer.AdjustPoints(reward); // Update player's points
             Debug.Log($"{currentPlayer.name} now has {currentPlayer.totalPoints} points.");
         }
+        if (!testMode && currentPlayer != null)
+        {
+            currentPlayer.AdjustPoints(reward); // Update player's points
+            Debug.Log($"{currentPlayer.name} now has {currentPlayer.totalPoints} points.");
+        }
 
         // Clean up for the next minigame
         if (currentMinigame != null)
         {
+            currentMinigame.Cleanup(); 
             Destroy(currentMinigame);
         }
         panelManager.HideAllPanels();

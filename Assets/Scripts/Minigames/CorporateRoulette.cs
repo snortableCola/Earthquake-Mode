@@ -26,7 +26,27 @@ public class CorporateRoulette : Minigame
 
     public override void StartGame()
     {
-		SpinButton.onClick.AddListener(SpinChamber);
+        if (MinigameManager.Instance.testMode)
+        {
+            Debug.Log("Test Mode: Starting Corporate Roulette without a Player.");
+            player = MinigameManager.Instance.fakeplayer;
+
+        }
+        else if (player == null)
+        {
+            Debug.LogError("Player is null in CorporateRoulette! Ensure SetPlayer is called before starting.");
+            return;
+        }
+        else
+        {
+            Debug.Log($"Starting Corporate Roulette for Player: {player.name}.");
+        }
+        if (player == null)
+        {
+            Debug.LogError("Player is null in CorporateRoulette! Ensure SetPlayer is called before starting.");
+            return;
+        }
+        SpinButton.onClick.AddListener(SpinChamber);
 		FireButton.onClick.AddListener(FireChamber);
 		ExitButton.onClick.AddListener(OnEndMinigameButtonClicked);
 
@@ -54,9 +74,24 @@ public class CorporateRoulette : Minigame
         FireButton.gameObject.SetActive(true);
         SpinButton.gameObject.SetActive(false);
     }
+    public override void SetPlayer(Player player)
+    {
+        if (player == null)
+        {
+            Debug.LogError("SetPlayer called with a null Player in CorporateRoulette.");
+            return;
+        }
 
+        base.SetPlayer(player); // Call the base class method
+        Debug.Log($"Player {player.name} assigned to CorporateRoulette.");
+    }
     void FireChamber()
     {
+        if (MinigameManager.Instance.testMode)
+        {
+            Debug.Log("Test Mode: Skipping player point adjustments.");
+            
+        }
         Debug.Log($"{name}, {GetInstanceID()}");
 
 		if (currentChamber < 0)
@@ -95,6 +130,29 @@ public class CorporateRoulette : Minigame
 		FireButton.gameObject.SetActive(false);
 		ExitButton.gameObject.SetActive(true);
 	}
+    public override void Cleanup()
+    {
+        base.Cleanup(); // Call shared cleanup logic from Minigame
+
+        // Remove button listeners specific to CorporateRoulette
+        SpinButton.onClick.RemoveAllListeners();
+        FireButton.onClick.RemoveAllListeners();
+        ExitButton.onClick.RemoveAllListeners();
+
+        // Reset buttons to their default state
+        SpinButton.gameObject.SetActive(true);
+        FireButton.gameObject.SetActive(false);
+        ExitButton.gameObject.SetActive(false);
+
+        // Reset button text
+        TMP_Text spinButtonText = SpinButton.GetComponentInChildren<TMP_Text>();
+        if (spinButtonText != null)
+        {
+            spinButtonText.text = "Spin";
+        }
+
+        Debug.Log("CorporateRoulette cleanup completed.");
+    }
 
     void OnEndMinigameButtonClicked()
     {

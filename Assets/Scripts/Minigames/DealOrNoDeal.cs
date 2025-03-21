@@ -33,7 +33,21 @@ public class DealOrNoDeal : Minigame
 
     public override void StartGame()
     {
-		for (int i = 0; i < suitcases.Length; i++)
+        if (MinigameManager.Instance.testMode)
+        {
+            Debug.Log("Test Mode: Starting Corporate Roulette without a Player.");
+            player = MinigameManager.Instance.fakeplayer; 
+        }
+        else if (player == null)
+        {
+            Debug.LogError("Player is null in CorporateRoulette! Ensure SetPlayer is called before starting.");
+            return;
+        }
+        else
+        {
+            Debug.Log($"Starting Corporate Roulette for Player: {player.name}.");
+        }
+        for (int i = 0; i < suitcases.Length; i++)
 		{
 			int index = i; // Prevent closure issue in listener
 			suitcases[index].onClick.AddListener(() => OnSuitcaseClicked(suitcases[index], index));
@@ -107,6 +121,7 @@ public class DealOrNoDeal : Minigame
 
     void OnSelectButtonClicked()
     {
+       
         Debug.Log($"{name}, {GetInstanceID()}");
 
         // Check references before proceeding
@@ -132,6 +147,22 @@ public class DealOrNoDeal : Minigame
         // Make the select button inactive and the exit button active
         selectButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(true);
+    }
+    public override void Cleanup()
+    {
+        selectButton.onClick.RemoveAllListeners();  
+        exitButton.onClick.RemoveAllListeners();
+
+        rewardText.text = "";
+        selectButton.gameObject.SetActive(false);
+        exitButton.gameObject.SetActive(false); // Ensure exit button is initially inactive
+        selectedSuitcase = null;
+
+        // Show the initial text
+        if (initialTextObject != null)
+        {
+            initialTextObject.SetActive(true);
+        }
     }
 
     void OnEndMinigameButtonClicked()

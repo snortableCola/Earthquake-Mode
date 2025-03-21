@@ -1935,7 +1935,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Welcome to Ceo''s Gambit '
+  m_text: 'Welcome to CEO Gambit '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8687748aaef60ec47bed0eb642fc66a8, type: 2}
   m_sharedMaterial: {fileID: -4813736885384807374, guid: 8687748aaef60ec47bed0eb642fc66a8, type: 2}
@@ -3175,7 +3175,7 @@ GameObject:
   - component: {fileID: 9148161316560148743}
   - component: {fileID: 5756515381761485415}
   m_Layer: 0
-  m_Name: Ceo Gambit
+  m_Name: CEO Gambit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3375,9 +3375,10 @@ MonoBehaviour:
   multiplayerMinigames: []
   isMultiplayer: 0
   panelManager: {fileID: 1476683096724561246}
-  isTesting: 1
   hudMessage: {fileID: 8535102299736263539}
   hudMessageDuration: 3
+  fakeplayer: {fileID: 0}
+  testMode: 0
 --- !u!1 &4485191945585808996
 GameObject:
   m_ObjectHideFlags: 0
@@ -3606,7 +3607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2726045823648599351
 RectTransform:
   m_ObjectHideFlags: 0

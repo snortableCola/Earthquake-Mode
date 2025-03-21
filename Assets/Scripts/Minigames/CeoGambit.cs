@@ -27,6 +27,22 @@ public class CeoGambit : Minigame
 
     public override void StartGame()
     {
+        if (MinigameManager.Instance.testMode)
+        {
+            Debug.Log("Test Mode: Starting Corporate Roulette without a Player.");
+            player = MinigameManager.Instance.fakeplayer;
+            player.totalPoints = MinigameManager.Instance.fakeplayer.totalPoints;
+            
+        }
+        else if (player == null)
+        {
+            Debug.LogError("Player is null in CorporateRoulette! Ensure SetPlayer is called before starting.");
+            return;
+        }
+        else
+        {
+            Debug.Log($"Starting Corporate Roulette for Player: {player.name}.");
+        }
         // Show the initial panel for CEO Gambit
         panelManager.ShowPanel("Ceo Gambit", 0);
         Debug.Log("StartGame method called.");
@@ -70,14 +86,19 @@ public class CeoGambit : Minigame
     {
         Debug.Log($"{name}, {GetInstanceID()}");
 		Debug.Log("PlaceBet method called.");
-        if (int.TryParse(pointsInput.text, out points) && points > 0 && points <= player.totalPoints)
+        if (MinigameManager.Instance.testMode && int.TryParse(pointsInput.text, out points) && points > 0 && points <= MinigameManager.Instance.fakeplayer.totalPoints)
+        {
+           
+            panelManager.ShowPanel("Ceo Gambit", 1);
+        }
+        if (int.TryParse(pointsInput.text, out points) && points > 0 && points <= MinigameManager.Instance.fakeplayer.totalPoints)
         {
             Debug.Log("Placing bet with points: " + points);
             panelManager.ShowPanel("Ceo Gambit", 1); // Show the selection panel for CeoGambit
         }
         else
         {
-            pointsDisplay.text = "Please enter a valid number of points within your available points. Points: " + player.totalPoints;
+            pointsDisplay.text = "Please enter a valid number of points within your available points. Points: " + MinigameManager.Instance.fakeplayer.totalPoints;
         }
     }
 
@@ -102,6 +123,7 @@ public class CeoGambit : Minigame
 
     void FlipCoin()
     {
+       
         Debug.Log("FlipCoin method called.");
         if (points > 0 && points <= player.totalPoints)
         {
@@ -168,6 +190,21 @@ public class CeoGambit : Minigame
             resultText.text = "Please enter a valid number of points within your available points.";
             panelManager.ShowPanel("Ceo Gambit", 1);
         }
+    }
+    public override void Cleanup()
+    {
+        headsButton.onClick.RemoveAllListeners();
+        tailsButton.onClick.RemoveAllListeners();
+        selectButton.onClick.RemoveAllListeners();  
+        flipButton.onClick.RemoveAllListeners();
+        doneButton.onClick.RemoveAllListeners();
+        exitButton.onClick.RemoveAllListeners();
+
+        pointsInput.contentType = TMP_InputField.ContentType.IntegerNumber;
+        pointsInput.onValueChanged.AddListener(ValidateBet);
+
+        // Initially, make the exit button inactive
+        exitButton.gameObject.SetActive(false);
     }
 
     public void ExitMinigame()

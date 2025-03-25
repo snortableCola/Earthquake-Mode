@@ -90,28 +90,7 @@ public class DealOrNoDeal : Minigame
 
     void OnSuitcaseClicked(Button clickedButton, int index)
     {
-        if (selectedSuitcase != null)
-        {
-            // Reset the previously selected suitcase color to its original state
-            selectedSuitcase.image.color = originalColor;
-        }
-
-        // Store the original color of the clicked suitcase
-        if (clickedButton.image != null)
-        {
-            originalColor = clickedButton.image.color;
-        }
-
-        // Highlight the selected suitcase
-        if (clickedButton.image != null)
-        {
-            clickedButton.image.color = highlightColor;
-        }
-        else
-        {
-            Debug.LogWarning("Clicked button does not have an Image component!");
-        }
-
+       
         selectedSuitcase = clickedButton;
         selectedReward = rewards[index];
 

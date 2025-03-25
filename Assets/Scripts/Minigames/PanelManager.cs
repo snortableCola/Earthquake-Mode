@@ -37,7 +37,7 @@ public class PanelManager : MonoBehaviour
 
     private void InitializeMinigameInstructions()
     {
-        minigameInstructions.Add("CEO Gambit", "How confident are you in your coin-flipping skills? Bet on your hard-earned resources, call heads or tails, and flip the coin. Get it right to double your bet—get it wrong, and, well… hope you didn’t bet too much.");
+        minigameInstructions.Add("CEO Gambit", "How confident are you in your coin-flipping skills? Bet on your hard-earned cash, call heads or tails, and flip the coin. Get it right to double your bet—get it wrong, and, well… hope you didn’t bet too much.");
         minigameInstructions.Add("Deal Or No Deal", "Four suitcases lie before you. One will give you +4 points, two are empty, and one will give you -4 points. The suitcases will be shuffled and you must choose wisely...");
         minigameInstructions.Add("Corporate Roulette", "Spin the chamber and take your shot. Some bullets earn you points (+6,+4), others hit you where it hurts (-3, -4 points), and a couple just click harmlessly. Will luck be on your side?");
         // Add more minigame instructions here

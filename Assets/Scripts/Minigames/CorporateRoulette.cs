@@ -15,7 +15,6 @@ public class CorporateRoulette : Minigame
     public AudioClip FiringSound;
     public PanelManager panelManager;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // Add listeners to the buttons
@@ -26,13 +25,7 @@ public class CorporateRoulette : Minigame
 
     public override void StartGame()
     {
-        if (MinigameManager.Instance.testMode)
-        {
-            Debug.Log("Test Mode: Starting Corporate Roulette without a Player.");
-            player = MinigameManager.Instance.fakeplayer;
-
-        }
-        else if (player == null)
+      if (player == null)
         {
             Debug.LogError("Player is null in CorporateRoulette! Ensure SetPlayer is called before starting.");
             return;
@@ -41,17 +34,17 @@ public class CorporateRoulette : Minigame
         {
             Debug.Log($"Starting Corporate Roulette for Player: {player.name}.");
         }
-        if (player == null)
-        {
-            Debug.LogError("Player is null in CorporateRoulette! Ensure SetPlayer is called before starting.");
-            return;
-        }
-        SpinButton.onClick.AddListener(SpinChamber);
-		FireButton.onClick.AddListener(FireChamber);
-		ExitButton.onClick.AddListener(OnEndMinigameButtonClicked);
 
-		// Show the initial panel for Corporate Roulette
-		panelManager.ShowPanel("Corporate Roulette", 0);
+        // Show the initial panel for Corporate Roulette
+        if (panelManager != null)
+        {
+            panelManager.ShowPanel("Corporate Roulette", 0);
+        }
+        else
+        {
+            Debug.LogError("PanelManager is not assigned in CorporateRoulette!");
+        }
+
         ExitButton.gameObject.SetActive(false);
         FireButton.gameObject.SetActive(false);
         Debug.Log($"Starting Corporate Roulette for player: {player.name} with {player.totalPoints} points.");
@@ -59,7 +52,6 @@ public class CorporateRoulette : Minigame
 
     void SpinChamber()
     {
-        // Shuffle the rewards array
         for (int i = rewards.Length - 1; i > 0; i--)
         {
             int randomIndex = Random.Range(0, i + 1);
@@ -68,12 +60,12 @@ public class CorporateRoulette : Minigame
             rewards[randomIndex] = temp;
         }
 
-        // Set the current chamber randomly
         currentChamber = Random.Range(0, rewards.Length);
         GeneralText.text = "The chamber has stopped spinning...";
         FireButton.gameObject.SetActive(true);
         SpinButton.gameObject.SetActive(false);
     }
+
     public override void SetPlayer(Player player)
     {
         if (player == null)
@@ -82,69 +74,60 @@ public class CorporateRoulette : Minigame
             return;
         }
 
-        base.SetPlayer(player); // Call the base class method
+        base.SetPlayer(player);
         Debug.Log($"Player {player.name} assigned to CorporateRoulette.");
     }
+
     void FireChamber()
     {
-        if (MinigameManager.Instance.testMode)
+        
+
+        if (currentChamber < 0)
         {
-            Debug.Log("Test Mode: Skipping player point adjustments.");
-            
+            GeneralText.text = "Please spin the chamber first!";
+            return;
         }
-        Debug.Log($"{name}, {GetInstanceID()}");
 
-		if (currentChamber < 0)
-		{
-			GeneralText.text = "Please spin the chamber first!";
+        if (FiringSound != null)
+        {
+            audioSource.PlayOneShot(FiringSound);
+        }
+
+        int reward = rewards[currentChamber];
+        string message = reward switch
+        {
+            0 => "The chamber was empty. You're safe.",
+            > 0 => $"You gained {reward} points!",
+            _ => $"You lost {-reward} points.",
+        };
+
+        if (player == null)
+        {
+            Debug.LogError("Player reference is null! Cannot update points.");
             return;
-		}
+        }
 
-		// Play firing sound if available
-		if (FiringSound != null)
-		{
-			audioSource.PlayOneShot(FiringSound);
-		}
+        player.AdjustPoints(reward);
+        Debug.Log($"Player {player.name} now has {player.totalPoints} points after the result.");
 
-		int reward = rewards[currentChamber]; // Get the reward/penalty for the current chamber
-		string message = reward switch
-		{
-			0 => "The chamber was empty. You're safe.",
-			> 0 => $"You gained {reward} points!",
-			_ => $"You lost {-reward} points.",
-		};
+        GeneralText.text = message;
 
-		// Update player's points
-		if (player == null)
-		{
-			Debug.LogError("Player reference is null! Cannot update points.");
-            return;
-		}
+        FireButton.gameObject.SetActive(false);
+        ExitButton.gameObject.SetActive(true);
+    }
 
-		player.AdjustPoints(reward);
-		Debug.Log($"Player {player.name} now has {player.totalPoints} points after the result.");
-
-		// Display the message to the user
-		GeneralText.text = message;
-
-		FireButton.gameObject.SetActive(false);
-		ExitButton.gameObject.SetActive(true);
-	}
     public override void Cleanup()
     {
-        base.Cleanup(); // Call shared cleanup logic from Minigame
+        base.Cleanup();
 
-        // Remove button listeners specific to CorporateRoulette
         SpinButton.onClick.RemoveAllListeners();
         FireButton.onClick.RemoveAllListeners();
         ExitButton.onClick.RemoveAllListeners();
 
-        // Reset buttons to their default state
         SpinButton.gameObject.SetActive(true);
         FireButton.gameObject.SetActive(false);
         ExitButton.gameObject.SetActive(false);
 
-        // Reset button text
         TMP_Text spinButtonText = SpinButton.GetComponentInChildren<TMP_Text>();
         if (spinButtonText != null)
         {
@@ -156,10 +139,7 @@ public class CorporateRoulette : Minigame
 
     void OnEndMinigameButtonClicked()
     {
-        // Notify the manager that the minigame is complete
-        MinigameManager.Instance.MinigameCompleted(0); // Passing a 0 reward (adjust as necessary)
-
-        // Hide game panels after completion
+        MinigameManager.Instance.MinigameCompleted(0);
         panelManager.HideAllPanels();
     }
 }

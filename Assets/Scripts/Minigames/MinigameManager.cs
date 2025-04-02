@@ -14,23 +14,14 @@ public class MinigameManager : MonoBehaviour
     private Player currentPlayer; // Track the current player playing the minigame
     public Image hudMessage; // Reference to the HUD message image
     public float hudMessageDuration = 3f; // Duration for HUD message to display
-    public Player fakeplayer; 
-
-    public bool testMode = false;
+    
 
     protected Player player;
 
     public virtual void SetPlayer(Player player)
     {
-        if (testMode && player == null)
-        {
-            Debug.Log("Test Mode: Creating a temporary player instance.");
-            this.player = fakeplayer;
-        }
-        else
-        {
-            this.player = player; // Assign the real player
-        }
+      
+      
 
         if (this.player != null)
         {
@@ -54,16 +45,7 @@ public class MinigameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void Start()
-    {
-        // Automatically load a random minigame if testMode is enabled
-        if (testMode)
-        {
-            SetPlayer(fakeplayer);
-            Debug.Log("Test mode enabled: Loading a random minigame.");
-            LoadRandomMinigame();
-        }
-    }
+   
 
     private IEnumerator ShowHudMessageThenInstructions(string minigameName)
     {
@@ -175,11 +157,7 @@ public class MinigameManager : MonoBehaviour
 
     public void StartMinigameForPlayer(Player player)
     {
-        if (testMode)
-        {
-            Debug.LogError("StartMinigameForPlayer should not be called in test mode.");
-            return;
-        }
+      
         if (player == null)
         {
             Debug.LogError("Player passed to StartMinigameForPlayer is null! Cannot proceed.");
@@ -238,11 +216,7 @@ public class MinigameManager : MonoBehaviour
             currentPlayer.AdjustPoints(reward); // Update player's points
             Debug.Log($"{currentPlayer.name} now has {currentPlayer.totalPoints} points.");
         }
-        if (!testMode && currentPlayer != null)
-        {
-            currentPlayer.AdjustPoints(reward); // Update player's points
-            Debug.Log($"{currentPlayer.name} now has {currentPlayer.totalPoints} points.");
-        }
+       
 
         // Clean up for the next minigame
         if (currentMinigame != null)

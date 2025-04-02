@@ -1351,6 +1351,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 5487438797912261946, guid: 0e6acaf31dca9c9418a6db376f2fc0fc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7747466395915222026, guid: 0e6acaf31dca9c9418a6db376f2fc0fc, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1781,7 +1785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6100246182759764322, guid: 5bc078ae67d3d304fb5357fb9ac981ce, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

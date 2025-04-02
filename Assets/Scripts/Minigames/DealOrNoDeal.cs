@@ -33,12 +33,7 @@ public class DealOrNoDeal : Minigame
 
     public override void StartGame()
     {
-        if (MinigameManager.Instance.testMode)
-        {
-            Debug.Log("Test Mode: Starting Corporate Roulette without a Player.");
-            player = MinigameManager.Instance.fakeplayer; 
-        }
-        else if (player == null)
+        if (player == null)
         {
             Debug.LogError("Player is null in CorporateRoulette! Ensure SetPlayer is called before starting.");
             return;

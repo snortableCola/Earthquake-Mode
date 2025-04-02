@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Minigame : MonoBehaviour
 {
-    protected Player player; 
+    protected Player player;
     public abstract void StartGame();
     public virtual void SetPlayer(Player player)
     {
@@ -11,16 +11,15 @@ public abstract class Minigame : MonoBehaviour
             Debug.LogError($"Null Player passed to {name} {GetInstanceID()}!");
             return;
         }
-        
+
         this.player = player; // Assign the player reference
         Debug.Log($"Minigame {name} {GetInstanceID()} received player: {player.name}");
-
     }
+
     public virtual void Cleanup()
     {
         // Example: Reset any UI event listeners tied to this instance
-        Debug.Log($"Cleaning up minigame: {name}");
-
+        Debug.Log($"Cleaning up minigame: {name} {GetInstanceID()}");
 
         // Hide any related UI
         if (MinigameManager.Instance.panelManager != null)

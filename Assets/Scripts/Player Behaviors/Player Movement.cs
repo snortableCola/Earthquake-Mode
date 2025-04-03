@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
 	private InputAction _motionInput, _interactionInput;
 	private Player _player;
+	private int _distance;
 
 	private Space _currentSpace;
 	private readonly List<Space> _movementPath = new();
@@ -44,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
 	/// <returns>An IEnumerator Coroutine encompassing the player's movement phase.</returns>
 	public IEnumerator MovementPhaseCoroutine(int distance, TMP_Text distanceText)
 	{
+		_distance = distance;
+
 		ResetMovementPath();
 
 		// Loops continuously over many frames until the player chooses to end their movement
@@ -53,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
 			if (_interactionInput.triggered)
 			{
 				// If the player has travelled the full distance, they may end their movement
-				if (distance == 0) yield break;
+				if (_distance == 0) yield break;
 
 				// The player may interact with non-turn-ending (shop & transport) spaces at any point
 				// This cannot be done at the start of the player's path (meaning, just after they've used the space)
@@ -80,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 			// - the player's input isn't pointing directly enough towards a space
 			// - the player is trying to move forward, but they've already expended their movement distance
 			// - the player is trying to move backward to a space that wasn't their previous space
-			if (inputConfidence < _inputConfidenceThreshold || (movingForward ? distance == 0 : (_movementPath.Count < 2 || targetSpace != _movementPath[^2])))
+			if (inputConfidence < _inputConfidenceThreshold || (movingForward ? _distance == 0 : (_movementPath.Count < 2 || targetSpace != _movementPath[^2])))
 			{
 				yield return null;
 				continue;
@@ -89,20 +92,20 @@ public class PlayerMovement : MonoBehaviour
 			// Modifies movement path & remaining distance (non-turn-ending spaces don't expend distance)
 			if (movingForward)
 			{
-				if (targetSpace.Behavior.EndsTurn) distance--;
+				if (targetSpace.Behavior.EndsTurn) _distance--;
 				_movementPath.Add(targetSpace);
 			}
 			else
 			{
-				if (_currentSpace.Behavior.EndsTurn) distance++;
+				if (_currentSpace.Behavior.EndsTurn) _distance++;
 				_movementPath.RemoveAt(_movementPath.Count - 1);
 			}
 
 			// Moves the player to the decided space
 			yield return MoveToSpaceCoroutine(targetSpace);
 			_currentSpace = targetSpace;
-			Debug.Log($"Remaining distance {distance}");
-			distanceText.text = $"{distance} spaces left.";
+			Debug.Log($"Remaining distance {_distance}");
+			distanceText.text = $"{_distance} spaces left.";
 		}
 	}
 

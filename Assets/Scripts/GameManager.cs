@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance { get; private set; }
 	public Player[] Players => _players;
+	public Player CurrentPlayer => _players[_currentPlayerIndex];
 	public Space[] Spaces { get; private set; }
 
 	[SerializeField] private Button _diceRollButton;

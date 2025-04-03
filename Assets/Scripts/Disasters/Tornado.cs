@@ -27,5 +27,5 @@ public class Tornado : Disaster
 		};
 	}
 
-	private static bool IsValidTornadoVictim(Player player) => player.CurrentBiome == Biome.Plains;
+	private static bool IsValidTornadoVictim(Player player) => player.CurrentBiome == Biome.Plains && player.UsedItem is not HeliEvac;
 }

@@ -9,6 +9,8 @@ public class Tsunami : Disaster
 	{
 		foreach (Player player in GameManager.Instance.Players)
 		{
+			if (player.UsedItem is HeliEvac) continue;
+
 			switch (player.CurrentBiome)
 			{
 				case Biome.Shore:

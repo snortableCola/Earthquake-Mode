@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
 			yield break;
 		}
 
+		player.UsedItem = null;
+
 		int distance = Random.Range(1, 11);
 		Debug.Log($"{player.name} moves for {distance} spaces.");
 		_distanceText.gameObject.SetActive(true);
@@ -67,7 +69,7 @@ public class GameManager : MonoBehaviour
 		_distanceText.gameObject.SetActive(false);
 
 		Space endingSpace = player.GetComponentInParent<Space>();
-		if (endingSpace.BurningTag.State)
+		if (endingSpace.BurningTag.State && player.UsedItem is not HeliEvac)
 		{
 			Debug.Log($"{player} landed on a space which is on fire.");
 		}

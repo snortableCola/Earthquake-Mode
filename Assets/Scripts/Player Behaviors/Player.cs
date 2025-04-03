@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
 {
 	public VisibleTag FrozenTag { get; private set; }
 	public PlayerMovement Movement { get; private set; }
+	public IItem UsedItem { get; set; } = null;
 
 	public void Awake()
 	{

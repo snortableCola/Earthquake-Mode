@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class SpaceSwap : MonoBehaviour, IItem
 {
-	public IEnumerator GetUsedBy(Player player)
+	public IEnumerator BeUsedBy(Player player)
 	{
+		player.UsedItem = this;
+
 		Player[] players = GameManager.Instance.Players;
 
 		// Randomly selected player, can be given UI for player choice

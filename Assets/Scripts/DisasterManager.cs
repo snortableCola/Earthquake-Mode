@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,7 +32,7 @@ public class DisasterManager : MonoBehaviour
 	/// </summary>
 	/// <param name="biome">The biome whose corresponding disaster should be incremented.</param>
 	/// <param name="player">The player responsible for the disaster level's incrementation.</param>
-	public void IncrementBiomeDisaster(Biome biome, Player player)
+	public IEnumerator IncrementBiomeDisaster(Biome biome, Player player)
 	{
 		Disaster disaster;
 
@@ -46,28 +47,28 @@ public class DisasterManager : MonoBehaviour
 			case Biome.Mountains:
 				disaster = _wildfire;
 				break;
-			default: return;
+			default: yield break;
 		}
 
-		IncrementDisaster(disaster, player);
+		yield return IncrementDisaster(disaster, player);
 	}
 
-	public void IncrementEarthquake() => IncrementDisaster(_earthquake, null);
+	public IEnumerator IncrementEarthquake() => IncrementDisaster(_earthquake, null);
 
 	/// <summary>
 	/// Increments the disaster level for a specified disaster, triggering it if it reaches the disaster threshold.
 	/// </summary>
 	/// <param name="disaster">The disaster to increment the disaster level of, and to potentially trigger.</param>
 	/// <param name="incitingPlayer"></param>
-	private void IncrementDisaster(Disaster disaster, Player incitingPlayer)
+	private IEnumerator IncrementDisaster(Disaster disaster, Player incitingPlayer)
 	{
-		if (!disaster.IsPossible) return;
+		if (!disaster.IsPossible) yield break;
 
 		int disasterLevel = ++_disasterTracker[disaster];
 		Debug.Log($"{disaster.name} at level {disasterLevel}");
 
-		if (disasterLevel != _disasterThreshold) return;
-		StartCoroutine(disaster.StartDisaster(incitingPlayer));
+		if (disasterLevel != _disasterThreshold) yield break;
+		yield return disaster.StartDisaster(incitingPlayer);
 		_disasterTracker[disaster] = 0; // Reset the disaster level once starting the disaster
 	}
 

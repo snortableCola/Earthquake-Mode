@@ -67,6 +67,6 @@ public class BonusSpace : SpaceBehavior
 			Debug.LogError("MinigameManager instance not found.");
 		}
 
-		yield break;
+		yield return DisasterManager.Instance.IncrementBiomeDisaster(biome, player);
 	}
 }

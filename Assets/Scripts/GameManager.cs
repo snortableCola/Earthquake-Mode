@@ -61,6 +61,17 @@ public class GameManager : MonoBehaviour
 		player.UsedItem = null;
 
 		int distance = Random.Range(1, 11);
+		switch (player.UsedItem)
+		{
+			case TravelPlan:
+				int newDistance = Random.Range(1, 11);
+				if (newDistance > distance) distance = newDistance;
+				break;
+			case PrivateJet:
+				distance += Random.Range(1, 11);
+				break;
+		}
+
 		Debug.Log($"{player.name} moves for {distance} spaces.");
 		_distanceText.gameObject.SetActive(true);
 		_distanceText.text = $"Move {distance} spaces!";

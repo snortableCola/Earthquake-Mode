@@ -58,6 +58,9 @@ public class PlayerMovement : MonoBehaviour
 	{
 		_distance = distance;
 
+		distanceText.gameObject.SetActive(true);
+		distanceText.text = _distance.ToString();
+
 		ResetMovementPath();
 
 		// Loops continuously over many frames until the player chooses to end their movement
@@ -115,14 +118,15 @@ public class PlayerMovement : MonoBehaviour
 			// Moves the player to the decided space
 			yield return MoveToSpaceCoroutine(targetSpace);
 			_currentSpace = targetSpace;
-			Debug.Log($"Remaining distance {_distance}");
-			distanceText.text = $"{_distance} spaces left.";
+			distanceText.text = _distance.ToString();
 		}
 
 		foreach (Space space in _possibleDestinations)
 		{
 			space.HighlightTag.State = false;
 		}
+
+		distanceText.gameObject.SetActive(false);
 	}
 
 	/// <summary>

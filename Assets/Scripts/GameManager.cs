@@ -72,12 +72,11 @@ public class GameManager : MonoBehaviour
 				break;
 		}
 
-		Debug.Log($"{player.name} moves for {distance} spaces.");
-		_distanceText.gameObject.SetActive(true);
-		_distanceText.text = $"Move {distance} spaces!";
+		CameraManager.Instance.MoveToPlayer(player);
 		
 		yield return player.Movement.MovementPhaseCoroutine(distance, _distanceText);
-		_distanceText.gameObject.SetActive(false);
+
+		CameraManager.Instance.ReturnOverhead();
 
 		Space endingSpace = player.GetComponentInParent<Space>();
 		if (endingSpace.BurningTag.State && player.UsedItem is not HeliEvac)

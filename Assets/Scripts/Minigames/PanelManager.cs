@@ -9,7 +9,7 @@ public class PanelManager : MonoBehaviour
     private Dictionary<string, string> minigameInstructions = new Dictionary<string, string>();
     private Dictionary<string, GameObject[]> minigamePanels = new Dictionary<string, GameObject[]>();
     private string currentMinigameName;
-
+    public GameObject MovementUI; 
     public GameObject instructionPanel;
     public TMP_Text instructionText;
     public TMP_Text gameName; // Reference to the TMP_Text component for the minigame's name
@@ -60,6 +60,7 @@ public class PanelManager : MonoBehaviour
 
     public void ShowInstructionPanel(string minigameName)
     {
+        MovementUI.SetActive(false);
         HideAllPanels();
         currentMinigameName = minigameName; // Save the current minigame name
         Debug.Log("Attempting to show instructions for: " + minigameName);
@@ -108,7 +109,11 @@ public class PanelManager : MonoBehaviour
             }
         }
     }
-
+    public void ShowMovementUI()
+    {
+        MovementUI.SetActive(true);
+    
+    }
     public void EndMinigame(string minigameName)
     {
         HideAllPanels();

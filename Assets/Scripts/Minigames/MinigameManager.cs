@@ -206,22 +206,14 @@ public class MinigameManager : MonoBehaviour
         return currentPlayer;
     }
 
-    public void MinigameCompleted(int reward)
+    public void EndCurrentMinigame()
     {
-        Debug.Log("Minigame Completed. Reward: " + reward);
-        if (currentPlayer != null)
-        {
-            currentPlayer.AdjustPoints(reward); // Update player's points
-            Debug.Log($"{currentPlayer.name} now has {currentPlayer.totalPoints} points.");
-        }
-       
-
-        // Clean up for the next minigame
         if (currentMinigame != null)
         {
-            currentMinigame.Cleanup(); 
-            Destroy(currentMinigame);
+            panelManager.HideAllPanels();
+            panelManager.ShowMovementUI(); 
+            Destroy(currentMinigame.gameObject);
+            currentMinigame = null;
         }
-        panelManager.HideAllPanels();
     }
 }

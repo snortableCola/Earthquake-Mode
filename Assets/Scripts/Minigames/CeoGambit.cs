@@ -41,7 +41,7 @@ public class CeoGambit : Minigame
         // Show the initial panel for CEO Gambit
         if (panelManager != null)
         {
-            panelManager.ShowPanel("Ceo Gambit", 0);
+            panelManager.ShowPanel("CEO Gambit", 0);
         }
         else
         {
@@ -92,7 +92,7 @@ public class CeoGambit : Minigame
         {
             if (panelManager != null)
             {
-                panelManager.ShowPanel("Ceo Gambit", 1);
+                panelManager.ShowPanel("CEO Gambit", 1);
             }
             else
             {
@@ -104,7 +104,7 @@ public class CeoGambit : Minigame
             Debug.Log("Placing bet with points: " + points);
             if (panelManager != null)
             {
-                panelManager.ShowPanel("Ceo Gambit", 1); // Show the selection panel for CeoGambit
+                panelManager.ShowPanel("CEO Gambit", 1); // Show the selection panel for CeoGambit
             }
             else
             {
@@ -130,7 +130,7 @@ public class CeoGambit : Minigame
         {
             if (panelManager != null)
             {
-                panelManager.ShowPanel("Ceo Gambit", 2); // Show the flip panel for CeoGambit
+                panelManager.ShowPanel("CEO Gambit", 2); // Show the flip panel for CeoGambit
             }
             else
             {
@@ -204,7 +204,7 @@ public class CeoGambit : Minigame
             resultText.text = "Please enter a valid number of points within your available points.";
             if (panelManager != null)
             {
-                panelManager.ShowPanel("Ceo Gambit", 1);
+                panelManager.ShowPanel("CEO Gambit", 1);
             }
             else
             {
@@ -233,8 +233,8 @@ public class CeoGambit : Minigame
     public void ExitMinigame()
     {
         Debug.Log("Exiting minigame.");
-        MinigameManager.Instance.MinigameCompleted(0);
-        panelManager.EndMinigame("Ceo Gambit");
+       
+        MinigameManager.Instance.EndCurrentMinigame(); 
     }
 
     void UpdatePointsDisplay()

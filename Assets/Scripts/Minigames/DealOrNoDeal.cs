@@ -151,7 +151,7 @@ public class DealOrNoDeal : Minigame
         }
 
         // Notify the manager that the minigame is complete
-        MinigameManager.Instance.MinigameCompleted(selectedReward);
+        MinigameManager.Instance.EndCurrentMinigame();
 
         // Hide game panels after selection
         panelManager.HideAllPanels();

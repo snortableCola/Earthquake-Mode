@@ -46,6 +46,9 @@ public abstract class Minigame : MonoBehaviour
         }
 
         // Notify the MinigameManager that the minigame is completed
-        MinigameManager.Instance.MinigameCompleted(reward);
+        MinigameManager.Instance.EndCurrentMinigame();
+
+        //Show movement panels again at the end of minigames 
+        MinigameManager.Instance.panelManager.ShowMovementUI(); 
     }
 }

@@ -17,12 +17,21 @@ public class CorporateRoulette : Minigame
 
     void Start()
     {
+        Debug.Log("CorporateRoulette Start method called.");
+
         // Add listeners to the buttons
         SpinButton.onClick.AddListener(SpinChamber);
         FireButton.onClick.AddListener(FireChamber);
         ExitButton.onClick.AddListener(OnEndMinigameButtonClicked);
+        // Check if buttons are interactable
+        Debug.Log($"SpinButton interactable: {SpinButton.interactable}");
+        Debug.Log($"FireButton interactable: {FireButton.interactable}");
+        Debug.Log($"ExitButton interactable: {ExitButton.interactable}");
     }
-
+    void Awake()
+    {
+        Debug.Log("CorporateRoulette Awake method called.");
+    }
     public override void StartGame()
     {
       if (Player == null)
@@ -50,8 +59,9 @@ public class CorporateRoulette : Minigame
         Debug.Log($"Starting Corporate Roulette for player: {Player.name} with {Player.totalPoints} points.");
     }
 
-    void SpinChamber()
+    public void SpinChamber()
     {
+        Debug.Log("SpinChamber() initiated");
         for (int i = rewards.Length - 1; i > 0; i--)
         {
             int randomIndex = Random.Range(0, i + 1);
@@ -59,11 +69,12 @@ public class CorporateRoulette : Minigame
             rewards[i] = rewards[randomIndex];
             rewards[randomIndex] = temp;
         }
-
+       
         currentChamber = Random.Range(0, rewards.Length);
         GeneralText.text = "The chamber has stopped spinning...";
         FireButton.gameObject.SetActive(true);
         SpinButton.gameObject.SetActive(false);
+        Debug.Log("SpinChamber method completed.");
     }
 
     public override void SetPlayer(Player player)
@@ -78,7 +89,7 @@ public class CorporateRoulette : Minigame
         Debug.Log($"Player {player.name} assigned to CorporateRoulette.");
     }
 
-    void FireChamber()
+    public void FireChamber()
     {
         
 
@@ -137,9 +148,9 @@ public class CorporateRoulette : Minigame
         Debug.Log("CorporateRoulette cleanup completed.");
     }
 
-    void OnEndMinigameButtonClicked()
+  public   void OnEndMinigameButtonClicked()
     {
-        MinigameManager.Instance.MinigameCompleted(0);
+        MinigameManager.Instance.EndCurrentMinigame();
         panelManager.HideAllPanels();
     }
 }

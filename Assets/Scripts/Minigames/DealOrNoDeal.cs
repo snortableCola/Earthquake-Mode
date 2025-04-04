@@ -35,25 +35,26 @@ public class DealOrNoDeal : Minigame
     {
         if (player == null)
         {
-            Debug.LogError("Player is null in CorporateRoulette! Ensure SetPlayer is called before starting.");
+            Debug.LogError("Player is null in DealOrNoDeal! Ensure SetPlayer is called before starting.");
             return;
         }
         else
         {
-            Debug.Log($"Starting Corporate Roulette for Player: {player.name}.");
+            Debug.Log($"Starting DealOrNoDeal for Player: {player.name}.");
         }
+
         for (int i = 0; i < suitcases.Length; i++)
-		{
-			int index = i; // Prevent closure issue in listener
-			suitcases[index].onClick.AddListener(() => OnSuitcaseClicked(suitcases[index], index));
-		}
+        {
+            int index = i; // Prevent closure issue in listener
+            suitcases[index].onClick.AddListener(() => OnSuitcaseClicked(suitcases[index], index));
+        }
 
-		// Add listeners to the buttons
-		selectButton.onClick.AddListener(OnSelectButtonClicked);
-		exitButton.onClick.AddListener(OnEndMinigameButtonClicked);
+        // Add listeners to the buttons
+        selectButton.onClick.AddListener(OnSelectButtonClicked);
+        exitButton.onClick.AddListener(OnEndMinigameButtonClicked);
 
-		// Show game panels
-		panelManager.ShowPanel("Deal Or No Deal", 0); // Show the first panel
+        // Show game panels
+        panelManager.ShowPanel("Deal Or No Deal", 0); // Show the first panel
 
         // Shuffle the suitcases
         ShuffleSuitcases();
@@ -85,7 +86,6 @@ public class DealOrNoDeal : Minigame
 
     void OnSuitcaseClicked(Button clickedButton, int index)
     {
-       
         selectedSuitcase = clickedButton;
         selectedReward = rewards[index];
 
@@ -95,22 +95,24 @@ public class DealOrNoDeal : Minigame
 
     void OnSelectButtonClicked()
     {
-       
         Debug.Log($"{name}, {GetInstanceID()}");
 
         // Check references before proceeding
         if (player == null)
         {
-            Debug.LogError("Player reference is null!");
+            Debug.LogError("Player reference is null in OnSelectButtonClicked!");
             return;
         }
+
+        Debug.Log($"Player {player.name} selected a suitcase with reward {selectedReward}.");
 
         // Adjust the player's points based on the selected reward
         player.AdjustPoints(selectedReward);
 
         // Display the reward text
         rewardText.text = $"You got: {selectedReward} points! Total Points: {player.totalPoints}";
-        Debug.Log("Selected Reward: " + selectedReward);
+        Debug.Log($"Selected Reward: {selectedReward}");
+        Debug.Log($"Player {player.name} now has {player.totalPoints} points after adjustment.");
 
         // Hide the initial text
         if (initialTextObject != null)
@@ -122,9 +124,10 @@ public class DealOrNoDeal : Minigame
         selectButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(true);
     }
+
     public override void Cleanup()
     {
-        selectButton.onClick.RemoveAllListeners();  
+        selectButton.onClick.RemoveAllListeners();
         exitButton.onClick.RemoveAllListeners();
 
         rewardText.text = "";

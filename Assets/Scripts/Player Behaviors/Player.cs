@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(VisibleTag), typeof(PlayerMovement))]
 public class Player : MonoBehaviour
 {
+	public string playerName; 
 	public VisibleTag FrozenTag { get; private set; }
 	public PlayerMovement Movement { get; private set; }
 	public IItem UsedItem { get; set; } = null;
@@ -22,9 +23,11 @@ public class Player : MonoBehaviour
 	public int totalPoints = 100; // Player's total points
 
 	// Method to adjust points
-	public void AdjustPoints(int amount)
+	public void AdjustPoints(int points)
     {
-        totalPoints += amount;
+        Debug.Log($"Adjusting points for {playerName}. Current points: {totalPoints}, Adjust by: {points}");
+        totalPoints += points;
+        Debug.Log($"New points for {playerName}: {totalPoints}");
     }
 	#endregion
 }

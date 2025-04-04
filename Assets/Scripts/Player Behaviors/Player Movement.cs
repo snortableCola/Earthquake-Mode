@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
 	private Space _currentSpace;
 	private readonly List<Space> _movementPath = new();
+	private Space[] _possibleDestinations = new Space[0];
 
 	private void Awake()
 	{
@@ -36,6 +37,16 @@ public class PlayerMovement : MonoBehaviour
 		_currentSpace = GetComponentInParent<Space>();
 		_movementPath.Clear();
 		_movementPath.Add(_currentSpace);
+
+		foreach (Space space in _possibleDestinations)
+		{
+			space.HighlightTag.State = false;
+		}
+		_possibleDestinations = DestinationFinder.Instance.GetPossibleDestinations(_currentSpace, _distance);
+		foreach (Space space in _possibleDestinations)
+		{
+			space.HighlightTag.State = true;
+		}
 	}
 
 	/// <summary>
@@ -56,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
 			if (_interactionInput.triggered)
 			{
 				// If the player has travelled the full distance, they may end their movement
-				if (_distance == 0) yield break;
+				if (_distance == 0) break;
 
 				// The player may interact with non-turn-ending (shop & transport) spaces at any point
 				// This cannot be done at the start of the player's path (meaning, just after they've used the space)
@@ -106,6 +117,11 @@ public class PlayerMovement : MonoBehaviour
 			_currentSpace = targetSpace;
 			Debug.Log($"Remaining distance {_distance}");
 			distanceText.text = $"{_distance} spaces left.";
+		}
+
+		foreach (Space space in _possibleDestinations)
+		{
+			space.HighlightTag.State = false;
 		}
 	}
 

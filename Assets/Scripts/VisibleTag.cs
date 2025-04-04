@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Renderer))]
@@ -5,7 +6,6 @@ public class VisibleTag : MonoBehaviour
 {
 	private bool _state;
 	private Renderer _renderer;
-	private Material _baseMaterial;
 
 	[SerializeField] private Material _material;
 
@@ -14,14 +14,16 @@ public class VisibleTag : MonoBehaviour
 		get => _state;
 		set
 		{
+			if (_state == value) return;
+
 			_state = value;
 			if (_state)
 			{
-				_renderer.materials = new Material[] { _baseMaterial, _material };
+				_renderer.sharedMaterials = _renderer.sharedMaterials.Append(_material).ToArray();
 			}
 			else
 			{
-				_renderer.materials = new Material[] { _baseMaterial };
+				_renderer.sharedMaterials = _renderer.sharedMaterials.Where(m => m != _material).ToArray();
 			}
 		}
 	}
@@ -29,6 +31,5 @@ public class VisibleTag : MonoBehaviour
 	private void Awake()
 	{
 		_renderer = GetComponent<Renderer>();
-		_baseMaterial = _renderer.material;
 	}
 }

@@ -7,11 +7,14 @@ using UnityEngine;
 public partial class Space : MonoBehaviour
 {
 	public VisibleTag BurningTag { get; private set; }
+	public VisibleTag HighlightTag { get; private set; }
 	public SpaceBehavior Behavior { get; private set; }
 
 	public void Awake()
 	{
-		BurningTag = GetComponent<VisibleTag>();
+		VisibleTag[] visibleTags = GetComponents<VisibleTag>();
+		BurningTag = visibleTags[0];
+		HighlightTag = visibleTags[1];
 		Behavior = GetComponent<SpaceBehavior>();
 	}
 

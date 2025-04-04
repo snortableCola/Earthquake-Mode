@@ -4,6 +4,7 @@ using UnityEngine;
 public class TransportSpace : SpaceBehavior
 {
 	[SerializeField] private Space _destination;
+	public Space Destination => _destination;
 
 	public override bool EndsTurn { get; } = false;
 

@@ -38,10 +38,14 @@ public class DestinationFinder : MonoBehaviour
 				if (next.Behavior.EndsTurn) newCost++;
 
 				if (visited.Add((next, newCost))) queue.Enqueue((next, newCost));
+
+				if (next.Behavior is not TransportSpace transport) continue;
+				next = transport.Destination;
+
+				if (visited.Add((next, newCost))) queue.Enqueue((next, newCost));
 			}
 		}
 
-		Debug.Log(string.Join(", ", results.Select(x => x.name)));
 		return results.ToArray();
 	}
 }

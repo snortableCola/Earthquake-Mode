@@ -28,14 +28,14 @@ public class CeoGambit : Minigame
     public override void StartGame()
     {
         
-        if (player == null)
+        if (Player == null)
         {
             Debug.LogError("Player is null in CEO Gambit! Ensure SetPlayer is called before starting.");
             return;
         }
         else
         {
-            Debug.Log($"Starting CEO Gambit for Player: {player.name}.");
+            Debug.Log($"Starting CEO Gambit for Player: {Player.name}.");
         }
 
         // Show the initial panel for CEO Gambit
@@ -62,16 +62,16 @@ public class CeoGambit : Minigame
 
         exitButton.gameObject.SetActive(false);
 
-        Debug.Log(player.name);
+        Debug.Log(Player.name);
     }
 
     void ValidateBet(string input)
     {
         if (int.TryParse(input, out points))
         {
-            if (points > player.totalPoints)
+            if (points > Player.totalPoints)
             {
-                pointsInput.text = player.totalPoints.ToString();
+                pointsInput.text = Player.totalPoints.ToString();
             }
             else if (points < 0)
             {
@@ -88,7 +88,7 @@ public class CeoGambit : Minigame
     {
         Debug.Log($"{name}, {GetInstanceID()}");
         Debug.Log("PlaceBet method called.");
-        if (int.TryParse(pointsInput.text, out points) && points > 0 && points <= player.totalPoints)
+        if (int.TryParse(pointsInput.text, out points) && points > 0 && points <= Player.totalPoints)
         {
             if (panelManager != null)
             {
@@ -99,7 +99,7 @@ public class CeoGambit : Minigame
                 Debug.LogError("PanelManager is not assigned in CeoGambit!");
             }
         }
-        if (int.TryParse(pointsInput.text, out points) && points > 0 && points <= player.totalPoints)
+        if (int.TryParse(pointsInput.text, out points) && points > 0 && points <= Player.totalPoints)
         {
             Debug.Log("Placing bet with points: " + points);
             if (panelManager != null)
@@ -113,7 +113,7 @@ public class CeoGambit : Minigame
         }
         else
         {
-            pointsDisplay.text = "Please enter a valid number of points within your available points. Points: " + player.totalPoints;
+            pointsDisplay.text = "Please enter a valid number of points within your available points. Points: " + Player.totalPoints;
         }
     }
 
@@ -146,7 +146,7 @@ public class CeoGambit : Minigame
     void FlipCoin()
     {
         Debug.Log("FlipCoin method called.");
-        if (points > 0 && points <= player.totalPoints)
+        if (points > 0 && points <= Player.totalPoints)
         {
             bool coinLandedHeads = Random.value > 0.5f;
             if (CoinSound != null)
@@ -169,13 +169,13 @@ public class CeoGambit : Minigame
 
                 if (betOnHeads)
                 {
-                    player.AdjustPoints(points);
-                    resultText.text = $"You won! Coin landed on Heads. Points: {player.totalPoints}";
+                    Player.AdjustPoints(points);
+                    resultText.text = $"You won! Coin landed on Heads. Points: {Player.totalPoints}";
                 }
                 else
                 {
-                    player.AdjustPoints(-points);
-                    resultText.text = $"You lost. Coin landed on Heads. Points: {player.totalPoints}";
+                    Player.AdjustPoints(-points);
+                    resultText.text = $"You lost. Coin landed on Heads. Points: {Player.totalPoints}";
                 }
             }
             else
@@ -185,13 +185,13 @@ public class CeoGambit : Minigame
 
                 if (!betOnHeads)
                 {
-                    player.AdjustPoints(points);
-                    resultText.text = $"You won! Coin landed on Tails. Points: {player.totalPoints}";
+                    Player.AdjustPoints(points);
+                    resultText.text = $"You won! Coin landed on Tails. Points: {Player.totalPoints}";
                 }
                 else
                 {
-                    player.AdjustPoints(-points);
-                    resultText.text = $"You lost. Coin landed on Tails. Points: {player.totalPoints}";
+                    Player.AdjustPoints(-points);
+                    resultText.text = $"You lost. Coin landed on Tails. Points: {Player.totalPoints}";
                 }
             }
 
@@ -239,7 +239,7 @@ public class CeoGambit : Minigame
 
     void UpdatePointsDisplay()
     {
-        pointsDisplay.text = "Points: " + player.totalPoints.ToString();
-        Debug.Log("Updating points: " + player.totalPoints);
+        pointsDisplay.text = "Points: " + Player.totalPoints.ToString();
+        Debug.Log("Updating points: " + Player.totalPoints);
     }
 }

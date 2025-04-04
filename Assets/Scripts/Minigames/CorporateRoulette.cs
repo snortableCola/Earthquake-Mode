@@ -25,14 +25,14 @@ public class CorporateRoulette : Minigame
 
     public override void StartGame()
     {
-      if (player == null)
+      if (Player == null)
         {
             Debug.LogError("Player is null in CorporateRoulette! Ensure SetPlayer is called before starting.");
             return;
         }
         else
         {
-            Debug.Log($"Starting Corporate Roulette for Player: {player.name}.");
+            Debug.Log($"Starting Corporate Roulette for Player: {Player.name}.");
         }
 
         // Show the initial panel for Corporate Roulette
@@ -47,7 +47,7 @@ public class CorporateRoulette : Minigame
 
         ExitButton.gameObject.SetActive(false);
         FireButton.gameObject.SetActive(false);
-        Debug.Log($"Starting Corporate Roulette for player: {player.name} with {player.totalPoints} points.");
+        Debug.Log($"Starting Corporate Roulette for player: {Player.name} with {Player.totalPoints} points.");
     }
 
     void SpinChamber()
@@ -101,14 +101,14 @@ public class CorporateRoulette : Minigame
             _ => $"You lost {-reward} points.",
         };
 
-        if (player == null)
+        if (Player == null)
         {
             Debug.LogError("Player reference is null! Cannot update points.");
             return;
         }
 
-        player.AdjustPoints(reward);
-        Debug.Log($"Player {player.name} now has {player.totalPoints} points after the result.");
+        Player.AdjustPoints(reward);
+        Debug.Log($"Player {Player.name} now has {Player.totalPoints} points after the result.");
 
         GeneralText.text = message;
 

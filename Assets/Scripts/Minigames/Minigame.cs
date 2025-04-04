@@ -2,7 +2,16 @@ using UnityEngine;
 
 public abstract class Minigame : MonoBehaviour
 {
-    protected Player player;
+    private Player _player;
+    protected Player Player
+    {
+        get => _player;
+        set
+        {
+            _player = value;
+            Debug.Log($"Player changed to {value}");
+        }
+    }
     public abstract void StartGame();
     public virtual void SetPlayer(Player player)
     {
@@ -12,7 +21,7 @@ public abstract class Minigame : MonoBehaviour
             return;
         }
 
-        this.player = player; // Assign the player reference
+        Player = player; // Assign the player reference
         Debug.Log($"Minigame {name} {GetInstanceID()} received player: {player.name}");
     }
 
@@ -30,10 +39,10 @@ public abstract class Minigame : MonoBehaviour
 
     public virtual void CompleteMinigame(int reward)
     {
-        if (player != null)
+        if (Player != null)
         {
-            player.AdjustPoints(reward); // Update the player's points
-            Debug.Log($"{player.name} completed the minigame and earned {reward} points. Total points: {player.totalPoints}");
+            Player.AdjustPoints(reward); // Update the player's points
+            Debug.Log($"{Player.name} completed the minigame and earned {reward} points. Total points: {Player.totalPoints}");
         }
 
         // Notify the MinigameManager that the minigame is completed

@@ -33,14 +33,14 @@ public class DealOrNoDeal : Minigame
 
     public override void StartGame()
     {
-        if (player == null)
+        if (Player == null)
         {
             Debug.LogError("Player is null in DealOrNoDeal! Ensure SetPlayer is called before starting.");
             return;
         }
         else
         {
-            Debug.Log($"Starting DealOrNoDeal for Player: {player.name}.");
+            Debug.Log($"Starting DealOrNoDeal for Player: {Player.name}.");
         }
 
         for (int i = 0; i < suitcases.Length; i++)
@@ -98,21 +98,21 @@ public class DealOrNoDeal : Minigame
         Debug.Log($"{name}, {GetInstanceID()}");
 
         // Check references before proceeding
-        if (player == null)
+        if (Player == null)
         {
             Debug.LogError("Player reference is null in OnSelectButtonClicked!");
             return;
         }
 
-        Debug.Log($"Player {player.name} selected a suitcase with reward {selectedReward}.");
+        Debug.Log($"Player {Player.name} selected a suitcase with reward {selectedReward}.");
 
         // Adjust the player's points based on the selected reward
-        player.AdjustPoints(selectedReward);
+        Player.AdjustPoints(selectedReward);
 
         // Display the reward text
-        rewardText.text = $"You got: {selectedReward} points! Total Points: {player.totalPoints}";
+        rewardText.text = $"You got: {selectedReward} points! Total Points: {Player.totalPoints}";
         Debug.Log($"Selected Reward: {selectedReward}");
-        Debug.Log($"Player {player.name} now has {player.totalPoints} points after adjustment.");
+        Debug.Log($"Player {Player.name} now has {Player.totalPoints} points after adjustment.");
 
         // Hide the initial text
         if (initialTextObject != null)

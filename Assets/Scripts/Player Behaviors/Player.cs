@@ -25,9 +25,9 @@ public class Player : MonoBehaviour
 	// Method to adjust points
 	public void AdjustPoints(int points)
     {
-        Debug.Log($"Adjusting points for {playerName}. Current points: {totalPoints}, Adjust by: {points}");
+        Debug.Log($"Adjusting points for {name}. Current points: {totalPoints}, Adjust by: {points}");
         totalPoints += points;
-        Debug.Log($"New points for {playerName}: {totalPoints}");
+        Debug.Log($"New points for {name}: {totalPoints}");
     }
 	#endregion
 }

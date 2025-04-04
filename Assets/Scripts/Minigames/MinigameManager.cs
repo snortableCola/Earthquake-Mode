@@ -63,6 +63,7 @@ public class MinigameManager : MonoBehaviour
         {
             hudMessage.gameObject.SetActive(false);
         }
+
         if (panelManager != null)
         {
             panelManager.ShowInstructionPanel(minigameName);
@@ -71,9 +72,6 @@ public class MinigameManager : MonoBehaviour
         {
             Debug.LogWarning("PanelManager is not assigned. Skipping instruction panel display.");
         }
-
-        // Show the instruction panel using the PanelManager
-        panelManager.ShowInstructionPanel(minigameName);
     }
    public void LoadRandomMinigame()
     {

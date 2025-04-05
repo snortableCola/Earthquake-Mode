@@ -8,60 +8,66 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance { get; private set; }
 	public Player[] Players => _players;
-	public Player CurrentPlayer => _players[_currentPlayerIndex];
+	public Player CurrentPlayer { get; private set; }
 	public Space[] Spaces { get; private set; }
 
+	[SerializeField] private int _totalRounds = 10;
 	[SerializeField] private Button _diceRollButton;
 	[SerializeField] private TMP_Text _distanceText;   
 	[SerializeField] private Player[] _players;
 
-
-	private int _currentPlayerIndex;
 	private int _roundNumber = 1;
+	private bool _diceRolled;
 
 	private void Awake()
 	{
 		Instance = this;
 		Spaces = FindObjectsByType<Space>(FindObjectsSortMode.None);
-		_diceRollButton.onClick.AddListener(DoPlayerTurn);
+		_diceRollButton.onClick.AddListener(RespondToDiceRoll);
 	}
 
-	/// <summary>
-	/// Event that triggers whenever a turn is completed, providing the player whose turn passed.
-	/// </summary>
-	public UnityEvent<Player> TurnPassed = new();
+	private IEnumerator Start() => GameRoundCycle();
 
-	/// <summary>
-	/// Event that triggers whenever a full round of play for all players has completed.
-	/// </summary>
-	public UnityEvent RoundPassed = new();
 
-	[ContextMenu("Move Next Player")]
-	public void DoPlayerTurn() => StartCoroutine(PlayerTurnCoroutine());
-
-	/// <summary>
-	/// Coroutine representing the next player taking their turn.
-	/// </summary>
-	/// <returns>Coroutine for handling the next player's turn.</returns>
-	private IEnumerator PlayerTurnCoroutine()
+	public readonly UnityEvent RoundPassed = new();
+	private IEnumerator GameRoundCycle()
 	{
-		_diceRollButton.gameObject.SetActive(false);
-
-		Player player = _players[_currentPlayerIndex];
-
-		if (player.FrozenTag.State)
+		while (_roundNumber++ <= _totalRounds)
 		{
-			Debug.Log($"{player.name} was frozen and passed its turn.");
-			player.FrozenTag.State = false; // Player is unfrozen after their turn would've been skipped
+			yield return DoRound();
+			RoundPassed.Invoke();
+		}
+	}
 
-			MoveToNextPlayer();
+	public readonly UnityEvent<Player> TurnPassed = new();
+	private IEnumerator DoRound()
+	{
+		foreach (Player player in _players)
+		{
+			CurrentPlayer = player;
+			yield return DoPlayerTurn();
+			TurnPassed.Invoke(player);
+		}
+	}
+
+	private IEnumerator DoPlayerTurn()
+	{
+		CurrentPlayer.UsedItem = null;
+
+		if (CurrentPlayer.FrozenTag.State)
+		{
+			Debug.Log($"{CurrentPlayer.name} was frozen and passed its turn.");
+			CurrentPlayer.FrozenTag.State = false; // Player is unfrozen after their turn would've been skipped
 			yield break;
 		}
 
-		player.UsedItem = null;
+		_diceRollButton.gameObject.SetActive(true);
+		yield return new WaitUntil(() => _diceRolled);
+		_diceRollButton.gameObject.SetActive(false);
+		_diceRolled = false;
 
 		int distance = Random.Range(1, 11);
-		switch (player.UsedItem)
+		switch (CurrentPlayer.UsedItem)
 		{
 			case TravelPlan:
 				int newDistance = Random.Range(1, 11);
@@ -72,40 +78,25 @@ public class GameManager : MonoBehaviour
 				break;
 		}
 
-		CameraManager.Instance.MoveToPlayer(player);
+		CameraManager.Instance.MoveToPlayer(CurrentPlayer);
 		
-		yield return player.Movement.MovementPhaseCoroutine(distance, _distanceText);
+		yield return CurrentPlayer.Movement.MovementPhaseCoroutine(distance, _distanceText);
 
 		CameraManager.Instance.ReturnOverhead();
 
-		Space endingSpace = player.GetComponentInParent<Space>();
-		if (endingSpace.BurningTag.State && player.UsedItem is not HeliEvac)
+		Space endingSpace = CurrentPlayer.GetComponentInParent<Space>();
+		if (endingSpace.BurningTag.State && CurrentPlayer.UsedItem is not HeliEvac)
 		{
-			Debug.Log($"{player} landed on a space which is on fire.");
+			Debug.Log($"{CurrentPlayer} landed on a space which is on fire.");
 		}
 		else
 		{
-			yield return endingSpace.Behavior.RespondToPlayer(player);
+			yield return endingSpace.Behavior.RespondToPlayer(CurrentPlayer);
 		}
-
-		MoveToNextPlayer();
 	}
 
-	private void MoveToNextPlayer()
+	private void RespondToDiceRoll()
 	{
-		TurnPassed.Invoke(_players[_currentPlayerIndex]);
-
-		_currentPlayerIndex++;
-
-		if (_currentPlayerIndex == _players.Length)
-		{
-			_currentPlayerIndex = 0;
-
-			Debug.Log($"Completed round {_roundNumber}");
-			_roundNumber++;
-			RoundPassed.Invoke();
-		}
-
-		_diceRollButton.gameObject.SetActive(true);
+		_diceRolled = true;
 	}
 }

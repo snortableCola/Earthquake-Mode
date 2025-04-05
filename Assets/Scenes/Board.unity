@@ -13508,6 +13508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5655b7441ece3c4f9f0cb561247ebea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _totalRounds: 10
   _diceRollButton: {fileID: 1767838420}
   _distanceText: {fileID: 1300161200}
   _players:
@@ -14428,7 +14429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1767838419
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18309,6 +18310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eac721533e6bdf43bb805b5b919fb22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MovementUI: {fileID: 0}
   instructionPanel: {fileID: 2865737326079685632}
   instructionText: {fileID: 4543167586527772684}
   gameName: {fileID: 2748576760725447706}

@@ -14,7 +14,17 @@ public class CorporateRoulette : Minigame
     public AudioSource audioSource;
     public AudioClip FiringSound;
     public PanelManager panelManager;
+    public override void SetPlayer(Player player)
+    {
+        if (player == null)
+        {
+            Debug.LogError("SetPlayer called with a null Player in CR.");
+            return;
+        }
 
+        base.SetPlayer(player);
+        Debug.Log($"Player {player.name} assigned to CR");
+    }
     void Start()
     {
         Debug.Log("CorporateRoulette Start method called.");
@@ -77,18 +87,7 @@ public class CorporateRoulette : Minigame
         Debug.Log("SpinChamber method completed.");
     }
 
-    public override void SetPlayer(Player player)
-    {
-        if (player == null)
-        {
-            Debug.LogError("SetPlayer called with a null Player in CorporateRoulette.");
-            return;
-        }
-
-        base.SetPlayer(player);
-        Debug.Log($"Player {player.name} assigned to CorporateRoulette.");
-    }
-
+    
     public void FireChamber()
     {
         
@@ -131,14 +130,23 @@ public class CorporateRoulette : Minigame
     {
         base.Cleanup();
 
+        // Remove all listeners from buttons
         SpinButton.onClick.RemoveAllListeners();
         FireButton.onClick.RemoveAllListeners();
         ExitButton.onClick.RemoveAllListeners();
 
+        // Reset button states
         SpinButton.gameObject.SetActive(true);
         FireButton.gameObject.SetActive(false);
         ExitButton.gameObject.SetActive(false);
 
+        // Reset text fields
+        GeneralText.text = "Spin the chamber to start.";
+
+        // Reset internal variables
+        currentChamber = -1;
+
+        // Reset button text if needed
         TMP_Text spinButtonText = SpinButton.GetComponentInChildren<TMP_Text>();
         if (spinButtonText != null)
         {
@@ -152,5 +160,6 @@ public class CorporateRoulette : Minigame
     {
         MinigameManager.Instance.EndCurrentMinigame();
         panelManager.HideAllPanels();
+        panelManager.ShowMovementUI();
     }
 }

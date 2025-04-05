@@ -24,7 +24,17 @@ public class CeoGambit : Minigame
     public List<Sprite> headsImages;
     public AudioSource audioSource;
     public AudioClip CoinSound;
+    public override void SetPlayer(Player player)
+    {
+        if (player == null)
+        {
+            Debug.LogError("SetPlayer called with a null Player in CeoGambit.");
+            return;
+        }
 
+        base.SetPlayer(player);
+        Debug.Log($"Player {player.name} assigned to CeoGambit.");
+    }
     public override void StartGame()
     {
         
@@ -217,6 +227,7 @@ public class CeoGambit : Minigame
     {
         base.Cleanup();
 
+        // Remove all listeners from buttons
         headsButton.onClick.RemoveAllListeners();
         tailsButton.onClick.RemoveAllListeners();
         selectButton.onClick.RemoveAllListeners();
@@ -224,17 +235,37 @@ public class CeoGambit : Minigame
         doneButton.onClick.RemoveAllListeners();
         exitButton.onClick.RemoveAllListeners();
 
+        // Reset input field state and clear previous input
         pointsInput.contentType = TMP_InputField.ContentType.IntegerNumber;
+        pointsInput.text = string.Empty; // Clear any previous input
+        pointsInput.onValueChanged.RemoveAllListeners(); // Remove previous listeners
         pointsInput.onValueChanged.AddListener(ValidateBet);
 
+        // Hide exit button
         exitButton.gameObject.SetActive(false);
+
+        // Reset any other UI elements to their default states
+        headsButton.gameObject.SetActive(true);
+        tailsButton.gameObject.SetActive(true);
+        selectButton.gameObject.SetActive(false);
+        flipButton.gameObject.SetActive(false);
+        doneButton.gameObject.SetActive(false);
+
+        // Reset text fields or other UI elements if needed
+        resultText.text = "Choose Heads or Tails";
+
+        // Reset any internal variables used in the minigame
+        betOnHeads = false;
+
+        Debug.Log("Cleanup completed and UI reset for the new player.");
     }
 
     public void ExitMinigame()
     {
         Debug.Log("Exiting minigame.");
        
-        MinigameManager.Instance.EndCurrentMinigame(); 
+        MinigameManager.Instance.EndCurrentMinigame();
+        panelManager.ShowMovementUI(); 
     }
 
     void UpdatePointsDisplay()

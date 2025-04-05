@@ -16,7 +16,17 @@ public class DealOrNoDeal : Minigame
     private int selectedReward;
     private Button selectedSuitcase;
     private Color originalColor;
+    public override void SetPlayer(Player player)
+    {
+        if (player == null)
+        {
+            Debug.LogError("SetPlayer called with a null Player in DOND.");
+            return;
+        }
 
+        base.SetPlayer(player);
+        Debug.Log($"Player {player.name} assigned to DOND");
+    }
     void Start()
     {
         // Add listeners to the suitcase buttons
@@ -127,13 +137,27 @@ public class DealOrNoDeal : Minigame
 
     public override void Cleanup()
     {
+        base.Cleanup();
+
+        // Remove all listeners from buttons
+        foreach (var suitcase in suitcases)
+        {
+            suitcase.onClick.RemoveAllListeners();
+        }
         selectButton.onClick.RemoveAllListeners();
         exitButton.onClick.RemoveAllListeners();
 
+        // Reset input fields and text
         rewardText.text = "";
         selectButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(false); // Ensure exit button is initially inactive
         selectedSuitcase = null;
+
+        // Reset the color of all suitcases to their original color
+        foreach (var suitcase in suitcases)
+        {
+            suitcase.image.color = originalColor;
+        }
 
         // Show the initial text
         if (initialTextObject != null)
@@ -149,11 +173,13 @@ public class DealOrNoDeal : Minigame
         {
             selectedSuitcase.image.color = originalColor;
         }
+        Cleanup();
 
         // Notify the manager that the minigame is complete
         MinigameManager.Instance.EndCurrentMinigame();
 
         // Hide game panels after selection
         panelManager.HideAllPanels();
+        panelManager.ShowMovementUI(); 
     }
 }

@@ -24,7 +24,17 @@ public class CeoGambit : Minigame
     public List<Sprite> headsImages;
     public AudioSource audioSource;
     public AudioClip CoinSound;
+    public override void SetPlayer(Player player)
+    {
+        if (player == null)
+        {
+            Debug.LogError("SetPlayer called with a null Player in CeoGambit.");
+            return;
+        }
 
+        base.SetPlayer(player);
+        Debug.Log($"Player {player.name} assigned to CeoGambit.");
+    }
     public override void StartGame()
     {
         
@@ -234,7 +244,8 @@ public class CeoGambit : Minigame
     {
         Debug.Log("Exiting minigame.");
        
-        MinigameManager.Instance.EndCurrentMinigame(); 
+        MinigameManager.Instance.EndCurrentMinigame();
+        panelManager.HideAllPanels(); 
     }
 
     void UpdatePointsDisplay()

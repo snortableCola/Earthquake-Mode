@@ -14,17 +14,7 @@ public class CorporateRoulette : Minigame
     public AudioSource audioSource;
     public AudioClip FiringSound;
     public PanelManager panelManager;
-    public override void SetPlayer(Player player)
-    {
-        if (player == null)
-        {
-            Debug.LogError("SetPlayer called with a null Player in CR");
-            return;
-        }
 
-        base.SetPlayer(player);
-        Debug.Log($"Player {player.name} assigned to CR");
-    }
     void Start()
     {
         Debug.Log("CorporateRoulette Start method called.");
@@ -87,6 +77,17 @@ public class CorporateRoulette : Minigame
         Debug.Log("SpinChamber method completed.");
     }
 
+    public override void SetPlayer(Player player)
+    {
+        if (player == null)
+        {
+            Debug.LogError("SetPlayer called with a null Player in CorporateRoulette.");
+            return;
+        }
+
+        base.SetPlayer(player);
+        Debug.Log($"Player {player.name} assigned to CorporateRoulette.");
+    }
 
     public void FireChamber()
     {

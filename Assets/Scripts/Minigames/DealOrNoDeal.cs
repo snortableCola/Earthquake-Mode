@@ -16,17 +16,7 @@ public class DealOrNoDeal : Minigame
     private int selectedReward;
     private Button selectedSuitcase;
     private Color originalColor;
-    public override void SetPlayer(Player player)
-    {
-        if (player == null)
-        {
-            Debug.LogError("SetPlayer called with a null Player in DOND.");
-            return;
-        }
 
-        base.SetPlayer(player);
-        Debug.Log($"Player {player.name} assigned to DOND");
-    }
     void Start()
     {
         // Add listeners to the suitcase buttons

@@ -40,7 +40,7 @@ public class ResourceSpace : SpaceBehavior
 		Biome biome = _space.Biome;
 		Debug.Log($"{player.name} landed on a {biome} resource space.");
         StartCoroutine(FlashHudMessage());
-        player.totalPoints += 3;
+        player.Points += 3;
 
 		yield return DisasterManager.Instance.IncrementBiomeDisaster(biome, player);
     }

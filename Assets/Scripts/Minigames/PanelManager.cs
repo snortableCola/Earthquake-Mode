@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 public class PanelManager : MonoBehaviour
 {
-    public static PanelManager Instance; // Singleton instance
-    private Dictionary<string, string> minigameInstructions = new Dictionary<string, string>();
-    private Dictionary<string, GameObject[]> minigamePanels = new Dictionary<string, GameObject[]>();
+    public static PanelManager Instance { get; private set; } // Singleton instance
+    private Dictionary<string, string> minigameInstructions = new();
+    private Dictionary<string, GameObject[]> minigamePanels = new();
     private string currentMinigameName;
     public GameObject MovementUI; 
     public GameObject instructionPanel;

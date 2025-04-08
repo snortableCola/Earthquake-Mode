@@ -14,7 +14,6 @@ public class CeoGambit : Minigame
     public Button doneButton;
     public Button selectButton;
     public Button exitButton;
-    public PanelManager panelManager;
 
     private int points;
     private bool betOnHeads;
@@ -28,28 +27,8 @@ public class CeoGambit : Minigame
     public override void StartGame()
     {
 		Player player = GameManager.Instance.CurrentPlayer;
+		Debug.Log($"Starting CEO Gambit for Player: {player.name}.");
 
-		if (player == null)
-        {
-            Debug.LogError("Player is null in CEO Gambit! Ensure SetPlayer is called before starting.");
-            return;
-        }
-        else
-        {
-            Debug.Log($"Starting CEO Gambit for Player: {player.name}.");
-        }
-
-        // Show the initial panel for CEO Gambit
-        if (panelManager != null)
-        {
-            panelManager.ShowPanel("CEO Gambit", 0);
-        }
-        else
-        {
-            Debug.LogError("PanelManager is not assigned in CeoGambit!");
-        }
-
-        Debug.Log("StartGame method called.");
         UpdatePointsDisplay();
         headsButton.onClick.AddListener(() => SelectHeads(true));
         tailsButton.onClick.AddListener(() => SelectHeads(false));
@@ -70,22 +49,15 @@ public class CeoGambit : Minigame
 	{
 		Player player = GameManager.Instance.CurrentPlayer;
 
-		if (int.TryParse(input, out points))
-        {
-            if (points > player.totalPoints)
-            {
-                pointsInput.text = player.totalPoints.ToString();
-            }
-            else if (points < 0)
-            {
-                pointsInput.text = "0";
-            }
-        }
-        else
-        {
-            pointsInput.text = "0";
-        }
-    }
+		if (!int.TryParse(input, out points) || points < 0)
+		{
+			pointsInput.text = "0";
+		}
+		else if (points > player.Points)
+		{
+			pointsInput.text = player.Points.ToString();
+		}
+	}
 
     public void PlaceBet()
 	{
@@ -93,32 +65,14 @@ public class CeoGambit : Minigame
 
 		Debug.Log($"{name}, {GetInstanceID()}");
         Debug.Log("PlaceBet method called.");
-        if (int.TryParse(pointsInput.text, out points) && points > 0 && points <= player.totalPoints)
-        {
-            if (panelManager != null)
-            {
-                panelManager.ShowPanel("CEO Gambit", 1);
-            }
-            else
-            {
-                Debug.LogError("PanelManager is not assigned in CeoGambit!");
-            }
-        }
-        if (int.TryParse(pointsInput.text, out points) && points > 0 && points <= player.totalPoints)
-        {
-            Debug.Log("Placing bet with points: " + points);
-            if (panelManager != null)
-            {
-                panelManager.ShowPanel("CEO Gambit", 1); // Show the selection panel for CeoGambit
-            }
-            else
-            {
-                Debug.LogError("PanelManager is not assigned in CeoGambit!");
-            }
-        }
+
+        if (int.TryParse(pointsInput.text, out points) && points > 0 && points <= player.Points)
+		{
+			PanelManager.Instance.ShowPanel("CEO Gambit", 1); // Show the selection panel for CeoGambit
+		}
         else
         {
-            pointsDisplay.text = "Please enter a valid number of points within your available points. Points: " + player.totalPoints;
+            pointsDisplay.text = "Please enter a valid number of points within your available points. Points: " + player.Points;
         }
     }
 
@@ -132,16 +86,9 @@ public class CeoGambit : Minigame
     void SelectBet()
     {
         if (headsButton.image.color == Color.green || tailsButton.image.color == Color.green)
-        {
-            if (panelManager != null)
-            {
-                panelManager.ShowPanel("CEO Gambit", 2); // Show the flip panel for CeoGambit
-            }
-            else
-            {
-                Debug.LogError("PanelManager is not assigned in CeoGambit!");
-            }
-        }
+		{
+			PanelManager.Instance.ShowPanel("CEO Gambit", 2); // Show the flip panel for CeoGambit
+		}
         else
         {
             resultText.text = "Please select Heads or Tails.";
@@ -153,72 +100,42 @@ public class CeoGambit : Minigame
 		Player player = GameManager.Instance.CurrentPlayer;
 
 		Debug.Log("FlipCoin method called.");
-        if (points > 0 && points <= player.totalPoints)
-        {
-            bool coinLandedHeads = Random.value > 0.5f;
-            if (CoinSound != null)
-            {
-                audioSource.PlayOneShot(CoinSound);
-            }
+		if (points <= 0 || points > player.Points)
+		{
+			resultText.text = "Please enter a valid number of points within your available points.";
+			PanelManager.Instance.ShowPanel("CEO Gambit", 1);
+            return;
+		}
 
-            if (coinLandedHeads)
-            {
-                if (headsImages.Count > 0)
-                {
-                    int randomIndex = Random.Range(0, headsImages.Count);
-                    coinDisplay.sprite = headsImages[randomIndex];
-                    Debug.Log($"Coin landed on Heads. Sprite: {headsImages[randomIndex].name}");
-                }
-                else
-                {
-                    Debug.LogError("HeadsImages list is empty! Please assign sprites in the Inspector.");
-                }
+		if (CoinSound != null)
+		{
+			audioSource.PlayOneShot(CoinSound);
+		}
 
-                if (betOnHeads)
-                {
-                    player.AdjustPoints(points);
-                    resultText.text = $"You won! Coin landed on Heads. Points: {player.totalPoints}";
-                }
-                else
-                {
-                    player.AdjustPoints(-points);
-                    resultText.text = $"You lost. Coin landed on Heads. Points: {player.totalPoints}";
-                }
-            }
-            else
-            {
-                coinDisplay.sprite = tailsImage;
-                Debug.Log($"Coin landed on Tails. Sprite: {tailsImage.name}");
-
-                if (!betOnHeads)
-                {
-                    player.AdjustPoints(points);
-                    resultText.text = $"You won! Coin landed on Tails. Points: {player.totalPoints}";
-                }
-                else
-                {
-                    player.AdjustPoints(-points);
-                    resultText.text = $"You lost. Coin landed on Tails. Points: {player.totalPoints}";
-                }
-            }
-
-            UpdatePointsDisplay();
-            flipButton.gameObject.SetActive(false);
-            exitButton.gameObject.SetActive(true);
-        }
+		bool coinLandedHeads = Random.value > 0.5f;
+		if (coinLandedHeads)
+		{
+			int randomIndex = Random.Range(0, headsImages.Count);
+			coinDisplay.sprite = headsImages[randomIndex];
+			Debug.Log($"Coin landed on Heads. Sprite: {headsImages[randomIndex].name}");
+		}
         else
         {
-            resultText.text = "Please enter a valid number of points within your available points.";
-            if (panelManager != null)
-            {
-                panelManager.ShowPanel("CEO Gambit", 1);
-            }
-            else
-            {
-                Debug.LogError("PanelManager is not assigned in CeoGambit!");
-            }
-        }
-    }
+			coinDisplay.sprite = tailsImage;
+			Debug.Log($"Coin landed on Tails. Sprite: {tailsImage.name}");
+		}
+
+        bool playerWon = coinLandedHeads == betOnHeads;
+
+        if (playerWon) player.Points += points;
+        else player.Points -= points;
+
+        resultText.text = $"You {(playerWon ? "won!" : "lost.")} Coin landed on {(coinLandedHeads ? "Heads" : "Tails")}. Points: {player.Points}";
+
+		UpdatePointsDisplay();
+		flipButton.gameObject.SetActive(false);
+		exitButton.gameObject.SetActive(true);
+	}
 
     public override void Cleanup()
     {
@@ -262,14 +179,14 @@ public class CeoGambit : Minigame
         Debug.Log("Exiting minigame.");
        
         MinigameManager.Instance.EndCurrentMinigame();
-        panelManager.ShowMovementUI(); 
+		PanelManager.Instance.ShowMovementUI(); 
     }
 
     void UpdatePointsDisplay()
 	{
 		Player player = GameManager.Instance.CurrentPlayer;
 
-		pointsDisplay.text = "Points: " + player.totalPoints.ToString();
-        Debug.Log("Updating points: " + player.totalPoints);
+		pointsDisplay.text = "Points: " + player.Points.ToString();
+        Debug.Log("Updating points: " + player.Points);
     }
 }

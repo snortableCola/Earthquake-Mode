@@ -13,9 +13,13 @@ public class CorporateRoulette : Minigame
 
     public AudioSource audioSource;
     public AudioClip FiringSound;
-    public PanelManager panelManager;
 
-    void Start()
+	void Awake()
+	{
+		Debug.Log("CorporateRoulette Awake method called.");
+	}
+
+	void Start()
     {
         Debug.Log("CorporateRoulette Start method called.");
 
@@ -23,41 +27,20 @@ public class CorporateRoulette : Minigame
         SpinButton.onClick.AddListener(SpinChamber);
         FireButton.onClick.AddListener(FireChamber);
         ExitButton.onClick.AddListener(OnEndMinigameButtonClicked);
+
         // Check if buttons are interactable
         Debug.Log($"SpinButton interactable: {SpinButton.interactable}");
         Debug.Log($"FireButton interactable: {FireButton.interactable}");
         Debug.Log($"ExitButton interactable: {ExitButton.interactable}");
     }
-    void Awake()
-    {
-        Debug.Log("CorporateRoulette Awake method called.");
-    }
+
     public override void StartGame()
     {
         Player Player = GameManager.Instance.CurrentPlayer;
-      if (Player == null)
-        {
-            Debug.LogError("Player is null in CorporateRoulette! Ensure SetPlayer is called before starting.");
-            return;
-        }
-        else
-        {
-            Debug.Log($"Starting Corporate Roulette for Player: {Player.name}.");
-        }
-
-        // Show the initial panel for Corporate Roulette
-        if (panelManager != null)
-        {
-            panelManager.ShowPanel("Corporate Roulette", 0);
-        }
-        else
-        {
-            Debug.LogError("PanelManager is not assigned in CorporateRoulette!");
-        }
-
+		Debug.Log($"Starting Corporate Roulette for Player: {Player.name}.");
         ExitButton.gameObject.SetActive(false);
         FireButton.gameObject.SetActive(false);
-        Debug.Log($"Starting Corporate Roulette for player: {Player.name} with {Player.totalPoints} points.");
+        Debug.Log($"Starting Corporate Roulette for player: {Player.name} with {Player.Points} points.");
     }
 
     public void SpinChamber()
@@ -108,8 +91,8 @@ public class CorporateRoulette : Minigame
             return;
         }
 
-        player.AdjustPoints(reward);
-        Debug.Log($"Player {player.name} now has {player.totalPoints} points after the result.");
+        player.Points += reward;
+        Debug.Log($"Player {player.name} now has {player.Points} points after the result.");
 
         GeneralText.text = message;
 
@@ -129,10 +112,10 @@ public class CorporateRoulette : Minigame
         // Reset button states
         SpinButton.gameObject.SetActive(true);
         FireButton.gameObject.SetActive(false);
-        ExitButton.gameObject.SetActive(false);
+		ExitButton.gameObject.SetActive(false);
 
-        // Reset text fields
-        GeneralText.text = "Spin the chamber to start.";
+		// Reset text fields
+		GeneralText.text = "Spin the chamber to start.";
 
         // Reset internal variables
         currentChamber = -1;
@@ -147,9 +130,11 @@ public class CorporateRoulette : Minigame
         Debug.Log("CorporateRoulette cleanup completed.");
     }
 
-  public   void OnEndMinigameButtonClicked()
+    public void OnEndMinigameButtonClicked()
     {
         MinigameManager.Instance.EndCurrentMinigame();
+
+        PanelManager panelManager = PanelManager.Instance;
         panelManager.HideAllPanels();
         panelManager.ShowMovementUI();
     }

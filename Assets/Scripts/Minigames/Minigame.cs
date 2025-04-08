@@ -21,8 +21,8 @@ public abstract class Minigame : MonoBehaviour
         Player player = GameManager.Instance.CurrentPlayer;
         if (player != null)
         {
-            player.AdjustPoints(reward); // Update the player's points
-            Debug.Log($"{player.name} completed the minigame and earned {reward} points. Total points: {player.totalPoints}");
+            player.Points += reward; // Update the player's points
+            Debug.Log($"{player.name} completed the minigame and earned {reward} points. Total points: {player.Points}");
         }
 
         // Notify the MinigameManager that the minigame is completed

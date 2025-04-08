@@ -14,10 +14,9 @@ public class BonusSpace : SpaceBehavior
 	public override IEnumerator RespondToPlayer(Player player)
 	{
 		Biome biome = _space.Biome;
-		Debug.Log($"{player.name}, with {player.totalPoints}, landed on a {biome} bonus space. Sending to minigame manager.");
+		Debug.Log($"{player.name}, with {player.Points}, landed on a {biome} bonus space. Sending to minigame manager.");
 
 		MinigameManager.Instance.StartMinigameForPlayer(player);
-
 		yield return new WaitUntil(() => !MinigameManager.Instance.IsMinigameSequenceOngoing);
 
 		yield return DisasterManager.Instance.IncrementBiomeDisaster(biome, player);

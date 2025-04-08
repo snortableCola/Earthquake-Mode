@@ -10,7 +10,6 @@ public class DealOrNoDeal : Minigame
     public TMP_Text rewardText;
     public Color highlightColor;
     public GameObject initialTextObject; // Reference to the GameObject containing the initial text
-    public PanelManager panelManager;
 
     private int[] rewards = { 0, 0, 4, -4 };
     private int selectedReward;
@@ -56,7 +55,7 @@ public class DealOrNoDeal : Minigame
         exitButton.onClick.AddListener(OnEndMinigameButtonClicked);
 
         // Show game panels
-        panelManager.ShowPanel("Deal Or No Deal", 0); // Show the first panel
+        PanelManager.Instance.ShowPanel("Deal Or No Deal", 0); // Show the first panel
 
         // Shuffle the suitcases
         ShuffleSuitcases();
@@ -111,12 +110,12 @@ public class DealOrNoDeal : Minigame
         Debug.Log($"Player {player.name} selected a suitcase with reward {selectedReward}.");
 
         // Adjust the player's points based on the selected reward
-        player.AdjustPoints(selectedReward);
+        player.Points += selectedReward;
 
         // Display the reward text
-        rewardText.text = $"You got: {selectedReward} points! Total Points: {player.totalPoints}";
+        rewardText.text = $"You got: {selectedReward} points! Total Points: {player.Points}";
         Debug.Log($"Selected Reward: {selectedReward}");
-        Debug.Log($"Player {player.name} now has {player.totalPoints} points after adjustment.");
+        Debug.Log($"Player {player.name} now has {player.Points} points after adjustment.");
 
         // Hide the initial text
         if (initialTextObject != null)
@@ -173,6 +172,7 @@ public class DealOrNoDeal : Minigame
         MinigameManager.Instance.EndCurrentMinigame();
 
         // Hide game panels after selection
+        PanelManager panelManager = PanelManager.Instance;
         panelManager.HideAllPanels();
         panelManager.ShowMovementUI(); 
     }

@@ -1,165 +1,112 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Linq;
 
 public class DealOrNoDeal : Minigame
 {
-    public Button[] suitcases;
-    public Button selectButton;
-    public Button exitButton;
-    public TMP_Text rewardText;
-    public Color highlightColor;
-    public GameObject initialTextObject; // Reference to the GameObject containing the initial text
+    [SerializeField] private Button[] _suitcaseButtons;
+	[SerializeField] private Button _selectButton;
+    [SerializeField] private Button _exitButton;
+    [SerializeField] private TMP_Text _rewardText;
+    [SerializeField] private Color _highlightColor;
+    [SerializeField] private GameObject _initialTextObject; // Reference to the GameObject containing the initial text
 
-    private readonly int[] rewards = { 0, 0, 4, -4 };
-    private int selectedReward;
-    private Button selectedSuitcase;
-    private Color originalColor;
+    private readonly int[] _possibleRewards = { 0, 0, 4, -4 };
+    private int _selectedReward;
+    private Color _originalColor;
 
-    public override void StartGame()
+	private void Start()
 	{
-		// Add listeners to the suitcase buttons
-		for (int i = 0; i < suitcases.Length; i++)
+		for (int i = 0; i < _suitcaseButtons.Length; i++)
 		{
-			int index = i; // Prevent closure issue in listener
-			suitcases[index].onClick.AddListener(() => OnSuitcaseClicked(suitcases[index], index));
+			Button suitcase = _suitcaseButtons[i];
+			int index = i;
+
+			suitcase.onClick.AddListener(SuitcaseResponse);
+			void SuitcaseResponse() => OnSuitcaseClicked(index);
 		}
 
-		// Add listeners to the buttons
-		selectButton.onClick.AddListener(OnSelectButtonClicked);
-		exitButton.onClick.AddListener(OnEndMinigameButtonClicked);
+		_selectButton.onClick.AddListener(OnSelectClicked);
+		_exitButton.onClick.AddListener(OnExitClicked);
+	}
 
+	public override void StartGame()
+	{
 		Player player = GameManager.Instance.CurrentPlayer;
-
-		if (player == null)
-        {
-            Debug.LogError("Player is null in DealOrNoDeal! Ensure SetPlayer is called before starting.");
-            return;
-        }
-
 		Debug.Log($"Starting DealOrNoDeal for Player: {player.name}.");
 
-		for (int i = 0; i < suitcases.Length; i++)
-        {
-            int index = i; // Prevent closure issue in listener
-            suitcases[index].onClick.AddListener(() => OnSuitcaseClicked(suitcases[index], index));
-        }
+        PanelManager.Instance.ShowPanel(this, 0); // Show the first panel (instructions)
 
-        // Add listeners to the buttons
-        selectButton.onClick.AddListener(OnSelectButtonClicked);
-        exitButton.onClick.AddListener(OnEndMinigameButtonClicked);
-
-        // Show game panels
-        PanelManager.Instance.ShowPanel(this, 0); // Show the first panel
-
-        // Shuffle the suitcases
         ShuffleSuitcases();
 
         // Reset the UI
-        rewardText.text = "";
-        selectButton.gameObject.SetActive(false);
-        exitButton.gameObject.SetActive(false); // Ensure exit button is initially inactive
-        selectedSuitcase = null;
+        _rewardText.text = "";
+        _selectButton.gameObject.SetActive(false);
+        _exitButton.gameObject.SetActive(false);
 
-        // Show the initial text
-        if (initialTextObject != null)
-        {
-            initialTextObject.SetActive(true);
-        }
-    }
-
-    void ShuffleSuitcases()
-    {
-        // Shuffle the rewards array
-        for (int i = rewards.Length - 1; i > 0; i--)
-        {
-            int rnd = Random.Range(0, i + 1);
-			(rewards[i], rewards[rnd]) = (rewards[rnd], rewards[i]);
+		_initialTextObject.SetActive(true);
+		foreach (Button suitcase in _suitcaseButtons)
+		{
+			suitcase.enabled = true;
 		}
 	}
 
-    void OnSuitcaseClicked(Button clickedButton, int index)
+	// Shuffle the rewards array
+	private void ShuffleSuitcases()
     {
-        selectedSuitcase = clickedButton;
-        selectedReward = rewards[index];
+        for (int i = _possibleRewards.Length - 1; i > 0; i--)
+        {
+            int rnd = Random.Range(0, i + 1);
+			(_possibleRewards[i], _possibleRewards[rnd]) = (_possibleRewards[rnd], _possibleRewards[i]);
+		}
+	}
 
-        // Show the select button
-        selectButton.gameObject.SetActive(true);
+	private void OnSuitcaseClicked(int index)
+    {
+        _selectedReward = _possibleRewards[index];
+        _selectButton.gameObject.SetActive(true);
     }
 
-    void OnSelectButtonClicked()
+	private void OnSelectClicked()
 	{
+		foreach (Button suitcase in _suitcaseButtons)
+		{
+			suitcase.enabled = false;
+		}
+
 		Player player = GameManager.Instance.CurrentPlayer;
 
 		Debug.Log($"{name}, {GetInstanceID()}");
-        Debug.Log($"Player {player.name} selected a suitcase with reward {selectedReward}.");
+        Debug.Log($"Player {player.name} selected a suitcase with reward {_selectedReward}.");
 
         // Adjust the player's points based on the selected reward
-        player.Points += selectedReward;
+        player.Points += _selectedReward;
 
         // Display the reward text
-        rewardText.text = $"You got: {selectedReward} points! Total Points: {player.Points}";
-        Debug.Log($"Selected Reward: {selectedReward}");
+        _rewardText.text = $"You got: {_selectedReward} points! Total Points: {player.Points}";
+        Debug.Log($"Selected Reward: {_selectedReward}");
         Debug.Log($"Player {player.name} now has {player.Points} points after adjustment.");
 
         // Hide the initial text
-        if (initialTextObject != null)
+        if (_initialTextObject != null)
         {
-            initialTextObject.SetActive(false);
+            _initialTextObject.SetActive(false);
         }
 
         // Make the select button inactive and the exit button active
-        selectButton.gameObject.SetActive(false);
-        exitButton.gameObject.SetActive(true);
-    }
+        _selectButton.gameObject.SetActive(false);
+        _exitButton.gameObject.SetActive(true);
+	}
 
-    public override void Cleanup()
-    {
-        base.Cleanup();
+	private void OnExitClicked()
+	{
+		// Reset the color of all suitcases to their original color
+		foreach (var suitcase in _suitcaseButtons)
+		{
+			suitcase.image.color = _originalColor;
+		}
 
-        // Remove all listeners from buttons
-        foreach (var suitcase in suitcases)
-        {
-            suitcase.onClick.RemoveAllListeners();
-        }
-        selectButton.onClick.RemoveAllListeners();
-        exitButton.onClick.RemoveAllListeners();
-
-        // Reset input fields and text
-        rewardText.text = "";
-        selectButton.gameObject.SetActive(false);
-        exitButton.gameObject.SetActive(false); // Ensure exit button is initially inactive
-        selectedSuitcase = null;
-
-        // Reset the color of all suitcases to their original color
-        foreach (var suitcase in suitcases)
-        {
-            suitcase.image.color = originalColor;
-        }
-
-        // Show the initial text
-        if (initialTextObject != null)
-        {
-            initialTextObject.SetActive(true);
-        }
-    }
-
-    void OnEndMinigameButtonClicked()
-    {
-        // Reset the color of the selected suitcase to its original state
-        if (selectedSuitcase != null)
-        {
-            selectedSuitcase.image.color = originalColor;
-        }
-        Cleanup();
-
-        // Notify the manager that the minigame is complete
-        MinigameManager.Instance.EndCurrentMinigame();
-
-        // Hide game panels after selection
-        PanelManager panelManager = PanelManager.Instance;
-        panelManager.HideAllPanels();
-        panelManager.ShowMovementUI(); 
-    }
+		// Notify the manager that the minigame is complete
+		MinigameManager.Instance.EndMinigame();
+	}
 }

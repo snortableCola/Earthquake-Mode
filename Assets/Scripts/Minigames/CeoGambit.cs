@@ -137,12 +137,15 @@ public class CeoGambit : Minigame
 		exitButton.gameObject.SetActive(true);
 	}
 
-    public override void Cleanup()
+    public void Cleanup()
     {
-        base.Cleanup();
+		Debug.Log($"Cleaning up minigame: {name} {GetInstanceID()}");
 
-        // Remove all listeners from buttons
-        headsButton.onClick.RemoveAllListeners();
+		// Hide any related UI
+		PanelManager.Instance.HideAllPanels();
+
+		// Remove all listeners from buttons
+		headsButton.onClick.RemoveAllListeners();
         tailsButton.onClick.RemoveAllListeners();
         selectButton.onClick.RemoveAllListeners();
         flipButton.onClick.RemoveAllListeners();
@@ -178,7 +181,7 @@ public class CeoGambit : Minigame
     {
         Debug.Log("Exiting minigame.");
        
-        MinigameManager.Instance.EndCurrentMinigame();
+        MinigameManager.Instance.EndMinigame();
 		PanelManager.Instance.ShowMovementUI(); 
     }
 

@@ -84,12 +84,15 @@ public class CorporateRoulette : Minigame
         ExitButton.gameObject.SetActive(true);
     }
 
-    public override void Cleanup()
+    public void Cleanup()
     {
-        base.Cleanup();
+		Debug.Log($"Cleaning up minigame: {name} {GetInstanceID()}");
 
-        // Remove all listeners from buttons
-        SpinButton.onClick.RemoveAllListeners();
+		// Hide any related UI
+		PanelManager.Instance.HideAllPanels();
+
+		// Remove all listeners from buttons
+		SpinButton.onClick.RemoveAllListeners();
         FireButton.onClick.RemoveAllListeners();
         ExitButton.onClick.RemoveAllListeners();
 
@@ -116,7 +119,7 @@ public class CorporateRoulette : Minigame
 
     public void OnEndMinigameButtonClicked()
     {
-        MinigameManager.Instance.EndCurrentMinigame();
+        MinigameManager.Instance.EndMinigame();
 
         PanelManager panelManager = PanelManager.Instance;
         panelManager.HideAllPanels();

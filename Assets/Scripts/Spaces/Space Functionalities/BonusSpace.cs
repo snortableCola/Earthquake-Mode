@@ -16,7 +16,7 @@ public class BonusSpace : SpaceBehavior
 		Biome biome = _space.Biome;
 		Debug.Log($"{player.name}, with {player.Points}, landed on a {biome} bonus space. Sending to minigame manager.");
 
-		MinigameManager.Instance.StartMinigameForPlayer(player);
+		MinigameManager.Instance.StartRandomSingleplayerMinigame();
 		yield return new WaitUntil(() => !MinigameManager.Instance.IsMinigameSequenceOngoing);
 
 		yield return DisasterManager.Instance.IncrementBiomeDisaster(biome, player);

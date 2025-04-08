@@ -7636,7 +7636,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
-  totalPoints: 100
 --- !u!136 &749627512
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9488,7 +9487,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
-  totalPoints: 100
 --- !u!136 &1088405395
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10726,7 +10724,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
-  totalPoints: 100
 --- !u!136 &1196372718
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -18428,7 +18425,7 @@ GameObject:
   - component: {fileID: 8103615499601114323}
   - component: {fileID: 639368113398822389}
   m_Layer: 5
-  m_Name: Suicase4
+  m_Name: Suitcase 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19054,7 +19051,7 @@ GameObject:
   - component: {fileID: 4772742007237713423}
   - component: {fileID: 7282350334045255015}
   m_Layer: 5
-  m_Name: Suicase1
+  m_Name: Suitcase 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20620,7 +20617,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &4475815978855316881
 GameObject:
   m_ObjectHideFlags: 0
@@ -21502,15 +21499,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4608a9ab7edfb04f96d3f23e7bff62e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  singlePlayerMinigames:
-  - {fileID: 4444685092434606069}
-  - {fileID: 8286644546283884982}
-  - {fileID: 5853160343082638236}
-  multiplayerMinigames: []
-  isMultiplayer: 0
-  panelManager: {fileID: 1476683097166390801}
-  hudMessage: {fileID: 1984466370}
-  hudMessageDuration: 3
+  _singleplayerMinigames:
+  - {fileID: 7679657314814233381}
+  _multiplayerMinigames: []
+  _hudMessage: {fileID: 0}
+  _hudMessageDuration: 3
 --- !u!224 &5530826561075836813
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21670,7 +21663,7 @@ GameObject:
   - component: {fileID: 8246760431096525662}
   - component: {fileID: 623438276228791159}
   m_Layer: 5
-  m_Name: Suicase3
+  m_Name: Suitcase 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21820,7 +21813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &6020225779303083862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23164,7 +23157,6 @@ MonoBehaviour:
   GeneralText: {fileID: 7756355673386364015}
   audioSource: {fileID: 569796442546643665}
   FiringSound: {fileID: 8300000, guid: 5f22fb1bdf2cc8348a618e81c93552c0, type: 3}
-  panelManager: {fileID: 1476683097166390801}
 --- !u!114 &7665869261603291719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23224,17 +23216,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 101b2fb21e941d94996fe22fb0d68d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  suitcases:
+  _suitcaseButtons:
   - {fileID: 7282350334045255015}
   - {fileID: 3366870856760433016}
   - {fileID: 623438276228791159}
   - {fileID: 639368113398822389}
-  selectButton: {fileID: 6163122605814919908}
-  exitButton: {fileID: 846689858726548299}
-  rewardText: {fileID: 8625980054945463706}
-  highlightColor: {r: 0.9547169, g: 0.8035259, b: 0.0054039797, a: 0}
-  initialTextObject: {fileID: 4718019762884266404}
-  panelManager: {fileID: 1476683097166390801}
+  _selectButton: {fileID: 6163122605814919908}
+  _exitButton: {fileID: 846689858726548299}
+  _rewardText: {fileID: 8625980054945463706}
+  _highlightColor: {r: 0.9529412, g: 0.8039216, b: 0.003921569, a: 1}
+  _initialTextObject: {fileID: 4718019762884266404}
 --- !u!114 &7685969990733572775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23774,7 +23765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &8295518206375817207
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24315,7 +24306,7 @@ GameObject:
   - component: {fileID: 2023669041815619391}
   - component: {fileID: 3366870856760433016}
   m_Layer: 5
-  m_Name: Suicase2
+  m_Name: Suitcase 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24679,7 +24670,6 @@ MonoBehaviour:
   doneButton: {fileID: 350142103564502330}
   selectButton: {fileID: 4313593659615630818}
   exitButton: {fileID: 7404021717140844614}
-  panelManager: {fileID: 1476683097166390801}
   coinDisplay: {fileID: 3911025727391767011}
   tailsImage: {fileID: 21300000, guid: 5ca9944ae33009642b37b64171ad6b5c, type: 3}
   headsImages:

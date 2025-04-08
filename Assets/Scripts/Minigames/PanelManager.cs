@@ -88,7 +88,7 @@ public class PanelManager : MonoBehaviour
             return;
 		}
 
-		MinigameManager.Instance.StartMinigame(currentMinigameName); // Start the minigame
+		MinigameManager.Instance.StartMinigame(); // Start the minigame
 	}
 
     public void ShowPanel(Minigame minigame, int panelIndex)

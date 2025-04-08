@@ -11,7 +11,6 @@ public class MinigameManager : MonoBehaviour
     public bool isMultiplayer;
     public PanelManager panelManager;
     private Minigame currentMinigame;
-    private Player currentPlayer; // Track the current player playing the minigame
     public Image hudMessage; // Reference to the HUD message image
     public float hudMessageDuration = 3f; // Duration for HUD message to display
     
@@ -190,20 +189,12 @@ public class MinigameManager : MonoBehaviour
             return;
         }
 
-        // Assign the player to the minigame
-        currentMinigame.SetPlayer(player);
-
         // Confirm the player is assigned
         Debug.Log($"Player {player.name} assigned to Minigame: {currentMinigame.name}");
 
         // Show HUD message and instructions
         string minigameName = singlePlayerMinigames[randomIndex].name;
         StartCoroutine(ShowHudMessageThenInstructions(minigameName));
-    }
-
-    public Player GetCurrentPlayer()
-    {
-        return currentPlayer;
     }
 
     public void EndCurrentMinigame()

@@ -14,17 +14,7 @@ public class CorporateRoulette : Minigame
     public AudioSource audioSource;
     public AudioClip FiringSound;
     public PanelManager panelManager;
-    public override void SetPlayer(Player player)
-    {
-        if (player == null)
-        {
-            Debug.LogError("SetPlayer called with a null Player in CR.");
-            return;
-        }
 
-        base.SetPlayer(player);
-        Debug.Log($"Player {player.name} assigned to CR");
-    }
     void Start()
     {
         Debug.Log("CorporateRoulette Start method called.");
@@ -44,6 +34,7 @@ public class CorporateRoulette : Minigame
     }
     public override void StartGame()
     {
+        Player Player = GameManager.Instance.CurrentPlayer;
       if (Player == null)
         {
             Debug.LogError("Player is null in CorporateRoulette! Ensure SetPlayer is called before starting.");
@@ -89,10 +80,10 @@ public class CorporateRoulette : Minigame
 
     
     public void FireChamber()
-    {
-        
+	{
+		Player player = GameManager.Instance.CurrentPlayer;
 
-        if (currentChamber < 0)
+		if (currentChamber < 0)
         {
             GeneralText.text = "Please spin the chamber first!";
             return;
@@ -111,14 +102,14 @@ public class CorporateRoulette : Minigame
             _ => $"You lost {-reward} points.",
         };
 
-        if (Player == null)
+        if (player == null)
         {
             Debug.LogError("Player reference is null! Cannot update points.");
             return;
         }
 
-        Player.AdjustPoints(reward);
-        Debug.Log($"Player {Player.name} now has {Player.totalPoints} points after the result.");
+        player.AdjustPoints(reward);
+        Debug.Log($"Player {player.name} now has {player.totalPoints} points after the result.");
 
         GeneralText.text = message;
 

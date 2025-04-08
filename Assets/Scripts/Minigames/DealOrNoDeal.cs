@@ -16,17 +16,7 @@ public class DealOrNoDeal : Minigame
     private int selectedReward;
     private Button selectedSuitcase;
     private Color originalColor;
-    public override void SetPlayer(Player player)
-    {
-        if (player == null)
-        {
-            Debug.LogError("SetPlayer called with a null Player in DOND.");
-            return;
-        }
 
-        base.SetPlayer(player);
-        Debug.Log($"Player {player.name} assigned to DOND");
-    }
     void Start()
     {
         // Add listeners to the suitcase buttons
@@ -42,15 +32,17 @@ public class DealOrNoDeal : Minigame
     }
 
     public override void StartGame()
-    {
-        if (Player == null)
+	{
+		Player player = GameManager.Instance.CurrentPlayer;
+
+		if (player == null)
         {
             Debug.LogError("Player is null in DealOrNoDeal! Ensure SetPlayer is called before starting.");
             return;
         }
         else
         {
-            Debug.Log($"Starting DealOrNoDeal for Player: {Player.name}.");
+            Debug.Log($"Starting DealOrNoDeal for Player: {player.name}.");
         }
 
         for (int i = 0; i < suitcases.Length; i++)
@@ -104,25 +96,27 @@ public class DealOrNoDeal : Minigame
     }
 
     void OnSelectButtonClicked()
-    {
-        Debug.Log($"{name}, {GetInstanceID()}");
+	{
+		Player player = GameManager.Instance.CurrentPlayer;
+
+		Debug.Log($"{name}, {GetInstanceID()}");
 
         // Check references before proceeding
-        if (Player == null)
+        if (player == null)
         {
             Debug.LogError("Player reference is null in OnSelectButtonClicked!");
             return;
         }
 
-        Debug.Log($"Player {Player.name} selected a suitcase with reward {selectedReward}.");
+        Debug.Log($"Player {player.name} selected a suitcase with reward {selectedReward}.");
 
         // Adjust the player's points based on the selected reward
-        Player.AdjustPoints(selectedReward);
+        player.AdjustPoints(selectedReward);
 
         // Display the reward text
-        rewardText.text = $"You got: {selectedReward} points! Total Points: {Player.totalPoints}";
+        rewardText.text = $"You got: {selectedReward} points! Total Points: {player.totalPoints}";
         Debug.Log($"Selected Reward: {selectedReward}");
-        Debug.Log($"Player {Player.name} now has {Player.totalPoints} points after adjustment.");
+        Debug.Log($"Player {player.name} now has {player.totalPoints} points after adjustment.");
 
         // Hide the initial text
         if (initialTextObject != null)

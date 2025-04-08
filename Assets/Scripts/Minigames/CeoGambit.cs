@@ -30,34 +30,44 @@ public class CeoGambit : Minigame
 
 	public override GameObject InitialPanel => _panels[0];
 
+	private void Awake()
+	{
+		headsButton.onClick.AddListener(() => SelectHeads(true));
+		tailsButton.onClick.AddListener(() => SelectHeads(false));
+		selectButton.onClick.AddListener(SelectBet);
+		flipButton.onClick.AddListener(FlipCoin);
+		doneButton.onClick.AddListener(PlaceBet);
+		exitButton.onClick.AddListener(ExitMinigame);
+		pointsInput.contentType = TMP_InputField.ContentType.IntegerNumber;
+		pointsInput.onValueChanged.AddListener(ValidateBet);
+	}
+
 	public override void StartGame()
     {
 		Player player = GameManager.Instance.CurrentPlayer;
 		Debug.Log($"Starting CEO Gambit for Player: {player.name}.");
 
         UpdatePointsDisplay();
-        headsButton.onClick.AddListener(() => SelectHeads(true));
-        tailsButton.onClick.AddListener(() => SelectHeads(false));
-        selectButton.onClick.AddListener(SelectBet);
-        flipButton.onClick.AddListener(FlipCoin);
-        doneButton.onClick.AddListener(PlaceBet);
-        exitButton.onClick.AddListener(ExitMinigame);
 
-        pointsInput.contentType = TMP_InputField.ContentType.IntegerNumber;
-        pointsInput.onValueChanged.AddListener(ValidateBet);
+		pointsInput.text = "1";
+		doneButton.gameObject.SetActive(true);
+		headsButton.gameObject.SetActive(true);
+		tailsButton.gameObject.SetActive(true);
+		selectButton.gameObject.SetActive(true);
+		flipButton.gameObject.SetActive(false);
+		exitButton.gameObject.SetActive(false);
+		resultText.text = "Choose Heads or Tails";
 
-        exitButton.gameObject.SetActive(false);
-
-        Debug.Log(player.name);
+		Debug.Log(player.name);
     }
 
     void ValidateBet(string input)
 	{
 		Player player = GameManager.Instance.CurrentPlayer;
 
-		if (!int.TryParse(input, out points) || points < 0)
+		if (!int.TryParse(input, out points) || points < 1)
 		{
-			pointsInput.text = "0";
+			pointsInput.text = "1";
 		}
 		else if (points > player.Points)
 		{
@@ -143,53 +153,9 @@ public class CeoGambit : Minigame
 		exitButton.gameObject.SetActive(true);
 	}
 
-    public void Cleanup()
-    {
-		Debug.Log($"Cleaning up minigame: {name} {GetInstanceID()}");
+	public void ExitMinigame() => MinigameManager.Instance.EndMinigame();
 
-
-		// Remove all listeners from buttons
-		headsButton.onClick.RemoveAllListeners();
-        tailsButton.onClick.RemoveAllListeners();
-        selectButton.onClick.RemoveAllListeners();
-        flipButton.onClick.RemoveAllListeners();
-        doneButton.onClick.RemoveAllListeners();
-        exitButton.onClick.RemoveAllListeners();
-
-        // Reset input field state and clear previous input
-        pointsInput.contentType = TMP_InputField.ContentType.IntegerNumber;
-        pointsInput.text = string.Empty; // Clear any previous input
-        pointsInput.onValueChanged.RemoveAllListeners(); // Remove previous listeners
-        pointsInput.onValueChanged.AddListener(ValidateBet);
-
-        // Hide exit button
-        exitButton.gameObject.SetActive(false);
-
-        // Reset any other UI elements to their default states
-        headsButton.gameObject.SetActive(true);
-        tailsButton.gameObject.SetActive(true);
-        selectButton.gameObject.SetActive(false);
-        flipButton.gameObject.SetActive(false);
-        doneButton.gameObject.SetActive(false);
-
-        // Reset text fields or other UI elements if needed
-        resultText.text = "Choose Heads or Tails";
-
-        // Reset any internal variables used in the minigame
-        betOnHeads = false;
-
-        Debug.Log("Cleanup completed and UI reset for the new player.");
-    }
-
-    public void ExitMinigame()
-    {
-        Debug.Log("Exiting minigame.");
-       
-        MinigameManager.Instance.EndMinigame();
-		PanelManager.Instance.ShowMovementUI(); 
-    }
-
-    void UpdatePointsDisplay()
+	void UpdatePointsDisplay()
 	{
 		Player player = GameManager.Instance.CurrentPlayer;
 

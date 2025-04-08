@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private TMP_Text _distanceText;   
 	[SerializeField] private Player[] _players;
 
-	private int _roundNumber = 1;
+	private int _roundNumber;
 	private bool _diceRolled;
 
 	private void Awake()
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 	public readonly UnityEvent RoundPassed = new();
 	private IEnumerator GameRoundCycle()
 	{
-		while (_roundNumber++ <= _totalRounds)
+		while (_roundNumber++ < _totalRounds)
 		{
 			yield return DoRound();
 			RoundPassed.Invoke();

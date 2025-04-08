@@ -42,11 +42,11 @@ public class GameManager : MonoBehaviour
 	public readonly UnityEvent<Player> TurnPassed = new();
 	private IEnumerator DoRound()
 	{
-		foreach (Player player in _players)
+		for (int playerIdx = 0; playerIdx < _players.Length; playerIdx++)
 		{
-			CurrentPlayer = player;
+			CurrentPlayer = _players[playerIdx];
 			yield return DoPlayerTurn();
-			TurnPassed.Invoke(player);
+			TurnPassed.Invoke(CurrentPlayer);
 		}
 	}
 
@@ -95,8 +95,5 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	private void RespondToDiceRoll()
-	{
-		_diceRolled = true;
-	}
+	private void RespondToDiceRoll() => _diceRolled = true;
 }

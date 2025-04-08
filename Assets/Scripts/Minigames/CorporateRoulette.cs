@@ -4,7 +4,9 @@ using TMPro;
 
 public class CorporateRoulette : Minigame
 {
-    public Button SpinButton;
+	[SerializeField] private GameObject[] _panels;
+
+	public Button SpinButton;
     public Button FireButton;
     public Button ExitButton;
     public TMP_Text GeneralText;
@@ -14,28 +16,33 @@ public class CorporateRoulette : Minigame
     public AudioSource audioSource;
     public AudioClip FiringSound;
 
-    public override void StartGame()
+	public override string Instructions { get; } = "Spin the chamber and take your shot. Some bullets earn you points (+6,+4), others hit you where it hurts (-3, -4 points), and a couple just click harmlessly. Will luck be on your side?";
+
+	public override GameObject[] MinigamePanels => _panels;
+
+	private void Awake()
+	{
+		// Add listeners to the buttons
+		SpinButton.onClick.AddListener(OnSpinClicked);
+		FireButton.onClick.AddListener(OnFireClicked);
+		ExitButton.onClick.AddListener(OnExitClicked);
+	}
+
+	public override void StartGame()
 	{
 		Debug.Log("CorporateRoulette Start method called.");
 
-		// Add listeners to the buttons
-		SpinButton.onClick.AddListener(SpinChamber);
-		FireButton.onClick.AddListener(FireChamber);
-		ExitButton.onClick.AddListener(OnEndMinigameButtonClicked);
+		Player player = GameManager.Instance.CurrentPlayer;
 
-		// Check if buttons are interactable
-		Debug.Log($"SpinButton interactable: {SpinButton.interactable}");
-		Debug.Log($"FireButton interactable: {FireButton.interactable}");
-		Debug.Log($"ExitButton interactable: {ExitButton.interactable}");
+		Debug.Log($"Starting Corporate Roulette for player: {player.name} with {player.Points} points.");
 
-		Player Player = GameManager.Instance.CurrentPlayer;
-		Debug.Log($"Starting Corporate Roulette for Player: {Player.name}.");
-        ExitButton.gameObject.SetActive(false);
+		PanelManager.Instance.ShowPanel(this, 0);
+
+		ExitButton.gameObject.SetActive(false);
         FireButton.gameObject.SetActive(false);
-        Debug.Log($"Starting Corporate Roulette for player: {Player.name} with {Player.Points} points.");
     }
 
-    public void SpinChamber()
+    public void OnSpinClicked()
     {
         Debug.Log("SpinChamber() initiated");
         for (int i = rewards.Length - 1; i > 0; i--)
@@ -52,7 +59,7 @@ public class CorporateRoulette : Minigame
     }
 
     
-    public void FireChamber()
+    public void OnFireClicked()
 	{
 		Player player = GameManager.Instance.CurrentPlayer;
 
@@ -89,7 +96,7 @@ public class CorporateRoulette : Minigame
 		Debug.Log($"Cleaning up minigame: {name} {GetInstanceID()}");
 
 		// Hide any related UI
-		PanelManager.Instance.HideAllPanels();
+		PanelManager.Instance.HideAllMinigamePanels(this);
 
 		// Remove all listeners from buttons
 		SpinButton.onClick.RemoveAllListeners();
@@ -117,12 +124,12 @@ public class CorporateRoulette : Minigame
         Debug.Log("CorporateRoulette cleanup completed.");
     }
 
-    public void OnEndMinigameButtonClicked()
+    public void OnExitClicked()
     {
         MinigameManager.Instance.EndMinigame();
 
         PanelManager panelManager = PanelManager.Instance;
-        panelManager.HideAllPanels();
+        panelManager.HideAllMinigamePanels(this);
         panelManager.ShowMovementUI();
     }
 }

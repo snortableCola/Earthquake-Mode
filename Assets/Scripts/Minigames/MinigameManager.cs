@@ -62,7 +62,7 @@ public class MinigameManager : MonoBehaviour
     {
 		PanelManager panelManager = PanelManager.Instance;
 
-		panelManager.HideAllPanels();
+		panelManager.HideAllMinigamePanels(_currentMinigame);
 		panelManager.ShowMovementUI();
 
 		IsMinigameSequenceOngoing = false;

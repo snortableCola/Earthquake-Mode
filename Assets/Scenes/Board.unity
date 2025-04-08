@@ -18289,19 +18289,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eac721533e6bdf43bb805b5b919fb22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementUI: {fileID: 498199030}
-  instructionPanel: {fileID: 2865737326079685632}
-  instructionText: {fileID: 4543167586527772684}
-  gameName: {fileID: 2748576760725447706}
-  startMinigameButton: {fileID: 3282635391819748713}
-  ceoGambitPanels:
-  - {fileID: 4992646337335603424}
-  - {fileID: 5546221165551613246}
-  - {fileID: 7305549553031766279}
-  dealOrNoDealPanels:
-  - {fileID: 2834115332184452033}
-  CRPanels:
-  - {fileID: 2220943098402608340}
+  _movementUI: {fileID: 498199030}
+  _instructionPanel: {fileID: 2865737326079685632}
+  _instructionText: {fileID: 4543167586527772684}
+  _gameNameText: {fileID: 2748576760725447706}
+  _startMinigameButton: {fileID: 3282635391819748713}
 --- !u!114 &1514678850479089574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23151,6 +23143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab75bb7b247f2e4d812adb8f9968d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _panels:
+  - {fileID: 2220943098402608340}
   SpinButton: {fileID: 7685969990733572775}
   FireButton: {fileID: 3380473417109127813}
   ExitButton: {fileID: 3663886876927090842}
@@ -23216,6 +23210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 101b2fb21e941d94996fe22fb0d68d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _panels:
+  - {fileID: 2834115332184452033}
   _suitcaseButtons:
   - {fileID: 7282350334045255015}
   - {fileID: 3366870856760433016}
@@ -24661,6 +24657,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6896171eb48560240984279dca158f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _panels:
+  - {fileID: 4992646337335603424}
+  - {fileID: 5546221165551613246}
+  - {fileID: 7305549553031766279}
   pointsDisplay: {fileID: 5214189573725274193}
   pointsInput: {fileID: 2944145561523484602}
   resultText: {fileID: 6042759566626227135}

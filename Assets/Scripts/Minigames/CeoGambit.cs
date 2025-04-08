@@ -5,7 +5,9 @@ using System.Collections.Generic;
 
 public class CeoGambit : Minigame
 {
-    public TMP_Text pointsDisplay;
+	[SerializeField] private GameObject[] _panels;
+
+	public TMP_Text pointsDisplay;
     public TMP_InputField pointsInput;
     public TMP_Text resultText;
     public Button headsButton;
@@ -24,7 +26,11 @@ public class CeoGambit : Minigame
     public AudioSource audioSource;
     public AudioClip CoinSound;
 
-    public override void StartGame()
+	public override string Instructions { get; } = "How confident are you in your coin-flipping skills? Bet on your hard-earned cash, call heads or tails, and flip the coin. Get it right to double your bet—get it wrong, and, well… hope you didn’t bet too much.";
+
+	public override GameObject[] MinigamePanels => _panels;
+
+	public override void StartGame()
     {
 		Player player = GameManager.Instance.CurrentPlayer;
 		Debug.Log($"Starting CEO Gambit for Player: {player.name}.");
@@ -142,7 +148,7 @@ public class CeoGambit : Minigame
 		Debug.Log($"Cleaning up minigame: {name} {GetInstanceID()}");
 
 		// Hide any related UI
-		PanelManager.Instance.HideAllPanels();
+		PanelManager.Instance.HideAllMinigamePanels(this);
 
 		// Remove all listeners from buttons
 		headsButton.onClick.RemoveAllListeners();

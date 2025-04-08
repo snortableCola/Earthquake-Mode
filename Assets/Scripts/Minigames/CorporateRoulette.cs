@@ -4,8 +4,6 @@ using TMPro;
 
 public class CorporateRoulette : Minigame
 {
-	[SerializeField] private GameObject _panel;
-
 	[SerializeField] private Button _spinButton;
 	[SerializeField] private Button _fireButton;
 	[SerializeField] private Button _exitButton;
@@ -18,8 +16,6 @@ public class CorporateRoulette : Minigame
     public AudioClip FiringSound;
 
 	public override string Instructions { get; } = "Spin the chamber and take your shot. Some bullets earn you points (+6,+4), others hit you where it hurts (-3, -4 points), and a couple just click harmlessly. Will luck be on your side?";
-
-	public override GameObject InitialPanel => _panel;
 
 	private void Awake()
 	{

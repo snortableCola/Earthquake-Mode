@@ -5,7 +5,8 @@ using System.Collections.Generic;
 
 public class CeoGambit : Minigame
 {
-	[SerializeField] private GameObject[] _panels;
+	[SerializeField] private GameObject _selectionPanel;
+	[SerializeField] private GameObject _flippingPanel;
 
 	public TMP_Text pointsDisplay;
     public TMP_InputField pointsInput;
@@ -27,8 +28,6 @@ public class CeoGambit : Minigame
     public AudioClip CoinSound;
 
 	public override string Instructions { get; } = "How confident are you in your coin-flipping skills? Bet on your hard-earned cash, call heads or tails, and flip the coin. Get it right to double your bet—get it wrong, and, well… hope you didn’t bet too much.";
-
-	public override GameObject InitialPanel => _panels[0];
 
 	private void Awake()
 	{
@@ -84,7 +83,7 @@ public class CeoGambit : Minigame
 
         if (int.TryParse(pointsInput.text, out points) && points > 0 && points <= player.Points)
 		{
-			PanelManager.Instance.ShowPanel(_panels[1]); // Show the selection panel for CeoGambit
+			PanelManager.Instance.ShowPanel(_selectionPanel); // Show the selection panel for CeoGambit
 		}
         else
         {
@@ -103,7 +102,7 @@ public class CeoGambit : Minigame
     {
         if (headsButton.image.color == Color.green || tailsButton.image.color == Color.green)
 		{
-			PanelManager.Instance.ShowPanel(_panels[2]); // Show the flip panel for CeoGambit
+			PanelManager.Instance.ShowPanel(_flippingPanel); // Show the flip panel for CeoGambit
 		}
         else
         {
@@ -119,7 +118,7 @@ public class CeoGambit : Minigame
 		if (points <= 0 || points > player.Points)
 		{
 			resultText.text = "Please enter a valid number of points within your available points.";
-			PanelManager.Instance.ShowPanel(_panels[1]);
+			PanelManager.Instance.ShowPanel(_selectionPanel);
             return;
 		}
 

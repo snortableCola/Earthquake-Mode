@@ -4,8 +4,6 @@ using TMPro;
 
 public class DealOrNoDeal : Minigame
 {
-	[SerializeField] private GameObject _panel;
-
     [SerializeField] private Button[] _suitcaseButtons;
 	[SerializeField] private Button _selectButton;
     [SerializeField] private Button _exitButton;
@@ -19,8 +17,6 @@ public class DealOrNoDeal : Minigame
     private Color _originalColor;
 
 	public override string Instructions { get; } = "Four suitcases lie before you. One will give you +4 points, two are empty, and one will give you -4 points. The suitcases will be shuffled and you must choose wisely...";
-
-	public override GameObject InitialPanel => _panel;
 
 	private void Awake()
 	{

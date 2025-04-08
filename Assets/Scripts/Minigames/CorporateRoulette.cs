@@ -8,35 +8,27 @@ public class CorporateRoulette : Minigame
     public Button FireButton;
     public Button ExitButton;
     public TMP_Text GeneralText;
-    private int[] rewards = { 0, 0, -3, -4, 6, 4 };
+    private readonly int[] rewards = { 0, 0, -3, -4, 6, 4 };
     private int currentChamber = -1; // Tracks the selected chamber
 
     public AudioSource audioSource;
     public AudioClip FiringSound;
 
-	void Awake()
-	{
-		Debug.Log("CorporateRoulette Awake method called.");
-	}
-
-	void Start()
-    {
-        Debug.Log("CorporateRoulette Start method called.");
-
-        // Add listeners to the buttons
-        SpinButton.onClick.AddListener(SpinChamber);
-        FireButton.onClick.AddListener(FireChamber);
-        ExitButton.onClick.AddListener(OnEndMinigameButtonClicked);
-
-        // Check if buttons are interactable
-        Debug.Log($"SpinButton interactable: {SpinButton.interactable}");
-        Debug.Log($"FireButton interactable: {FireButton.interactable}");
-        Debug.Log($"ExitButton interactable: {ExitButton.interactable}");
-    }
-
     public override void StartGame()
-    {
-        Player Player = GameManager.Instance.CurrentPlayer;
+	{
+		Debug.Log("CorporateRoulette Start method called.");
+
+		// Add listeners to the buttons
+		SpinButton.onClick.AddListener(SpinChamber);
+		FireButton.onClick.AddListener(FireChamber);
+		ExitButton.onClick.AddListener(OnEndMinigameButtonClicked);
+
+		// Check if buttons are interactable
+		Debug.Log($"SpinButton interactable: {SpinButton.interactable}");
+		Debug.Log($"FireButton interactable: {FireButton.interactable}");
+		Debug.Log($"ExitButton interactable: {ExitButton.interactable}");
+
+		Player Player = GameManager.Instance.CurrentPlayer;
 		Debug.Log($"Starting Corporate Roulette for Player: {Player.name}.");
         ExitButton.gameObject.SetActive(false);
         FireButton.gameObject.SetActive(false);
@@ -49,12 +41,10 @@ public class CorporateRoulette : Minigame
         for (int i = rewards.Length - 1; i > 0; i--)
         {
             int randomIndex = Random.Range(0, i + 1);
-            int temp = rewards[i];
-            rewards[i] = rewards[randomIndex];
-            rewards[randomIndex] = temp;
-        }
-       
-        currentChamber = Random.Range(0, rewards.Length);
+			(rewards[randomIndex], rewards[i]) = (rewards[i], rewards[randomIndex]);
+		}
+
+		currentChamber = Random.Range(0, rewards.Length);
         GeneralText.text = "The chamber has stopped spinning...";
         FireButton.gameObject.SetActive(true);
         SpinButton.gameObject.SetActive(false);
@@ -84,12 +74,6 @@ public class CorporateRoulette : Minigame
             > 0 => $"You gained {reward} points!",
             _ => $"You lost {-reward} points.",
         };
-
-        if (player == null)
-        {
-            Debug.LogError("Player reference is null! Cannot update points.");
-            return;
-        }
 
         player.Points += reward;
         Debug.Log($"Player {player.name} now has {player.Points} points after the result.");

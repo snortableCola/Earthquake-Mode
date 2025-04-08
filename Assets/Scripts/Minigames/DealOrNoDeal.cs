@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class DealOrNoDeal : Minigame
 {
@@ -11,27 +12,24 @@ public class DealOrNoDeal : Minigame
     public Color highlightColor;
     public GameObject initialTextObject; // Reference to the GameObject containing the initial text
 
-    private int[] rewards = { 0, 0, 4, -4 };
+    private readonly int[] rewards = { 0, 0, 4, -4 };
     private int selectedReward;
     private Button selectedSuitcase;
     private Color originalColor;
 
-    void Start()
-    {
-        // Add listeners to the suitcase buttons
-        for (int i = 0; i < suitcases.Length; i++)
-        {
-            int index = i; // Prevent closure issue in listener
-            suitcases[index].onClick.AddListener(() => OnSuitcaseClicked(suitcases[index], index));
-        }
-
-        // Add listeners to the buttons
-        selectButton.onClick.AddListener(OnSelectButtonClicked);
-        exitButton.onClick.AddListener(OnEndMinigameButtonClicked);
-    }
-
     public override void StartGame()
 	{
+		// Add listeners to the suitcase buttons
+		for (int i = 0; i < suitcases.Length; i++)
+		{
+			int index = i; // Prevent closure issue in listener
+			suitcases[index].onClick.AddListener(() => OnSuitcaseClicked(suitcases[index], index));
+		}
+
+		// Add listeners to the buttons
+		selectButton.onClick.AddListener(OnSelectButtonClicked);
+		exitButton.onClick.AddListener(OnEndMinigameButtonClicked);
+
 		Player player = GameManager.Instance.CurrentPlayer;
 
 		if (player == null)
@@ -39,12 +37,10 @@ public class DealOrNoDeal : Minigame
             Debug.LogError("Player is null in DealOrNoDeal! Ensure SetPlayer is called before starting.");
             return;
         }
-        else
-        {
-            Debug.Log($"Starting DealOrNoDeal for Player: {player.name}.");
-        }
 
-        for (int i = 0; i < suitcases.Length; i++)
+		Debug.Log($"Starting DealOrNoDeal for Player: {player.name}.");
+
+		for (int i = 0; i < suitcases.Length; i++)
         {
             int index = i; // Prevent closure issue in listener
             suitcases[index].onClick.AddListener(() => OnSuitcaseClicked(suitcases[index], index));
@@ -55,7 +51,7 @@ public class DealOrNoDeal : Minigame
         exitButton.onClick.AddListener(OnEndMinigameButtonClicked);
 
         // Show game panels
-        PanelManager.Instance.ShowPanel("Deal Or No Deal", 0); // Show the first panel
+        PanelManager.Instance.ShowPanel(this, 0); // Show the first panel
 
         // Shuffle the suitcases
         ShuffleSuitcases();
@@ -76,14 +72,12 @@ public class DealOrNoDeal : Minigame
     void ShuffleSuitcases()
     {
         // Shuffle the rewards array
-        for (int i = 0; i < rewards.Length; i++)
+        for (int i = rewards.Length - 1; i > 0; i--)
         {
-            int rnd = Random.Range(0, rewards.Length);
-            int temp = rewards[rnd];
-            rewards[rnd] = rewards[i];
-            rewards[i] = temp;
-        }
-    }
+            int rnd = Random.Range(0, i + 1);
+			(rewards[i], rewards[rnd]) = (rewards[rnd], rewards[i]);
+		}
+	}
 
     void OnSuitcaseClicked(Button clickedButton, int index)
     {
@@ -99,14 +93,6 @@ public class DealOrNoDeal : Minigame
 		Player player = GameManager.Instance.CurrentPlayer;
 
 		Debug.Log($"{name}, {GetInstanceID()}");
-
-        // Check references before proceeding
-        if (player == null)
-        {
-            Debug.LogError("Player reference is null in OnSelectButtonClicked!");
-            return;
-        }
-
         Debug.Log($"Player {player.name} selected a suitcase with reward {selectedReward}.");
 
         // Adjust the player's points based on the selected reward

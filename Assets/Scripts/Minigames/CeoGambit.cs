@@ -68,7 +68,7 @@ public class CeoGambit : Minigame
 
         if (int.TryParse(pointsInput.text, out points) && points > 0 && points <= player.Points)
 		{
-			PanelManager.Instance.ShowPanel("CEO Gambit", 1); // Show the selection panel for CeoGambit
+			PanelManager.Instance.ShowPanel(this, 1); // Show the selection panel for CeoGambit
 		}
         else
         {
@@ -87,7 +87,7 @@ public class CeoGambit : Minigame
     {
         if (headsButton.image.color == Color.green || tailsButton.image.color == Color.green)
 		{
-			PanelManager.Instance.ShowPanel("CEO Gambit", 2); // Show the flip panel for CeoGambit
+			PanelManager.Instance.ShowPanel(this, 2); // Show the flip panel for CeoGambit
 		}
         else
         {
@@ -103,7 +103,7 @@ public class CeoGambit : Minigame
 		if (points <= 0 || points > player.Points)
 		{
 			resultText.text = "Please enter a valid number of points within your available points.";
-			PanelManager.Instance.ShowPanel("CEO Gambit", 1);
+			PanelManager.Instance.ShowPanel(this, 1);
             return;
 		}
 

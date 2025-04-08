@@ -30,7 +30,7 @@ public class MinigameManager : MonoBehaviour
     }
    
 
-    private IEnumerator ShowHudMessageThenInstructions(string minigameName)
+    private IEnumerator ShowHudMessageThenInstructions(Minigame minigame)
     {
         // Display the HUD message
         if (hudMessage != null)
@@ -49,7 +49,7 @@ public class MinigameManager : MonoBehaviour
 
         if (panelManager != null)
         {
-            panelManager.ShowInstructionPanel(minigameName);
+            panelManager.ShowInstructionPanel(minigame);
         }
         else
         {
@@ -83,18 +83,18 @@ public class MinigameManager : MonoBehaviour
         }
 
         // Start the process of showing HUD message, instructions, and the minigame
-        string minigameName = singlePlayerMinigames[randomIndex].name;
+        string minigameName = currentMinigame.name;
         Debug.Log($"Loaded Minigame: {minigameName}");
 
-        StartCoroutine(ShowHudThenInstructionsAndStart(minigameName));
+        StartCoroutine(ShowHudThenInstructionsAndStart(currentMinigame));
     }
-    private IEnumerator ShowHudThenInstructionsAndStart(string minigameName)
+    private IEnumerator ShowHudThenInstructionsAndStart(Minigame minigame)
     {
         // Step 1: Display the HUD message
         if (hudMessage != null)
         {
             hudMessage.gameObject.SetActive(true);
-            Debug.Log($"Displaying HUD message for: {minigameName}");
+            Debug.Log($"Displaying HUD message for: {minigame.name}");
         }
 
         // Wait for HUD message duration
@@ -109,8 +109,8 @@ public class MinigameManager : MonoBehaviour
         // Step 2: Show the instruction panel
         if (panelManager != null)
         {
-            Debug.Log($"Showing instructions panel for: {minigameName}");
-            panelManager.ShowInstructionPanel(minigameName);
+            Debug.Log($"Showing instructions panel for: {minigame.name}");
+            panelManager.ShowInstructionPanel(minigame);
         }
         else
         {
@@ -121,7 +121,7 @@ public class MinigameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // Step 3: Start the minigame
-        Debug.Log($"Starting minigame: {minigameName}");
+        Debug.Log($"Starting minigame: {minigame.name}");
         currentMinigame.StartGame();
     }
     public void StartMinigame(string minigameName)
@@ -178,8 +178,7 @@ public class MinigameManager : MonoBehaviour
         Debug.Log($"Player {player.name} assigned to Minigame: {currentMinigame.name}");
 
         // Show HUD message and instructions
-        string minigameName = singlePlayerMinigames[randomIndex].name;
-        StartCoroutine(ShowHudMessageThenInstructions(minigameName));
+        StartCoroutine(ShowHudMessageThenInstructions(currentMinigame));
     }
 
     public void EndCurrentMinigame()

@@ -2,12 +2,13 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System;
 
 public class PanelManager : MonoBehaviour
 {
     public static PanelManager Instance { get; private set; } // Singleton instance
-    private Dictionary<string, string> minigameInstructions = new();
-    private Dictionary<string, GameObject[]> minigamePanels = new();
+    private Dictionary<Type, string> minigameInstructions = new();
+    private Dictionary<Type, GameObject[]> minigamePanels = new();
     private string currentMinigameName;
     public GameObject MovementUI; 
     public GameObject instructionPanel;
@@ -37,9 +38,9 @@ public class PanelManager : MonoBehaviour
 
     private void InitializeMinigameInstructions()
     {
-        minigameInstructions.Add("CEO Gambit", "How confident are you in your coin-flipping skills? Bet on your hard-earned cash, call heads or tails, and flip the coin. Get it right to double your bet—get it wrong, and, well… hope you didn’t bet too much.");
-        minigameInstructions.Add("Deal Or No Deal", "Four suitcases lie before you. One will give you +4 points, two are empty, and one will give you -4 points. The suitcases will be shuffled and you must choose wisely...");
-        minigameInstructions.Add("Corporate Roulette", "Spin the chamber and take your shot. Some bullets earn you points (+6,+4), others hit you where it hurts (-3, -4 points), and a couple just click harmlessly. Will luck be on your side?");
+        minigameInstructions.Add(typeof(CeoGambit), "How confident are you in your coin-flipping skills? Bet on your hard-earned cash, call heads or tails, and flip the coin. Get it right to double your bet—get it wrong, and, well… hope you didn’t bet too much.");
+        minigameInstructions.Add(typeof(DealOrNoDeal), "Four suitcases lie before you. One will give you +4 points, two are empty, and one will give you -4 points. The suitcases will be shuffled and you must choose wisely...");
+        minigameInstructions.Add(typeof(CorporateRoulette), "Spin the chamber and take your shot. Some bullets earn you points (+6,+4), others hit you where it hurts (-3, -4 points), and a couple just click harmlessly. Will luck be on your side?");
         // Add more minigame instructions here
         Debug.Log("Instructions initialized");
     }
@@ -47,9 +48,9 @@ public class PanelManager : MonoBehaviour
     private void InitializeMinigamePanels()
     {
         // Add panels for each minigame to the dictionary
-        minigamePanels.Add("CEO Gambit", ceoGambitPanels);
-        minigamePanels.Add("Deal Or No Deal", dealOrNoDealPanels);
-        minigamePanels.Add("Corporate Roulette",CRPanels);
+        minigamePanels.Add(typeof(CeoGambit), ceoGambitPanels);
+        minigamePanels.Add(typeof(DealOrNoDeal), dealOrNoDealPanels);
+        minigamePanels.Add(typeof(CorporateRoulette), CRPanels);
         foreach (var key in minigameInstructions.Keys)
         {
             Debug.Log("Minigame instruction key: " + key);
@@ -58,22 +59,23 @@ public class PanelManager : MonoBehaviour
         Debug.Log("Panels initialized");
     }
 
-    public void ShowInstructionPanel(string minigameName)
+    public void ShowInstructionPanel(Minigame minigame)
     {
         MovementUI.SetActive(false);
         HideAllPanels();
-        currentMinigameName = minigameName; // Save the current minigame name
-        Debug.Log("Attempting to show instructions for: " + minigameName);
+        currentMinigameName = minigame.name; // Save the current minigame name
+        Debug.Log("Attempting to show instructions for: " + currentMinigameName);
 
-		if (!minigameInstructions.ContainsKey(minigameName))
+        Type minigameType = minigame.GetType();
+		if (!minigameInstructions.ContainsKey(minigameType))
 		{
-			Debug.LogWarning("Minigame instructions not found for: " + minigameName);
+			Debug.LogWarning("Minigame instructions not found for: " + currentMinigameName);
             return;
 		}
 
-		Debug.Log("Setting instruction text and game name for: " + minigameName);
-		instructionText.text = minigameInstructions[minigameName];
-		gameName.text = minigameName; // Set the minigame name in the TMP_Text component
+		Debug.Log("Setting instruction text and game name for: " + currentMinigameName);
+		instructionText.text = minigameInstructions[minigameType];
+		gameName.text = currentMinigameName; // Set the minigame name in the TMP_Text component
 		instructionPanel.SetActive(true);
 	}
 
@@ -86,16 +88,17 @@ public class PanelManager : MonoBehaviour
             return;
 		}
 
-		Debug.Log("Starting minigame: " + currentMinigameName);
 		MinigameManager.Instance.StartMinigame(currentMinigameName); // Start the minigame
 	}
 
-    public void ShowPanel(string minigameName, int panelIndex)
+    public void ShowPanel(Minigame minigame, int panelIndex)
     {
         HideAllPanels();
-        if (minigamePanels.ContainsKey(minigameName) && panelIndex < minigamePanels[minigameName].Length)
+
+        Type minigameType = minigame.GetType();
+        if (minigamePanels.TryGetValue(minigameType, out GameObject[] panels) && panelIndex < panels.Length)
         {
-            minigamePanels[minigameName][panelIndex].SetActive(true);
+            panels[panelIndex].SetActive(true);
         }
     }
 

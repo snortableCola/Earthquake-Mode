@@ -18,6 +18,8 @@ public class BonusSpace : SpaceBehavior
 
 		MinigameManager.Instance.StartMinigameForPlayer(player);
 
+		yield return new WaitUntil(() => !MinigameManager.Instance.IsMinigameSequenceOngoing);
+
 		yield return DisasterManager.Instance.IncrementBiomeDisaster(biome, player);
 	}
 }

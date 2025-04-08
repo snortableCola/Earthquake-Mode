@@ -6,6 +6,8 @@ public class MinigameManager : MonoBehaviour
 {
     public static MinigameManager Instance;
 
+    public bool IsMinigameSequenceOngoing { get; private set; }
+
     public GameObject[] singlePlayerMinigames;
     public GameObject[] multiplayerMinigames;
     public bool isMultiplayer;
@@ -135,9 +137,10 @@ public class MinigameManager : MonoBehaviour
 	}
 
     public void StartMinigameForPlayer(Player player)
-    {
-      
-        if (player == null)
+	{
+		IsMinigameSequenceOngoing = true;
+
+		if (player == null)
         {
             Debug.LogError("Player passed to StartMinigameForPlayer is null! Cannot proceed.");
             return;
@@ -187,6 +190,7 @@ public class MinigameManager : MonoBehaviour
             panelManager.ShowMovementUI(); 
             Destroy(currentMinigame.gameObject);
             currentMinigame = null;
-        }
-    }
+		}
+		IsMinigameSequenceOngoing = false;
+	}
 }

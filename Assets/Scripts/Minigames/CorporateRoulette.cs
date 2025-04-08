@@ -6,12 +6,13 @@ public class CorporateRoulette : Minigame
 {
 	[SerializeField] private GameObject _panel;
 
-	public Button SpinButton;
-    public Button FireButton;
-    public Button ExitButton;
+	[SerializeField] private Button _spinButton;
+	[SerializeField] private Button _fireButton;
+	[SerializeField] private Button _exitButton;
+
     public TMP_Text GeneralText;
     private readonly int[] rewards = { 0, 0, -3, -4, 6, 4 };
-    private int currentChamber = -1; // Tracks the selected chamber
+    private int currentChamber = -1;
 
     public AudioSource audioSource;
     public AudioClip FiringSound;
@@ -22,23 +23,24 @@ public class CorporateRoulette : Minigame
 
 	private void Awake()
 	{
-		// Add listeners to the buttons
-		SpinButton.onClick.AddListener(OnSpinClicked);
-		FireButton.onClick.AddListener(OnFireClicked);
-		ExitButton.onClick.AddListener(OnExitClicked);
+		_spinButton.onClick.AddListener(OnSpinClicked);
+		_fireButton.onClick.AddListener(OnFireClicked);
+		_exitButton.onClick.AddListener(OnExitClicked);
 	}
 
 	public override void StartGame()
 	{
-		Debug.Log("CorporateRoulette Start method called.");
-
 		Player player = GameManager.Instance.CurrentPlayer;
-
 		Debug.Log($"Starting Corporate Roulette for player: {player.name} with {player.Points} points.");
 
-		ExitButton.gameObject.SetActive(false);
-        FireButton.gameObject.SetActive(false);
-    }
+		_spinButton.gameObject.SetActive(true);
+		_exitButton.gameObject.SetActive(false);
+        _fireButton.gameObject.SetActive(false);
+
+		GeneralText.text = "Spin the chamber to start.";
+
+		currentChamber = -1;
+	}
 
     public void OnSpinClicked()
     {
@@ -51,11 +53,10 @@ public class CorporateRoulette : Minigame
 
 		currentChamber = Random.Range(0, rewards.Length);
         GeneralText.text = "The chamber has stopped spinning...";
-        FireButton.gameObject.SetActive(true);
-        SpinButton.gameObject.SetActive(false);
+        _fireButton.gameObject.SetActive(true);
+        _spinButton.gameObject.SetActive(false);
         Debug.Log("SpinChamber method completed.");
     }
-
     
     public void OnFireClicked()
 	{
@@ -85,23 +86,16 @@ public class CorporateRoulette : Minigame
 
         GeneralText.text = message;
 
-        FireButton.gameObject.SetActive(false);
-        ExitButton.gameObject.SetActive(true);
+        _fireButton.gameObject.SetActive(false);
+        _exitButton.gameObject.SetActive(true);
     }
 
     public void Cleanup()
     {
-		Debug.Log($"Cleaning up minigame: {name} {GetInstanceID()}");
-
-		// Remove all listeners from buttons
-		SpinButton.onClick.RemoveAllListeners();
-        FireButton.onClick.RemoveAllListeners();
-        ExitButton.onClick.RemoveAllListeners();
-
         // Reset button states
-        SpinButton.gameObject.SetActive(true);
-        FireButton.gameObject.SetActive(false);
-		ExitButton.gameObject.SetActive(false);
+        _spinButton.gameObject.SetActive(true);
+        _fireButton.gameObject.SetActive(false);
+		_exitButton.gameObject.SetActive(false);
 
 		// Reset text fields
 		GeneralText.text = "Spin the chamber to start.";
@@ -109,21 +103,8 @@ public class CorporateRoulette : Minigame
         // Reset internal variables
         currentChamber = -1;
 
-        // Reset button text if needed
-        TMP_Text spinButtonText = SpinButton.GetComponentInChildren<TMP_Text>();
-        if (spinButtonText != null)
-        {
-            spinButtonText.text = "Spin";
-        }
-
         Debug.Log("CorporateRoulette cleanup completed.");
     }
 
-    public void OnExitClicked()
-    {
-        MinigameManager.Instance.EndMinigame();
-
-        PanelManager panelManager = PanelManager.Instance;
-        panelManager.ShowMovementUI();
-    }
+	public void OnExitClicked() => MinigameManager.Instance.EndMinigame();
 }

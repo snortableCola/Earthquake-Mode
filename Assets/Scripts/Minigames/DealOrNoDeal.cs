@@ -13,9 +13,10 @@ public class DealOrNoDeal : Minigame
 
     private readonly int[] _possibleRewards = { 0, 0, 4, -4 };
     private int _selectedReward;
+	private Button _selectedSuitcase;
     private Color _originalColor;
 
-	private void Start()
+	private void Awake()
 	{
 		for (int i = 0; i < _suitcaseButtons.Length; i++)
 		{
@@ -23,11 +24,14 @@ public class DealOrNoDeal : Minigame
 			int index = i;
 
 			suitcase.onClick.AddListener(SuitcaseResponse);
-			void SuitcaseResponse() => OnSuitcaseClicked(index);
+			void SuitcaseResponse() => OnSuitcaseClicked(suitcase, index);
 		}
 
 		_selectButton.onClick.AddListener(OnSelectClicked);
 		_exitButton.onClick.AddListener(OnExitClicked);
+
+		_selectedSuitcase = _suitcaseButtons[0]; // "Default" selected suitcase is the first one
+		_originalColor = _selectedSuitcase.image.color;
 	}
 
 	public override void StartGame()
@@ -39,11 +43,9 @@ public class DealOrNoDeal : Minigame
 
         ShuffleSuitcases();
 
-        // Reset the UI
         _rewardText.text = "";
         _selectButton.gameObject.SetActive(false);
         _exitButton.gameObject.SetActive(false);
-
 		_initialTextObject.SetActive(true);
 		foreach (Button suitcase in _suitcaseButtons)
 		{
@@ -61,9 +63,14 @@ public class DealOrNoDeal : Minigame
 		}
 	}
 
-	private void OnSuitcaseClicked(int index)
-    {
-        _selectedReward = _possibleRewards[index];
+	private void OnSuitcaseClicked(Button suitcase, int index)
+	{
+		_selectedSuitcase.image.color = _originalColor;
+
+		_selectedSuitcase = suitcase;
+		suitcase.image.color = _highlightColor;
+
+		_selectedReward = _possibleRewards[index];
         _selectButton.gameObject.SetActive(true);
     }
 
@@ -79,22 +86,14 @@ public class DealOrNoDeal : Minigame
 		Debug.Log($"{name}, {GetInstanceID()}");
         Debug.Log($"Player {player.name} selected a suitcase with reward {_selectedReward}.");
 
-        // Adjust the player's points based on the selected reward
         player.Points += _selectedReward;
 
-        // Display the reward text
         _rewardText.text = $"You got: {_selectedReward} points! Total Points: {player.Points}";
         Debug.Log($"Selected Reward: {_selectedReward}");
         Debug.Log($"Player {player.name} now has {player.Points} points after adjustment.");
 
-        // Hide the initial text
-        if (_initialTextObject != null)
-        {
-            _initialTextObject.SetActive(false);
-        }
-
-        // Make the select button inactive and the exit button active
-        _selectButton.gameObject.SetActive(false);
+		_initialTextObject.SetActive(false);
+		_selectButton.gameObject.SetActive(false);
         _exitButton.gameObject.SetActive(true);
 	}
 

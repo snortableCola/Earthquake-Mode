@@ -16,7 +16,7 @@ public class AdjacencyManager : MonoBehaviour
 	private void Start()
 	{
 		Space[] allSpaces = GameManager.Instance.Spaces;
-		Adjacencies = allSpaces.ToDictionary(_ => _, _ => new List<Adjacency>());
+		Adjacencies = allSpaces.ToDictionary(space => space, _ => new List<Adjacency>());
 
 		foreach (Space origin in allSpaces)
 		{

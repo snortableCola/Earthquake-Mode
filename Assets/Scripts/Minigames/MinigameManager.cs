@@ -13,24 +13,6 @@ public class MinigameManager : MonoBehaviour
     private Minigame currentMinigame;
     public Image hudMessage; // Reference to the HUD message image
     public float hudMessageDuration = 3f; // Duration for HUD message to display
-    
-
-    protected Player player;
-
-    public virtual void SetPlayer(Player player)
-    {
-      
-      
-
-        if (this.player != null)
-        {
-            Debug.Log($"Player {this.player.name} assigned with {this.player.totalPoints} points.");
-        }
-        else
-        {
-            Debug.Log("No player assigned.");
-        }
-    }
 
     void Awake()
     {

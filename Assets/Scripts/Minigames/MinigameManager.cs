@@ -18,12 +18,6 @@ public class MinigameManager : MonoBehaviour
 
 	private void Awake() => Instance = this;
 
-	public void StartMinigame()
-    {
-		Debug.Log("Starting minigame: " + _currentMinigame.name);
-		_currentMinigame.StartGame();
-	}
-
     public void StartRandomSingleplayerMinigame()
 	{
 		IsMinigameSequenceOngoing = true;
@@ -60,10 +54,7 @@ public class MinigameManager : MonoBehaviour
 
 	public void EndMinigame()
     {
-		PanelManager panelManager = PanelManager.Instance;
-
-		panelManager.HideAllMinigamePanels(_currentMinigame);
-		panelManager.ShowMovementUI();
+		PanelManager.Instance.ShowMovementUI();
 
 		IsMinigameSequenceOngoing = false;
 	}

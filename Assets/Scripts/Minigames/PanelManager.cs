@@ -1,8 +1,6 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System.Collections.Generic;
-using System;
 
 public class PanelManager : MonoBehaviour
 {
@@ -14,45 +12,38 @@ public class PanelManager : MonoBehaviour
 	[SerializeField] private TMP_Text _gameNameText;
 	[SerializeField] private Button _startMinigameButton;
 
-	void Awake()
+	private GameObject _activePanel;
+	private Minigame _startingMinigame;
+
+	private void Awake()
 	{
 		Instance = this;
-
+		_activePanel = _movementUI;
         _startMinigameButton.onClick.AddListener(OnStartMinigameButtonClicked);
-    }
+	}
 
-    public void ShowInstructionPanel(Minigame minigame)
-    {
-        _movementUI.SetActive(false);
-        HideAllMinigamePanels(minigame);
+	private void OnStartMinigameButtonClicked()
+	{
+		ShowPanel(_startingMinigame.InitialPanel);
+		_startingMinigame.StartGame(); // Start the minigame
+	}
+
+	public void ShowInstructionPanel(Minigame minigame)
+	{
+		_startingMinigame = minigame;
 
 		_instructionText.text = minigame.Instructions;
-		_gameNameText.text = minigame.name; // Set the minigame name in the TMP_Text component
-		_instructionPanel.SetActive(true);
+		_gameNameText.text = minigame.name;
+
+		ShowPanel(_instructionPanel);
 	}
 
-    public void OnStartMinigameButtonClicked()
-    {
-        _instructionPanel.SetActive(false); // Hide the instruction panel
-		MinigameManager.Instance.StartMinigame(); // Start the minigame
+	public void ShowMovementUI() => ShowPanel(_movementUI);
+
+	public void ShowPanel(GameObject panel)
+	{
+		_activePanel.SetActive(false);
+		_activePanel = panel;
+		panel.SetActive(true);
 	}
-
-    public void ShowPanel(Minigame minigame, int panelIndex)
-    {
-		if (panelIndex < minigame.MinigamePanels.Length)
-		{
-			HideAllMinigamePanels(minigame);
-			minigame.MinigamePanels[panelIndex].SetActive(true);
-        }
-    }
-
-    public void HideAllMinigamePanels(Minigame minigame)
-    {
-		foreach (var panel in minigame.MinigamePanels)
-		{
-			panel.SetActive(false);
-		}
-	}
-
-	public void ShowMovementUI() => _movementUI.SetActive(true);
 }

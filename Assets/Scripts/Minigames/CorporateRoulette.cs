@@ -4,7 +4,7 @@ using TMPro;
 
 public class CorporateRoulette : Minigame
 {
-	[SerializeField] private GameObject[] _panels;
+	[SerializeField] private GameObject _panel;
 
 	public Button SpinButton;
     public Button FireButton;
@@ -18,7 +18,7 @@ public class CorporateRoulette : Minigame
 
 	public override string Instructions { get; } = "Spin the chamber and take your shot. Some bullets earn you points (+6,+4), others hit you where it hurts (-3, -4 points), and a couple just click harmlessly. Will luck be on your side?";
 
-	public override GameObject[] MinigamePanels => _panels;
+	public override GameObject InitialPanel => _panel;
 
 	private void Awake()
 	{
@@ -35,8 +35,6 @@ public class CorporateRoulette : Minigame
 		Player player = GameManager.Instance.CurrentPlayer;
 
 		Debug.Log($"Starting Corporate Roulette for player: {player.name} with {player.Points} points.");
-
-		PanelManager.Instance.ShowPanel(this, 0);
 
 		ExitButton.gameObject.SetActive(false);
         FireButton.gameObject.SetActive(false);
@@ -95,9 +93,6 @@ public class CorporateRoulette : Minigame
     {
 		Debug.Log($"Cleaning up minigame: {name} {GetInstanceID()}");
 
-		// Hide any related UI
-		PanelManager.Instance.HideAllMinigamePanels(this);
-
 		// Remove all listeners from buttons
 		SpinButton.onClick.RemoveAllListeners();
         FireButton.onClick.RemoveAllListeners();
@@ -129,7 +124,6 @@ public class CorporateRoulette : Minigame
         MinigameManager.Instance.EndMinigame();
 
         PanelManager panelManager = PanelManager.Instance;
-        panelManager.HideAllMinigamePanels(this);
         panelManager.ShowMovementUI();
     }
 }

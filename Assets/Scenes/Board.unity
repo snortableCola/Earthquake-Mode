@@ -23143,8 +23143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab75bb7b247f2e4d812adb8f9968d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _panels:
-  - {fileID: 2220943098402608340}
+  _panel: {fileID: 2220943098402608340}
   SpinButton: {fileID: 7685969990733572775}
   FireButton: {fileID: 3380473417109127813}
   ExitButton: {fileID: 3663886876927090842}
@@ -23210,8 +23209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 101b2fb21e941d94996fe22fb0d68d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _panels:
-  - {fileID: 2834115332184452033}
+  _panel: {fileID: 2834115332184452033}
   _suitcaseButtons:
   - {fileID: 7282350334045255015}
   - {fileID: 3366870856760433016}

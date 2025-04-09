@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private Button _diceRollButton;
 	[SerializeField] private TMP_Text _distanceText;   
 	[SerializeField] private Player[] _players;
+	
 
 	private int _roundNumber;
 	private bool _diceRolled;
@@ -52,7 +53,9 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator DoPlayerTurn()
 	{
-		CurrentPlayer.UsedItem = null;
+        DisasterManager.Instance.SetCurrentPlayer(CurrentPlayer);
+		DisasterManager.Instance.UpdateDisasterInfo();
+        CurrentPlayer.UsedItem = null;
 
 		if (CurrentPlayer.FrozenTag.State)
 		{

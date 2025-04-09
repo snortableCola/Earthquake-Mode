@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro; 
 
 public class DisasterManager : MonoBehaviour
 {
@@ -13,7 +14,11 @@ public class DisasterManager : MonoBehaviour
 	[SerializeField] private Wildfire _wildfire;
 	[SerializeField] private Earthquake _earthquake;
 
-	private void Awake()
+	[SerializeField] private TextMeshProUGUI disaster_info;
+
+
+	private Player _currentPlayer; //ref to current player 
+    private void Awake()
 	{
 		Instance = this;
 		_disasterTracker = new()
@@ -23,9 +28,98 @@ public class DisasterManager : MonoBehaviour
 			{_tornado, 0},
 			{_earthquake, 0}
 		};
-	}
+        Debug.Log("Disaster levels initialized to 0.");
+    }
+    /// <summary>
+    /// Sets the current active player and updates the disaster information display.
+    /// </summary>
+    /// <param name="player">The player whose turn it is.</param>
+    public void SetCurrentPlayer(Player player)
+    {
+        _currentPlayer = player;
+        UpdateDisasterInfo();
 
-	private Dictionary<Disaster, int> _disasterTracker;
+    }
+
+    // Update the disaster text for the current player
+    public void UpdateDisasterInfo()
+    {
+		
+        if (_currentPlayer == null) return;
+
+        Biome biome = _currentPlayer.CurrentBiome;
+        Disaster disaster = GetDisasterForBiome(biome);
+
+        if (disaster == null)
+        {
+            disaster_info.text = $"{biome}: No disasters.";
+            Debug.Log($"Biome {biome} has no associated disaster.");
+
+            return; }
+        Debug.Log("Current _disasterTracker contents:");
+        foreach (var entry in _disasterTracker)
+        {
+            Debug.Log($"Disaster: {entry.Key.name}, Level: {entry.Value}");
+        }
+        int level = _disasterTracker[disaster];
+        Debug.Log($"Current player is in biome {biome} with disaster {disaster.name} at level {level}");
+        disaster_info.text = GetDisasterMessage(biome, level);
+    }
+
+   
+    private Disaster GetDisasterForBiome(Biome biome)
+    {
+        return biome switch
+        {
+            Biome.Shore => _tsunami,
+            Biome.Plains => _tornado,
+            Biome.Mountains => _wildfire,
+            _ => null
+        };
+    }
+
+    // Method to initialize messages for each biome and disaster level
+    private string GetDisasterMessage(Biome biome, int level)
+    {
+        string biomeName = biome.ToString();
+        if (level == 0)
+        {
+            return $"{biomeName}: Safe";
+        }
+
+        return biome switch
+
+        {
+            Biome.Shore => level switch
+            {
+                1 => $"{biomeName}: Gale Advisory",
+                2 => $"{biomeName}: Flood Watch",
+                3 => $"{biomeName}: Flood Warning",
+				4 => $"{biomeName}: Tsunami!",
+                _ => $"{biomeName: Safe}"
+            },
+            Biome.Plains => level switch
+            {
+                1 => $"{biomeName}: Wind Advisory",
+                2 => $"{biomeName}: Tornado Watch",
+                3 => $"{biomeName}: Tornado Warning",
+				4=> $"{biomeName}: Tornado!",
+                _ => $"{biomeName: Safe}"
+            },
+            Biome.Mountains => level switch
+            {
+                1 => $"{biomeName}: Fire Advisory",
+                2 => $"{biomeName}: Fire Watch",
+                3 => $"{biomeName}: Fire Warning",
+                4 => $"{biomeName}: Wildfire!",
+                _ => $"{biomeName: Safe}"
+            },
+            _ => $"{biomeName: Safe}"
+        };
+    }
+
+
+    private Dictionary<Disaster, int> _disasterTracker;
 
 	/// <summary>
 	/// Increments the disaster level of whatever is associated with the specified biome.
@@ -34,24 +128,34 @@ public class DisasterManager : MonoBehaviour
 	/// <param name="player">The player responsible for the disaster level's incrementation.</param>
 	public IEnumerator IncrementBiomeDisaster(Biome biome, Player player)
 	{
-		Disaster disaster;
+        Disaster disaster = GetDisasterForBiome(biome);
+        if (disaster == null)
+        {
+            Debug.LogWarning($"No disaster associated with biome {biome}.");
+            yield break;
+        }
 
-		switch (biome)
-		{
-			case Biome.Shore:
-				disaster = _tsunami;
-				break;
-			case Biome.Plains:
-				disaster = _tornado;
-				break;
-			case Biome.Mountains:
-				disaster = _wildfire;
-				break;
-			default: yield break;
-		}
+        // Increment the disaster level
+        int currentLevel = _disasterTracker[disaster];
+        if (currentLevel >= _disasterThreshold)
+        {
+            Debug.LogWarning($"Disaster {disaster.name} already at or above threshold: {currentLevel}");
+            yield break;
+        }
 
-		yield return IncrementDisaster(disaster, player);
-	}
+        _disasterTracker[disaster]++; // Increment the level
+        int disasterLevel = _disasterTracker[disaster];
+        Debug.Log($"Incremented {disaster.name} in {biome} to level {disasterLevel}");
+
+        // Update the disaster information display
+        UpdateDisasterInfo();
+
+        // Check if the disaster level reached the threshold
+        if (disasterLevel == _disasterThreshold)
+        {
+            yield return IncrementDisaster(disaster, player); // Only handle threshold logic here
+        }
+    }
 
 	public IEnumerator IncrementEarthquake() => IncrementDisaster(_earthquake, null);
 
@@ -61,22 +165,34 @@ public class DisasterManager : MonoBehaviour
 	/// <param name="disaster">The disaster to increment the disaster level of, and to potentially trigger.</param>
 	/// <param name="incitingPlayer"></param>
 	private IEnumerator IncrementDisaster(Disaster disaster, Player incitingPlayer)
-	{
-		if (!disaster.IsPossible) yield break;
+    {
+        if (!disaster.IsPossible)
+        {
+            Debug.LogWarning($"Disaster {disaster.name} is not possible at this time.");
+            yield break;
+        }
 
-		int disasterLevel = ++_disasterTracker[disaster];
-		Debug.Log($"{disaster.name} at level {disasterLevel}");
+        int disasterLevel = _disasterTracker[disaster];
+        Debug.Log($"Checking disaster {disaster.name} at level {disasterLevel}");
 
-		if (disasterLevel != _disasterThreshold) yield break;
-		yield return disaster.StartDisaster(incitingPlayer);
-		_disasterTracker[disaster] = 0; // Reset the disaster level once starting the disaster
-	}
+        // Disaster is triggered when the level reaches the threshold
+        if (disasterLevel != _disasterThreshold) yield break;
+
+        Debug.Log($"Triggering disaster {disaster.name}!");
+        yield return disaster.StartDisaster(incitingPlayer);
+
+        // Reset the disaster level
+        _disasterTracker[disaster] = 0;
+        UpdateDisasterInfo();
+    }
 
 	public void RefreshDisasters()
 	{
 		foreach(Disaster disaster in _disasterTracker.Keys)
 		{
 			disaster.Refresh();
+			
 		}
 	}
+	
 }

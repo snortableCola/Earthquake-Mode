@@ -21493,6 +21493,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _singleplayerMinigames:
   - {fileID: 9148161316399342152}
+  - {fileID: 7560551387485520660}
+  - {fileID: 7679657314814233381}
   _multiplayerMinigames: []
   _hudMessage: {fileID: 0}
   _hudMessageDuration: 3

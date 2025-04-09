@@ -49,18 +49,17 @@ public class CeoGambit : Minigame
         UpdatePointsDisplay();
 
 		pointsInput.text = "1";
-		doneButton.gameObject.SetActive(true);
-		headsButton.gameObject.SetActive(true);
-		tailsButton.gameObject.SetActive(true);
-		selectButton.gameObject.SetActive(true);
-		flipButton.gameObject.SetActive(false);
+		selectButton.gameObject.SetActive(false);
+		flipButton.gameObject.SetActive(true);
 		exitButton.gameObject.SetActive(false);
+		headsButton.image.color = Color.white;
+		tailsButton.image.color = Color.white;
 		resultText.text = "Choose Heads or Tails";
 
 		Debug.Log(player.name);
     }
 
-    void ValidateBet(string input)
+	private void ValidateBet(string input)
 	{
 		Player player = GameManager.Instance.CurrentPlayer;
 
@@ -74,7 +73,7 @@ public class CeoGambit : Minigame
 		}
 	}
 
-    public void PlaceBet()
+    private void PlaceBet()
 	{
 		Player player = GameManager.Instance.CurrentPlayer;
 
@@ -91,36 +90,19 @@ public class CeoGambit : Minigame
         }
     }
 
-    void SelectHeads(bool isHeads)
+	private void SelectHeads(bool isHeads)
     {
         betOnHeads = isHeads;
         headsButton.image.color = isHeads ? Color.green : Color.white;
         tailsButton.image.color = isHeads ? Color.white : Color.green;
-    }
+		selectButton.gameObject.SetActive(true);
+	}
 
-    void SelectBet()
-    {
-        if (headsButton.image.color == Color.green || tailsButton.image.color == Color.green)
-		{
-			PanelManager.Instance.ShowPanel(_flippingPanel); // Show the flip panel for CeoGambit
-		}
-        else
-        {
-            resultText.text = "Please select Heads or Tails.";
-        }
-    }
+	private void SelectBet() => PanelManager.Instance.ShowPanel(_flippingPanel);
 
-    void FlipCoin()
+	private void FlipCoin()
 	{
 		Player player = GameManager.Instance.CurrentPlayer;
-
-		Debug.Log("FlipCoin method called.");
-		if (points <= 0 || points > player.Points)
-		{
-			resultText.text = "Please enter a valid number of points within your available points.";
-			PanelManager.Instance.ShowPanel(_selectionPanel);
-            return;
-		}
 
 		if (CoinSound != null)
 		{
@@ -152,9 +134,9 @@ public class CeoGambit : Minigame
 		exitButton.gameObject.SetActive(true);
 	}
 
-	public void ExitMinigame() => MinigameManager.Instance.EndMinigame();
+	private void ExitMinigame() => MinigameManager.Instance.EndMinigame();
 
-	void UpdatePointsDisplay()
+	private void UpdatePointsDisplay()
 	{
 		Player player = GameManager.Instance.CurrentPlayer;
 

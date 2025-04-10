@@ -15,9 +15,15 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private Button _diceRollButton;
 	[SerializeField] private TMP_Text _distanceText;   
 	[SerializeField] private Player[] _players;
-	
 
-	private int _roundNumber;
+	[SerializeField] private Image turnHUD;
+	[SerializeField] private TMP_Text turnText;
+    public float hudMessageDuration = 3f;
+    private bool isTurnHudActive = false;
+    [SerializeField] private NegativeSpace negativeSpaceScript; // Reference to NegativeSpace script
+    [SerializeField] private ResourceSpace resourceSpaceScript; // Reference to ResourceSpace script
+
+    private int _roundNumber;
 	private bool _diceRolled;
 
 	private void Awake()
@@ -31,13 +37,53 @@ public class GameManager : MonoBehaviour
 
 
 	public readonly UnityEvent RoundPassed = new();
-	private IEnumerator GameRoundCycle()
+
+	private IEnumerator ShowTurnHud()
+	{
+		_roundNumber.ToString();
+        if (isTurnHudActive)
+        {
+            Debug.LogWarning("[ShowTurnHud] HUD is already active. Skipping.");
+            yield break;
+        }
+        if ( turnHUD != null && turnText != null)
+		{
+		
+            Debug.Log($"Displaying HUD for TURN {_roundNumber}/10");
+            isTurnHudActive = true;
+            turnHUD.gameObject.SetActive(true);
+			turnText.gameObject.SetActive(true);
+		
+			turnText.text = $"TURN {_roundNumber}/10";
+            yield return new WaitForSeconds(hudMessageDuration);
+            turnHUD.gameObject.SetActive(false);
+            turnText.gameObject.SetActive(false);
+			isTurnHudActive = false; 
+        }
+	
+	}
+  
+    private IEnumerator WaitForMinigameToEnd()
+    {
+        // Wait for the minigame sequence to finish
+        Debug.Log("[WaitForMinigameToEnd] Waiting for minigame to finish...");
+        yield return new WaitUntil(() => !MinigameManager.Instance.IsMinigameSequenceOngoing);
+        Debug.Log("[WaitForMinigameToEnd] Minigame sequence finished.");
+    }
+
+
+    private IEnumerator GameRoundCycle()
 	{
 		while (_roundNumber++ < _totalRounds)
 		{
+			
+			yield return WaitForMinigameToEnd();	
+            yield return ShowTurnHud(); 
 			yield return DoRound();
 			RoundPassed.Invoke();
 		}
+		
+
 	}
 
 	public readonly UnityEvent<Player> TurnPassed = new();
@@ -48,11 +94,22 @@ public class GameManager : MonoBehaviour
 			CurrentPlayer = _players[playerIdx];
 			yield return DoPlayerTurn();
 			TurnPassed.Invoke(CurrentPlayer);
-		}
+            yield return WaitForLastPlayerHudCompletion();
+        }
 	}
-
-	private IEnumerator DoPlayerTurn()
+    private IEnumerator WaitForLastPlayerHudCompletion()
+    {
+        // Wait for the last player's HUD messages (if any) to finish
+        Space endingSpace = CurrentPlayer.GetComponentInParent<Space>();
+        if (endingSpace != null && endingSpace.Behavior != null)
+        {
+            Debug.Log("[WaitForLastPlayerHudCompletion] Waiting for last player's HUD messages to finish...");
+            yield return endingSpace.Behavior.WaitForHudCompletion();
+        }
+    }
+    private IEnumerator DoPlayerTurn()
 	{
+        Debug.Log($"[DoPlayerTurn] Player {CurrentPlayer.name}'s turn starting.");
         DisasterManager.Instance.SetCurrentPlayer(CurrentPlayer);
 		DisasterManager.Instance.UpdateDisasterInfo();
         CurrentPlayer.UsedItem = null;
@@ -88,7 +145,12 @@ public class GameManager : MonoBehaviour
 		CameraManager.Instance.ReturnOverhead();
 
 		Space endingSpace = CurrentPlayer.GetComponentInParent<Space>();
-		if (endingSpace.BurningTag.State && CurrentPlayer.UsedItem is not HeliEvac)
+        if (endingSpace != null)
+        {
+            Debug.Log($"[DoPlayerTurn] Player landed on {endingSpace.name}. Responding to space behavior.");
+            yield return endingSpace.Behavior.RespondToPlayer(CurrentPlayer);
+        }
+        if (endingSpace.BurningTag.State && CurrentPlayer.UsedItem is not HeliEvac)
 		{
 			Debug.Log($"{CurrentPlayer} landed on a space which is on fire.");
 		}

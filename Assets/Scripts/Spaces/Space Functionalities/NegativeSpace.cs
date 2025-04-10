@@ -21,21 +21,24 @@ public class NegativeSpace : SpaceBehavior
 
     }
 
-    private IEnumerator FlashHudMessage()
+    public override IEnumerator WaitForHudCompletion()
     {
-        if (redHUD != null)
+        while (redHUD != null && redHUD.gameObject.activeSelf)
         {
-            redHUD.gameObject.SetActive(true);
-            yield return new WaitForSeconds(hudMessageDuration);
-            redHUD.gameObject.SetActive(false);
+            yield return null; // Wait until the red HUD is no longer active
         }
-
     }
     public override IEnumerator RespondToPlayer(Player player)
 	{
 		Debug.Log($"{player.name} landed on a negative space.");
-        StartCoroutine(FlashHudMessage());
+        // Show the red HUD
+        redHUD.gameObject.SetActive(true);
+        yield return new WaitForSeconds(hudMessageDuration);
 
-		yield break;
+        // Hide the red HUD
+        redHUD.gameObject.SetActive(false);
+        player.Points -= 3;
+
+        yield break;
 	}
 }

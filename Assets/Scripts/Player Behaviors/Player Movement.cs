@@ -47,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
 		{
 			space.HighlightTag.State = true;
 		}
+
+		DrawNewArrows();
 	}
 
 	/// <summary>
@@ -76,9 +78,11 @@ public class PlayerMovement : MonoBehaviour
 				// This cannot be done at the start of the player's path (meaning, just after they've used the space)
 				if (!_currentSpace.Behavior.EndsTurn && !_currentSpace.BurningTag.State && _movementPath.Count > 1)
 				{
+					MovementArrowManager.Instance.EraseArrows();
 					yield return _currentSpace.Behavior.RespondToPlayer(_player);
 
 					_movementPath.RemoveRange(0, _movementPath.Count - 1); // Prevents player from moving backwards from the space they just used
+					DrawNewArrows();
 				}
 			}
 
@@ -115,10 +119,12 @@ public class PlayerMovement : MonoBehaviour
 				_movementPath.RemoveAt(_movementPath.Count - 1);
 			}
 
+			MovementArrowManager.Instance.EraseArrows();
 			// Moves the player to the decided space
 			yield return MoveToSpaceCoroutine(targetSpace);
 			_currentSpace = targetSpace;
 			distanceText.text = _distance.ToString();
+			DrawNewArrows();
 		}
 
 		foreach (Space space in _possibleDestinations)
@@ -127,6 +133,7 @@ public class PlayerMovement : MonoBehaviour
 		}
 
 		distanceText.gameObject.SetActive(false);
+		MovementArrowManager.Instance.EraseArrows();
 	}
 
 	/// <summary>
@@ -184,5 +191,22 @@ public class PlayerMovement : MonoBehaviour
 
 		transform.position = endPosition;
 		transform.SetParent(targetSpace.transform);
+	}
+
+	private void DrawNewArrows()
+	{
+		if (_movementPath.Count > 1)
+		{
+			MovementArrowManager.Instance.DrawArrow(_movementPath[^2], _currentSpace, false);
+		}
+		if (_distance == 0) return;
+		List<Adjacency> adjacentSpaces = AdjacencyManager.Instance.Adjacencies[_currentSpace];
+		foreach (Adjacency adjacency in adjacentSpaces)
+		{
+			if (adjacency.IsForwards)
+			{
+				MovementArrowManager.Instance.DrawArrow(_currentSpace, adjacency.Space, true);
+			}
+		}
 	}
 }

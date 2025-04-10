@@ -2,8 +2,15 @@ using UnityEngine;
 
 public class DisasterMeter : MonoBehaviour
 {
+    [SerializeField] public GameObject MeterUI;
+    public void ToggleObject()
+    {
+        if (MeterUI != null)
+        {
+            MeterUI.SetActive(!MeterUI.activeSelf);
+        }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    }
     void Start()
     {
         

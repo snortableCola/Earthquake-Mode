@@ -17,7 +17,7 @@ public class Multiplayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Check for turn change input (e.g., pressing the space key)
+        
         if (EndTurn = true)
         {
             ChangeTurn();

@@ -26,7 +26,11 @@ public class OilSpace : ResourceSpace
 	{
 		if (_isActive)
 		{
-			Debug.Log($"{player.name} passed on an active oil space.");
+			Debug.Log($"{player.name} passed an active oil space.");
+
+			player.transform.parent = null;
+			OilManager.Instance.SelectRandomOilSpaces();
+			player.transform.parent = transform;
 
 			yield return DisasterManager.Instance.IncrementEarthquake();
 		}

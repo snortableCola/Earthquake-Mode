@@ -982,6 +982,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b291c09370265b43a993a8a4b12720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BLUEHud: {fileID: 0}
+  hudMessageDuration: 2
 --- !u!114 &52265049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4409,6 +4411,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b291c09370265b43a993a8a4b12720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BLUEHud: {fileID: 0}
+  hudMessageDuration: 2
 --- !u!114 &365368975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4862,6 +4866,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b291c09370265b43a993a8a4b12720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BLUEHud: {fileID: 0}
+  hudMessageDuration: 2
 --- !u!114 &395015078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10231,6 +10237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b291c09370265b43a993a8a4b12720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BLUEHud: {fileID: 0}
+  hudMessageDuration: 2
 --- !u!114 &1123361184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12662,6 +12670,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b291c09370265b43a993a8a4b12720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BLUEHud: {fileID: 0}
+  hudMessageDuration: 2
 --- !u!114 &1473112593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13580,6 +13590,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _material: {fileID: 2100000, guid: 21dab5823fb4a1449a203f90ed3f4b56, type: 2}
+--- !u!1 &1620209780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1620209782}
+  - component: {fileID: 1620209781}
+  m_Layer: 0
+  m_Name: Oil Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1620209781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620209780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c686d4821c2a0264fb6b85f05898e71b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActiveSpaceCount: 2
+--- !u!4 &1620209782
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620209780}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.64657503, y: -10.309378, z: 10.085186}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1629434912
 GameObject:
   m_ObjectHideFlags: 0
@@ -14367,6 +14422,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b291c09370265b43a993a8a4b12720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BLUEHud: {fileID: 0}
+  hudMessageDuration: 2
 --- !u!114 &1706445824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25450,3 +25507,4 @@ SceneRoots:
   - {fileID: 104538017307049737}
   - {fileID: 1118915987}
   - {fileID: 1903179548}
+  - {fileID: 1620209782}

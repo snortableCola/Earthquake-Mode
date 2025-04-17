@@ -35,9 +35,6 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator Start() => GameRoundCycle();
 
-
-	public readonly UnityEvent RoundPassed = new();
-
 	private IEnumerator ShowTurnHud()
 	{
 		_roundNumber.ToString();
@@ -80,10 +77,7 @@ public class GameManager : MonoBehaviour
 			yield return WaitForMinigameToEnd();	
             yield return ShowTurnHud(); 
 			yield return DoRound();
-			RoundPassed.Invoke();
 		}
-		
-
 	}
 
 	public readonly UnityEvent<Player> TurnPassed = new();
@@ -153,6 +147,8 @@ public class GameManager : MonoBehaviour
 		{
 			yield return endingSpace.Behavior.RespondToPlayer(CurrentPlayer);
 		}
+
+		DisasterManager.Instance.Wildfire.TryFireProgress(CurrentPlayer);
 	}
 
 	private void RespondToDiceRoll() => _diceRolled = true;

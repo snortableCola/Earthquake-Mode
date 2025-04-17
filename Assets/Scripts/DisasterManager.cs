@@ -6,7 +6,7 @@ using MilkShake;
 
 public class DisasterManager : MonoBehaviour
 {
-    private static Dictionary<Biome, string[]> s_warnings = new()
+    private static readonly Dictionary<Biome, string[]> s_warnings = new()
     {
 		{
             Biome.Shore, new string[] { "Gale Advisory", "Flood Watch", "Flood Warning", "Tsunami!" }
@@ -16,7 +16,7 @@ public class DisasterManager : MonoBehaviour
 		},
 		{
 			Biome.Mountains, new string[] { "Fire Advisory", "Fire Watch", "Fire Warning", "Wildfire!" }
-		},
+		}
 	};
 
 	public static DisasterManager Instance { get; private set; }
@@ -31,6 +31,8 @@ public class DisasterManager : MonoBehaviour
 	[SerializeField] private Tornado _tornado;
 	[SerializeField] private Wildfire _wildfire;
 	[SerializeField] private Earthquake _earthquake;
+
+    public Wildfire Wildfire => _wildfire;
 
 	[SerializeField] private TextMeshProUGUI disaster_info;
 

@@ -11,7 +11,7 @@ public class SetupScreen : MonoBehaviour
     private Gamepad[] connectedGamepads = new Gamepad[4];
     [SerializeField] private TextMeshProUGUI[] controllerTextBoxes = new TextMeshProUGUI[4];
     private bool[] inputReceived = new bool[4];
-    private int[] activationOrder = new int[4]; // Tracks the activation order of text boxes  
+    public int[] activationOrder = new int[4]; // Tracks the activation order of text boxes  
     private int nextAvailableTextBox = 0; // Tracks the next available text box index  
 
     private void Start()
@@ -30,42 +30,45 @@ public class SetupScreen : MonoBehaviour
         // Check if any gamepad is connected  
         isGamepadConnected = Gamepad.all.Count > 0;
 
-        // Assign up to four gamepads as separate input sources  
-        for (int i = 0; i < connectedGamepads.Length; i++)
+        // Assign gamepads based on input received  
+        for (int i = 0; i < Gamepad.all.Count; i++)
         {
-            if (i < Gamepad.all.Count)
-            {
-                connectedGamepads[i] = Gamepad.all[i];
+            Gamepad currentGamepad = Gamepad.all[i];
 
-                // Check if the gamepad has made an input  
-                if (connectedGamepads[i] != null && !inputReceived[i])
+            // Check if the gamepad has made an input and is not already assigned  
+            if (currentGamepad != null && !connectedGamepads.Contains(currentGamepad))
+            {
+                if (currentGamepad.allControls.Any(control => control.IsPressed()))
                 {
-                    if (connectedGamepads[i].allControls.Any(control => control.IsPressed()))
+                    int availableIndex = System.Array.IndexOf(inputReceived, false);
+                    if (availableIndex != -1)
                     {
-                        inputReceived[i] = true;
+                        inputReceived[availableIndex] = true;
+                        connectedGamepads[availableIndex] = currentGamepad;
 
                         if (nextAvailableTextBox < controllerTextBoxes.Length && controllerTextBoxes[nextAvailableTextBox] != null)
                         {
-                            Debug.Log($"Controller {i + 1} connected and input detected: {connectedGamepads[i].displayName}");
-                            controllerTextBoxes[nextAvailableTextBox].text = $"Controller {i + 1}: Connected";
+                            Debug.Log($"Controller {availableIndex + 1} connected and input detected: {currentGamepad.displayName}");
+                            controllerTextBoxes[nextAvailableTextBox].text = $"Controller {availableIndex + 1}: Connected";
                             controllerTextBoxes[nextAvailableTextBox].gameObject.SetActive(true);
-                            activationOrder[i] = nextAvailableTextBox;
+                            activationOrder[availableIndex] = nextAvailableTextBox;
                             nextAvailableTextBox++;
                         }
                     }
                 }
             }
-            else
+        }
+
+        // Handle disconnection  
+        for (int i = 0; i < connectedGamepads.Length; i++)
+        {
+            if (connectedGamepads[i] != null && !Gamepad.all.Contains(connectedGamepads[i]))
             {
-                // Handle disconnection  
-                if (connectedGamepads[i] != null && inputReceived[i])
+                int textBoxIndex = activationOrder[i];
+                if (controllerTextBoxes[textBoxIndex] != null)
                 {
-                    int textBoxIndex = activationOrder[i];
-                    if (controllerTextBoxes[textBoxIndex] != null)
-                    {
-                        Debug.Log($"Controller {i + 1} disconnected.");
-                        controllerTextBoxes[textBoxIndex].gameObject.SetActive(false);
-                    }
+                    Debug.Log($"Controller {i + 1} disconnected.");
+                    controllerTextBoxes[textBoxIndex].gameObject.SetActive(false);
                 }
 
                 connectedGamepads[i] = null;

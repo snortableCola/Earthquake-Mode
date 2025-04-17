@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Player))]
@@ -69,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
 		while (true)
 		{
 			// Process interaction attempts BEFORE movement attempts
-			if (_interactionInput.triggered)
+			if (_interactionInput.triggered && !EventSystem.current.IsPointerOverGameObject())
 			{
 				// If the player has travelled the full distance, they may end their movement
 				if (_distance == 0) break;

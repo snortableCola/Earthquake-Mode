@@ -65,7 +65,6 @@ public class DisasterManager : MonoBehaviour
     // Update the disaster text for the current player
     public void UpdateDisasterInfo()
     {
-		
         if (_currentPlayer == null) return;
 
         Biome biome = _currentPlayer.CurrentBiome;
@@ -76,7 +75,8 @@ public class DisasterManager : MonoBehaviour
             disaster_info.text = $"{biome}: No disasters.";
             Debug.Log($"Biome {biome} has no associated disaster.");
 
-            return; }
+            return;
+        }
         Debug.Log("Current _disasterTracker contents:");
         foreach (var entry in _disasterTracker)
         {
@@ -179,7 +179,6 @@ public class DisasterManager : MonoBehaviour
 		foreach(Disaster disaster in _disasterTracker.Keys)
 		{
 			disaster.Refresh();
-			
 		}
 	}
 	

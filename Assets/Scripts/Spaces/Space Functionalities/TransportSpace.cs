@@ -14,6 +14,7 @@ public class TransportSpace : SpaceBehavior
 
 		PlayerMovement movement = player.Movement;
 		yield return movement.MoveToSpaceCoroutine(_destination);
+		DisasterManager.Instance.UpdateDisasterInfo();
 		movement.ResetMovementPath();
 	}
 }

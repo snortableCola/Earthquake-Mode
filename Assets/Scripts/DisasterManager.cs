@@ -6,6 +6,19 @@ using MilkShake;
 
 public class DisasterManager : MonoBehaviour
 {
+    private static Dictionary<Biome, string[]> s_warnings = new()
+    {
+		{
+            Biome.Shore, new string[] { "Gale Advisory", "Flood Watch", "Flood Warning", "Tsunami!" }
+        },
+        {
+			Biome.Plains, new string[] { "Wind Advisory", "Tornado Watch", "Tornado Warning", "Tornado!" }
+		},
+		{
+			Biome.Mountains, new string[] { "Fire Advisory", "Fire Watch", "Fire Warning", "Wildfire!" }
+		},
+	};
+
 	public static DisasterManager Instance { get; private set; }
     //gameobjects for the camera shaker 
     public Shaker CameraShaker; 
@@ -84,48 +97,11 @@ public class DisasterManager : MonoBehaviour
         };
     }
 
-    // Method to initialize messages for each biome and disaster level
-    private string GetDisasterMessage(Biome biome, int level)
-    {
-        string biomeName = biome.ToString();
-        if (level == 0)
-        {
-            return $"{biomeName}: Safe";
-        }
-
-        return biome switch
-
-        {
-            Biome.Shore => level switch
-            {
-                1 => $"{biomeName}: Gale Advisory",
-                2 => $"{biomeName}: Flood Watch",
-                3 => $"{biomeName}: Flood Warning",
-				4 => $"{biomeName}: Tsunami!",
-                _ => $"{biomeName: Safe}"
-            },
-            Biome.Plains => level switch
-            {
-                1 => $"{biomeName}: Wind Advisory",
-                2 => $"{biomeName}: Tornado Watch",
-                3 => $"{biomeName}: Tornado Warning",
-				4=> $"{biomeName}: Tornado!",
-                _ => $"{biomeName: Safe}"
-            },
-            Biome.Mountains => level switch
-            {
-                1 => $"{biomeName}: Fire Advisory",
-                2 => $"{biomeName}: Fire Watch",
-                3 => $"{biomeName}: Fire Warning",
-                4 => $"{biomeName}: Wildfire!",
-                _ => $"{biomeName: Safe}"
-            },
-            _ => $"{biomeName: Safe}"
-        };
-    }
+	// Method to initialize messages for each biome and disaster level
+	private string GetDisasterMessage(Biome biome, int level) => $"{biome}: {(level > 0 && s_warnings.TryGetValue(biome, out string[] warnings) && level <= warnings.Length ? warnings[level - 1] : "Safe")}";
 
 
-    private Dictionary<Disaster, int> _disasterTracker;
+	private Dictionary<Disaster, int> _disasterTracker;
 
 	/// <summary>
 	/// Increments the disaster level of whatever is associated with the specified biome.

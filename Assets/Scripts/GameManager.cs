@@ -73,21 +73,18 @@ public class GameManager : MonoBehaviour
 	{
 		while (_roundNumber++ < _totalRounds)
 		{
-			
 			yield return WaitForMinigameToEnd();	
             yield return ShowTurnHud(); 
 			yield return DoRound();
 		}
 	}
 
-	public readonly UnityEvent<Player> TurnPassed = new();
 	private IEnumerator DoRound()
 	{
 		for (int playerIdx = 0; playerIdx < _players.Length; playerIdx++)
 		{
 			CurrentPlayer = _players[playerIdx];
 			yield return DoPlayerTurn();
-			TurnPassed.Invoke(CurrentPlayer);
             yield return WaitForLastPlayerHudCompletion();
         }
 	}

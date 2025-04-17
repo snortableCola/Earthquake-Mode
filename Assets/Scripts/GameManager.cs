@@ -145,11 +145,6 @@ public class GameManager : MonoBehaviour
 		CameraManager.Instance.ReturnOverhead();
 
 		Space endingSpace = CurrentPlayer.GetComponentInParent<Space>();
-        if (endingSpace != null)
-        {
-            Debug.Log($"[DoPlayerTurn] Player landed on {endingSpace.name}. Responding to space behavior.");
-            yield return endingSpace.Behavior.RespondToPlayer(CurrentPlayer);
-        }
         if (endingSpace.BurningTag.State && CurrentPlayer.UsedItem is not HeliEvac)
 		{
 			Debug.Log($"{CurrentPlayer} landed on a space which is on fire.");

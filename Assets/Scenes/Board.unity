@@ -6220,6 +6220,7 @@ RectTransform:
   - {fileID: 1767838419}
   - {fileID: 1028084673}
   - {fileID: 1733079306}
+  - {fileID: 1470977843}
   m_Father: {fileID: 8808929679414703493}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -6916,7 +6917,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4989899995629391913, guid: b51e2f0746cdcc2409074241aa4c9108, type: 3}
       propertyPath: CollisionModule.radiusScale
-      value: 0.1
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4989899995629391913, guid: b51e2f0746cdcc2409074241aa4c9108, type: 3}
       propertyPath: InitialModule.startSize.scalar
@@ -12679,6 +12680,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428461801}
   m_CullTransparentMesh: 1
+--- !u!1 &1470977842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1470977843}
+  m_Layer: 5
+  m_Name: PlayerProfiles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1470977843
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470977842}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 498199031}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1473112585
 GameObject:
   m_ObjectHideFlags: 0

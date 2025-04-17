@@ -12,7 +12,8 @@ public class SetupScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] controllerTextBoxes = new TextMeshProUGUI[4];
     private bool[] inputReceived = new bool[4];
     public int[] activationOrder = new int[4]; // Tracks the activation order of text boxes  
-    private int nextAvailableTextBox = 0; // Tracks the next available text box index  
+    private int nextAvailableTextBox = 0; // Tracks the next available text box index
+    public bool[] isReady = new bool[4];
 
     private void Start()
     {

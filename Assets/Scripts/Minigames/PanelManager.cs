@@ -11,6 +11,7 @@ public class PanelManager : MonoBehaviour
 	[SerializeField] private TMP_Text _instructionText;
 	[SerializeField] private TMP_Text _gameNameText;
 	[SerializeField] private Button _startMinigameButton;
+	[SerializeField] private GameObject _shopPanel; 
 
 	private GameObject _activePanel;
 	private Minigame _startingMinigame;
@@ -38,6 +39,8 @@ public class PanelManager : MonoBehaviour
 	}
 
 	public void ShowMovementUI() => ShowPanel(_movementUI);
+
+	public void ShowShop() => ShowPanel(_shopPanel);
 
 	public void ShowPanel(GameObject panel)
 	{

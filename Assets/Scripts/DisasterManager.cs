@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using MilkShake;
+
 
 public class DisasterManager : MonoBehaviour
 {
@@ -20,10 +20,7 @@ public class DisasterManager : MonoBehaviour
 	};
 
 	public static DisasterManager Instance { get; private set; }
-    //gameobjects for the camera shaker 
-    public Shaker CameraShaker; 
-    public ShakePreset ShakerPreset;
-    private ShakeInstance shakeInstance; 
+    
 
 	[SerializeField] private int _disasterThreshold;
 
@@ -49,7 +46,7 @@ public class DisasterManager : MonoBehaviour
 			{_earthquake, 0}
 		};
         Debug.Log("Disaster levels initialized to 0.");
-        shakeInstance = Shaker.ShakeAll(ShakerPreset);
+       
     }
     /// <summary>
     /// Sets the current active player and updates the disaster information display.
@@ -155,11 +152,11 @@ public class DisasterManager : MonoBehaviour
             Debug.LogWarning($"Disaster {disaster.name} is not possible at this time.");
             yield break;
         }
-        if (disaster == _earthquake)
-        {
-            shakeInstance.Start(2f);
-            shakeInstance.Stop(2f,false);
-        }
+        //if (disaster == _earthquake)
+        //{
+        //    shakeInstance.Start(2f);
+        //    shakeInstance.Stop(2f,false);
+        //}
         int disasterLevel = _disasterTracker[disaster];
         Debug.Log($"Checking disaster {disaster.name} at level {disasterLevel}");
 

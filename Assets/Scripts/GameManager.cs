@@ -1,7 +1,6 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -49,12 +48,12 @@ public class GameManager : MonoBehaviour
         if ( turnHUD != null && turnText != null)
 		{
 		
-            Debug.Log($"Displaying HUD for TURN {_roundNumber}/10");
+            Debug.Log($"Displaying HUD for TURN {_roundNumber}/{_totalRounds}");
             isTurnHudActive = true;
             turnHUD.gameObject.SetActive(true);
 			turnText.gameObject.SetActive(true);
 		
-			turnText.text = $"TURN {_roundNumber}/10";
+			turnText.text = $"TURN {_roundNumber}/{_totalRounds}";
             yield return new WaitForSeconds(hudMessageDuration);
             turnHUD.gameObject.SetActive(false);
             turnText.gameObject.SetActive(false);

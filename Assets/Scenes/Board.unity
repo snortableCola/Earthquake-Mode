@@ -8029,7 +8029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
-  cheapItemHacked: {fileID: 1135172624}
+  cheapItemHacked: {fileID: 993054344}
 --- !u!136 &749627512
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10222,7 +10222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
-  cheapItemHacked: {fileID: 1135172624}
+  cheapItemHacked: {fileID: 993054344}
 --- !u!136 &1088405395
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11518,7 +11518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
-  cheapItemHacked: {fileID: 1135172624}
+  cheapItemHacked: {fileID: 993054344}
 --- !u!136 &1196372718
 CapsuleCollider:
   m_ObjectHideFlags: 0

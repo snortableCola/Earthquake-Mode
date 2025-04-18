@@ -9,14 +9,18 @@ public class SetupScreen : MonoBehaviour
 {
     private bool isGamepadConnected = false;
     private Gamepad[] connectedGamepads = new Gamepad[4];
+    GameObject playerPrefab; // Reference to the player prefab
     [SerializeField] private TextMeshProUGUI[] controllerTextBoxes = new TextMeshProUGUI[4];
     private bool[] inputReceived = new bool[4];
     public int[] activationOrder = new int[4]; // Tracks the activation order of text boxes  
-    private int nextAvailableTextBox = 0; // Tracks the next available text box index
+    private int nextAvailableTextBox = 0; // Tracks the next available text box index  
     public bool[] isReady = new bool[4];
 
+    [SerializeField] private Transform[] spawnPoints = new Transform[4]; // Spawn points for players  
+    private PlayerInputManager playerInputManager; // Reference to PlayerInputManager
     private void Start()
     {
+        playerInputManager.playerPrefab = playerPrefab;
         for (int i = 0; i < controllerTextBoxes.Length; i++)
         {
             if (controllerTextBoxes[i] != null)
@@ -53,6 +57,14 @@ public class SetupScreen : MonoBehaviour
                             controllerTextBoxes[nextAvailableTextBox].text = $"Controller {availableIndex + 1}: Connected";
                             controllerTextBoxes[nextAvailableTextBox].gameObject.SetActive(true);
                             activationOrder[availableIndex] = nextAvailableTextBox;
+
+                            // Spawn player prefab at the corresponding spawn point  
+                            if (playerInputManager.playerPrefab != null && spawnPoints[availableIndex] != null)
+                            {
+                                Instantiate(playerPrefab, spawnPoints[availableIndex].position, spawnPoints[availableIndex].rotation);
+                                
+                            }
+
                             nextAvailableTextBox++;
                         }
                     }

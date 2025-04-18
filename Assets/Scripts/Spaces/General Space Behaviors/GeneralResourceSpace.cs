@@ -21,7 +21,7 @@ public class GeneralResourceSpace : MonoBehaviour
 		_blueHUD.gameObject.SetActive(true);
 		yield return new WaitForSeconds(_hudMessageDuration);
 		_blueHUD.gameObject.SetActive(false);
-		player.Points += 3;
+		player.Coins += 3;
 
 		yield return DisasterManager.Instance.IncrementBiomeDisaster(biome, player);
 	}

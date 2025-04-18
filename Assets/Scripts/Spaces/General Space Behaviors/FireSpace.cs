@@ -13,7 +13,7 @@ public class FireSpace : MonoBehaviour
 	public IEnumerator RespondToPlayerEnd(Player player)
 	{
 		Debug.Log($"{player.name} landed on a space that is on fire.");
-		player.Points -= 5;
+		player.Coins -= 5;
 		yield break;
 	}
 }

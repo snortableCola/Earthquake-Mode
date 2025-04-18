@@ -67,9 +67,9 @@ public class CeoGambit : Minigame
 		{
 			pointsInput.text = "1";
 		}
-		else if (points > player.Points)
+		else if (points > player.Coins)
 		{
-			pointsInput.text = player.Points.ToString();
+			pointsInput.text = player.Coins.ToString();
 		}
 	}
 
@@ -80,13 +80,13 @@ public class CeoGambit : Minigame
 		Debug.Log($"{name}, {GetInstanceID()}");
         Debug.Log("PlaceBet method called.");
 
-        if (int.TryParse(pointsInput.text, out points) && points > 0 && points <= player.Points)
+        if (int.TryParse(pointsInput.text, out points) && points > 0 && points <= player.Coins)
 		{
 			PanelManager.Instance.ShowPanel(_selectionPanel); // Show the selection panel for CeoGambit
 		}
         else
         {
-            pointsDisplay.text = "Please enter a valid number of points within your available points. Points: " + player.Points;
+            pointsDisplay.text = "Please enter a valid number of points within your available points. Points: " + player.Coins;
         }
     }
 
@@ -124,10 +124,10 @@ public class CeoGambit : Minigame
 
         bool playerWon = coinLandedHeads == betOnHeads;
 
-        if (playerWon) player.Points += points;
-        else player.Points -= points;
+        if (playerWon) player.Coins += points;
+        else player.Coins -= points;
 
-        resultText.text = $"You {(playerWon ? "won!" : "lost.")} Coin landed on {(coinLandedHeads ? "Heads" : "Tails")}. Points: {player.Points}";
+        resultText.text = $"You {(playerWon ? "won!" : "lost.")} Coin landed on {(coinLandedHeads ? "Heads" : "Tails")}. Points: {player.Coins}";
 
 		UpdatePointsDisplay();
 		flipButton.gameObject.SetActive(false);
@@ -140,7 +140,7 @@ public class CeoGambit : Minigame
 	{
 		Player player = GameManager.Instance.CurrentPlayer;
 
-		pointsDisplay.text = "Points: " + player.Points.ToString();
-        Debug.Log("Updating points: " + player.Points);
+		pointsDisplay.text = "Points: " + player.Coins.ToString();
+        Debug.Log("Updating points: " + player.Coins);
     }
 }

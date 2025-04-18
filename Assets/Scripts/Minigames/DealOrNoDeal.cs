@@ -86,11 +86,11 @@ public class DealOrNoDeal : Minigame
 		Debug.Log($"{name}, {GetInstanceID()}");
         Debug.Log($"Player {player.name} selected a suitcase with reward {_selectedReward}.");
 
-        player.Points += _selectedReward;
+        player.Coins += _selectedReward;
 
-        _rewardText.text = $"You got: {_selectedReward} points! Total Points: {player.Points}";
+        _rewardText.text = $"You got: {_selectedReward} points! Total Points: {player.Coins}";
         Debug.Log($"Selected Reward: {_selectedReward}");
-        Debug.Log($"Player {player.name} now has {player.Points} points after adjustment.");
+        Debug.Log($"Player {player.name} now has {player.Coins} points after adjustment.");
 
 		_initialTextObject.SetActive(false);
 		_selectButton.gameObject.SetActive(false);

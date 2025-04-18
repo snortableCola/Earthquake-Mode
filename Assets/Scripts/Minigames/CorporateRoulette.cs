@@ -27,7 +27,7 @@ public class CorporateRoulette : Minigame
 	public override void StartGame()
 	{
 		Player player = GameManager.Instance.CurrentPlayer;
-		Debug.Log($"Starting Corporate Roulette for player: {player.name} with {player.Points} points.");
+		Debug.Log($"Starting Corporate Roulette for player: {player.name} with {player.Coins} points.");
 
 		_spinButton.gameObject.SetActive(true);
 		_exitButton.gameObject.SetActive(false);
@@ -77,8 +77,8 @@ public class CorporateRoulette : Minigame
             _ => $"You lost {-reward} points.",
         };
 
-        player.Points += reward;
-        Debug.Log($"Player {player.name} now has {player.Points} points after the result.");
+        player.Coins += reward;
+        Debug.Log($"Player {player.name} now has {player.Coins} points after the result.");
 
         GeneralText.text = message;
 

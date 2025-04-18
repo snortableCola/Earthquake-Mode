@@ -37,7 +37,7 @@ public class NegativeSpace : SpaceBehavior
 
         // Hide the red HUD
         redHUD.gameObject.SetActive(false);
-        player.Points -= 3;
+        player.Coins -= 3;
 
         yield break;
 	}

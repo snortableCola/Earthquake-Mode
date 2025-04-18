@@ -1,9 +1,9 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(VisibleTag), typeof(PlayerMovement))]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IComparable<Player>
 {
-	public string playerName; 
 	public VisibleTag FrozenTag { get; private set; }
 	public PlayerMovement Movement { get; private set; }
 	public Item UsedItem { get; set; } = null;
@@ -23,16 +23,22 @@ public class Player : MonoBehaviour
 	/// </summary>
 	public Biome CurrentBiome => transform.GetComponentInParent<Space>().Biome;
 
-	#region Points Logic
-	private int _points = 100; // Player's total points
-	public int Points
+	private int _coins = 100; // Player's total coins
+	private int _oil = 0; // Player's collected oil
+
+	public int Coins
 	{
-		get => _points;
+		get => _coins;
 		set
 		{
-			Debug.Log($"Adjusting points for {name}. Current points: {_points}, Change to: {value}");
-			_points = value;
+			Debug.Log($"Adjusting coins for {name}. Current coins: {_coins}, Change to: {value}");
+			_coins = value;
 		}
 	}
-	#endregion
+
+	public int CompareTo(Player other)
+	{
+		int oilComparison = other._oil.CompareTo(_oil);
+		return oilComparison == 0 ? other._coins.CompareTo(_coins) : oilComparison;
+	}
 }

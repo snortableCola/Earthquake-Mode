@@ -63,7 +63,7 @@ public class SabotageManager : MonoBehaviour
 		Player selectedVictim = otherPlayers[_selectedVictimIndex];
 
 		// Determine whether or not it's possible for the saboteur to steal oil
-		bool canStealOil = selectedVictim.Oil > 0 && saboteur.Coins >= StealingOilCost;
+		bool canStealOil = selectedVictim._oil > 0 && saboteur.Coins >= StealingOilCost;
 		_stealOilButton.interactable = canStealOil;
 
 		// Display choice between stealing coins or oil
@@ -76,8 +76,8 @@ public class SabotageManager : MonoBehaviour
 		// Handle the logic for taking away oil or coins depending on selection
 		if (_stealingOil == true)
 		{
-			selectedVictim.Oil--;
-			saboteur.Oil++;
+			selectedVictim._oil--;
+			saboteur._oil++;
 		}
 		else
 		{

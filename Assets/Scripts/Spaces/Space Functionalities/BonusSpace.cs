@@ -11,7 +11,7 @@ public class BonusSpace : SpaceBehavior
 		_space = GetComponent<Space>();
 	}
 
-	public override IEnumerator RespondToPlayer(Player player)
+	public override IEnumerator RespondToPlayerEnd(Player player)
 	{
 		Biome biome = _space.Biome;
 		Debug.Log($"{player.name}, with {player.Points}, landed on a {biome} bonus space. Sending to minigame manager.");

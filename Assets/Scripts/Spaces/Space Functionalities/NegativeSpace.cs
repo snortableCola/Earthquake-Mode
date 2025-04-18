@@ -28,7 +28,7 @@ public class NegativeSpace : SpaceBehavior
             yield return null; // Wait until the red HUD is no longer active
         }
     }
-    public override IEnumerator RespondToPlayer(Player player)
+    public override IEnumerator RespondToPlayerEnd(Player player)
 	{
 		Debug.Log($"{player.name} landed on a negative space.");
         // Show the red HUD

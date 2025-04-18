@@ -35,7 +35,7 @@ public class DestinationFinder : MonoBehaviour
 
 				Space next = adj.Space;
 				int newCost = cost;
-				if (next.Behavior.EndsTurn) newCost++;
+				newCost++;
 
 				if (visited.Add((next, newCost))) queue.Enqueue((next, newCost));
 

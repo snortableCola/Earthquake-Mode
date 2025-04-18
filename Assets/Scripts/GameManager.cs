@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
 		}
 		else
 		{
-			yield return endingSpace.Behavior.RespondToPlayer(CurrentPlayer);
+			yield return endingSpace.Behavior.RespondToPlayerEnd(CurrentPlayer);
 		}
 
 		DisasterManager.Instance.Wildfire.TryFireProgress(CurrentPlayer);

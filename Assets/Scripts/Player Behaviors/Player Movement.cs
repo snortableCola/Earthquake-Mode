@@ -77,10 +77,10 @@ public class PlayerMovement : MonoBehaviour
 
 				// The player may interact with non-turn-ending (shop & transport) spaces at any point
 				// This cannot be done at the start of the player's path (meaning, just after they've used the space)
-				if (!_currentSpace.Behavior.EndsTurn && !_currentSpace.BurningTag.State && _movementPath.Count > 1)
+				if (_currentSpace.Behavior.HasPassingBehavior && !_currentSpace.BurningTag.State && _movementPath.Count > 1)
 				{
 					MovementArrowManager.Instance.EraseArrows();
-					yield return _currentSpace.Behavior.RespondToPlayer(_player);
+					yield return _currentSpace.Behavior.RespondToPlayerPassing(_player);
 
 					_movementPath.RemoveRange(0, _movementPath.Count - 1); // Prevents player from moving backwards from the space they just used
 					DrawNewArrows();
@@ -108,15 +108,15 @@ public class PlayerMovement : MonoBehaviour
 				continue;
 			}
 
-			// Modifies movement path & remaining distance (non-turn-ending spaces don't expend distance)
+			// Modifies movement path & remaining distance
 			if (movingForward)
 			{
-				if (targetSpace.Behavior.EndsTurn) _distance--;
+				_distance--;
 				_movementPath.Add(targetSpace);
 			}
 			else
 			{
-				if (_currentSpace.Behavior.EndsTurn) _distance++;
+				_distance++;
 				_movementPath.RemoveAt(_movementPath.Count - 1);
 			}
 

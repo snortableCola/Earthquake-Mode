@@ -28,7 +28,7 @@ public class ResourceSpace : SpaceBehavior
     }
 
    
-    public override IEnumerator RespondToPlayer(Player player)
+    public override IEnumerator RespondToPlayerEnd(Player player)
 	{
 		Biome biome = _space.Biome;
 		Debug.Log($"{player.name} landed on a {biome} resource space.");

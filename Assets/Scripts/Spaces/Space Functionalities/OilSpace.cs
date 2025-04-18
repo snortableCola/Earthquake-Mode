@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class OilSpace : ResourceSpace
+public class OilSpace : SpaceBehavior
 {
 	private readonly Vector3 _activeScale = new(0.2f, 0.05f, 0.2f);
 	private readonly Vector3 _inactiveScale = new(0.35f, 0.05f, 0.35f);
@@ -17,29 +17,39 @@ public class OilSpace : ResourceSpace
 		}
 	}
 
-	public override bool EndsTurn => !_isActive;
+	public override bool HasPassingBehavior => _isActive;
 
 	[ContextMenu("Flip Oil Space State")]
 	public void FlipActivity() => IsActive = !_isActive;
 
-	public override IEnumerator RespondToPlayer(Player player)
+	public override IEnumerator RespondToPlayerPassing(Player player)
+	{
+		Debug.Log($"{player.name} passes an active oil space. They may purchase oil without a discount.");
+
+		yield return PurchaseOil(player);
+	}
+
+	public override IEnumerator RespondToPlayerEnd(Player player)
 	{
 		if (_isActive)
 		{
-			Debug.Log($"{player.name} passed an active oil space.");
+			Debug.Log($"{player.name} landed on an active oil space. They may purchase oil with a discount.");
 
-			player.transform.parent = null;
-			OilManager.Instance.SelectRandomOilSpaces();
-			player.transform.parent = transform;
-
-			yield return DisasterManager.Instance.IncrementEarthquake();
+			yield return PurchaseOil(player);
 		}
 
 		else
 		{
-			Debug.Log($"{player.name} landed on an inactive oil space.");
-
-			yield return base.RespondToPlayer(player);
+			Debug.Log($"{player.name} landed on an inactive oil space. Still have to implement resource space stuff.");
 		}
+	}
+
+	private IEnumerator PurchaseOil(Player player)
+	{
+		player.transform.parent = null;
+		OilManager.Instance.SelectRandomOilSpaces();
+		player.transform.parent = transform;
+
+		yield return DisasterManager.Instance.IncrementEarthquake();
 	}
 }

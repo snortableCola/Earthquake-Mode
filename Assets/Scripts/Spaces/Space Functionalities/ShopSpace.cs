@@ -3,11 +3,18 @@ using UnityEngine;
 
 public class ShopSpace : SpaceBehavior
 {
-	public override bool EndsTurn { get; } = false;
+	public override bool HasPassingBehavior { get; } = true;
 
-	public override IEnumerator RespondToPlayer(Player player)
+	public override IEnumerator RespondToPlayerPassing(Player player)
 	{
-		Debug.Log($"{player.name} used a shop space.");
+		Debug.Log($"{player.name} passed a shop space.");
+
+		yield break;
+	}
+
+	public override IEnumerator RespondToPlayerEnd(Player player)
+	{
+		Debug.Log($"{player.name} landed on a shop space.");
 
 		yield break;
 	}

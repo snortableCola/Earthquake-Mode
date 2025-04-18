@@ -40,7 +40,9 @@ public class OilSpace : SpaceBehavior
 
 		else
 		{
-			Debug.Log($"{player.name} landed on an inactive oil space. Still have to implement resource space stuff.");
+			Debug.Log($"{player.name} landed on an inactive oil space. Will function as resource space.");
+
+			yield return GeneralResourceSpace.Instance.RespondToPlayerEnd(player);
 		}
 	}
 
@@ -52,4 +54,6 @@ public class OilSpace : SpaceBehavior
 
 		yield return DisasterManager.Instance.IncrementEarthquake();
 	}
+
+	public override IEnumerator WaitForHudCompletion() => GeneralResourceSpace.Instance.WaitForHudCompletion();
 }

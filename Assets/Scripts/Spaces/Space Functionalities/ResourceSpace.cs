@@ -28,22 +28,7 @@ public class ResourceSpace : SpaceBehavior
     }
 
    
-    public override IEnumerator RespondToPlayerEnd(Player player)
-	{
-		Biome biome = _space.Biome;
-		Debug.Log($"{player.name} landed on a {biome} resource space.");
-       _blueHUD.gameObject.SetActive(true);
-        yield return new WaitForSeconds(hudMessageDuration);
-        _blueHUD.gameObject.SetActive(false); 
-        player.Points += 3;
+    public override IEnumerator RespondToPlayerEnd(Player player) => GeneralResourceSpace.Instance.RespondToPlayerEnd(player);
 
-		yield return DisasterManager.Instance.IncrementBiomeDisaster(biome, player);
-    }
-    public override IEnumerator WaitForHudCompletion()
-    {
-        while (_blueHUD != null && _blueHUD.gameObject.activeSelf)
-        {
-            yield return null; // Wait until the red HUD is no longer active
-        }
-    }
+    public override IEnumerator WaitForHudCompletion() => GeneralResourceSpace.Instance.WaitForHudCompletion();
 }

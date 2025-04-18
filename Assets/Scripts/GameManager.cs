@@ -139,6 +139,7 @@ public class GameManager : MonoBehaviour
         if (endingSpace.BurningTag.State && CurrentPlayer.UsedItem is not HeliEvac)
 		{
 			Debug.Log($"{CurrentPlayer} landed on a space which is on fire.");
+			FireSpace.Instance.RespondToPlayerEnd(CurrentPlayer);
 		}
 		else
 		{

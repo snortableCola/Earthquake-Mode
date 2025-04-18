@@ -18,6 +18,9 @@ public class TransportSpace : SpaceBehavior
 	public override IEnumerator RespondToPlayerEnd(Player player)
 	{
 		yield return player.Movement.MoveToSpaceCoroutine(_destination);
-		Debug.Log("I still need to implement transport spaces doing resource space stuff");
+		Debug.Log("Player landed on transport space, will act as resource space for destination.");
+		yield return GeneralResourceSpace.Instance.RespondToPlayerEnd(player);
 	}
+
+	public override IEnumerator WaitForHudCompletion() => GeneralResourceSpace.Instance.WaitForHudCompletion();
 }

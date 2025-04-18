@@ -1,9 +1,8 @@
 using System.Collections;
-using UnityEngine;
 
-public class HeliEvac : MonoBehaviour, IItem
+public class HeliEvac : Item
 {
-	public IEnumerator BeUsedBy(Player player)
+	public override IEnumerator BeUsedBy(Player player)
 	{
 		player.UsedItem = this;
 		yield break;

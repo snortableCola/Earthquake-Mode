@@ -18,7 +18,6 @@ public class PanelManager : MonoBehaviour
 	private void Awake()
 	{
 		Instance = this;
-		_activePanel = _movementUI;
         _startMinigameButton.onClick.AddListener(OnStartMinigameButtonClicked);
 	}
 
@@ -42,8 +41,8 @@ public class PanelManager : MonoBehaviour
 
 	public void ShowPanel(GameObject panel)
 	{
-		_activePanel.SetActive(false);
+		if (_activePanel) _activePanel.SetActive(false);
 		_activePanel = panel;
-		panel.SetActive(true);
+		if (panel) panel.SetActive(true);
 	}
 }

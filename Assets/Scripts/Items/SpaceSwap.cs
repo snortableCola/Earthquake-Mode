@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class SpaceSwap : MonoBehaviour, IItem
+public class SpaceSwap : Item
 {
-	public IEnumerator BeUsedBy(Player player)
+	public override IEnumerator BeUsedBy(Player player)
 	{
 		player.UsedItem = this;
 
@@ -19,5 +19,7 @@ public class SpaceSwap : MonoBehaviour, IItem
 
 		yield return player.Movement.MoveToSpaceCoroutine(end);
 		yield return target.Movement.MoveToSpaceCoroutine(start);
+
+		DisasterManager.Instance.UpdateDisasterInfo();
 	}
 }

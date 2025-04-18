@@ -1,9 +1,8 @@
 using System.Collections;
-using UnityEngine;
 
-public class PrivateJet : MonoBehaviour, IItem
+public class PrivateJet : Item
 {
-	public IEnumerator BeUsedBy(Player player)
+	public override IEnumerator BeUsedBy(Player player)
 	{
 		player.UsedItem = this;
 		yield break;

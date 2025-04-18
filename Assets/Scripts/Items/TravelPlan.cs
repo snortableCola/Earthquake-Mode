@@ -1,9 +1,8 @@
 using System.Collections;
-using UnityEngine;
 
-public class TravelPlan : MonoBehaviour, IItem
+public class TravelPlan : Item
 {
-	public IEnumerator BeUsedBy(Player player)
+	public override IEnumerator BeUsedBy(Player player)
 	{
 		player.UsedItem = this;
 		yield break;

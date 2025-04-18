@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
 	[SerializeField] private int _totalRounds = 10;
 	[SerializeField] private Button _diceRollButton;
+	[SerializeField] private Button _useItemButton;
+	[SerializeField] private TMP_Text _useItemButtonText;
 	[SerializeField] private TMP_Text _distanceText;   
 	[SerializeField] private Player[] _players;
 
@@ -24,13 +26,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ResourceSpace resourceSpaceScript; // Reference to ResourceSpace script
 
     private int _roundNumber;
-	private bool _diceRolled;
+	private bool _diceRolled, _itemUsed;
 
 	private void Awake()
 	{
 		Instance = this;
 		Spaces = FindObjectsByType<Space>(FindObjectsSortMode.None);
 		_diceRollButton.onClick.AddListener(RespondToDiceRoll);
+		_useItemButton.onClick.AddListener(RespondToUseItem);
 	}
 
 	private IEnumerator Start() => GameRoundCycle();
@@ -112,10 +115,8 @@ public class GameManager : MonoBehaviour
 			yield break;
 		}
 
-		_diceRollButton.gameObject.SetActive(true);
-		yield return new WaitUntil(() => _diceRolled);
-		_diceRollButton.gameObject.SetActive(false);
-		_diceRolled = false;
+		PanelManager.Instance.ShowMovementUI();
+		yield return WaitForDiceRoll();
 
 		int distance = Random.Range(1, 11);
 		switch (CurrentPlayer.UsedItem)
@@ -149,4 +150,41 @@ public class GameManager : MonoBehaviour
 	}
 
 	private void RespondToDiceRoll() => _diceRolled = true;
+	private void RespondToUseItem() => _itemUsed = true;
+
+	private IEnumerator WaitForDiceRoll()
+	{
+		bool hasItem = CurrentPlayer.HeldItem != null;
+		_useItemButton.interactable = hasItem;
+		_useItemButtonText.text = $"Use {(hasItem ? CurrentPlayer.HeldItem.name : "Item")}";
+
+		_diceRollButton.gameObject.SetActive(true);
+		_useItemButton.gameObject.SetActive(true);
+
+		yield return new WaitUntil(() => _diceRolled || _itemUsed);
+
+		if (_diceRolled)
+		{
+			ClearAfterDiceRoll();
+			yield break;
+		}
+
+		_useItemButton.interactable = false;
+		_itemUsed = false;
+
+		PanelManager.Instance.ShowPanel(null);
+		yield return CurrentPlayer.HeldItem.BeUsedBy(CurrentPlayer);
+		PanelManager.Instance.ShowMovementUI();
+		CurrentPlayer.HeldItem = null;
+
+		yield return new WaitUntil(() => _diceRolled);
+		ClearAfterDiceRoll();
+
+		void ClearAfterDiceRoll()
+		{
+			_diceRollButton.gameObject.SetActive(false);
+			_useItemButton.gameObject.SetActive(false);
+			_diceRolled = false;
+		}
+	}
 }

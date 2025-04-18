@@ -6,12 +6,16 @@ public class Player : MonoBehaviour
 	public string playerName; 
 	public VisibleTag FrozenTag { get; private set; }
 	public PlayerMovement Movement { get; private set; }
-	public IItem UsedItem { get; set; } = null;
+	public Item UsedItem { get; set; } = null;
+	public Item HeldItem { get; set; } = null;
+
+	[SerializeField] Item cheapItemHacked;
 
 	public void Awake()
 	{
 		FrozenTag = GetComponent<VisibleTag>();
 		Movement = GetComponent<PlayerMovement>();
+		HeldItem = cheapItemHacked;
 	}
 
 	/// <summary>

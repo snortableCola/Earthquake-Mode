@@ -1,4 +1,4 @@
-	using System.Collections;
+		using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -21,14 +21,23 @@ public class PlayerMovement : MonoBehaviour
 	private Space _currentSpace;
 	private readonly List<Space> _movementPath = new();
 	private Space[] _possibleDestinations = new Space[0];
-
-	private void Awake()
+	private PlayerInput _playerInput;
+    private void Awake()
 	{
-		_motionInput = InputSystem.actions.FindAction("2D Motion");
-		_interactionInput = InputSystem.actions.FindAction("Space Interaction");
-
 		_player = GetComponent<Player>();
-	}
+		// playerinputs are created by the join scene, one for each player that joins
+		var playerInputs = FindObjectsByType<PlayerInput>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+		if(playerInputs.Length > _player.PlayerIndex)
+		{
+            _playerInput = playerInputs.Where(input => input.playerIndex == _player.PlayerIndex).FirstOrDefault();
+            _motionInput = _playerInput.actions["2D Motion"];
+            _interactionInput = _playerInput.actions["Space Interaction"];
+        }
+		else 
+		{
+			gameObject.SetActive(false); 
+		}
+    }
 
 	/// <summary>
 	/// Resets the player's movement, starting their path at their current space.
@@ -146,7 +155,8 @@ public class PlayerMovement : MonoBehaviour
 	private Space GetSelectedAdjacentSpace(out bool forwards, out float confidence)
 	{
 		Vector2 inputDirection = _motionInput.ReadValue<Vector2>();
-		List<Adjacency> adjacentSpaces = AdjacencyManager.Instance.Adjacencies[_currentSpace];
+		
+        List<Adjacency> adjacentSpaces = AdjacencyManager.Instance.Adjacencies[_currentSpace];
 
 		// Determines whichever adjacent space has the maximum similarity with the player's input, using the dot product
 		Adjacency selection = adjacentSpaces[0];

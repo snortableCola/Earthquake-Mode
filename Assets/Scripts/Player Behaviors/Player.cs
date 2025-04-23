@@ -4,15 +4,22 @@ using UnityEngine;
 [RequireComponent(typeof(VisibleTag), typeof(PlayerMovement))]
 public class Player : MonoBehaviour, IComparable<Player>
 {
+	[SerializeField] int playerIndex = -1;
+    [SerializeField] Item cheapItemHacked;
 	public VisibleTag FrozenTag { get; private set; }
 	public PlayerMovement Movement { get; private set; }
 	public Item UsedItem { get; set; } = null;
 	public Item HeldItem { get; set; } = null;
-
-	[SerializeField] Item cheapItemHacked;
-
-	public void Awake()
+	public int PlayerIndex
 	{
+		get { return playerIndex; }
+    }
+
+
+    public void Awake()
+	{
+		//used to be plugged in to all characters, but since we're changing to using prefabs for players, we can't do that anymore
+		cheapItemHacked = FindFirstObjectByType<SpaceSwap>();
 		FrozenTag = GetComponent<VisibleTag>();
 		Movement = GetComponent<PlayerMovement>();
 		HeldItem = cheapItemHacked;

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// JoinScreen handles the player joining process in a multiplayer game.
@@ -23,6 +24,10 @@ public class JoinScreen : MonoBehaviour
         playerIcons[input.playerIndex].SetActive(true);
         input.gameObject.name= $"Player input clone {input.playerIndex + 1}";
         //Debug.Log($"Player joined: {input.playerIndex + 1}");
+    }
+    public void StartButtonClicked()
+    {
+        SceneManager.LoadScene("Board");
     }
 
     private void OnEnable()

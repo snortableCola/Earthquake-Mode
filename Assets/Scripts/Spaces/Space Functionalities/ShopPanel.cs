@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using TMPro;
 public class ShopPanel: MonoBehaviour
 {
     [SerializeField] private Button[] itemButtons; // Buttons for the shop UI
@@ -15,7 +16,7 @@ public class ShopPanel: MonoBehaviour
 
     private Player currentPlayer;
 
-  
+    [SerializeField] private TMP_Text shoptext; 
 
     private void Start()
     {
@@ -37,6 +38,8 @@ public class ShopPanel: MonoBehaviour
 
         // Assign the selected items to the buttons
         AssignItemsToButtons();
+        shoptext.text = "Welcome to my shop!";
+        
     }
 
     private List<Item> GenerateRandomItems()
@@ -95,10 +98,14 @@ public class ShopPanel: MonoBehaviour
             currentPlayer.Coins -= item.cost; // Deduct the cost
             Debug.Log($"Bought: {item.itemName} for {item.cost} coins.");
             currentPlayer.HeldItem = item; // Add the item to the player's inventory
+            shoptext.text = "Thank you for shopping, come back soon!";
         }
         else
         {
             Debug.Log($"Not enough coins to buy {item.itemName}.");
+            shoptext.text = "You do not have enough coins to buy that";
+
+
         }
     }
 }

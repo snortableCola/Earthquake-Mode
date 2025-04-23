@@ -11,16 +11,27 @@ public class PanelManager : MonoBehaviour
 	[SerializeField] private TMP_Text _instructionText;
 	[SerializeField] private TMP_Text _gameNameText;
 	[SerializeField] private Button _startMinigameButton;
-	[SerializeField] private GameObject _shopPanel; 
+    [SerializeField] private GameObject _shopPanelGameObject; // Reference to the ShopPanel GameObject
+    private ShopPanel _shopPanelScript; // Reference to the ShopPanel script
 
-	private GameObject _activePanel;
+    private GameObject _activePanel;
 	private Minigame _startingMinigame;
 
-	private void Awake()
-	{
-		Instance = this;
+    private void Awake()
+    {
+        Instance = this;
         _startMinigameButton.onClick.AddListener(OnStartMinigameButtonClicked);
-	}
+        if (_shopPanelGameObject != null)
+        {
+            _shopPanelGameObject.SetActive(false);
+            _shopPanelScript = _shopPanelGameObject.GetComponent<ShopPanel>();
+
+            if (_shopPanelScript == null)
+            {
+                Debug.LogError("The assigned ShopPanel GameObject does not have a ShopPanel script attached!");
+            }
+        }
+    }
 
 	private void OnStartMinigameButtonClicked()
 	{
@@ -40,9 +51,21 @@ public class PanelManager : MonoBehaviour
 
 	public void ShowMovementUI() => ShowPanel(_movementUI);
 
-	public void ShowShop() => ShowPanel(_shopPanel);
+    public void ShowShop(Player player)
+    {
+        if (_shopPanelScript != null)
+        {
+            _shopPanelScript.OpenShop(player); // Pass the player to the ShopPanel
+            ShowPanel(_shopPanelGameObject);
+        }
+        else
+        {
+            Debug.LogError("ShopPanel is not assigned in the PanelManager!");
+        }
+    }
 
-	public void ShowPanel(GameObject panel)
+
+    public void ShowPanel(GameObject panel)
 	{
 		if (_activePanel) _activePanel.SetActive(false);
 		_activePanel = panel;

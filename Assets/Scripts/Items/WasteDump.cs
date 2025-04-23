@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class WasteDump : Item
 {
+	private void Awake()
+	{
+		cost = 10;
+		itemName = "Waste Dump";
+	}
 	public override IEnumerator BeUsedBy(Player player)
 	{
 		player.UsedItem = this;

@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class SpaceSwap : Item
 {
+	private void Awake()
+	{
+		cost = 5;
+		itemName = "Space Swap";
+	}
 	public override IEnumerator BeUsedBy(Player player)
 	{
 		player.UsedItem = this;

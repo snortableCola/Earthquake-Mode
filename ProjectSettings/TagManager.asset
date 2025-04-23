@@ -7,6 +7,7 @@ TagManager:
   - REDHUD
   - BLUEHUD
   - TURNHUD
+  - Shop Panel
   layers:
   - Default
   - TransparentFX

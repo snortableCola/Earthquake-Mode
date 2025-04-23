@@ -2,6 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// JoinScreen handles the player joining process in a multiplayer game.
+/// </summary>
 public class JoinScreen : MonoBehaviour
 {
     [SerializeField] GameObject[] playerIcons= new GameObject[4];
@@ -10,15 +13,16 @@ public class JoinScreen : MonoBehaviour
     void Awake()
     {
         playerInputManager = FindFirstObjectByType<PlayerInputManager>();
-        
     }
-
+    /// <summary>
+    /// Called by playerInputManager built in Unity component when a player joins the game.
+    /// </summary>
+    /// <param name="input"></param>
     private void OnPlayerJoined(PlayerInput input)
     {
         playerIcons[input.playerIndex].SetActive(true);
         input.gameObject.name= $"Player input clone {input.playerIndex + 1}";
-        Debug.Log($"Player joined: {input.playerIndex + 1}");
-       // PlayerList.Add(input.gameObject.GetComponent<PlayerController>());
+        //Debug.Log($"Player joined: {input.playerIndex + 1}");
     }
 
     private void OnEnable()
@@ -29,10 +33,5 @@ public class JoinScreen : MonoBehaviour
     private void OnDisable()
     {
         playerInputManager.onPlayerJoined -= OnPlayerJoined;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

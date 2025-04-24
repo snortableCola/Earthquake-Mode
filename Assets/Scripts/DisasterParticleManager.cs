@@ -10,9 +10,10 @@ public class DisasterParticleManager : MonoBehaviour
     private ShakeInstance shakeInstance;
 
     //rainfall particle 
+  [SerializeField]  private GameObject RainEffect;
 
     //tornado particle 
-
+   [SerializeField] private GameObject tornadoEffect; 
 
    
     void Awake()

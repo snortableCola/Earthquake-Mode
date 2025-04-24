@@ -17,8 +17,7 @@ public class Multiplayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (EndTurn = true)
+        if (EndTurn)
         {
             ChangeTurn();
         }

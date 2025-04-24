@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 		var playerInputs = FindObjectsByType<PlayerInput>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 		if(playerInputs.Length > _player.PlayerIndex)
 		{
-            _playerInput = playerInputs.Where(input => input.playerIndex == _player.PlayerIndex).FirstOrDefault();
+            _playerInput = playerInputs.FirstOrDefault(input => input.playerIndex == _player.PlayerIndex);
             _motionInput = _playerInput.actions["2D Motion"];
             _interactionInput = _playerInput.actions["Space Interaction"];
         }

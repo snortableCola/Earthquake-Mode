@@ -1,105 +1,109 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 
 
 public class SetupScreen : MonoBehaviour
 {
-    private bool isGamepadConnected = false;
-    private Gamepad[] connectedGamepads = new Gamepad[4];
-    GameObject playerPrefab; // Reference to the player prefab
+	[SerializeField] private GameObject playerPrefab; // Reference to the player prefab
     [SerializeField] private TextMeshProUGUI[] controllerTextBoxes = new TextMeshProUGUI[4];
-    private bool[] inputReceived = new bool[4];
-    public int[] activationOrder = new int[4]; // Tracks the activation order of text boxes  
-    private int nextAvailableTextBox = 0; // Tracks the next available text box index  
-    public bool[] isReady = new bool[4];
+    [SerializeField] private Transform[] spawnPoints = new Transform[4]; // Spawn points for players
+	[SerializeField] private PlayerInputManager playerInputManager; // Reference to PlayerInputManager
 
-    [SerializeField] private Transform[] spawnPoints = new Transform[4]; // Spawn points for players  
-    private PlayerInputManager playerInputManager; // Reference to PlayerInputManager
-    private void Start()
+	private readonly Gamepad[] _connectedGamepads = new Gamepad[4];
+	private readonly bool[] _inputReceived = new bool[4];
+	private readonly int[] _activationOrder = new int[4]; // Tracks the activation order of text boxes
+
+	private int nextAvailableTextBox = 0; // Tracks the next available text box index
+
+	private void Start()
     {
         playerInputManager.playerPrefab = playerPrefab;
-        for (int i = 0; i < controllerTextBoxes.Length; i++)
+        foreach (TextMeshProUGUI controllerTextBox in controllerTextBoxes)
         {
-            if (controllerTextBoxes[i] != null)
+            if (controllerTextBox != null)
             {
-                controllerTextBoxes[i].gameObject.SetActive(false);
+				controllerTextBox.gameObject.SetActive(false);
             }
         }
     }
 
     private void Update()
     {
-        // Check if any gamepad is connected  
-        isGamepadConnected = Gamepad.all.Count > 0;
+        // Assign gamepads based on received inputs
+        foreach (Gamepad currentGamepad in Gamepad.all)
+		{
+			// Confirm the gamepad exists and is not already assigned  
+			if (currentGamepad == null || _connectedGamepads.Contains(currentGamepad))
+			{
+				continue;
+			}
 
-        // Assign gamepads based on input received  
-        for (int i = 0; i < Gamepad.all.Count; i++)
-        {
-            Gamepad currentGamepad = Gamepad.all[i];
+            // Confirm the gamepad is sending any button input
+			if (!currentGamepad.allControls.Any(control => control.IsPressed()))
+			{
+				continue;
+			}
 
-            // Check if the gamepad has made an input and is not already assigned  
-            if (currentGamepad != null && !connectedGamepads.Contains(currentGamepad))
-            {
-                if (currentGamepad.allControls.Any(control => control.IsPressed()))
-                {
-                    int availableIndex = System.Array.IndexOf(inputReceived, false);
-                    if (availableIndex != -1)
-                    {
-                        inputReceived[availableIndex] = true;
-                        connectedGamepads[availableIndex] = currentGamepad;
+            // Confirm there is an opening available for the gamepad
+			int availableIndex = System.Array.IndexOf(_inputReceived, false);
+			if (availableIndex == -1)
+			{
+				continue;
+			}
 
-                        if (nextAvailableTextBox < controllerTextBoxes.Length && controllerTextBoxes[nextAvailableTextBox] != null)
-                        {
-                            Debug.Log($"Controller {availableIndex + 1} connected and input detected: {currentGamepad.displayName}");
-                            controllerTextBoxes[nextAvailableTextBox].text = $"Controller {availableIndex + 1}: Connected";
-                            controllerTextBoxes[nextAvailableTextBox].gameObject.SetActive(true);
-                            activationOrder[availableIndex] = nextAvailableTextBox;
+            // Store the gamepad and mark its opening as taken
+			_inputReceived[availableIndex] = true;
+			_connectedGamepads[availableIndex] = currentGamepad;
 
-                            // Spawn player prefab at the corresponding spawn point  
-                            if (playerInputManager.playerPrefab != null && spawnPoints[availableIndex] != null)
-                            {
-                                Instantiate(playerPrefab, spawnPoints[availableIndex].position, spawnPoints[availableIndex].rotation);
-                                
-                            }
+			if (nextAvailableTextBox >= controllerTextBoxes.Length || controllerTextBoxes[nextAvailableTextBox] == null)
+			{
+				continue;
+			}
 
-                            nextAvailableTextBox++;
-                        }
-                    }
-                }
-            }
-        }
+			Debug.Log($"Controller {availableIndex + 1} connected and input detected: {currentGamepad.displayName}");
+			controllerTextBoxes[nextAvailableTextBox].text = $"Controller {availableIndex + 1}: Connected";
+			controllerTextBoxes[nextAvailableTextBox].gameObject.SetActive(true);
+			_activationOrder[availableIndex] = nextAvailableTextBox;
 
-        // Handle disconnection  
-        for (int i = 0; i < connectedGamepads.Length; i++)
-        {
-            if (connectedGamepads[i] != null && !Gamepad.all.Contains(connectedGamepads[i]))
-            {
-                int textBoxIndex = activationOrder[i];
-                if (controllerTextBoxes[textBoxIndex] != null)
-                {
-                    Debug.Log($"Controller {i + 1} disconnected.");
-                    controllerTextBoxes[textBoxIndex].gameObject.SetActive(false);
-                }
+			// Spawn player prefab at the corresponding spawn point  
+			if (playerInputManager.playerPrefab != null && spawnPoints[availableIndex] != null)
+			{
+				Instantiate(playerPrefab, spawnPoints[availableIndex].position, spawnPoints[availableIndex].rotation);
+			}
 
-                connectedGamepads[i] = null;
-                inputReceived[i] = false;
-            }
-        }
-    }
+			nextAvailableTextBox++;
+		}
 
-    public bool IsGamepadConnected()
+		// Handle disconnection  
+		for (int i = 0; i < _connectedGamepads.Length; i++)
+		{
+			Gamepad gamepad = _connectedGamepads[i];
+			if (gamepad == null || Gamepad.all.Contains(gamepad))
+			{
+				continue;
+			}
+
+			int textBoxIndex = _activationOrder[i];
+			if (controllerTextBoxes[textBoxIndex] != null)
+			{
+				Debug.Log($"Controller {i + 1} disconnected.");
+				controllerTextBoxes[textBoxIndex].gameObject.SetActive(false);
+			}
+
+			_connectedGamepads[i] = null;
+			_inputReceived[i] = false;
+		}
+	}
+
+	public bool IsGamepadConnected() => Gamepad.all.Count > 0;
+
+	public Gamepad GetGamepad(int index)
     {
-        return isGamepadConnected;
-    }
-
-    public Gamepad GetGamepad(int index)
-    {
-        if (index >= 0 && index < connectedGamepads.Length)
+        if (index >= 0 && index < _connectedGamepads.Length)
         {
-            return connectedGamepads[index];
+            return _connectedGamepads[index];
         }
         return null;
     }

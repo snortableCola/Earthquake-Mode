@@ -107,8 +107,6 @@ public class GameManager : MonoBehaviour
 		DisasterManager.Instance.UpdateDisasterInfo();
         CurrentPlayer.UsedItem = null;
 
-		Debug.Log(CurrentPlayer);
-		Debug.Log(CurrentPlayer.FrozenTag);
 		if (CurrentPlayer.FrozenTag.State)
 		{
 			Debug.Log($"{CurrentPlayer.name} was frozen and passed its turn.");

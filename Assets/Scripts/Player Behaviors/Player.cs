@@ -20,7 +20,7 @@ public class Player : MonoBehaviour, IComparable<Player>
 	{
 		Debug.Log($"Awake called for {gameObject.name}");
 		//used to be plugged in to all characters, but since we're changing to using prefabs for players, we can't do that anymore
-		cheapItemHacked = FindFirstObjectByType<SpaceSwap>();
+		//cheapItemHacked = FindFirstObjectByType<SpaceSwap>();
 		FrozenTag = GetComponent<VisibleTag>();
 		Movement = GetComponent<PlayerMovement>();
 		HeldItem = cheapItemHacked;

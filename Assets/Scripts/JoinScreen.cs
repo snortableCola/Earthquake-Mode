@@ -8,13 +8,14 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class JoinScreen : MonoBehaviour
 {
-    [SerializeField] GameObject[] playerIcons= new GameObject[4];
+    [SerializeField] GameObject[] playerIcons = new GameObject[4];
     private PlayerInputManager playerInputManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        playerInputManager = FindFirstObjectByType<PlayerInputManager>();
+        playerInputManager = PlayerInputManager.instance;
     }
+
     /// <summary>
     /// Called by playerInputManager built in Unity component when a player joins the game.
     /// </summary>
@@ -25,6 +26,7 @@ public class JoinScreen : MonoBehaviour
         input.gameObject.name= $"Player input clone {input.playerIndex + 1}";
         //Debug.Log($"Player joined: {input.playerIndex + 1}");
     }
+
     public void StartButtonClicked()
     {
         SceneManager.LoadScene("Board");

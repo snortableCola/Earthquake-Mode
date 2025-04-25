@@ -259,7 +259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &6946073
 MonoBehaviour:
@@ -802,6 +801,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e83a588b445784fa96b38be9e454c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ViewShopPanel: {fileID: 0}
+  yesButton: {fileID: 0}
+  noButton: {fileID: 0}
 --- !u!114 &38471092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1493,7 +1495,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &92307033
 MonoBehaviour:
@@ -1675,6 +1676,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e83a588b445784fa96b38be9e454c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ViewShopPanel: {fileID: 0}
+  yesButton: {fileID: 0}
+  noButton: {fileID: 0}
 --- !u!114 &126969248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1891,7 +1895,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &144390772
 MonoBehaviour:
@@ -2074,6 +2077,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e83a588b445784fa96b38be9e454c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ViewShopPanel: {fileID: 0}
+  yesButton: {fileID: 0}
+  noButton: {fileID: 0}
 --- !u!114 &147168348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2298,7 +2304,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &157208396
 MonoBehaviour:
@@ -2518,6 +2523,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e83a588b445784fa96b38be9e454c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ViewShopPanel: {fileID: 0}
+  yesButton: {fileID: 0}
+  noButton: {fileID: 0}
 --- !u!114 &178544239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3016,7 +3024,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &213919395
 MonoBehaviour:
@@ -3745,7 +3752,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &286045686
 MonoBehaviour:
@@ -5038,6 +5044,7 @@ MonoBehaviour:
   _tornado: {fileID: 153437640}
   _wildfire: {fileID: 1757144620}
   _earthquake: {fileID: 680003645}
+  disaster_info: {fileID: 0}
 --- !u!4 &406815568
 Transform:
   m_ObjectHideFlags: 0
@@ -5425,7 +5432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &451775725
 MonoBehaviour:
@@ -5925,7 +5931,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &497012319
 MonoBehaviour:
@@ -6218,7 +6223,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &595680762
 MonoBehaviour:
@@ -6400,6 +6404,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e83a588b445784fa96b38be9e454c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ViewShopPanel: {fileID: 0}
+  yesButton: {fileID: 0}
+  noButton: {fileID: 0}
 --- !u!114 &607920232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6580,7 +6587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &641799740
 MonoBehaviour:
@@ -7543,7 +7549,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &745889229
 MonoBehaviour:
@@ -7635,7 +7640,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3c7788f9c50614daad34f553d2b65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 
+  playerIndex: -1
+  cheapItemHacked: {fileID: 0}
 --- !u!136 &749627512
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8444,7 +8450,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &859499878
 MonoBehaviour:
@@ -9486,7 +9491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3c7788f9c50614daad34f553d2b65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 
+  playerIndex: -1
+  cheapItemHacked: {fileID: 0}
 --- !u!136 &1088405395
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10436,7 +10442,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &1139649998
 MonoBehaviour:
@@ -10723,7 +10728,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3c7788f9c50614daad34f553d2b65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 
+  playerIndex: -1
+  cheapItemHacked: {fileID: 0}
 --- !u!136 &1196372718
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11166,7 +11172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &1236240419
 MonoBehaviour:
@@ -12480,7 +12485,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &1489343763
 MonoBehaviour:
@@ -12857,7 +12861,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &1544233663
 MonoBehaviour:
@@ -13039,7 +13042,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &1571993464
 MonoBehaviour:
@@ -13507,11 +13509,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _totalRounds: 10
   _diceRollButton: {fileID: 1767838420}
+  _useItemButton: {fileID: 0}
+  _useItemButtonText: {fileID: 0}
   _distanceText: {fileID: 1300161200}
   _players:
   - {fileID: 749627511}
   - {fileID: 1088405394}
   - {fileID: 1196372717}
+  turnHUD: {fileID: 0}
+  turnText: {fileID: 0}
+  hudMessageDuration: 3
+  negativeSpaceScript: {fileID: 0}
+  resourceSpaceScript: {fileID: 0}
 --- !u!4 &1675152222
 Transform:
   m_ObjectHideFlags: 0
@@ -13967,7 +13976,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f91e7b1e53ec9254aba5315e893c7bed, type: 2}
+  - {fileID: 2100000, guid: f26fa10f91f3dc049aeddb27765e7ddf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14006,7 +14015,7 @@ Transform:
   m_GameObject: {fileID: 1720702912}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.48}
   m_LocalScale: {x: 1.277, y: 1, z: 0.831}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14153,7 +14162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &1723720925
 MonoBehaviour:
@@ -14727,7 +14735,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &1768307843
 MonoBehaviour:
@@ -14909,7 +14916,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &1821119982
 MonoBehaviour:
@@ -15555,6 +15561,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e83a588b445784fa96b38be9e454c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ViewShopPanel: {fileID: 0}
+  yesButton: {fileID: 0}
+  noButton: {fileID: 0}
 --- !u!114 &1904360756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16232,7 +16241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &2022192854
 MonoBehaviour:
@@ -16968,7 +16976,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ec44f66ad6adf44b2fe3a90302052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BLUEHud: {fileID: 0}
   hudMessageDuration: 2
 --- !u!114 &2102328840
 MonoBehaviour:
@@ -18370,6 +18377,7 @@ MonoBehaviour:
   _instructionText: {fileID: 4543167586527772684}
   _gameNameText: {fileID: 2748576760725447706}
   _startMinigameButton: {fileID: 3282635391819748713}
+  _shopPanelGameObject: {fileID: 0}
 --- !u!114 &1514678850479089574
 MonoBehaviour:
   m_ObjectHideFlags: 0

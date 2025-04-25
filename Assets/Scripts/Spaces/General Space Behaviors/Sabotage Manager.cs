@@ -52,7 +52,12 @@ public class SabotageManager : MonoBehaviour
 	public IEnumerator Sabotage(Player saboteur)
 	{
 		Player[] allPlayers = GameManager.Instance.Players;
-		List<Player> otherPlayers = allPlayers.Skip(GameManager.Instance.CurrentPlayerIdx).ToList();
+		List<Player> otherPlayers = new();
+		for (int i = 0; i < allPlayers.Length; i++)
+		{
+			if (i == GameManager.Instance.CurrentPlayerIdx) continue;
+			otherPlayers.Add(allPlayers[i]);
+		}
 		otherPlayers.Sort();
 
 		// Make buttons show player names

@@ -91,6 +91,7 @@ public class ShopPanel: MonoBehaviour
             Debug.LogError("Player reference is missing.");
             return;
         }
+        // TODO make a close shop method to end the shop interaction for players, refactor this 
 
         // Check if the player can afford the item
         if (currentPlayer.Coins >= item.cost)
@@ -108,4 +109,5 @@ public class ShopPanel: MonoBehaviour
 
         }
     }
+   
 }

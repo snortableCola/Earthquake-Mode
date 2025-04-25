@@ -32,7 +32,7 @@ public class Player : MonoBehaviour, IComparable<Player>
 	public Biome CurrentBiome => transform.GetComponentInParent<Space>().Biome;
 
 	private int _coins = 100; // Player's total coins
-	public int _oil = 0; // Player's collected oil
+	public int Oil { get; set; } // Player's collected oil
 
 	public int Coins
 	{
@@ -46,7 +46,7 @@ public class Player : MonoBehaviour, IComparable<Player>
 
 	public int CompareTo(Player other)
 	{
-		int oilComparison = other._oil.CompareTo(_oil);
+		int oilComparison = other.Oil.CompareTo(Oil);
 		return oilComparison == 0 ? other._coins.CompareTo(_coins) : oilComparison;
 	}
 }

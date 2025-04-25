@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerInputTransfer : MonoBehaviour
 {
     [SerializeField]
-    List<Player> players;
+    public List<Player> players;
     private void Awake()
     {
         players = new List<Player>(FindObjectsByType<Player>(FindObjectsSortMode.None));

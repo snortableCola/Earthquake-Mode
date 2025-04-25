@@ -21,7 +21,7 @@ public class Player : MonoBehaviour, IComparable<Player>
 
     public void Awake()
 	{
-        playerInput = GetComponent<PlayerInput>();
+        
         Debug.Log($"Awake called for {gameObject.name}");
 		//used to be plugged in to all characters, but since we're changing to using prefabs for players, we can't do that anymore
 		//cheapItemHacked = FindFirstObjectByType<SpaceSwap>();
@@ -30,10 +30,15 @@ public class Player : MonoBehaviour, IComparable<Player>
 		HeldItem = cheapItemHacked;
 	}
 
-	/// <summary>
-	/// The biome of the space which the player is currently occupying.
-	/// </summary>
-	public Biome CurrentBiome => transform.GetComponentInParent<Space>().Biome;
+    public void Start()
+    {
+        playerInput = GetComponent<PlayerInput>();
+    }
+
+    /// <summary>
+    /// The biome of the space which the player is currently occupying.
+    /// </summary>
+    public Biome CurrentBiome => transform.GetComponentInParent<Space>().Biome;
 
 	private int _coins = 100; // Player's total coins
 	public int Oil { get; set; } // Player's collected oil

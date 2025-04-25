@@ -8,12 +8,18 @@ public class PlayerInputTransfer : MonoBehaviour
     List<Player> players;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created  
+    private void Awake()
+    {
+        players = new List<Player>(FindObjectsByType<Player>(FindObjectsSortMode.None));
+        players.Sort((player1, player2) => player1.PlayerIndex.CompareTo(player2.PlayerIndex));
+        
+    }
     void Start()
     {
-        // Find all Player components in the scene and populate the players list
-        players = new List<Player>(FindObjectsByType<Player>(FindObjectsSortMode.InstanceID));
 
-        var playerInputs = FindObjectsByType<PlayerInput>(FindObjectsSortMode.InstanceID);
+        List<PlayerInput> playerInputs = new List<PlayerInput>(FindObjectsByType<PlayerInput>(FindObjectsSortMode.None));
+        playerInputs.Sort((input1, input2) => input1.playerIndex.CompareTo(input2.playerIndex));
+
         int playerIndex = 0;
 
         foreach (var playerInput in playerInputs)

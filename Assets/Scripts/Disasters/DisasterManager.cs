@@ -18,8 +18,8 @@ public class DisasterManager : MonoBehaviour
 			Biome.Mountains, new string[] { "Fire Advisory", "Fire Watch", "Fire Warning", "Wildfire!" }
 		}
 	};
-
-	public static DisasterManager Instance { get; private set; }
+    private DisasterParticleManager _particleManager;
+    public static DisasterManager Instance { get; private set; }
     
 
 	[SerializeField] private int _disasterThreshold;
@@ -121,6 +121,7 @@ public class DisasterManager : MonoBehaviour
         if (currentLevel >= _disasterThreshold)
         {
             Debug.LogWarning($"Disaster {disaster.name} already at or above threshold: {currentLevel}");
+            //DisasterParticleManager.GetInstance().PlayEffect(disaster.DisasterType);
             yield break;
         }
 
@@ -152,17 +153,22 @@ public class DisasterManager : MonoBehaviour
             Debug.LogWarning($"Disaster {disaster.name} is not possible at this time.");
             yield break;
         }
-        //if (disaster == _earthquake)
-        //{
-        //    shakeInstance.Start(2f);
-        //    shakeInstance.Stop(2f,false);
-        //}
+       
+
         int disasterLevel = _disasterTracker[disaster];
         Debug.Log($"Checking disaster {disaster.name} at level {disasterLevel}");
 
         // Disaster is triggered when the level reaches the threshold
-        if (disasterLevel != _disasterThreshold) yield break;
+        if (disasterLevel != _disasterThreshold)
+        {
+            _particleManager.HandleEffect(disaster.name,true, 5f);
+        
+        } yield break;
+        if (disaster == _earthquake && disasterLevel != _disasterThreshold)
+        {
 
+            _particleManager.EarthquakeShake();
+        }
         Debug.Log($"Triggering disaster {disaster.name}!");
         yield return disaster.StartDisaster(incitingPlayer);
 

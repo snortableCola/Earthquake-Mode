@@ -30,6 +30,7 @@ public class JoinScreen : MonoBehaviour
     public void StartButtonClicked()
     {
         SceneManager.LoadScene("Board");
+
     }
 
     private void OnEnable()

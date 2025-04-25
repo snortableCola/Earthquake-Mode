@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -8,7 +9,7 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance { get; private set; }
 	public Player[] Players => _players;
 	public Player CurrentPlayer { get; private set; }
-	public int CurrentPlayerIdx { get; private set; }
+    public int CurrentPlayerIdx { get; private set; }
 	public Space[] Spaces { get; private set; }
 
 	[SerializeField] private int _totalRounds = 10;
@@ -86,6 +87,13 @@ public class GameManager : MonoBehaviour
 	{
 		for (CurrentPlayerIdx = 0; CurrentPlayerIdx < _players.Length; CurrentPlayerIdx++)
 		{
+			foreach(Player player in _players)
+			{
+				if(CurrentPlayer != null && CurrentPlayerIdx != CurrentPlayer.PlayerIndex)
+				{
+					player.playerInput.actions.Disable();
+                }
+			}
 			CurrentPlayer = _players[CurrentPlayerIdx];
 			yield return DoPlayerTurn();
             yield return WaitForLastPlayerHudCompletion();

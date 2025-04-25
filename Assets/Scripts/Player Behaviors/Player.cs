@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(VisibleTag), typeof(PlayerMovement))]
 public class Player : MonoBehaviour, IComparable<Player>
@@ -15,10 +16,13 @@ public class Player : MonoBehaviour, IComparable<Player>
 		get { return playerIndex; }
     }
 
+	public PlayerInput playerInput { get; private set; } = null;
+
 
     public void Awake()
 	{
-		Debug.Log($"Awake called for {gameObject.name}");
+        playerInput = GetComponent<PlayerInput>();
+        Debug.Log($"Awake called for {gameObject.name}");
 		//used to be plugged in to all characters, but since we're changing to using prefabs for players, we can't do that anymore
 		//cheapItemHacked = FindFirstObjectByType<SpaceSwap>();
 		FrozenTag = GetComponent<VisibleTag>();

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4253125360039946964}
   - component: {fileID: 8428001537669624000}
-  - component: {fileID: 7629918053939351179}
+  - component: {fileID: 5509724306987774438}
   m_Layer: 0
   m_Name: PlayerInput
   m_TagString: Untagged
@@ -63,7 +63,7 @@ MonoBehaviour:
   m_DefaultActionMap: Board Movement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &7629918053939351179
+--- !u!114 &5509724306987774438
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

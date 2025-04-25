@@ -128,7 +128,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIndex: -1
   cheapItemHacked: {fileID: 0}
-  _oil: 0
 --- !u!114 &346435262179466957
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
 		DisasterManager.Instance.UpdateDisasterInfo();
         CurrentPlayer.UsedItem = null;
 
-		if (CurrentPlayer.FrozenTag.State)
+		if (CurrentPlayer != null && CurrentPlayer.FrozenTag.State)
 		{
 			Debug.Log($"{CurrentPlayer.name} was frozen and passed its turn.");
 			CurrentPlayer.FrozenTag.State = false; // Player is unfrozen after their turn would've been skipped

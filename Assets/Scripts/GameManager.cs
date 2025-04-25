@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance { get; private set; }
 	public Player[] Players => _players;
 	public Player CurrentPlayer { get; private set; }
+	public int CurrentPlayerIdx { get; private set; }
 	public Space[] Spaces { get; private set; }
 
 	[SerializeField] private int _totalRounds = 10;
@@ -83,9 +84,9 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator DoRound()
 	{
-		for (int playerIdx = 0; playerIdx < _players.Length; playerIdx++)
+		for (CurrentPlayerIdx = 0; CurrentPlayerIdx < _players.Length; CurrentPlayerIdx++)
 		{
-			CurrentPlayer = _players[playerIdx];
+			CurrentPlayer = _players[CurrentPlayerIdx];
 			yield return DoPlayerTurn();
             yield return WaitForLastPlayerHudCompletion();
         }
@@ -139,7 +140,7 @@ public class GameManager : MonoBehaviour
         if (endingSpace.BurningTag.State && CurrentPlayer.UsedItem is not HeliEvac)
 		{
 			Debug.Log($"{CurrentPlayer} landed on a space which is on fire.");
-			FireSpace.Instance.RespondToPlayerEnd(CurrentPlayer);
+			yield return FireSpace.Instance.RespondToPlayerEnd(CurrentPlayer);
 		}
 		else
 		{

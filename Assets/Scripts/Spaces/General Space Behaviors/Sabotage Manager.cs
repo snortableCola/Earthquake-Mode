@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +9,8 @@ public class SabotageManager : MonoBehaviour
 {
 	public static SabotageManager Instance { get; private set; }
 
-	[SerializeField] private int MaxCoinsToSteal;
-	[SerializeField] private int StealingOilCost;
+	[SerializeField] private int _maxCoinsToSteal;
+	[SerializeField] private int _stealingOilCost;
 
 	[SerializeField] private GameObject _victimSelectPanel;
 	[SerializeField] private Button[] _victimSelectButtons;
@@ -28,6 +29,14 @@ public class SabotageManager : MonoBehaviour
 	{
 		Instance = this;
 
+		_stealCoinsButton.onClick.AddListener(() => _stealingOil = false);
+		_stealOilButton.onClick.AddListener(() => _stealingOil = true);
+
+		_exitSabotageButton.onClick.AddListener(() => _exiting = true);
+	}
+
+	private void Start()
+	{
 		if (_victimSelectButtons.Length != GameManager.Instance.Players.Length)
 		{
 			Debug.LogError("The sabotage manager doesn't have the correct amount of victim-selection buttons");
@@ -35,23 +44,24 @@ public class SabotageManager : MonoBehaviour
 
 		for (int i = 0; i < _victimSelectButtons.Length; i++)
 		{
-			_victimSelectButtons[i].onClick.AddListener(SetSelectedPlayer);
-			void SetSelectedPlayer() => _selectedVictimIndex = i;
+			int buttonIndex = i;
+			_victimSelectButtons[i].onClick.AddListener(() => _selectedVictimIndex = buttonIndex);
 		}
-
-		_stealCoinsButton.onClick.AddListener(() => _stealingOil = false);
-		_stealOilButton.onClick.AddListener(() => _stealingOil = true);
-
-		_exitSabotageButton.onClick.AddListener(() => _exiting = true);
 	}
 
 	public IEnumerator Sabotage(Player saboteur)
 	{
 		Player[] allPlayers = GameManager.Instance.Players;
-		List<Player> otherPlayers = allPlayers.Where(player => player != saboteur).ToList();
+		List<Player> otherPlayers = allPlayers.Skip(GameManager.Instance.CurrentPlayerIdx).ToList();
 		otherPlayers.Sort();
 
-		// Display ranked options & random option, for four options total
+		// Make buttons show player names
+		for (int i = 0; i < otherPlayers.Count; i++)
+		{
+			_victimSelectButtons[i].gameObject.GetComponentInChildren<TextMeshProUGUI>().text = otherPlayers[i].name;
+		}
+
+		// Shows the victim selection panel
 		PanelManager.Instance.ShowPanel(_victimSelectPanel);
 
 		// Wait for selection (for sake of implementation, this is how to get a random victim)
@@ -59,11 +69,11 @@ public class SabotageManager : MonoBehaviour
 		yield return new WaitUntil(() => _selectedVictimIndex != -1);
 
 		// Use the index of the selected victim button to get an actual victim player object
-		if (_selectedVictimIndex == otherPlayers.Count) _selectedVictimIndex = Random.Range(0, otherPlayers.Count); // Last button counts as random
+		if (_selectedVictimIndex == _victimSelectButtons.Length - 1) _selectedVictimIndex = Random.Range(0, otherPlayers.Count); // Last button counts as random
 		Player selectedVictim = otherPlayers[_selectedVictimIndex];
 
 		// Determine whether or not it's possible for the saboteur to steal oil
-		bool canStealOil = selectedVictim._oil > 0 && saboteur.Coins >= StealingOilCost;
+		bool canStealOil = selectedVictim._oil > 0 && saboteur.Coins >= _stealingOilCost;
 		_stealOilButton.interactable = canStealOil;
 
 		// Display choice between stealing coins or oil
@@ -81,7 +91,7 @@ public class SabotageManager : MonoBehaviour
 		}
 		else
 		{
-			int coinsStolen = Mathf.Max(MaxCoinsToSteal, selectedVictim.Coins);
+			int coinsStolen = Mathf.Min(_maxCoinsToSteal, selectedVictim.Coins);
 			selectedVictim.Coins -= coinsStolen;
 			saboteur.Coins += coinsStolen;
 		}

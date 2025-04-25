@@ -96,6 +96,7 @@ public class ShopPanel: MonoBehaviour
         // Check if the player can afford the item
         if (currentPlayer.Coins >= item.cost)
         {
+            
             currentPlayer.Coins -= item.cost; // Deduct the cost
             Debug.Log($"Bought: {item.itemName} for {item.cost} coins.");
             currentPlayer.HeldItem = item; // Add the item to the player's inventory

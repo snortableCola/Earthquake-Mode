@@ -7,6 +7,7 @@ public class ShopPanel: MonoBehaviour
     [SerializeField] private Button[] itemButtons; // Buttons for the shop UI
     [SerializeField] private List<Item> allItems = new List<Item>(); // List of all items
     private List<Item> displayedItems = new List<Item>(); // Currently displayed items
+    [SerializeField] private Button LeaveButton; 
 
     [SerializeField] private HeliEvac heliEvac;
     [SerializeField] private WasteDump wasteDump;
@@ -15,6 +16,7 @@ public class ShopPanel: MonoBehaviour
     [SerializeField] private SpaceSwap spaceSwap;
 
     private Player currentPlayer;
+    private PanelManager panelManager;
 
     [SerializeField] private TMP_Text shoptext; 
 
@@ -39,7 +41,7 @@ public class ShopPanel: MonoBehaviour
         // Assign the selected items to the buttons
         AssignItemsToButtons();
         shoptext.text = "Welcome to my shop!";
-        
+        LeaveButton.onClick.AddListener(OnLeaveButtonClicked);
     }
 
     private List<Item> GenerateRandomItems()
@@ -82,6 +84,13 @@ public class ShopPanel: MonoBehaviour
             itemButtons[i].onClick.AddListener(() => AddItemToPlayer(item)); // Add button click listener
         }
     }
+    private void OnLeaveButtonClicked()
+    {
+        panelManager.CloseShop();
+     LeaveButton.onClick.RemoveAllListeners(); 
+    }
+
+
 
     private void AddItemToPlayer(Item item)
     {
@@ -96,9 +105,22 @@ public class ShopPanel: MonoBehaviour
         // Check if the player can afford the item
         if (currentPlayer.Coins >= item.cost)
         {
-            
-            currentPlayer.Coins -= item.cost; // Deduct the cost
-            Debug.Log($"Bought: {item.itemName} for {item.cost} coins.");
+            for (int i = 0; i < currentPlayer.HeldItems.Length; i++)
+            {
+                if (currentPlayer.HeldItems[i] == null) // Find empty slot
+                {
+                    currentPlayer.Coins -= item.cost; // Deduct the cost
+                    currentPlayer.HeldItems[i] = item; // Add item to the slot
+                    Debug.Log($"Added {item.itemName} to slot {i}.");
+                    return;
+                }
+                else
+                { 
+                //add code that opens up the use item panel and prompts the player to discard an item 
+
+                }
+            }
+           
             currentPlayer.HeldItem = item; // Add the item to the player's inventory
             shoptext.text = "Thank you for shopping, come back soon!";
         }

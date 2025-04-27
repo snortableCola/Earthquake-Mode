@@ -64,7 +64,11 @@ public class PanelManager : MonoBehaviour
         }
     }
 
-
+    public void CloseShop()
+    {
+        _shopPanelGameObject.SetActive(false);
+    
+    }
     public void ShowPanel(GameObject panel)
 	{
 		if (_activePanel) _activePanel.SetActive(false);

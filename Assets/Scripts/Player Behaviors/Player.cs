@@ -10,6 +10,8 @@ public class Player : MonoBehaviour, IComparable<Player>
 	public VisibleTag FrozenTag { get; private set; }
 	public PlayerMovement Movement { get; private set; }
 	public Item UsedItem { get; set; } = null;
+
+	public Item[] HeldItems = new Item[2];
 	public Item HeldItem { get; set; } = null;
 	public int PlayerIndex
 	{

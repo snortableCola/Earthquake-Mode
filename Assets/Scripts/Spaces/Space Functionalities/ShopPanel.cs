@@ -112,6 +112,7 @@ public class ShopPanel: MonoBehaviour
                     currentPlayer.Coins -= item.cost; // Deduct the cost
                     currentPlayer.HeldItems[i] = item; // Add item to the slot
                     Debug.Log($"Added {item.itemName} to slot {i}.");
+                    shoptext.text = "Thank you for shopping, come back soon!";
                     return;
                 }
                 else
@@ -121,8 +122,8 @@ public class ShopPanel: MonoBehaviour
                 }
             }
            
-            currentPlayer.HeldItem = item; // Add the item to the player's inventory
-            shoptext.text = "Thank you for shopping, come back soon!";
+           
+            
         }
         else
         {

@@ -39,7 +39,18 @@ public class MinigameManager : MonoBehaviour
         // Show HUD message and instructions
         StartCoroutine(ShowHudMessageThenInstructions());
 	}
-
+	public void StartRandomMultiplayerMinigame()
+	{
+		IsMinigameSequenceOngoing = true;
+		if (_isMultiplayer)
+		{ 
+		int randomIndex = Random.Range(0, _multiplayerMinigames.Length);
+			Debug.Log($"starting {_currentMinigame.name}");
+			StartCoroutine(ShowHudMessageThenInstructions()); 
+		
+		}
+	
+	}
 	private IEnumerator ShowHudMessageThenInstructions()
 	{
 		// Display the HUD message

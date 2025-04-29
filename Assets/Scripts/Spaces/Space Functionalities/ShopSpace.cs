@@ -66,6 +66,7 @@ public class ShopSpace : SpaceBehavior
 	{
 		
 		Debug.Log($"{player.name} landed on a shop space.");
+        
 		panelManager.ShowShop(player);
 		
 

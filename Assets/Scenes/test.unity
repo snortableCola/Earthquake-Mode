@@ -7639,16 +7639,16 @@ MonoBehaviour:
   - {fileID: 1593662280}
   player1Sprites:
   - {fileID: 21300000, guid: a92b7b9b403f69f4ea16567366b394f8, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 7784f7a6b488aca4683b8358d27fdb5b, type: 3}
   player2Sprites:
   - {fileID: 21300000, guid: 12a5bdcb3e2c6664ba3b2a052c9be668, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: d79341a960ae97a45821011818987b6c, type: 3}
   player3Sprites:
   - {fileID: 21300000, guid: 488bfd784a92e65449af0480ca38ac7a, type: 3}
   - {fileID: 21300000, guid: 53fe2e3b4302d6740b2284dbd0cc719b, type: 3}
   player4Sprites:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: a92b7b9b403f69f4ea16567366b394f8, type: 3}
+  - {fileID: 21300000, guid: aae44d4a4d6ef04449e98a059fd98cd5, type: 3}
 --- !u!1 &1666023547
 GameObject:
   m_ObjectHideFlags: 0

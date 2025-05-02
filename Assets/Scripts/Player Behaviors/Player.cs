@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,10 @@ public class Player : MonoBehaviour, IComparable<Player>
 {
 	[SerializeField] int playerIndex = -1;
     [SerializeField] Item cheapItemHacked;
+
+	[SerializeField] private TextMeshProUGUI _profileCoinsDisplay;
+	[SerializeField] private TextMeshProUGUI _profileOilDisplay;
+
 	public VisibleTag FrozenTag { get; private set; }
 	public PlayerMovement Movement { get; private set; }
 	public Item UsedItem { get; set; } = null;
@@ -43,15 +48,24 @@ public class Player : MonoBehaviour, IComparable<Player>
     public Biome CurrentBiome => transform.GetComponentInParent<Space>().Biome;
 
 	private int _coins = 100; // Player's total coins
-	public int Oil { get; set; } // Player's collected oil
-
+	private int _oil; // Player's collected oil
 	public int Coins
 	{
 		get => _coins;
 		set
 		{
-			Debug.Log($"Adjusting coins for {name}. Current coins: {_coins}, Change to: {value}");
+			_profileCoinsDisplay.text = value.ToString();
 			_coins = value;
+		}
+	}
+
+	public int Oil
+	{
+		get => _oil;
+		set
+		{
+			_profileOilDisplay.text = value.ToString();
+			_oil = value;
 		}
 	}
 

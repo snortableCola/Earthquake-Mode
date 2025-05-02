@@ -74,11 +74,24 @@ public class GameManager : MonoBehaviour
         Debug.Log("[WaitForMinigameToEnd] Minigame sequence finished.");
     }
 
+	//private IEnumerator WaitForShopClose()
+	//{
+ //       if (ShopPanel.instance == null)
+ //       {
+ //           Debug.LogError("ShopPanel instance is null. Cannot wait for shop to close.");
+ //           yield break;
+ //       }
 
+ //       Debug.Log("Checkign to see if shop is open");
+	//	yield return new WaitUntil(() => !ShopPanel.instance.isShopOpen);
+	//	Debug.Log("shop is closed");
+	
+	//}
     private IEnumerator GameRoundCycle()
 	{
 		while (_roundNumber++ < _totalRounds)
 		{
+			
 			yield return WaitForMinigameToEnd();	
             yield return ShowTurnHud(); 
 			yield return DoRound();
@@ -159,8 +172,9 @@ public class GameManager : MonoBehaviour
 		{
 			yield return endingSpace.Behavior.RespondToPlayerEnd(CurrentPlayer);
 		}
+       
 
-		DisasterManager.Instance.Wildfire.TryFireProgress(CurrentPlayer);
+        DisasterManager.Instance.Wildfire.TryFireProgress(CurrentPlayer);
 	}
 
 	private void RespondToDiceRoll() => _diceRolled = true;

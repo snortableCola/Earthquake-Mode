@@ -7,6 +7,7 @@ public class BashnCrash : Minigame
     [Header("Player Settings")]
     public Slider[] playerHealthbars;
     public Button[] playerButtons;
+    public Button exitButton;
 
     [Header("Game Settings")]
     public float maxHealth = 1;
@@ -35,12 +36,14 @@ public class BashnCrash : Minigame
 		{
 			int playerIndex = i; // Capture index for lambda
 			playerButtons[i].onClick.AddListener(() => HandleMash(playerIndex));
+            exitButton.onClick.AddListener(ExitGame);
 		}
 	}
 
 	public override void StartGame()
     {
 		_gameFinished = false;
+        exitButton.gameObject.SetActive(false);
 		int playerCount = playerHealthbars.Length;
         hasFinished = new bool[playerCount];
         lastMashTime = new float[playerCount];
@@ -135,29 +138,43 @@ public class BashnCrash : Minigame
         if (playerHealthbars[playerIndex].value <= 0)
         {
             hasFinished[playerIndex] = true;
+            
             EndGame(playerIndex);
         }
 
         lastMashTime[playerIndex] = Time.time;
     }
+   
+
     public void EndGame(int winningPlayer)
     {
         _gameFinished = true;
         BashText.gameObject.SetActive(false);
-        winnerText.text = $"Player {winningPlayer + 1} Wins!";
+        winnerText.text = $"Player {winningPlayer + 1} Wins! +3 corruption coins";
+       
+
         winnerText.gameObject.SetActive(true);
 
-        // Notify the manager
-        MinigameManager.Instance.EndMinigame();
+       
+        if (exitButton != null)
+        {
+            exitButton.gameObject.SetActive(true);
+           
 
+        }
         // Disable buttons
         foreach (var button in playerButtons)
         {
             button.interactable = false;
 		}
-		Cleanup();
+		
 	}
-
+    private void ExitGame()
+    {
+        Debug.Log("Exit button clicked. Exiting the minigame.");
+        MinigameManager.Instance.EndMinigame();
+        Cleanup();
+    }
 	public void Cleanup()
     {
         // Reset health bars and re-enable buttons

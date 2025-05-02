@@ -96,7 +96,7 @@ public class DisasterManager : MonoBehaviour
     }
 
 	// Method to initialize messages for each biome and disaster level
-	private string GetDisasterMessage(Biome biome, int level) => $"{biome}: {(level > 0 && s_warnings.TryGetValue(biome, out string[] warnings) && level <= warnings.Length ? warnings[level - 1] : "Safe")}";
+	private string GetDisasterMessage(Biome biome, int level) => $"{biome}: {(level > 0 && s_warnings.TryGetValue(biome, out string[] warnings) && level <= warnings.Length ? warnings[level - 1] : "Safe from disasters")}";
 
 
 	private Dictionary<Disaster, int> _disasterTracker;

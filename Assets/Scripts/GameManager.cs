@@ -81,7 +81,6 @@ public class GameManager : MonoBehaviour
 			yield return WaitForMinigameToEnd();	
             yield return ShowTurnHud(); 
 			yield return DoRound();
-			MinigameManager.Instance._isMultiplayer = true;
 			MinigameManager.Instance.StartRandomMultiplayerMinigame();
 		}
 	}

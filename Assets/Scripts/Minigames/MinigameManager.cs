@@ -13,7 +13,6 @@ public class MinigameManager : MonoBehaviour
     [SerializeField] private float _hudMessageDuration = 3f; // Duration for HUD message to display
 
 	private Minigame _currentMinigame;
-	public bool _isMultiplayer;
 
 	public bool IsMinigameSequenceOngoing { get; private set; }
 
@@ -23,7 +22,7 @@ public class MinigameManager : MonoBehaviour
 	{
 		IsMinigameSequenceOngoing = true;
 
-        if (_singleplayerMinigames.Length == 0 || _isMultiplayer)
+        if (_singleplayerMinigames.Length == 0)
         {
             Debug.LogError("Cannot start singleplayer minigame in multiplayer mode or no singleplayer minigames defined.");
             return;
@@ -42,15 +41,10 @@ public class MinigameManager : MonoBehaviour
 	public void StartRandomMultiplayerMinigame()
 	{
 		IsMinigameSequenceOngoing = true;
-		if (_isMultiplayer)
-		{ 
 		int randomIndex = Random.Range(0, _multiplayerMinigames.Length);
-			_currentMinigame= _multiplayerMinigames[randomIndex];	
-			Debug.Log($"starting {_currentMinigame.name}");
-			StartCoroutine(ShowHudMessageThenInstructions()); 
-		
-		}
-	
+		_currentMinigame = _multiplayerMinigames[randomIndex];	
+		Debug.Log($"starting {_currentMinigame.name}");
+		StartCoroutine(ShowHudMessageThenInstructions());
 	}
 	private IEnumerator ShowHudMessageThenInstructions()
 	{

@@ -24,8 +24,6 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private TMP_Text turnText;
     public float hudMessageDuration = 3f;
     private bool isTurnHudActive = false;
-    [SerializeField] private NegativeSpace negativeSpaceScript; // Reference to NegativeSpace script
-    [SerializeField] private ResourceSpace resourceSpaceScript; // Reference to ResourceSpace script
 
     private int _roundNumber;
 	private bool _diceRolled, _itemUsed;
@@ -36,7 +34,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
 	{
-
         _players = _inputTransfer.players.ToArray();
 		Instance = this;
 		Spaces = FindObjectsByType<Space>(FindObjectsSortMode.None);

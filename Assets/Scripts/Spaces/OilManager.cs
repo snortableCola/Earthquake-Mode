@@ -42,10 +42,7 @@ public class OilManager : MonoBehaviour
 			customer.Oil += cost;
 		}
 
-		Transform playerSpace = customer.transform.parent;
-		customer.transform.parent = null;
 		ActivateRandomOilSpaces();
-		customer.transform.parent = playerSpace;
 
 		yield return DisasterManager.Instance.IncrementEarthquake();
 

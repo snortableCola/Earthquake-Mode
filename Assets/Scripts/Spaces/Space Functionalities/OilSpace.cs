@@ -13,7 +13,16 @@ public class OilSpace : SpaceBehavior
 		set
 		{
 			_isActive = value;
+			Player[] players = transform.GetComponentsInChildren<Player>();
+			foreach (Player p in players)
+			{
+				p.transform.SetParent(null, true);
+			}
 			transform.localScale = value ? s_activeScale : s_inactiveScale;
+			foreach (Player p in players)
+			{
+				p.transform.SetParent(transform, true);
+			}
 		}
 	}
 

@@ -27,7 +27,6 @@ public class JoinScreen : MonoBehaviour
 
         playerIcons[input.playerIndex].SetActive(true);
         input.gameObject.name= $"Player input clone {input.playerIndex + 1}";
-        input.uiInputModule = inputModule;
         //Debug.Log($"Player joined: {input.playerIndex + 1}");
     }
 

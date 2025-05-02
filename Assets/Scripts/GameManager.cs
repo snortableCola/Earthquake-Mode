@@ -114,6 +114,7 @@ public class GameManager : MonoBehaviour
     }
     private IEnumerator DoPlayerTurn()
 	{
+		//set the player's multiplayerEventsystem firstselected property to roll dice
         Debug.Log($"[DoPlayerTurn] Player {CurrentPlayer.name}'s turn starting.");
         DisasterManager.Instance.SetCurrentPlayer(CurrentPlayer);
 		DisasterManager.Instance.UpdateDisasterInfo();

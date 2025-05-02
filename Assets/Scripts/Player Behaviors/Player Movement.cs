@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private float _movementTime = 0.3f;
 	[SerializeField] private float _jumpHeight = 4f;
 
+	[SerializeField] private Transform _visualMesh;
+
 	private InputAction _motionInput, _interactionInput;
 	private Player _player;
 	private int _distance;
@@ -186,7 +188,7 @@ public class PlayerMovement : MonoBehaviour
 		Vector3 startPosition = transform.position;
 		Vector3 endPosition = targetSpace.transform.TransformPoint(transform.localPosition); // Ensures the player's located identically relative to its space after landing
 
-		Quaternion startRotation = transform.rotation;
+		Quaternion startRotation = _visualMesh.rotation;
 		Vector2 avgNextDirection = Vector2.zero;
 		foreach (Adjacency adj in AdjacencyManager.Instance.Adjacencies[targetSpace])
 		{
@@ -207,12 +209,13 @@ public class PlayerMovement : MonoBehaviour
 			currentPosition.y += _jumpHeight * movementProgress * (1 - movementProgress); // Player jumps follow a quadratic trajectory
 
 			transform.position = currentPosition;
-			transform.rotation = Quaternion.Slerp(startRotation, endDirection, movementProgress);
+			_visualMesh.rotation = Quaternion.Slerp(startRotation, endDirection, movementProgress);
 
 			yield return null; // Movement iterates frame-by-frame
 		}
 
 		transform.position = endPosition;
+		_visualMesh.rotation = endDirection;
 		transform.SetParent(targetSpace.transform);
 	}
 

@@ -1,9 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,14 +27,9 @@ public class GameManager : MonoBehaviour
     private int _roundNumber;
 	private bool _diceRolled, _itemUsed;
 
-	private PlayerInputTransfer _inputTransfer;
-    
-
-
     private void Awake()
 	{
-
-        _players = _inputTransfer?.players?.ToArray();
+		_players = PlayerInputTransfer.Instance.players.ToArray();
 		Instance = this;
 		Spaces = FindObjectsByType<Space>(FindObjectsSortMode.None);
 		_diceRollButton.onClick.AddListener(RespondToDiceRoll);

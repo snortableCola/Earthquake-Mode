@@ -4,10 +4,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputTransfer : MonoBehaviour
 {
-    [SerializeField]
-    public List<Player> players;
+    public static PlayerInputTransfer Instance { get; private set; }
+
+    [SerializeField] public List<Player> players;
+
+
     private void Awake()
     {
+        Instance = this;
+
         players = new List<Player>(FindObjectsByType<Player>(FindObjectsSortMode.None));
         players.Sort((player1, player2) => player1.PlayerIndex.CompareTo(player2.PlayerIndex));
         List<PlayerInput> playerInputs = new List<PlayerInput>(FindObjectsByType<PlayerInput>(FindObjectsSortMode.None));

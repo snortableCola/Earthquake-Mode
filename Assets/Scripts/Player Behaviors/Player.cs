@@ -1,7 +1,9 @@
 using System;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 [RequireComponent(typeof(VisibleTag), typeof(PlayerMovement))]
 public class Player : MonoBehaviour, IComparable<Player>
@@ -11,8 +13,8 @@ public class Player : MonoBehaviour, IComparable<Player>
 
 	[SerializeField] private TextMeshProUGUI _profileCoinsDisplay;
 	[SerializeField] private TextMeshProUGUI _profileOilDisplay;
-
-	public VisibleTag FrozenTag { get; private set; }
+	[SerializeField] Canvas canvas;
+    public VisibleTag FrozenTag { get; private set; }
 	public PlayerMovement Movement { get; private set; }
 	public Item UsedItem { get; set; } = null;
 
@@ -23,6 +25,7 @@ public class Player : MonoBehaviour, IComparable<Player>
 		get { return playerIndex; }
     }
 
+	public MultiplayerEventSystem multiplayerEventSystem;
 	public PlayerInput playerInput { get; private set; } = null;
 
 
@@ -39,7 +42,14 @@ public class Player : MonoBehaviour, IComparable<Player>
 
     public void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
+		playerInput = FindObjectsByType<PlayerInput>(FindObjectsSortMode.None).Where(x => x.playerIndex == this.PlayerIndex).FirstOrDefault();
+		multiplayerEventSystem = playerInput.GetComponentInChildren<MultiplayerEventSystem>();
+		if (multiplayerEventSystem == null)
+		{
+			Debug.LogError("no eventsystem");
+		}
+        //initialize canvas as player root
+        multiplayerEventSystem.playerRoot = canvas.gameObject;
     }
 
     /// <summary>

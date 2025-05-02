@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputTransfer : MonoBehaviour
 {
-    public static PlayerInputTransfer Instance { get; private set; }
+    public PlayerInputTransfer Instance { get; private set; }
 
     [SerializeField] public List<Player> players;
 

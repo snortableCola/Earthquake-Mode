@@ -1,7 +1,12 @@
+using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -22,20 +27,25 @@ public class GameManager : MonoBehaviour
 
 	[SerializeField] private Image turnHUD;
 	[SerializeField] private TMP_Text turnText;
+	[SerializeField] Button diceButton;
     public float hudMessageDuration = 3f;
     private bool isTurnHudActive = false;
 
     private int _roundNumber;
 	private bool _diceRolled, _itemUsed;
 
+	//private List<PlayerInput> playerInputs;
+
     private void Awake()
 	{
-		_players = PlayerInputTransfer.Instance.players.ToArray();
 		Instance = this;
 		Spaces = FindObjectsByType<Space>(FindObjectsSortMode.None);
 		_diceRollButton.onClick.AddListener(RespondToDiceRoll);
 		_useItemButton.onClick.AddListener(RespondToUseItem);
-	}
+		//playerInputs = FindObjectsByType<PlayerInput>(FindObjectsSortMode.None).ToList();
+  //      playerInputs.Sort((input1, input2) => input1.playerIndex.CompareTo(input2.playerIndex));
+
+    }
 
 
 
@@ -90,15 +100,20 @@ public class GameManager : MonoBehaviour
 	{
 		for (CurrentPlayerIdx = 0; CurrentPlayerIdx < _players.Length; CurrentPlayerIdx++)
 		{
-			//foreach(Player player in _players)
-			//{
-			//	if(CurrentPlayer != null && CurrentPlayerIdx != CurrentPlayer.PlayerIndex)
-			//	{
-			//		player.playerInput.actions.Disable();
-   //             }
-			//}
+
 			CurrentPlayer = _players[CurrentPlayerIdx];
-            //UpdatePlayerCanvasInteraction();
+			for (int i = 0; i < _players.Length; i++)
+			{
+				if (i != CurrentPlayerIdx)
+				{
+					_players[i].multiplayerEventSystem.gameObject.SetActive(false);
+				}
+				else
+				{
+                    _players[i].multiplayerEventSystem.gameObject.SetActive(true);
+
+                }
+            }
             yield return DoPlayerTurn();
             yield return WaitForLastPlayerHudCompletion();
         }
@@ -116,6 +131,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator DoPlayerTurn()
 	{
 		//set the player's multiplayerEventsystem firstselected property to roll dice
+		CurrentPlayer.multiplayerEventSystem.firstSelectedGameObject = diceButton.gameObject;
         Debug.Log($"[DoPlayerTurn] Player {CurrentPlayer.name}'s turn starting.");
         DisasterManager.Instance.SetCurrentPlayer(CurrentPlayer);
 		DisasterManager.Instance.UpdateDisasterInfo();
@@ -203,28 +219,4 @@ public class GameManager : MonoBehaviour
 			_diceRolled = false;
 		}
 	}
-
-  //  private void UpdatePlayerCanvasInteraction()
-  //  {
-		//bool isCurrentPlayer = CurrentPlayer != null && CurrentPlayer == _players[CurrentPlayerIdx];
-  //      foreach (Player player in _players)
-  //      {
-		//	//if (player != null && player == CurrentPlayer) { }
-  //          //bool isCurrentPlayer = player == CurrentPlayer;
-  //          //player.playerInput.actions.enabled = isCurrentPlayer;
-
-  //          // Disable input components for non-current players instead of disabling the entire canvas
-  //          Canvas playerCanvas = player.GetComponentInChildren<Canvas>();
-  //          if (playerCanvas != null)
-  //          {
-  //              var inputComponents = playerCanvas.GetComponentsInChildren<Selectable>(true);
-  //              foreach (var inputComponent in inputComponents)
-  //              {
-  //                  inputComponent.interactable = isCurrentPlayer;
-  //              }
-  //          }
-  //      }
-  //  }
-
-
 }

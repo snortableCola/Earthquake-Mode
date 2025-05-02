@@ -7,6 +7,7 @@ using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
+
 	public static GameManager Instance { get; private set; }
 	public Player[] Players => _players;
 	public Player CurrentPlayer { get; private set; }
@@ -37,7 +38,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
 	{
 
-        _players = _inputTransfer.players.ToArray();
+        _players = _inputTransfer?.players?.ToArray();
 		Instance = this;
 		Spaces = FindObjectsByType<Space>(FindObjectsSortMode.None);
 		_diceRollButton.onClick.AddListener(RespondToDiceRoll);
@@ -105,7 +106,8 @@ public class GameManager : MonoBehaviour
                 }
 			}
 			CurrentPlayer = _players[CurrentPlayerIdx];
-			yield return DoPlayerTurn();
+            UpdatePlayerCanvasInteraction();
+            yield return DoPlayerTurn();
             yield return WaitForLastPlayerHudCompletion();
         }
 	}
@@ -206,4 +208,28 @@ public class GameManager : MonoBehaviour
 			_diceRolled = false;
 		}
 	}
+
+    private void UpdatePlayerCanvasInteraction()
+    {
+		bool isCurrentPlayer = CurrentPlayer != null && CurrentPlayer == _players[CurrentPlayerIdx];
+        foreach (Player player in _players)
+        {
+			//if (player != null && player == CurrentPlayer) { }
+            //bool isCurrentPlayer = player == CurrentPlayer;
+            //player.playerInput.actions.enabled = isCurrentPlayer;
+
+            // Disable input components for non-current players instead of disabling the entire canvas
+            Canvas playerCanvas = player.GetComponentInChildren<Canvas>();
+            if (playerCanvas != null)
+            {
+                var inputComponents = playerCanvas.GetComponentsInChildren<Selectable>(true);
+                foreach (var inputComponent in inputComponents)
+                {
+                    inputComponent.interactable = isCurrentPlayer;
+                }
+            }
+        }
+    }
+
+
 }

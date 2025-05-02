@@ -7508,7 +7508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 10
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: dfe5035abab386d41983fe349188d98e, type: 3}
   itemName: Private Jet
 --- !u!1 &539337080
 GameObject:
@@ -11595,7 +11595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 7
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 7d47e8b8df87a4a479aa81c1ba494559, type: 3}
   itemName: Space Swap
 --- !u!1 &997242852
 GameObject:
@@ -11642,7 +11642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 5
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 593aa73145ce0f04ba6d74eebce3c0d0, type: 3}
   itemName: Travel Plan
 --- !u!1 &1017079941
 GameObject:
@@ -13470,7 +13470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 10
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 799d4a94f4e94d149b197e885bf98227, type: 3}
   itemName: Waste Dump
 --- !u!1 &1139649990
 GameObject:
@@ -17982,7 +17982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 5
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: c27934feff2888441b73e1690522dfb3, type: 3}
   itemName: Heli Evac
 --- !u!1 &1620209780
 GameObject:

@@ -154,13 +154,12 @@ public class BashnCrash : Minigame
         foreach (var button in playerButtons)
         {
             button.interactable = false;
-        }
-    }
+		}
+		Cleanup();
+	}
 
-    public void Cleanup()
+	public void Cleanup()
     {
-
-
         // Reset health bars and re-enable buttons
         for (int i = 0; i < playerHealthbars.Length; i++)
         {

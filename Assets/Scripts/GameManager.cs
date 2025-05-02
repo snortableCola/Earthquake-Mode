@@ -78,7 +78,8 @@ public class GameManager : MonoBehaviour
 	{
 		while (_roundNumber++ < _totalRounds)
 		{
-			//MinigameManager.Instance.StartRandomMultiplayerMinigame();
+			MinigameManager.Instance._isMultiplayer = true; 	
+			MinigameManager.Instance.StartRandomMultiplayerMinigame();
 			yield return WaitForMinigameToEnd();	
             yield return ShowTurnHud(); 
 			yield return DoRound();

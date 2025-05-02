@@ -13,7 +13,7 @@ public class MinigameManager : MonoBehaviour
     [SerializeField] private float _hudMessageDuration = 3f; // Duration for HUD message to display
 
 	private Minigame _currentMinigame;
-	private bool _isMultiplayer;
+	public bool _isMultiplayer;
 
 	public bool IsMinigameSequenceOngoing { get; private set; }
 

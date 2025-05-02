@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
 	{
 		while (_roundNumber++ < _totalRounds)
 		{
-			MinigameManager.Instance.StartRandomMultiplayerMinigame();
+			//MinigameManager.Instance.StartRandomMultiplayerMinigame();
 			yield return WaitForMinigameToEnd();	
             yield return ShowTurnHud(); 
 			yield return DoRound();
@@ -89,13 +89,13 @@ public class GameManager : MonoBehaviour
 	{
 		for (CurrentPlayerIdx = 0; CurrentPlayerIdx < _players.Length; CurrentPlayerIdx++)
 		{
-			foreach(Player player in _players)
-			{
-				if(CurrentPlayer != null && CurrentPlayerIdx != CurrentPlayer.PlayerIndex)
-				{
-					player.playerInput.actions.Disable();
-                }
-			}
+			//foreach(Player player in _players)
+			//{
+			//	if(CurrentPlayer != null && CurrentPlayerIdx != CurrentPlayer.PlayerIndex)
+			//	{
+			//		player.playerInput.actions.Disable();
+   //             }
+			//}
 			CurrentPlayer = _players[CurrentPlayerIdx];
             UpdatePlayerCanvasInteraction();
             yield return DoPlayerTurn();

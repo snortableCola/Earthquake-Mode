@@ -186,6 +186,17 @@ public class PlayerMovement : MonoBehaviour
 		Vector3 startPosition = transform.position;
 		Vector3 endPosition = targetSpace.transform.TransformPoint(transform.localPosition); // Ensures the player's located identically relative to its space after landing
 
+		Quaternion startRotation = transform.rotation;
+		Vector2 avgNextDirection = Vector2.zero;
+		foreach (Adjacency adj in AdjacencyManager.Instance.Adjacencies[targetSpace])
+		{
+			if (!adj.IsForwards) continue;
+			Vector2 flat = adj.Direction;
+			avgNextDirection += flat;
+		}
+		float angle = Mathf.Atan2(-avgNextDirection.y, avgNextDirection.x) * Mathf.Rad2Deg;
+		Quaternion endDirection = Quaternion.Euler(0, angle, 0);
+
 		float timeElapsed = 0f;
 		while (timeElapsed < _movementTime)
 		{
@@ -196,6 +207,7 @@ public class PlayerMovement : MonoBehaviour
 			currentPosition.y += _jumpHeight * movementProgress * (1 - movementProgress); // Player jumps follow a quadratic trajectory
 
 			transform.position = currentPosition;
+			transform.rotation = Quaternion.Slerp(startRotation, endDirection, movementProgress);
 
 			yield return null; // Movement iterates frame-by-frame
 		}

@@ -12,8 +12,8 @@ public class BashnCrash : Minigame
     public float maxHealth = 1;
     public float damagePerMash = 0.05f;
     public float mashCooldown = 0.01f; //prevents spamming
-   [SerializeField] public TMP_Text winnerText;
-    [SerializeField]public TMP_Text BashText;
+    [SerializeField] public TMP_Text winnerText;
+    [SerializeField] public TMP_Text BashText;
 
     [Header("Building Settings")]
     public Image[] buildingImages; // Images representing each player's building
@@ -25,12 +25,23 @@ public class BashnCrash : Minigame
 
     private bool[] hasFinished; // Tracks if a player has finished (health bar reached 0)
     private float[] lastMashTime; // Tracks the last mash time for each player
-    private bool gameFinished = false;
+    private bool _gameFinished = true;
     public override string Instructions { get; } = "Smash your competition's HQ to the ground!! Mash your X/A button on your controller like your career depends on it. Each mash deals damage to the HQ. The first to destroy the enemy HQ wins 5 corruption coins!";
-    public override void StartGame()
+
+	private void Start()
+	{
+		int playerCount = playerHealthbars.Length;
+		for (int i = 0; i < playerCount; i++)
+		{
+			int playerIndex = i; // Capture index for lambda
+			playerButtons[i].onClick.AddListener(() => HandleMash(playerIndex));
+		}
+	}
+
+	public override void StartGame()
     {
-        
-        int playerCount = playerHealthbars.Length;
+		_gameFinished = false;
+		int playerCount = playerHealthbars.Length;
         hasFinished = new bool[playerCount];
         lastMashTime = new float[playerCount];
 
@@ -39,9 +50,6 @@ public class BashnCrash : Minigame
         {
             playerHealthbars[i].maxValue = maxHealth;
             playerHealthbars[i].value = maxHealth;
-
-            int playerIndex = i; // Capture index for lambda
-            playerButtons[i].onClick.AddListener(() => HandleMash(playerIndex));
         }
 
         winnerText.gameObject.SetActive(false); // Hide winner text at the start
@@ -51,7 +59,7 @@ public class BashnCrash : Minigame
     // Update is called once per frame
     void Update()
     {
-        if (gameFinished) return;
+        if (_gameFinished) return;
 
         // Check for button mashing input from gamepads
         for (int i = 0; i < Gamepad.all.Count; i++)
@@ -115,7 +123,7 @@ public class BashnCrash : Minigame
 
     private void HandleMash(int playerIndex)
     {
-        if (gameFinished || hasFinished[playerIndex] || Time.time - lastMashTime[playerIndex] < mashCooldown) return;
+        if (_gameFinished || hasFinished[playerIndex] || Time.time - lastMashTime[playerIndex] < mashCooldown) return;
 
         // Reduce health
         playerHealthbars[playerIndex].value -= damagePerMash;
@@ -134,8 +142,7 @@ public class BashnCrash : Minigame
     }
     public void EndGame(int winningPlayer)
     {
-
-        gameFinished = true;
+        _gameFinished = true;
         BashText.gameObject.SetActive(false);
         winnerText.text = $"Player {winningPlayer + 1} Wins!";
         winnerText.gameObject.SetActive(true);
@@ -168,6 +175,5 @@ public class BashnCrash : Minigame
 
         winnerText.gameObject.SetActive(false); // Hide winner text
         BashText.gameObject.SetActive(true);
-        gameFinished = false;
     }
 }

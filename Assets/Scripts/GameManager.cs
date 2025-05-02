@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private int _totalRounds = 10;
 	[SerializeField] private Button _diceRollButton;
 	[SerializeField] private Button _useItemButton;
+	[SerializeField] private GameObject playerProfiles;
 	[SerializeField] private TMP_Text _useItemButtonText;
 	[SerializeField] private TMP_Text _distanceText;   
 	[SerializeField] private Player[] _players;
@@ -173,6 +174,7 @@ public class GameManager : MonoBehaviour
 
 		_diceRollButton.gameObject.SetActive(true);
 		_useItemButton.gameObject.SetActive(true);
+		playerProfiles.gameObject.SetActive(true);
 
 		yield return new WaitUntil(() => _diceRolled || _itemUsed);
 
@@ -197,6 +199,7 @@ public class GameManager : MonoBehaviour
 		{
 			_diceRollButton.gameObject.SetActive(false);
 			_useItemButton.gameObject.SetActive(false);
+			playerProfiles.gameObject.SetActive(false);
 			_diceRolled = false;
 		}
 	}

@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
    //             }
 			//}
 			CurrentPlayer = _players[CurrentPlayerIdx];
-            UpdatePlayerCanvasInteraction();
+            //UpdatePlayerCanvasInteraction();
             yield return DoPlayerTurn();
             yield return WaitForLastPlayerHudCompletion();
         }
@@ -201,27 +201,27 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-    private void UpdatePlayerCanvasInteraction()
-    {
-		bool isCurrentPlayer = CurrentPlayer != null && CurrentPlayer == _players[CurrentPlayerIdx];
-        foreach (Player player in _players)
-        {
-			//if (player != null && player == CurrentPlayer) { }
-            //bool isCurrentPlayer = player == CurrentPlayer;
-            //player.playerInput.actions.enabled = isCurrentPlayer;
+  //  private void UpdatePlayerCanvasInteraction()
+  //  {
+		//bool isCurrentPlayer = CurrentPlayer != null && CurrentPlayer == _players[CurrentPlayerIdx];
+  //      foreach (Player player in _players)
+  //      {
+		//	//if (player != null && player == CurrentPlayer) { }
+  //          //bool isCurrentPlayer = player == CurrentPlayer;
+  //          //player.playerInput.actions.enabled = isCurrentPlayer;
 
-            // Disable input components for non-current players instead of disabling the entire canvas
-            Canvas playerCanvas = player.GetComponentInChildren<Canvas>();
-            if (playerCanvas != null)
-            {
-                var inputComponents = playerCanvas.GetComponentsInChildren<Selectable>(true);
-                foreach (var inputComponent in inputComponents)
-                {
-                    inputComponent.interactable = isCurrentPlayer;
-                }
-            }
-        }
-    }
+  //          // Disable input components for non-current players instead of disabling the entire canvas
+  //          Canvas playerCanvas = player.GetComponentInChildren<Canvas>();
+  //          if (playerCanvas != null)
+  //          {
+  //              var inputComponents = playerCanvas.GetComponentsInChildren<Selectable>(true);
+  //              foreach (var inputComponent in inputComponents)
+  //              {
+  //                  inputComponent.interactable = isCurrentPlayer;
+  //              }
+  //          }
+  //      }
+  //  }
 
 
 }

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -8,6 +9,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class JoinScreen : MonoBehaviour
 {
+    [SerializeField] InputSystemUIInputModule inputModule;
     [SerializeField] GameObject[] playerIcons = new GameObject[4];
     private PlayerInputManager playerInputManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,8 +24,10 @@ public class JoinScreen : MonoBehaviour
     /// <param name="input"></param>
     private void OnPlayerJoined(PlayerInput input)
     {
+
         playerIcons[input.playerIndex].SetActive(true);
         input.gameObject.name= $"Player input clone {input.playerIndex + 1}";
+        input.uiInputModule = inputModule;
         //Debug.Log($"Player joined: {input.playerIndex + 1}");
     }
 

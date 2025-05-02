@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +7,7 @@ using UnityEngine.UI;
 public class SabotageManager : MonoBehaviour
 {
 	public static SabotageManager Instance { get; private set; }
+	public bool Possible { get; private set; }
 
 	[SerializeField] private int _maxCoinsToSteal;
 	[SerializeField] private int _stealingOilCost;
@@ -37,16 +37,18 @@ public class SabotageManager : MonoBehaviour
 
 	private void Start()
 	{
-		if (_victimSelectButtons.Length != GameManager.Instance.Players.Length)
-		{
-			Debug.LogError("The sabotage manager doesn't have the correct amount of victim-selection buttons");
-		}
+		int totalPlayers = GameManager.Instance.Players.Length;
+		Possible = totalPlayers > 1;
+		if (!Possible) return;
 
-		for (int i = 0; i < _victimSelectButtons.Length; i++)
+		for (int i = 0; i < totalPlayers - 1; i++)
 		{
 			int buttonIndex = i;
 			_victimSelectButtons[i].onClick.AddListener(() => _selectedVictimIndex = buttonIndex);
+			_victimSelectButtons[i].interactable = true;
 		}
+
+		_victimSelectButtons[3].onClick.AddListener(() => _selectedVictimIndex = 3); // For "Random" button at the end
 	}
 
 	public IEnumerator Sabotage(Player saboteur)
@@ -72,9 +74,9 @@ public class SabotageManager : MonoBehaviour
 		// Wait for selection (for sake of implementation, this is how to get a random victim)
 		_selectedVictimIndex = -1;
 		yield return new WaitUntil(() => _selectedVictimIndex != -1);
+		if (_selectedVictimIndex == 3) _selectedVictimIndex = Random.Range(0, otherPlayers.Count); // Last button counts as random
 
 		// Use the index of the selected victim button to get an actual victim player object
-		if (_selectedVictimIndex == _victimSelectButtons.Length - 1) _selectedVictimIndex = Random.Range(0, otherPlayers.Count); // Last button counts as random
 		Player selectedVictim = otherPlayers[_selectedVictimIndex];
 
 		// Determine whether or not it's possible for the saboteur to steal oil

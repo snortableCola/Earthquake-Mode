@@ -9056,7 +9056,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 681110945}
   m_OnClick:
     m_PersistentCalls:
@@ -14641,7 +14641,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1203527587}
   m_OnClick:
     m_PersistentCalls:
@@ -18954,7 +18954,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1692644832}
   m_OnClick:
     m_PersistentCalls:
@@ -30953,7 +30953,6 @@ MonoBehaviour:
   - {fileID: 3268021801389366533}
   _hudMessage: {fileID: 1984466370}
   _hudMessageDuration: 3
-  _isMultiplayer: 0
 --- !u!224 &5530826561075836813
 RectTransform:
   m_ObjectHideFlags: 0

@@ -45,6 +45,7 @@ public class MinigameManager : MonoBehaviour
 		if (_isMultiplayer)
 		{ 
 		int randomIndex = Random.Range(0, _multiplayerMinigames.Length);
+			_currentMinigame= _multiplayerMinigames[randomIndex];	
 			Debug.Log($"starting {_currentMinigame.name}");
 			StartCoroutine(ShowHudMessageThenInstructions()); 
 		

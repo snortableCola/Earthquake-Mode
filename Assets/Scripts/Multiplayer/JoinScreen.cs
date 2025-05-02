@@ -9,9 +9,10 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class JoinScreen : MonoBehaviour
 {
-    [SerializeField] InputSystemUIInputModule inputModule;
     [SerializeField] GameObject[] playerIcons = new GameObject[4];
     private PlayerInputManager playerInputManager;
+
+    public GameObject startbutton;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {

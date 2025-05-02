@@ -42,14 +42,22 @@ public class Player : MonoBehaviour, IComparable<Player>
 
     public void Start()
     {
-		playerInput = FindObjectsByType<PlayerInput>(FindObjectsSortMode.None).Where(x => x.playerIndex == this.PlayerIndex).FirstOrDefault();
+		// we need to makae sure that there are only as many players as there are player inputs
+		playerInput = FindObjectsByType<PlayerInput>(FindObjectsSortMode.None).Where(x => x.playerIndex == this.PlayerIndex).First();
+		if(playerInput == null)
+		{
+			Destroy(this);
+		}
+		playerInput.transform.GetChild(0).gameObject.SetActive(true);
+		
 		multiplayerEventSystem = playerInput.GetComponentInChildren<MultiplayerEventSystem>();
 		if (multiplayerEventSystem == null)
 		{
 			Debug.LogError("no eventsystem");
 		}
+		playerInput.transform.GetChild(0).gameObject.SetActive(false);
         //initialize canvas as player root
-        multiplayerEventSystem.playerRoot = canvas.gameObject;
+        //multiplayerEventSystem.playerRoot = canvas.gameObject;
     }
 
     /// <summary>

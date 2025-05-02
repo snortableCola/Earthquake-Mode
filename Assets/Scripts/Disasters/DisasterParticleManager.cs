@@ -5,7 +5,7 @@ using System.Collections;
 
 public class DisasterParticleManager : MonoBehaviour
 {
-    private static DisasterParticleManager Instance;
+    public static DisasterParticleManager Instance;
     //gameobjects for the camera shaker 
     public Shaker CameraShaker;
     public ShakePreset ShakerPreset;

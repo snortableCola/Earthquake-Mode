@@ -8,17 +8,16 @@ public class DisasterManager : MonoBehaviour
 {
     private static readonly Dictionary<Biome, string[]> s_warnings = new()
     {
-		{
+        {
             Biome.Shore, new string[] { "Gale Advisory", "Flood Watch", "Flood Warning", "Tsunami!" }
         },
         {
-			Biome.Plains, new string[] { "Wind Advisory", "Tornado Watch", "Tornado Warning", "Tornado!" }
-		},
-		{
-			Biome.Mountains, new string[] { "Fire Advisory", "Fire Watch", "Fire Warning", "Wildfire!" }
-		}
-	};
-    private DisasterParticleManager _particleManager;
+            Biome.Plains, new string[] { "Wind Advisory", "Tornado Watch", "Tornado Warning", "Tornado!" }
+        },
+        {
+            Biome.Mountains, new string[] { "Fire Advisory", "Fire Watch", "Fire Warning", "Wildfire!" }
+        }
+    };
     public static DisasterManager Instance { get; private set; }
     
 
@@ -161,14 +160,14 @@ public class DisasterManager : MonoBehaviour
         // Disaster is triggered when the level reaches the threshold
         if (disasterLevel != _disasterThreshold)
         {
-            _particleManager.HandleEffect(disaster.name,true, 5f);
-        
-        } yield break;
+			DisasterParticleManager.Instance.HandleEffect(disaster.name,true, 5f);
+        }
+
         if (disaster == _earthquake && disasterLevel != _disasterThreshold)
         {
-
-            _particleManager.EarthquakeShake();
+            DisasterParticleManager.Instance.EarthquakeShake();
         }
+
         Debug.Log($"Triggering disaster {disaster.name}!");
         yield return disaster.StartDisaster(incitingPlayer);
 

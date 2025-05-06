@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
 
 
@@ -113,21 +114,15 @@ public class GameManager : MonoBehaviour
 	{
 		for (CurrentPlayerIdx = 0; CurrentPlayerIdx < _players.Length; CurrentPlayerIdx++)
 		{
-
 			CurrentPlayer = _players[CurrentPlayerIdx];
+			if (CurrentPlayer.multiplayerEventSystem == null) continue;
 			for (int i = 0; i < _players.Length; i++)
 			{
-				if (i != CurrentPlayerIdx)
-				{
-					_players[i].multiplayerEventSystem.gameObject.SetActive(false);
-				}
-				else
-				{
-                    _players[i].multiplayerEventSystem.gameObject.SetActive(true);
-
-                }
-            }
-            yield return DoPlayerTurn();
+				MultiplayerEventSystem eventSystem = _players[i].multiplayerEventSystem;
+				if (eventSystem == null) continue;
+				eventSystem.gameObject.SetActive(i == CurrentPlayerIdx);
+			}
+			yield return DoPlayerTurn();
             yield return WaitForLastPlayerHudCompletion();
         }
 	}

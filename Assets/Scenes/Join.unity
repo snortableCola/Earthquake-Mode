@@ -1085,12 +1085,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b58479b3f02b8c48baffbaaa764a57e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputModule: {fileID: 0}
   playerIcons:
   - {fileID: 1564717688}
   - {fileID: 1870040853}
   - {fileID: 587648251}
   - {fileID: 721605790}
+  startbutton: {fileID: 0}
 --- !u!4 &1587713151
 Transform:
   m_ObjectHideFlags: 0
@@ -1665,6 +1665,10 @@ PrefabInstance:
     - target: {fileID: 6056111903253412643, guid: 37186d38da01b674895919a0379f91cd, type: 3}
       propertyPath: m_Name
       value: P1_Icon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6056111903253412643, guid: 37186d38da01b674895919a0379f91cd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6945626491860422797, guid: 37186d38da01b674895919a0379f91cd, type: 3}
       propertyPath: m_Pivot.x

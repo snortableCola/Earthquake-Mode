@@ -35,7 +35,10 @@ public class GameManager : MonoBehaviour
     private int _roundNumber;
 	private bool _diceRolled, _itemUsed;
 
-	//private List<PlayerInput> playerInputs;
+    [Header("Player Turn UI")]
+    [SerializeField] private GameObject[] playerTurnIcons;
+
+    //private List<PlayerInput> playerInputs;
 
     private void Awake()
 	{
@@ -138,8 +141,10 @@ public class GameManager : MonoBehaviour
     }
     private IEnumerator DoPlayerTurn()
 	{
-		//set the player's multiplayerEventsystem firstselected property to roll dice
-		CurrentPlayer.multiplayerEventSystem.firstSelectedGameObject = diceButton.gameObject;
+        ShowPlayerTurnIcon(CurrentPlayer.PlayerIndex);
+
+        //set the player's multiplayerEventsystem firstselected property to roll dice
+        CurrentPlayer.multiplayerEventSystem.firstSelectedGameObject = diceButton.gameObject;
         Debug.Log($"[DoPlayerTurn] Player {CurrentPlayer.name}'s turn starting.");
         DisasterManager.Instance.SetCurrentPlayer(CurrentPlayer);
 		DisasterManager.Instance.UpdateDisasterInfo();
@@ -186,9 +191,32 @@ public class GameManager : MonoBehaviour
        
 
         DisasterManager.Instance.Wildfire.TryFireProgress(CurrentPlayer);
-	}
+        HideAllPlayerTurnIcons();
+    }
+    private void ShowPlayerTurnIcon(int playerIndex)
+    {
+        // Ensure all icons are hidden first
+        HideAllPlayerTurnIcons();
 
-	private void RespondToDiceRoll() => _diceRolled = true;
+        // Show the icon for the current player
+        if (playerIndex >= 0 && playerIndex < playerTurnIcons.Length)
+        {
+            playerTurnIcons[playerIndex].gameObject.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("Player index is out of range for playerTurnIcons.");
+        }
+    }
+
+    private void HideAllPlayerTurnIcons()
+    {
+        foreach (var icon in playerTurnIcons)
+        {
+            icon.gameObject.SetActive(false);
+        }
+    }
+    private void RespondToDiceRoll() => _diceRolled = true;
 	private void RespondToUseItem() => _itemUsed = true;
 
 	private IEnumerator WaitForDiceRoll()
@@ -200,6 +228,7 @@ public class GameManager : MonoBehaviour
 		_diceRollButton.gameObject.SetActive(true);
 		_useItemButton.gameObject.SetActive(true);
 		playerProfiles.gameObject.SetActive(true);
+		HideAllPlayerTurnIcons();
 
 		yield return new WaitUntil(() => _diceRolled || _itemUsed);
 

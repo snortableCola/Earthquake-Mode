@@ -68,7 +68,7 @@ MonoBehaviour:
   m_ActionsAsset: {fileID: -944628639613478452, guid: 1fd35ad43f748f845bbeb9b5de37b324, type: 3}
   m_PointAction: {fileID: 0}
   m_MoveAction: {fileID: -5142802782430202656, guid: 1fd35ad43f748f845bbeb9b5de37b324, type: 3}
-  m_SubmitAction: {fileID: 8277703478236771522, guid: 1fd35ad43f748f845bbeb9b5de37b324, type: 3}
+  m_SubmitAction: {fileID: 6037054514076439576, guid: 1fd35ad43f748f845bbeb9b5de37b324, type: 3}
   m_CancelAction: {fileID: 0}
   m_LeftClickAction: {fileID: 0}
   m_MiddleClickAction: {fileID: 0}

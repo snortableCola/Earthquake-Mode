@@ -21,10 +21,6 @@ public class SabotageManager : MonoBehaviour
 	[SerializeField] private Button _stealOilButton;
 	private bool? _stealingOil;
 
-	[SerializeField] private GameObject _consequencePanel;
-	[SerializeField] private Button _exitSabotageButton;
-	private bool _exiting;
-
 
     private void Awake()
 	{
@@ -32,8 +28,6 @@ public class SabotageManager : MonoBehaviour
 
 		_stealCoinsButton.onClick.AddListener(() => _stealingOil = false);
 		_stealOilButton.onClick.AddListener(() => _stealingOil = true);
-
-		_exitSabotageButton.onClick.AddListener(() => _exiting = true);
 	}
 
 	private void Start()
@@ -103,12 +97,5 @@ public class SabotageManager : MonoBehaviour
 			selectedVictim.Coins -= coinsStolen;
 			saboteur.Coins += coinsStolen;
 		}
-
-		// Show the sabotage consequence
-		PanelManager.Instance.ShowPanel(_consequencePanel, PanelManager.Instance._consequenceButton);
-
-		// Wait for consequence to be canceled out of
-		_exiting = false;
-		yield return new WaitUntil(() => _exiting);
 	}
 }

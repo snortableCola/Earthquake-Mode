@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class OilSpace : SpaceBehavior
 {
-	private static readonly Vector3 s_activeScale = new(0.2f, 0.05f, 0.2f);
-	private static readonly Vector3 s_inactiveScale = new(0.35f, 0.05f, 0.35f);
+	private static readonly Vector3 s_inactiveScale = new(0.2f, 0.05f, 0.2f);
+	private static readonly Vector3 s_activeScale = new(0.35f, 0.05f, 0.35f);
 
 	private bool _isActive;
 	public bool IsActive

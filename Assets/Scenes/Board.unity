@@ -6420,7 +6420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6393638932563675279, guid: 7d315753ae894094099277bd5b4ec427, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9076,6 +9076,7 @@ RectTransform:
   - {fileID: 1028084673}
   - {fileID: 1733079306}
   - {fileID: 1470977843}
+  - {fileID: 1685301399}
   m_Father: {fileID: 8808929679414703493}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -13540,7 +13541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5919010380580807138, guid: f0a8d5cbe5caf824faf8f09cb4fd30b6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18864,7 +18865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7586990973227792430, guid: 026a16e9fe3e4e34891b934f99faea0a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22662,7 +22663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6056111903253412643, guid: 37186d38da01b674895919a0379f91cd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6945626491860422797, guid: 37186d38da01b674895919a0379f91cd, type: 3}
       propertyPath: m_Pivot.x
@@ -24664,7 +24665,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1685301398}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -24673,7 +24674,7 @@ RectTransform:
   - {fileID: 342390943}
   - {fileID: 844938468}
   - {fileID: 1191127797}
-  m_Father: {fileID: 8808929679414703493}
+  m_Father: {fileID: 498199031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -33071,15 +33072,15 @@ MonoBehaviour:
   _gameNameText: {fileID: 2748576760725447706}
   _startMinigameButton: {fileID: 3282635391819748713}
   _shopPanelGameObject: {fileID: 9073928312942436705}
-  _diceButton: {fileID: 1767838418}
-  _shopButton: {fileID: 1690621454}
+  _diceButton: {fileID: 0}
+  _shopButton: {fileID: 0}
   _instructionButton: {fileID: 0}
-  _victimSelectButton: {fileID: 681110943}
-  _methodSelectButton: {fileID: 1913961479}
-  _consequenceButton: {fileID: 1110067334}
-  _ceoSelectButton: {fileID: 6343051186302040815}
-  _flipButton: {fileID: 8989301831116894198}
-  _oilPassButton: {fileID: 1449498375}
+  _victimSelectButton: {fileID: 0}
+  _methodSelectButton: {fileID: 0}
+  _consequenceButton: {fileID: 0}
+  _ceoSelectButton: {fileID: 0}
+  _flipButton: {fileID: 0}
+  _oilPassButton: {fileID: 0}
 --- !u!224 &1476996813341765283
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40290,7 +40291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialPanel: {fileID: 2220943098402608340}
-  _startButton: {fileID: 8768545072566933650}
+  _startButton: {fileID: 0}
   _spinButton: {fileID: 7685969990733572775}
   _fireButton: {fileID: 3380473417109127813}
   _exitButton: {fileID: 3663886876927090842}
@@ -40376,7 +40377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialPanel: {fileID: 2834115332184452033}
-  _startButton: {fileID: 2515079050828282026}
+  _startButton: {fileID: 0}
   _suitcaseButtons:
   - {fileID: 7282350334045255015}
   - {fileID: 3366870856760433016}
@@ -41814,7 +41815,6 @@ RectTransform:
   - {fileID: 1888956308}
   - {fileID: 1143764085}
   - {fileID: 5073520070577827160}
-  - {fileID: 1685301399}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -42348,7 +42348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialPanel: {fileID: 4992646337335603424}
-  _startButton: {fileID: 897293499340303620}
+  _startButton: {fileID: 0}
   _selectionPanel: {fileID: 5546221165551613246}
   _flippingPanel: {fileID: 7305549553031766279}
   pointsDisplay: {fileID: 5214189573725274193}

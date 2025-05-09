@@ -167,25 +167,10 @@ public class ShopPanel: MonoBehaviour
         // Check if the player can afford the item
         if (currentPlayer.Coins >= item.cost)
         {
-            for (int i = 0; i < currentPlayer.HeldItems.Length; i++)
-            {
-                if (currentPlayer.HeldItems[i] == null) // Find empty slot
-                {
-                    currentPlayer.Coins -= item.cost; // Deduct the cost
-                    currentPlayer.HeldItems[i] = item; // Add item to the slot
-                    Debug.Log($"Added {item.itemName} to slot {i}.");
-                    shoptext.text = $"nice you bought a {item.itemName}!";
-                    return;
-                }
-                else
-                { 
-                //add code that opens up the use item panel and prompts the player to discard an item 
-
-                }
-            }
-           
-           
-            
+            currentPlayer.Coins -= item.cost; // Deduct the cost
+            currentPlayer.HeldItem = item; // Add item to the slot
+            Debug.Log($"Added {item.itemName}.");
+            shoptext.text = $"nice you bought a {item.itemName}!";
         }
         else
         {

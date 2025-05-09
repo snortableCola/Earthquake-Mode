@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
 		Spaces = FindObjectsByType<Space>(FindObjectsSortMode.None);
 		_diceRollButton.onClick.AddListener(RespondToDiceRoll);
 		_useItemButton.onClick.AddListener(RespondToUseItem);
+		playerProfiles.SetActive(false);
 		//playerInputs = FindObjectsByType<PlayerInput>(FindObjectsSortMode.None).ToList();
   //      playerInputs.Sort((input1, input2) => input1.playerIndex.CompareTo(input2.playerIndex));
 
@@ -86,6 +87,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("[WaitForMinigameToEnd] Waiting for minigame to finish...");
         yield return new WaitUntil(() => !MinigameManager.Instance.IsMinigameSequenceOngoing);
         Debug.Log("[WaitForMinigameToEnd] Minigame sequence finished.");
+	
     }
 
 	private IEnumerator WaitForShopClose()
@@ -96,12 +98,8 @@ public class GameManager : MonoBehaviour
 			yield break;
 		}
 
-		Debug.Log("Checking to see if shop is open");
-		//if (ShopPanel.instance != null)
-		//{
-            yield return new WaitUntil(() => !ShopPanel.instance.isShopOpen);
-        //}
-
+		Debug.Log("Checkign to see if shop is open");
+		yield return new WaitUntil(() => !ShopPanel.instance.isShopOpen);
 		Debug.Log("shop is closed");
 
 	}
@@ -113,10 +111,8 @@ public class GameManager : MonoBehaviour
 			yield return WaitForMinigameToEnd();	
             yield return ShowTurnHud(); 
 			yield return DoRound();
-
-            yield return WaitForShopClose();
 			MinigameManager.Instance.StartRandomMultiplayerMinigame();
-        }
+		}
 	}
 
 	private IEnumerator DoRound()

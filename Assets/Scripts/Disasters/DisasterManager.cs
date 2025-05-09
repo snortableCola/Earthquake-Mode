@@ -9,13 +9,13 @@ public class DisasterManager : MonoBehaviour
     private static readonly Dictionary<Biome, string[]> s_warnings = new()
     {
         {
-            Biome.Shore, new string[] { "Gale Advisory", "Flood Watch", "Flood Warning", "Tsunami!" }
+            Biome.Shore, new string[] { "1/4: Gale Advisory", "2/4: Flood Watch", "3/4: Flood Warning", "4: Tsunami!" }
         },
         {
-            Biome.Plains, new string[] { "Wind Advisory", "Tornado Watch", "Tornado Warning", "Tornado!" }
+            Biome.Plains, new string[] { "1/4: Wind Advisory", "2/4: Tornado Watch", "3/4: Tornado Warning", "4: Tornado!" }
         },
         {
-            Biome.Mountains, new string[] { "Fire Advisory", "Fire Watch", "Fire Warning", "Wildfire!" }
+            Biome.Mountains, new string[] { "1/4: Fire Advisory", "2/4: Fire Watch", "3/4: Fire Warning", "4: Wildfire!" }
         }
     };
     public static DisasterManager Instance { get; private set; }

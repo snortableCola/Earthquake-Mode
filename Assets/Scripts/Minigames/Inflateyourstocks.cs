@@ -32,6 +32,7 @@ public class Inflateyourstocks : Minigame
         _timeRemaining = gameDuration;
         inflateText.gameObject.SetActive(true);
         winnerText.gameObject.SetActive(false);
+        exitButton.gameObject.SetActive(false); 
 
         int playerCount = playerHealthbars.Length;
         hasFinished = new bool[playerCount];
@@ -140,6 +141,7 @@ public class Inflateyourstocks : Minigame
         _gameFinished = true;
 
         inflateText.gameObject.SetActive(false);
+        exitButton.gameObject.SetActive(true);
 
         // Display the winner text
         winnerText.text = $"Player {winningPlayer + 1} Wins! +3 Corruption Coins!";

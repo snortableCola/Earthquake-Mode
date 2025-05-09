@@ -1025,7 +1025,7 @@ GameObject:
   - component: {fileID: 42860343}
   - component: {fileID: 42860342}
   m_Layer: 0
-  m_Name: Peak Singleton Action
+  m_Name: Shop Panel Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -83,6 +83,7 @@ public class PanelManager : MonoBehaviour
 	{
 		if (_activePanel) _activePanel.SetActive(false);
 		_activePanel = panel;
+        Debug.Log(GameManager.Instance.CurrentPlayer);
         GameManager.Instance.CurrentPlayer.multiplayerEventSystem.SetSelectedGameObject(firstSelected);
         if (panel) panel.SetActive(true);
 	}

@@ -92,14 +92,9 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator WaitForShopClose()
 	{
-		if (ShopPanel.instance == null)
-		{
-			Debug.LogError("ShopPanel instance is null. Cannot wait for shop to close.");
-			yield break;
-		}
 
 		Debug.Log("Checkign to see if shop is open");
-		yield return new WaitUntil(() => !ShopPanel.instance.isShopOpen);
+		yield return new WaitUntil(() => !ShopPanelManager.Instance.ShopPanel.isShopOpen);
 		Debug.Log("shop is closed");
 
 	}
@@ -112,6 +107,7 @@ public class GameManager : MonoBehaviour
             yield return ShowTurnHud(); 
 			yield return DoRound();
             yield return WaitForShopClose();
+			CurrentPlayer = Players[0];
             MinigameManager.Instance.StartRandomMultiplayerMinigame();
 		}
 	}

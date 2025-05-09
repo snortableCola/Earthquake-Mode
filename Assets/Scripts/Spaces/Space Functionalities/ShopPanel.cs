@@ -19,22 +19,9 @@ public class ShopPanel: MonoBehaviour
     [SerializeField] private SpaceSwap spaceSwap;
 
     private Player currentPlayer;
-    private PanelManager panelManager;
 
     [SerializeField] private TMP_Text shoptext;
     public bool isShopOpen { get; private set; } = false;
-    public static ShopPanel instance { get; private set; } // Singleton instance
-
-    private void Awake()
-    {
-        Debug.Log("ShopPanel Awake called");
-        instance = this;
-        panelManager = FindFirstObjectByType<PanelManager>();
-        if (panelManager == null)
-        {
-            Debug.LogError("PanelManager could not be found in the scene!");
-        }
-    }
     private void Start()
     {
         // Populate the list of all items
@@ -142,7 +129,7 @@ public class ShopPanel: MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         // Execute the remaining lines
-        panelManager.CloseShop();
+        PanelManager.Instance.CloseShop();
         isShopOpen = false;
         ResetShopUI();
         LeaveButton.onClick.RemoveAllListeners();

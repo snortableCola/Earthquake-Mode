@@ -152,7 +152,7 @@ public class BashnCrash : Minigame
         _gameFinished = true;
         BashText.gameObject.SetActive(false);
         winnerText.text = $"Player {winningPlayer + 1} Wins! +3 corruption coins";
-       
+        GameManager.Instance.Players[winningPlayer].Coins += 3;
 
         winnerText.gameObject.SetActive(true);
 

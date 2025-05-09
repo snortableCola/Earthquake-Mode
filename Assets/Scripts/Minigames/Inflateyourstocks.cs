@@ -28,6 +28,7 @@ public class Inflateyourstocks : Minigame
 
     public override void StartGame()
     {
+        _gameFinished = false;
         // Initialize timer and variables
         _timeRemaining = gameDuration;
         inflateText.gameObject.SetActive(true);
@@ -51,12 +52,16 @@ public class Inflateyourstocks : Minigame
 
     private void Update()
     {
-        if (_gameFinished) return;
-
+        if (_gameFinished)
+        {
+            Debug.Log("Update is stopping because _gameFinished is true.");
+            return;
+        }
         // Decrease the timer
         if (_timeRemaining > 0)
         {
             _timeRemaining -= Time.deltaTime;
+            Debug.Log($"Time remaining: {_timeRemaining}");
             inflateText.text = $"Time To Inflate: {Mathf.CeilToInt(_timeRemaining)}s";
         }
         else

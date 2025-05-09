@@ -49,16 +49,7 @@ public class PlayerMovement : MonoBehaviour
 		_currentSpace = GetComponentInParent<Space>();
 		_movementPath.Clear();
 		_movementPath.Add(_currentSpace);
-
-		foreach (Space space in _possibleDestinations)
-		{
-			space.HighlightTag.State = false;
-		}
 		_possibleDestinations = DestinationFinder.Instance.GetPossibleDestinations(_currentSpace, _distance);
-		foreach (Space space in _possibleDestinations)
-		{
-			space.HighlightTag.State = true;
-		}
 
 		DrawNewArrows();
 	}
@@ -137,11 +128,6 @@ public class PlayerMovement : MonoBehaviour
 			_currentSpace = targetSpace;
 			distanceText.text = _distance.ToString();
 			DrawNewArrows();
-		}
-
-		foreach (Space space in _possibleDestinations)
-		{
-			space.HighlightTag.State = false;
 		}
 
 		distanceText.gameObject.SetActive(false);

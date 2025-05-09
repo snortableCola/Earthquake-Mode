@@ -14,6 +14,7 @@ public class Tsunami : Disaster
 			switch (player.CurrentBiome)
 			{
 				case Biome.Shore:
+					if (player.Movement == null) continue;
 					yield return player.Movement.MoveToSpaceCoroutine(_tsunamiFailsafe);
 					break;
 				case Biome.Mountains:

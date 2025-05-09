@@ -228,7 +228,6 @@ public class GameManager : MonoBehaviour
 		_diceRollButton.gameObject.SetActive(true);
 		_useItemButton.gameObject.SetActive(true);
 		playerProfiles.gameObject.SetActive(true);
-		HideAllPlayerTurnIcons();
 
 		yield return new WaitUntil(() => _diceRolled || _itemUsed);
 

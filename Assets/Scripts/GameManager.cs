@@ -97,7 +97,11 @@ public class GameManager : MonoBehaviour
 		}
 
 		Debug.Log("Checking to see if shop is open");
-		yield return new WaitUntil(() => !ShopPanel.instance.isShopOpen);
+		//if (ShopPanel.instance != null)
+		//{
+            yield return new WaitUntil(() => !ShopPanel.instance.isShopOpen);
+        //}
+
 		Debug.Log("shop is closed");
 
 	}
@@ -243,7 +247,7 @@ public class GameManager : MonoBehaviour
 		_useItemButton.interactable = false;
 		_itemUsed = false;
 
-		PanelManager.Instance.ShowPanel(null);
+		PanelManager.Instance.ShowPanel(null, null);
 		yield return CurrentPlayer.HeldItem.BeUsedBy(CurrentPlayer);
 		PanelManager.Instance.ShowMovementUI();
 		CurrentPlayer.HeldItem = null;

@@ -16,7 +16,9 @@ public class OilManager : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI _prompt;
 	private bool? _buyingOil;
 
-	private void Awake()
+	private PanelManager _panelManager;
+
+    private void Awake()
 	{
 		Instance = this;
 		_oilSpaces = FindObjectsByType<OilSpace>(FindObjectsSortMode.None);
@@ -31,7 +33,7 @@ public class OilManager : MonoBehaviour
 		_prompt.text = $"You may purchase 1 oil for {cost} coins!\nYou have {customer.Coins} coins.";
 		_buyButton.interactable = customer.Coins >= cost;
 
-		PanelManager.Instance.ShowPanel(_oilPanel);
+		PanelManager.Instance.ShowPanel(_oilPanel, _panelManager._oilPassButton);
 
 		_buyingOil = null;
 		yield return new WaitUntil(() => _buyingOil != null);

@@ -7955,12 +7955,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnDown: {fileID: 1698200313}
+    m_SelectOnLeft: {fileID: 1690621456}
+    m_SelectOnRight: {fileID: 7772419284665095897}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -24773,12 +24773,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnDown: {fileID: 1698200313}
+    m_SelectOnLeft: {fileID: 7772419284665095897}
+    m_SelectOnRight: {fileID: 438080324}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -25124,9 +25124,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 1690621456}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -33026,6 +33026,15 @@ MonoBehaviour:
   _gameNameText: {fileID: 2748576760725447706}
   _startMinigameButton: {fileID: 3282635391819748713}
   _shopPanelGameObject: {fileID: 9073928312942436705}
+  _diceButton: {fileID: 1767838418}
+  _shopButton: {fileID: 1690621454}
+  _instructionButton: {fileID: 0}
+  _victimSelectButton: {fileID: 681110943}
+  _methodSelectButton: {fileID: 1913961479}
+  _consequenceButton: {fileID: 1110067334}
+  _ceoSelectButton: {fileID: 6343051186302040815}
+  _flipButton: {fileID: 8989301831116894198}
+  _oilPassButton: {fileID: 1449498375}
 --- !u!224 &1476996813341765283
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35378,6 +35387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialPanel: {fileID: 8126041692246313061}
+  _startButton: {fileID: 0}
   playerHealthbars:
   - {fileID: 2145862240574957206}
   - {fileID: 3510887090585101848}
@@ -40235,6 +40245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialPanel: {fileID: 2220943098402608340}
+  _startButton: {fileID: 8768545072566933650}
   _spinButton: {fileID: 7685969990733572775}
   _fireButton: {fileID: 3380473417109127813}
   _exitButton: {fileID: 3663886876927090842}
@@ -40320,6 +40331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialPanel: {fileID: 2834115332184452033}
+  _startButton: {fileID: 2515079050828282026}
   _suitcaseButtons:
   - {fileID: 7282350334045255015}
   - {fileID: 3366870856760433016}
@@ -40526,12 +40538,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnDown: {fileID: 1698200313}
+    m_SelectOnLeft: {fileID: 438080324}
+    m_SelectOnRight: {fileID: 1690621456}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -42291,6 +42303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialPanel: {fileID: 4992646337335603424}
+  _startButton: {fileID: 897293499340303620}
   _selectionPanel: {fileID: 5546221165551613246}
   _flippingPanel: {fileID: 7305549553031766279}
   pointsDisplay: {fileID: 5214189573725274193}

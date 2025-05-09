@@ -61,7 +61,7 @@ public class MinigameManager : MonoBehaviour
 
 	public void EndMinigame()
     {
-		PanelManager.Instance.ShowPanel(null);
+		PanelManager.Instance.ShowPanel(null, null);
 
 		IsMinigameSequenceOngoing = false;
 	}

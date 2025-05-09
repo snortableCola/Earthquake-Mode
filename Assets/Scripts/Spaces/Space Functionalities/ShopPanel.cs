@@ -27,6 +27,7 @@ public class ShopPanel: MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         panelManager = FindFirstObjectByType<PanelManager>();
         if (panelManager == null)
         {

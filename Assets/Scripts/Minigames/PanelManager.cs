@@ -12,10 +12,20 @@ public class PanelManager : MonoBehaviour
 	[SerializeField] private TMP_Text _gameNameText;
 	[SerializeField] private Button _startMinigameButton;
     [SerializeField] private GameObject _shopPanelGameObject; // Reference to the ShopPanel GameObject
+    [SerializeField] private GameObject _diceButton;
+    [SerializeField] private GameObject _shopButton;
+    [SerializeField] private GameObject _instructionButton;
+    [SerializeField] public GameObject _victimSelectButton;
+    [SerializeField] public GameObject _methodSelectButton;
+    [SerializeField] public GameObject _consequenceButton;
+    [SerializeField] public GameObject _ceoSelectButton;
+    [SerializeField] public GameObject _flipButton;
+    [SerializeField] public GameObject _oilPassButton;
     private ShopPanel _shopPanelScript; // Reference to the ShopPanel script
 
     private GameObject _activePanel;
 	private Minigame _startingMinigame;
+    
 
     private void Awake()
     {
@@ -35,7 +45,7 @@ public class PanelManager : MonoBehaviour
 
 	private void OnStartMinigameButtonClicked()
 	{
-		ShowPanel(_startingMinigame.InitialPanel);
+		ShowPanel(_startingMinigame.InitialPanel, _startingMinigame._startButton);
 		_startingMinigame.StartGame(); // Start the minigame
 	}
 
@@ -46,17 +56,17 @@ public class PanelManager : MonoBehaviour
 		_instructionText.text = minigame.Instructions;
 		_gameNameText.text = minigame.name;
 
-		ShowPanel(_instructionPanel);
+		ShowPanel(_instructionPanel, _instructionButton);
 	}
 
-	public void ShowMovementUI() => ShowPanel(_movementUI);
+	public void ShowMovementUI() => ShowPanel(_movementUI, _diceButton);
 
     public void ShowShop(Player player)
     {
         if (_shopPanelScript != null)
         {
             _shopPanelScript.OpenShop(player); // Pass the player to the ShopPanel
-            ShowPanel(_shopPanelGameObject);
+            ShowPanel(_shopPanelGameObject, _shopButton);
         }
         else
         {
@@ -69,10 +79,11 @@ public class PanelManager : MonoBehaviour
         _shopPanelGameObject.SetActive(false);
     
     }
-    public void ShowPanel(GameObject panel)
+    public void ShowPanel(GameObject panel, GameObject firstSelected)
 	{
 		if (_activePanel) _activePanel.SetActive(false);
 		_activePanel = panel;
-		if (panel) panel.SetActive(true);
+        GameManager.Instance.CurrentPlayer.multiplayerEventSystem.SetSelectedGameObject(firstSelected);
+        if (panel) panel.SetActive(true);
 	}
 }

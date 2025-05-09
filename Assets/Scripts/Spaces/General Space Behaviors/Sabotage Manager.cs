@@ -25,7 +25,9 @@ public class SabotageManager : MonoBehaviour
 	[SerializeField] private Button _exitSabotageButton;
 	private bool _exiting;
 
-	private void Awake()
+	private PanelManager _panelManager;
+
+    private void Awake()
 	{
 		Instance = this;
 
@@ -69,7 +71,7 @@ public class SabotageManager : MonoBehaviour
 		}
 
 		// Shows the victim selection panel
-		PanelManager.Instance.ShowPanel(_victimSelectPanel);
+		PanelManager.Instance.ShowPanel(_victimSelectPanel, _panelManager._victimSelectButton);
 
 		// Wait for selection (for sake of implementation, this is how to get a random victim)
 		_selectedVictimIndex = -1;
@@ -84,7 +86,7 @@ public class SabotageManager : MonoBehaviour
 		_stealOilButton.interactable = canStealOil;
 
 		// Display choice between stealing coins or oil
-		PanelManager.Instance.ShowPanel(_methodSelectPanel);
+		PanelManager.Instance.ShowPanel(_methodSelectPanel, _panelManager._methodSelectButton);
 
 		// Wait for selection (for this, let's just say if they can steal oil, they will steal oil)
 		_stealingOil = null;
@@ -104,7 +106,7 @@ public class SabotageManager : MonoBehaviour
 		}
 
 		// Show the sabotage consequence
-		PanelManager.Instance.ShowPanel(_consequencePanel);
+		PanelManager.Instance.ShowPanel(_consequencePanel, _panelManager._consequenceButton);
 
 		// Wait for consequence to be canceled out of
 		_exiting = false;

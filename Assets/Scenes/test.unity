@@ -7073,23 +7073,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 624039010702482939, guid: 2d630458dd95b1e49ba11b125549dbbd, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 624039010702482939, guid: 2d630458dd95b1e49ba11b125549dbbd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1445518972059460918, guid: 2d630458dd95b1e49ba11b125549dbbd, type: 3}
       propertyPath: m_Name
       value: InflateStocksPanel
       objectReference: {fileID: 0}
-    - target: {fileID: 4529796408548200745, guid: 2d630458dd95b1e49ba11b125549dbbd, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 1445518972059460918, guid: 2d630458dd95b1e49ba11b125549dbbd, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4529796408548200745, guid: 2d630458dd95b1e49ba11b125549dbbd, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4529796408548200745, guid: 2d630458dd95b1e49ba11b125549dbbd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6515107082213042441, guid: 2d630458dd95b1e49ba11b125549dbbd, type: 3}
       propertyPath: m_Pivot.x
@@ -7173,19 +7177,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6704781095540264605, guid: 2d630458dd95b1e49ba11b125549dbbd, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6704781095540264605, guid: 2d630458dd95b1e49ba11b125549dbbd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8034830982786922761, guid: 2d630458dd95b1e49ba11b125549dbbd, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8034830982786922761, guid: 2d630458dd95b1e49ba11b125549dbbd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

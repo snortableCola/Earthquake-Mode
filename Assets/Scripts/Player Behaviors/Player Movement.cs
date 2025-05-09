@@ -196,7 +196,7 @@ public class PlayerMovement : MonoBehaviour
 			Vector2 flat = adj.Direction;
 			avgNextDirection += flat;
 		}
-		float angle = Mathf.Atan2(-avgNextDirection.y, avgNextDirection.x) * Mathf.Rad2Deg;
+		float angle = Mathf.Atan2(-avgNextDirection.y, avgNextDirection.x) * Mathf.Rad2Deg + 90;
 		Quaternion endDirection = Quaternion.Euler(0, angle, 0);
 
 		float timeElapsed = 0f;

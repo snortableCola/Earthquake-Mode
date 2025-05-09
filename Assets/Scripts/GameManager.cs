@@ -42,7 +42,9 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
 	{
-		Instance = this;
+        InputSystem.settings.maxEventBytesPerUpdate = 0; // Removes the limit
+
+        Instance = this;
 		Spaces = FindObjectsByType<Space>(FindObjectsSortMode.None);
 		_diceRollButton.onClick.AddListener(RespondToDiceRoll);
 		_useItemButton.onClick.AddListener(RespondToUseItem);

@@ -27,8 +27,6 @@ public class CeoGambit : Minigame
     public AudioSource audioSource;
     public AudioClip CoinSound;
 
-	private PanelManager _panelManager;
-
     public override string Instructions { get; } = "How confident are you in your coin-flipping skills? Bet on your hard-earned cash, call heads or tails, and flip the coin. Get it right to double your bet—get it wrong, and, well… hope you didn’t bet too much.";
 
 	private void Awake()
@@ -84,7 +82,7 @@ public class CeoGambit : Minigame
 
         if (int.TryParse(pointsInput.text, out points) && points > 0 && points <= player.Coins)
 		{
-			PanelManager.Instance.ShowPanel(_selectionPanel, _panelManager._ceoSelectButton); // Show the selection panel for CeoGambit
+			PanelManager.Instance.ShowPanel(_selectionPanel, PanelManager.Instance._ceoSelectButton); // Show the selection panel for CeoGambit
 		}
         else
         {
@@ -100,7 +98,7 @@ public class CeoGambit : Minigame
 		selectButton.gameObject.SetActive(true);
 	}
 
-	private void SelectBet() => PanelManager.Instance.ShowPanel(_flippingPanel, _panelManager._flipButton);
+	private void SelectBet() => PanelManager.Instance.ShowPanel(_flippingPanel, PanelManager.Instance._flipButton);
 
 	private void FlipCoin()
 	{

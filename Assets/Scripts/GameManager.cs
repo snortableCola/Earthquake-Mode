@@ -111,7 +111,8 @@ public class GameManager : MonoBehaviour
 			yield return WaitForMinigameToEnd();	
             yield return ShowTurnHud(); 
 			yield return DoRound();
-			MinigameManager.Instance.StartRandomMultiplayerMinigame();
+            yield return WaitForShopClose();
+            MinigameManager.Instance.StartRandomMultiplayerMinigame();
 		}
 	}
 
@@ -204,6 +205,7 @@ public class GameManager : MonoBehaviour
         if (playerIndex >= 0 && playerIndex < playerTurnIcons.Length)
         {
             playerTurnIcons[playerIndex].gameObject.SetActive(true);
+			Debug.Log($"Showing turn icon for player {playerIndex}");
         }
         else
         {

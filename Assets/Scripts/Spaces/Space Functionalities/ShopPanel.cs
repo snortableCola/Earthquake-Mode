@@ -6,7 +6,7 @@ using System.Collections;
 
 public class ShopPanel: MonoBehaviour
 {
- public static ShopPanel instance;  
+  
     [SerializeField] private Button[] itemButtons; // Buttons for the shop UI
     [SerializeField] private List<Item> allItems = new List<Item>(); // List of all items
     private List<Item> displayedItems = new List<Item>(); // Currently displayed items

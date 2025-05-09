@@ -7,6 +7,7 @@ public class CorporateRoulette : Minigame
 	[SerializeField] private Button _spinButton;
 	[SerializeField] private Button _fireButton;
 	[SerializeField] private Button _exitButton;
+    [SerializeField] private RectTransform _chamber;
 
     public TMP_Text GeneralText;
     private readonly int[] rewards = { 0, 0, -3, -4, 6, 4 };
@@ -14,6 +15,7 @@ public class CorporateRoulette : Minigame
 
     public AudioSource audioSource;
     public AudioClip FiringSound;
+
 
 	public override string Instructions { get; } = "Spin the chamber and take your shot. Some bullets earn you points (+6,+4), others hit you where it hurts (-3, -4 points), and a couple just click harmlessly. Will luck be on your side?";
 
@@ -37,9 +39,11 @@ public class CorporateRoulette : Minigame
 
 		currentChamber = -1;
 	}
-
+    
     public void OnSpinClicked()
     {
+        LeanTween.rotateAround(_chamber, Vector3.forward, 360f, 1f).setEase(LeanTweenType.easeInOutSine);
+
         Debug.Log("SpinChamber() initiated");
         for (int i = rewards.Length - 1; i > 0; i--)
         {

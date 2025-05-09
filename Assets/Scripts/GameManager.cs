@@ -88,20 +88,20 @@ public class GameManager : MonoBehaviour
         Debug.Log("[WaitForMinigameToEnd] Minigame sequence finished.");
     }
 
-	//private IEnumerator WaitForShopClose()
-	//{
- //       if (ShopPanel.instance == null)
- //       {
- //           Debug.LogError("ShopPanel instance is null. Cannot wait for shop to close.");
- //           yield break;
- //       }
+	private IEnumerator WaitForShopClose()
+	{
+		if (ShopPanel.instance == null)
+		{
+			Debug.LogError("ShopPanel instance is null. Cannot wait for shop to close.");
+			yield break;
+		}
 
- //       Debug.Log("Checkign to see if shop is open");
-	//	yield return new WaitUntil(() => !ShopPanel.instance.isShopOpen);
-	//	Debug.Log("shop is closed");
-	
-	//}
-    private IEnumerator GameRoundCycle()
+		Debug.Log("Checking to see if shop is open");
+		yield return new WaitUntil(() => !ShopPanel.instance.isShopOpen);
+		Debug.Log("shop is closed");
+
+	}
+	private IEnumerator GameRoundCycle()
 	{
 		while (_roundNumber++ < _totalRounds)
 		{
@@ -109,8 +109,10 @@ public class GameManager : MonoBehaviour
 			yield return WaitForMinigameToEnd();	
             yield return ShowTurnHud(); 
 			yield return DoRound();
+
+            yield return WaitForShopClose();
 			MinigameManager.Instance.StartRandomMultiplayerMinigame();
-		}
+        }
 	}
 
 	private IEnumerator DoRound()

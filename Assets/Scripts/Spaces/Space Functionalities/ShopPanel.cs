@@ -23,7 +23,8 @@ public class ShopPanel: MonoBehaviour
 
     [SerializeField] private TMP_Text shoptext;
     public bool isShopOpen { get; private set; } = false;
-   
+    public static ShopPanel instance { get; private set; } // Singleton instance
+
     private void Awake()
     {
         panelManager = FindFirstObjectByType<PanelManager>();

@@ -27,7 +27,7 @@ public class BashnCrash : Minigame
     private bool[] hasFinished; // Tracks if a player has finished (health bar reached 0)
     private float[] lastMashTime; // Tracks the last mash time for each player
     private bool _gameFinished = true;
-    public override string Instructions { get; } = "Smash your competition's HQ to the ground!! Mash your X/A button on your controller like your career depends on it. Each mash deals damage to the HQ. The first to destroy the enemy HQ wins 5 corruption coins!";
+    public override string Instructions { get; } = "Smash your competition's HQ to the ground!! Mash your X/A button on your controller or click on the bash button like your career depends on it. Each mash deals damage to the HQ. The first to destroy the enemy HQ wins 5 corruption coins!";
     private PlayerMovement _playerMovement;
 	private void Start()
 	{

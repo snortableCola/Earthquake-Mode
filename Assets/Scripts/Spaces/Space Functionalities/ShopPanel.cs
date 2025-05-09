@@ -27,6 +27,7 @@ public class ShopPanel: MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("ShopPanel Awake called");
         instance = this;
         panelManager = FindFirstObjectByType<PanelManager>();
         if (panelManager == null)

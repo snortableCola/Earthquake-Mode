@@ -30856,11 +30856,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &2220943098402608340 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7278462940650753601, guid: 60de9417286eb684bae3a56733633df6, type: 3}
-  m_PrefabInstance: {fileID: 3709202005183485189}
-  m_PrefabAsset: {fileID: 0}
 --- !u!222 &2231109958609106542
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -32923,6 +32918,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60de9417286eb684bae3a56733633df6, type: 3}
+--- !u!1 &3709202005183485190 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2755337395349420416, guid: 60de9417286eb684bae3a56733633df6, type: 3}
+  m_PrefabInstance: {fileID: 3709202005183485189}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &3709202005183485191 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8698474070231451966, guid: 60de9417286eb684bae3a56733633df6, type: 3}
+  m_PrefabInstance: {fileID: 3709202005183485189}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3709202005183485192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2611902950845498746, guid: 60de9417286eb684bae3a56733633df6, type: 3}
+  m_PrefabInstance: {fileID: 3709202005183485189}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3718512689939901955
 GameObject:
   m_ObjectHideFlags: 0
@@ -36767,11 +36777,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab75bb7b247f2e4d812adb8f9968d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialPanel: {fileID: 2220943098402608340}
-  _startButton: {fileID: 0}
+  InitialPanel: {fileID: 3709202005183485192}
+  _startButton: {fileID: 3709202005183485190}
   _spinButton: {fileID: 7685969990733572775}
   _fireButton: {fileID: 3380473417109127813}
   _exitButton: {fileID: 3663886876927090842}
+  _chamber: {fileID: 3709202005183485191}
   GeneralText: {fileID: 7756355673386364015}
   audioSource: {fileID: 569796442546643665}
   FiringSound: {fileID: 8300000, guid: 5f22fb1bdf2cc8348a618e81c93552c0, type: 3}
@@ -36840,7 +36851,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1770155538693692385, guid: 60de9417286eb684bae3a56733633df6, type: 3}
   m_PrefabInstance: {fileID: 3709202005183485189}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 3709202005183485190}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}

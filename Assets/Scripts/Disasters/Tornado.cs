@@ -22,6 +22,7 @@ public class Tornado : Disaster
 
 		while (victims.MoveNext() && destinations.MoveNext())
 		{
+			if (victims.Current.Movement == null) break;
 			yield return victims.Current.Movement.MoveToSpaceCoroutine(destinations.Current);
 			yield return destinations.Current.Behavior.RespondToPlayerEnd(victims.Current);
 		};

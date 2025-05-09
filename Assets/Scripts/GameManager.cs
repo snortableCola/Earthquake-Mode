@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 		Spaces = FindObjectsByType<Space>(FindObjectsSortMode.None);
 		_diceRollButton.onClick.AddListener(RespondToDiceRoll);
 		_useItemButton.onClick.AddListener(RespondToUseItem);
-		playerProfiles.SetActive(false);
+		HideAllPlayerTurnIcons();
 		//playerInputs = FindObjectsByType<PlayerInput>(FindObjectsSortMode.None).ToList();
   //      playerInputs.Sort((input1, input2) => input1.playerIndex.CompareTo(input2.playerIndex));
 

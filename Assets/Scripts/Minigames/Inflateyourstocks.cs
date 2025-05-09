@@ -24,7 +24,7 @@ public class Inflateyourstocks : Minigame
     private bool _gameFinished = false; // Tracks if the game is finished
     private float _timeRemaining; // Tracks the remaining time
 
-    public override string Instructions { get; } = "Mash your button to inflate your stocks! Reach max before time runs out!";
+    public override string Instructions { get; } = "Desperately try to buy back as many of your company’s stocks as possible before the market closes. The more you button mash your A button or click on the buy button, the more shares you buy ,inflating your company's value—but only one exec can come out on top! ";
 
     public override void StartGame()
     {

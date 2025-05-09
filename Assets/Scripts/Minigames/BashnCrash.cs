@@ -29,7 +29,8 @@ public class BashnCrash : Minigame
     private bool _gameFinished = true;
     public override string Instructions { get; } = "Smash your competition's HQ to the ground!! Mash your X/A button on your controller like your career depends on it. Each mash deals damage to the HQ. The first to destroy the enemy HQ wins 5 corruption coins!";
     private PlayerMovement _playerMovement;
-	private void Start()
+    private GameManager _gameManager;
+    private void Start()
 	{
 		int playerCount = playerHealthbars.Length;
 		for (int i = 0; i < playerCount; i++)

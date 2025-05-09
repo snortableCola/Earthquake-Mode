@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,8 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private Image turnHUD;
 	[SerializeField] private TMP_Text turnText;
 	[SerializeField] Button diceButton;
+
+	public static event Action<int> NewTurnStarted, TurnEnded;
     public float hudMessageDuration = 3f;
     private bool isTurnHudActive = false;
 
@@ -142,6 +145,7 @@ public class GameManager : MonoBehaviour
     }
     private IEnumerator DoPlayerTurn()
 	{
+		NewTurnStarted?.Invoke(CurrentPlayer.PlayerIndex);
         ShowPlayerTurnIcon(CurrentPlayer.PlayerIndex);
 
         //set the player's multiplayerEventsystem firstselected property to roll dice
@@ -161,15 +165,15 @@ public class GameManager : MonoBehaviour
 		PanelManager.Instance.ShowMovementUI();
 		yield return WaitForDiceRoll();
 
-		int distance = Random.Range(1, 11);
+		int distance = UnityEngine.Random.Range(1, 11);
 		switch (CurrentPlayer.UsedItem)
 		{
 			case TravelPlan:
-				int newDistance = Random.Range(1, 11);
+				int newDistance = UnityEngine.Random.Range(1, 11);
 				if (newDistance > distance) distance = newDistance;
 				break;
 			case PrivateJet:
-				distance += Random.Range(1, 11);
+				distance += UnityEngine.Random.Range(1, 11);
 				break;
 		}
 
@@ -193,6 +197,7 @@ public class GameManager : MonoBehaviour
 
         DisasterManager.Instance.Wildfire.TryFireProgress(CurrentPlayer);
         HideAllPlayerTurnIcons();
+		TurnEnded?.Invoke(CurrentPlayer.PlayerIndex);
     }
     private void ShowPlayerTurnIcon(int playerIndex)
     {

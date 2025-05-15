@@ -30265,15 +30265,15 @@ MonoBehaviour:
   _gameNameText: {fileID: 2748576760725447706}
   _startMinigameButton: {fileID: 3282635391819748713}
   _shopPanelGameObject: {fileID: 9073928312942436705}
-  _diceButton: {fileID: 0}
-  _shopButton: {fileID: 0}
-  _instructionButton: {fileID: 0}
-  _victimSelectButton: {fileID: 0}
-  _methodSelectButton: {fileID: 0}
-  _consequenceButton: {fileID: 0}
-  _ceoSelectButton: {fileID: 0}
-  _flipButton: {fileID: 0}
-  _oilPassButton: {fileID: 0}
+  _diceButton: {fileID: 1767838418}
+  _shopButton: {fileID: 1690621454}
+  _instructionButton: {fileID: 5084105000044717397}
+  _victimSelectButton: {fileID: 681110943}
+  _methodSelectButton: {fileID: 1913961479}
+  _consequenceButton: {fileID: 1110067334}
+  _ceoSelectButton: {fileID: 6343051186302040815}
+  _flipButton: {fileID: 8989301831116894198}
+  _oilPassButton: {fileID: 1449498375}
 --- !u!224 &1476996813341765283
 RectTransform:
   m_ObjectHideFlags: 0

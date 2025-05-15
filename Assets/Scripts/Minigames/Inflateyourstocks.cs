@@ -14,7 +14,7 @@ public class Inflateyourstocks : Minigame
     public float maxHealth = 1f; // Maximum value for the slider
     public float inflationPerMash = 0.05f; // How much the slider increases with each button mash
     public float mashCooldown = 0.1f; // Cooldown between button presses to prevent spamming
-    public float gameDuration = 6f; // Duration of the game in seconds
+    public float gameDuration = 3f; // Duration of the game in seconds
 
     [SerializeField] private TMP_Text winnerText; // Text to display the winner
     [SerializeField] private TMP_Text inflateText; // Text to display the timer
@@ -24,7 +24,7 @@ public class Inflateyourstocks : Minigame
     private bool _gameFinished = false; // Tracks if the game is finished
     private float _timeRemaining; // Tracks the remaining time
 
-    public override string Instructions { get; } = "Desperately try to buy back as many of your company’s stocks as possible before the market closes. The more you button mash your A button or click on the buy button, the more shares you buy ,inflating your company's value—but only one exec can come out on top! ";
+    public override string Instructions { get; } = "Desperately try to buy back as many of your company’s stocks as possible before the market closes in 3 seconds. The more you button mash your X/A button or click on the buy button, the more shares you buy ,inflating your company's value—but only one exec can come out on top! ";
 
     public override void StartGame()
     {

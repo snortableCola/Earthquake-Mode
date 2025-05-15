@@ -40953,7 +40953,7 @@ MonoBehaviour:
   maxHealth: 1
   inflationPerMash: 0.05
   mashCooldown: 0.1
-  gameDuration: 6
+  gameDuration: 3
   winnerText: {fileID: 7734996865127678574}
   inflateText: {fileID: 4503104810787482488}
 --- !u!1 &9114720129264587772

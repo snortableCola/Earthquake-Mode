@@ -21,6 +21,7 @@ public class PanelManager : MonoBehaviour
     [SerializeField] public GameObject _ceoSelectButton;
     [SerializeField] public GameObject _flipButton;
     [SerializeField] public GameObject _oilPassButton;
+    [SerializeField] public GameObject _ceoFireButton;
     private ShopPanel _shopPanelScript; // Reference to the ShopPanel script
 
     private GameObject _activePanel;

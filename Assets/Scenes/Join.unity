@@ -565,7 +565,7 @@ RectTransform:
   m_GameObject: {fileID: 885017620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.8035712, y: 5.1348214, z: 3.8035712}
+  m_LocalScale: {x: 2.0350225, y: 2.7472804, z: 2.0350225}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1455578137}
@@ -573,7 +573,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 37, y: -485}
+  m_AnchoredPosition: {x: 37, y: -414}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &885017622
@@ -924,7 +924,7 @@ GameObject:
   - component: {fileID: 1532616832}
   - component: {fileID: 1532616831}
   m_Layer: 5
-  m_Name: ReadyBanner
+  m_Name: JoinButtonPrompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -969,7 +969,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press Any Button to Join!
+  m_text: Press <sprite name="PSFaceButtons_Sq">/ <sprite name= "XboxFaceButtons_X">
+    to Join!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c91c3c80d719e6d4fa96acf9c248d40b, type: 2}
   m_sharedMaterial: {fileID: 4132897334888844471, guid: c91c3c80d719e6d4fa96acf9c248d40b, type: 2}

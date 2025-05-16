@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9f287c3193bad1c4a88a9b55020457ab
+guid: f58200d59c63a974ab61dc7826af2a17
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,14 +97,14 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: XboxFaceButtons_X
+      name: PSFaceButtons_Sq
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 100
         height: 100
-      alignment: 0
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -112,21 +112,21 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 024c4993aa0fad944ac60450cb8d8bd1
-      internalID: -1517679022
+      spriteID: 3b3bf5115b648e44fadb8c3028aa57bb
+      internalID: 227337491
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: XboxFaceButtons_Y
+      name: PSFaceButtons_Tr
       rect:
         serializedVersion: 2
         x: 100
         y: 0
         width: 100
         height: 100
-      alignment: 0
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -134,21 +134,21 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64b78779e7ff11a4eb29a37c187b1b3f
-      internalID: 1521732023
+      spriteID: d6462fe8f37920a41b76467a0ac52dfa
+      internalID: -595173917
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: XboxFaceButtons_A
+      name: PSFaceButtons_Cr
       rect:
         serializedVersion: 2
         x: 200
         y: 0
         width: 100
         height: 100
-      alignment: 0
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -156,21 +156,21 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89be29d4e3ca1ef489c610933c2923d7
-      internalID: -1560403811
+      spriteID: 6d2cc0daa97dd854a93d7db6993098dc
+      internalID: 1931367055
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: XboxFaceButtons_B
+      name: PSFaceButtons_X
       rect:
         serializedVersion: 2
         x: 300
         y: 0
         width: 100
         height: 100
-      alignment: 0
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -178,8 +178,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47880a7cbe2fe1445a77c714db29e60b
-      internalID: -374189805
+      spriteID: 47fc12ba302e38849a8bad7906973e73
+      internalID: 68793610
       vertices: []
       indices: 
       edges: []
@@ -188,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a51341989842c4745bb1048beff67271
+    spriteID: f0d89a536ea525d42b768bf1cc2550d4
     internalID: 0
     vertices: []
     indices: 
@@ -198,10 +198,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      XboxFaceButtons_A: -1560403811
-      XboxFaceButtons_B: -374189805
-      XboxFaceButtons_X: -1517679022
-      XboxFaceButtons_Y: 1521732023
+      PSFaceButtons_Cr: 1931367055
+      PSFaceButtons_Sq: 227337491
+      PSFaceButtons_Tr: -595173917
+      PSFaceButtons_X: 68793610
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

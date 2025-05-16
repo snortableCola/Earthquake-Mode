@@ -54,7 +54,6 @@ public class Inflateyourstocks : Minigame
     {
         if (_gameFinished)
         {
-            Debug.Log("Update is stopping because _gameFinished is true.");
             return;
         }
         // Decrease the timer

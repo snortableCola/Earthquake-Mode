@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
@@ -107,13 +108,12 @@ public class GameManager : MonoBehaviour
 	{
 		while (_roundNumber++ < _totalRounds)
 		{
-			
-			yield return WaitForMinigameToEnd();	
+			//yield return WaitForMinigameToEnd();	
             yield return ShowTurnHud(); 
 			yield return DoRound();
             yield return WaitForShopClose();
 			CurrentPlayer = Players[0];
-            MinigameManager.Instance.StartRandomMultiplayerMinigame();
+            //MinigameManager.Instance.StartRandomMultiplayerMinigame();
 		}
 	}
 
@@ -126,9 +126,11 @@ public class GameManager : MonoBehaviour
 			for (int i = 0; i < _players.Length; i++)
 			{
 				MultiplayerEventSystem eventSystem = _players[i].multiplayerEventSystem;
-				if (eventSystem == null) continue;
-				eventSystem.gameObject.SetActive(i == CurrentPlayerIdx);
+				if (eventSystem != null) eventSystem.gameObject.SetActive(false);
+				if (eventSystem != null) eventSystem.enabled = false;
 			}
+			CurrentPlayer.multiplayerEventSystem.gameObject.SetActive(true);
+			CurrentPlayer.multiplayerEventSystem.enabled = true;
 			yield return DoPlayerTurn();
             yield return WaitForLastPlayerHudCompletion();
         }
@@ -145,6 +147,7 @@ public class GameManager : MonoBehaviour
     }
     private IEnumerator DoPlayerTurn()
 	{
+		Debug.Log($"Doing turn for {CurrentPlayer}");
 		NewTurnStarted?.Invoke(CurrentPlayer.PlayerIndex);
         ShowPlayerTurnIcon(CurrentPlayer.PlayerIndex);
 
@@ -228,6 +231,7 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator WaitForDiceRoll()
 	{
+		Debug.Log("Waiting for dice roll");
 		bool hasItem = CurrentPlayer.HeldItem != null;
 		_useItemButton.interactable = hasItem;
 		_useItemButtonText.text = $"Use {(hasItem ? CurrentPlayer.HeldItem.name : "Item")}";
@@ -236,6 +240,7 @@ public class GameManager : MonoBehaviour
 		_useItemButton.gameObject.SetActive(true);
 		playerProfiles.gameObject.SetActive(true);
 
+		Debug.Log("Waiting right now");
 		yield return new WaitUntil(() => _diceRolled || _itemUsed);
 
 		if (_diceRolled)

@@ -17,8 +17,8 @@ public class Wildfire : Disaster
 	private readonly List<Space> _flammableSpaces = new();
 	private readonly Queue<Space> _allBurningSpaces = new();
 	private readonly Queue<Space> _spacesLastEngulfed = new();
-
-	public override void Refresh()
+    public bool IsFireOngoing => _isFireOngoing; 
+    public override void Refresh()
 	{
 		_flammableSpaces.Clear();
 		_flammableSpaces.AddRange(GameManager.Instance.Spaces.Where(IsFlammable));
@@ -100,9 +100,9 @@ public class Wildfire : Disaster
 	{
 		// Mark the fire as completed
 		_isFireOngoing = false;
-
-		// Set all the fire spaces to not on fire
-		while (_allBurningSpaces.Count > 0)
+        DisasterManager.Instance.OnWildfireEnded();
+        // Set all the fire spaces to not on fire
+        while (_allBurningSpaces.Count > 0)
 		{
 			Space spaceToExtinguish = _allBurningSpaces.Dequeue();
 			spaceToExtinguish.BurningTag.State = false;

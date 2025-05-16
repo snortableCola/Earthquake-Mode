@@ -31,9 +31,10 @@ public class DisasterManager : MonoBehaviour
     public Wildfire Wildfire => _wildfire;
 
 	[SerializeField] private TextMeshProUGUI disaster_info;
+    private bool _wildfireInfoLocked = false;
 
 
-	private Player _currentPlayer; //ref to current player 
+    private Player _currentPlayer; //ref to current player 
     private void Awake()
 	{
 		Instance = this;
@@ -62,10 +63,14 @@ public class DisasterManager : MonoBehaviour
     public void UpdateDisasterInfo()
     {
         if (_currentPlayer == null) return;
-
+        
         Biome biome = _currentPlayer.CurrentBiome;
         Disaster disaster = GetDisasterForBiome(biome);
-
+        if (_wildfireInfoLocked && biome == Biome.Mountains)
+        {
+            disaster_info.text = $"{biome}: 4: Wildfire!";
+            return;
+        }
         if (disaster == null)
         {
             disaster_info.text = $"{biome}: No disasters.";
@@ -82,8 +87,12 @@ public class DisasterManager : MonoBehaviour
         Debug.Log($"Current player is in biome {biome} with disaster {disaster.name} at level {level}");
         disaster_info.text = GetDisasterMessage(biome, level);
     }
+    public void OnWildfireEnded()
+    {
+        _wildfireInfoLocked = false;
+        UpdateDisasterInfo();
+    }
 
-   
     private Disaster GetDisasterForBiome(Biome biome)
     {
         return biome switch
@@ -158,15 +167,21 @@ public class DisasterManager : MonoBehaviour
         Debug.Log($"Checking disaster {disaster.name} at level {disasterLevel}");
 
         // Disaster is triggered when the level reaches the threshold
-        if (disasterLevel != _disasterThreshold)
+        if (disasterLevel == _disasterThreshold)
         {
-			DisasterParticleManager.Instance.HandleEffect(disaster.name,true, 5f);
+            DisasterParticleManager.Instance.HandleEffect(disaster.name, true, 5f);
+
+            if (disaster == _earthquake)
+            {
+                DisasterParticleManager.Instance.EarthquakeShake();
+            }
+            if (disaster == _wildfire)
+            {
+                _wildfireInfoLocked = true;
+            }
         }
 
-        if (disaster == _earthquake && disasterLevel != _disasterThreshold)
-        {
-            DisasterParticleManager.Instance.EarthquakeShake();
-        }
+
 
         Debug.Log($"Triggering disaster {disaster.name}!");
         yield return disaster.StartDisaster(incitingPlayer);

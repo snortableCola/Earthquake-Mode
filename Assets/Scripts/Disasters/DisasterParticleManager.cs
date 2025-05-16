@@ -62,6 +62,8 @@ public class DisasterParticleManager : MonoBehaviour
         {
             if (isStarting)
             {
+                if (!RainEffect.gameObject.activeSelf)
+                    RainEffect.gameObject.SetActive(true);
                 RainEffect.Play();
                 Debug.Log("Playing rain effect for Tsunami.");
                 if (duration > 0)
@@ -72,6 +74,7 @@ public class DisasterParticleManager : MonoBehaviour
             else
             {
                 RainEffect.Stop();
+                RainEffect.gameObject.SetActive(false);
                 Debug.Log("Stopping rain effect for Tsunami.");
             }
         }
@@ -79,6 +82,8 @@ public class DisasterParticleManager : MonoBehaviour
         {
             if (isStarting)
             {
+                if (!tornadoEffect.gameObject.activeSelf)
+                    tornadoEffect.gameObject.SetActive(true); 
                 tornadoEffect.Play();
                 Debug.Log("Playing tornado effect");
                 if (duration > 0)
@@ -90,7 +95,9 @@ public class DisasterParticleManager : MonoBehaviour
             else
             {
                 tornadoEffect.Stop();
-            
+                tornadoEffect.gameObject.SetActive(false);
+                Debug.Log("Stopping tornado effect.");
+
             }
         
         
@@ -100,6 +107,7 @@ public class DisasterParticleManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         effect.Stop();
+        effect.gameObject.SetActive(false); 
         Debug.Log("Effect stopped automatically after delay.");
     }
     public void EarthquakeShake()
